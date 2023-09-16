@@ -9,7 +9,7 @@ npm install -g yarn
 ## Step 2
 
 ```
-yarn install
+yarn
 ```
 
 ## Step 3
