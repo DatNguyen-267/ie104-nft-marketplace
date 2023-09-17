@@ -2,9 +2,18 @@ const path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 let htmlPageNames = ["create", "explore", "connectWallet"];
+let htmlLayouts = ["header"];
+
 let multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
     template: `./src/page/${name}/index.html`,
+    filename: `${name}.html`,
+    chunks: [`${name}`], // respective JS files
+  });
+});
+let multipleHtmlLayoutPlugins = htmlLayouts.map((name) => {
+  return new HtmlWebpackPlugin({
+    template: `./src/layout/${name}/index.html`,
     filename: `${name}.html`,
     chunks: [`${name}`], // respective JS files
   });
@@ -15,15 +24,26 @@ let chunksRespective = () => {
   htmlPageNames.forEach((name) => {
     entries = {
       ...entries,
-      [name]: path.resolve(__dirname, `src/page/${name}/script.js`),
+      [name]: path.resolve(__dirname, `src/page/${name}/main.ts`),
+    };
+  });
+  return entries;
+};
+let chunksRespectiveLayout = () => {
+  let entries = {};
+  htmlLayouts.forEach((name) => {
+    entries = {
+      ...entries,
+      [name]: path.resolve(__dirname, `src/layout/${name}/main.ts`),
     };
   });
   return entries;
 };
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/app.js"),
+    app: path.resolve(__dirname, "src/page/app.ts"),
     ...chunksRespective(),
+    // ...chunksRespectiveLayout(),
   },
   output: {
     filename: "[name].js",
@@ -32,22 +52,24 @@ module.exports = {
     assetModuleFilename: "[name][ext]",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".js"],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./src/page/index.html",
       filename: "index.html",
       chunks: ["app"],
     }),
     new MiniCssExtractPlugin(),
   ].concat(multipleHtmlPlugins),
+  // .concat(multipleHtmlLayoutPlugins),
   module: {
     rules: [
       {
-        test: /\.tsx?$/, //includes .ts
-        exclude: /node_modules/,
+        test: /\.tsx?$/,
         use: "ts-loader",
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
@@ -67,16 +89,7 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
-      },
+
       {
         test: /\.json$/,
         loader: "json-loader",
