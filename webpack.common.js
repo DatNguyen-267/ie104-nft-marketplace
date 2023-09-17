@@ -31,6 +31,9 @@ module.exports = {
     clean: true,
     assetModuleFilename: "[name][ext]",
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
@@ -73,6 +76,10 @@ module.exports = {
             presets: ["@babel/preset-env"],
           },
         },
+      },
+      {
+        test: /\.json$/,
+        loader: "json-loader",
       },
     ],
   },
