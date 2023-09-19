@@ -24,7 +24,7 @@ let chunksRespective = () => {
   htmlPageNames.forEach((name) => {
     entries = {
       ...entries,
-      [name]: path.resolve(__dirname, `src/page/${name}/main.ts`),
+      [name]: path.resolve(__dirname, `src/page/${name}/main.js`),
     };
   });
   return entries;
@@ -34,14 +34,14 @@ let chunksRespectiveLayout = () => {
   htmlLayouts.forEach((name) => {
     entries = {
       ...entries,
-      [name]: path.resolve(__dirname, `src/layout/${name}/main.ts`),
+      [name]: path.resolve(__dirname, `src/layout/${name}/main.js`),
     };
   });
   return entries;
 };
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/page/app.ts"),
+    app: path.resolve(__dirname, "src/page/app.js"),
     ...chunksRespective(),
     // ...chunksRespectiveLayout(),
   },
@@ -89,10 +89,19 @@ module.exports = {
           },
         },
       },
-
       {
         test: /\.json$/,
         loader: "json-loader",
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
     ],
   },

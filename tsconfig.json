@@ -17,5 +17,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "src/**/*.ts"]
+  "include": ["next-env.d.ts", "**/*.ts", "src/**/*.ts", "src/types/nft.js", "src/types/index.js", "src/constants/address.js", "src/constants/index.js"]
 }
