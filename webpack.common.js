@@ -24,7 +24,7 @@ let chunksRespective = () => {
   htmlPageNames.forEach((name) => {
     entries = {
       ...entries,
-      [name]: path.resolve(__dirname, `src/page/${name}/main.js`),
+      [name]: path.resolve(__dirname, `src/page/${name}/main.ts`),
     };
   });
   return entries;
@@ -34,14 +34,14 @@ let chunksRespectiveLayout = () => {
   htmlLayouts.forEach((name) => {
     entries = {
       ...entries,
-      [name]: path.resolve(__dirname, `src/layout/${name}/main.js`),
+      [name]: path.resolve(__dirname, `src/layout/${name}/main.ts`),
     };
   });
   return entries;
 };
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/page/app.js"),
+    app: path.resolve(__dirname, "src/page/app.ts"),
     ...chunksRespective(),
     // ...chunksRespectiveLayout(),
   },

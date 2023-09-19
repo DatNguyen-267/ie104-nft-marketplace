@@ -3,6 +3,9 @@ const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
 
 module.exports = merge(common, {
+  optimization: {
+    minimize: false
+},
   mode: "development",
   devtool: "source-map",
   devServer: {

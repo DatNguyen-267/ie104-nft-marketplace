@@ -13,9 +13,18 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types", "src/types/d.ts/*.d.ts"],
-    "baseUrl": "."
+    "typeRoots": ["node_modules/@types", "src/types/d.ts/*.d.ts", "*.d.ts"],
+    "allowJs": true,
+    "checkJs": false
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "src/**/*.ts", "src/types/nft.js", "src/types/index.js", "src/constants/address.js", "src/constants/index.js"]
+  "include": [
+    "global.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "src/**/*.ts",
+    "utils/svg.d.ts",
+    "node_modules/**/*.d.ts",
+    "node_modules/@types/**/*.d.ts"
+  ]
 }

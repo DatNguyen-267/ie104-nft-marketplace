@@ -4,7 +4,7 @@
   "description": "DISCOVER, COLLECT AND SELL EXTRAORDINARY NFTs -  The Largest NFT marketplace",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack --mode development --config webpack.common.js",
+    "build:dev": "webpack --mode development --config webpack.dev.js",
     "build:prod": "webpack --mode production --config webpack.prod.js",
     "dev": "webpack serve --mode development --config webpack.dev.js",
     "clean": "rimraf ./dist/*"
@@ -14,6 +14,7 @@
   "dependencies": {
     "@babel/core": "^7.22.17",
     "@babel/preset-env": "^7.22.15",
+    "ethers": "5.7.2",
     "html-loader": "^4.2.0",
     "webpack-merge": "^5.9.0"
   },
