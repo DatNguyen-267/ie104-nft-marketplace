@@ -1,2 +1,2 @@
 export * from "./address";
-export * from "./error"
+export * from "./errors";
