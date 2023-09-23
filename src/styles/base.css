@@ -1,0 +1,50 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+
+
+  /*  */
+  --color-success: green;
+  --color-warning: yellow;
+  --color-error: red;
+
+  /*  */
+  --color-red-100: #fff;
+  --color-red-200: #fff;
+  --color-red-300: #fff;
+  --color-red-400: #fff;
+  --color-red-500: #fff;
+  --color-red-600: #fff;
+  --color-red-700: #fff;
+  --color-red-800: #fff;
+  --color-red-900: #fff;
+  --color-red-1000: #fff;
+
+  /*  */
+
+  --color-blue-100: #fff;
+  --color-blue-200: #fff;
+  --color-blue-300: #fff;
+  --color-blue-400: #fff;
+  --color-blue-500: #fff;
+  --color-blue-600: #fff;
+  --color-blue-700: #fff;
+  --color-blue-800: #fff;
+  --color-blue-900: #fff;
+  --color-blue-1000: #fff;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* use em vs rem with text */
+/* 0.1rem ~ 1px */
+/* 1.6rem ~ 16px */
+/* 2rem ~ 20px */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: 'border-box';
+}
