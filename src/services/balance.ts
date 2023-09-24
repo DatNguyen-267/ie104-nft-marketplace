@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { WBNB_ABI } from "../abis";
 import { ProviderOptions } from "../types";
 import { getProvider } from "./provider";
@@ -7,12 +7,12 @@ export async function getErc20Balance(
   cltAddress: string,
   walletAddress: string,
   options?: ProviderOptions
-) {
+): Promise<BigNumber> {
   try {
     const provider = getProvider(options?.provider);
     const contract = new ethers.Contract(cltAddress, WBNB_ABI, provider);
     const balance = await contract.balanceOf(walletAddress);
-    return balance.toString();
+    return balance;
   } catch (error) {
     throw error;
   }

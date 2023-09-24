@@ -6,13 +6,13 @@ import { ProviderOptions } from "../types";
 import { MetadataInput } from "../types/metadata";
 import { getProvider } from "./provider";
 
-export const STORAGE_API_KEY = process.env.STORAGE_API_KEY;
 export async function createMetadata(
   file: File,
   title: string,
   description: string
 ) {
   try {
+    const STORAGE_API_KEY = process.env.STORAGE_API_KEY;
     if (!STORAGE_API_KEY) {
       throw new Error(AppError.API_KEY_INVALID);
     }
@@ -99,7 +99,7 @@ async function getOwner(
   }
 }
 
-async function getYourTokens(
+async function getAllTokenIdsInCollection(
   cltAddress: string,
   creatorAddress: string,
   options?: ProviderOptions
