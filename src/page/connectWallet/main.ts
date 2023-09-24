@@ -1,4 +1,4 @@
-import { connect } from "../../services/common";
+import { connect } from "../../services/connect";
 import { NFT_ADDRESS } from "../../constants";
 import { convertWalletError } from "../../utils/errors";
 const btn = document.querySelector("#btn-connect") as HTMLButtonElement;

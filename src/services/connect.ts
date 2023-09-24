@@ -18,17 +18,3 @@ export async function getBalance(contractAddress: string) {
     console.log(ethers.utils.formatEther(balance));
   }
 }
-export function listenForTransactionMined(
-  transactionResponse: any,
-  provider: any
-) {
-  console.log(`Mining ${transactionResponse.hash}...`);
-  return new Promise((resolve, reject) => {
-    provider.once(transactionResponse.hash, (transactionReceipt: any) => {
-      console.log(
-        `Completed with ${transactionReceipt.confirmations} confirmations`
-      );
-    });
-    Promise.resolve();
-  });
-}

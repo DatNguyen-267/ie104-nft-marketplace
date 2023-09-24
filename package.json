@@ -7,7 +7,8 @@
     "build:dev": "webpack --mode development --config webpack.dev.js",
     "build:prod": "webpack --mode production --config webpack.prod.js",
     "dev": "webpack serve --mode development --config webpack.dev.js",
-    "clean": "rimraf ./dist/*"
+    "clean": "rimraf ./dist/*",
+    "test:dev": "tsc --target es6 --module es6 --outDir ./src/services/__test src/services/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "@babel/preset-env": "^7.22.15",
     "ethers": "5.7.2",
     "html-loader": "^4.2.0",
+    "nft.storage": "^7.1.1",
     "webpack-merge": "^5.9.0"
   },
   "devDependencies": {

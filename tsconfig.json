@@ -15,7 +15,8 @@
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types", "src/types/d.ts/*.d.ts", "*.d.ts"],
     "allowJs": true,
-    "checkJs": false
+    "checkJs": false,
+    "outDir": "dist"
   },
   "exclude": ["node_modules"],
   "include": [
