@@ -1,38 +1,79 @@
+@import url('https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet');
+
 :root {
+  --color-primary: #A259FF;
   --color-white: #fff;
   --color-black: #000;
+  --color-plum: #b80257;
 
-  --primary: #A259FF;
+  /* Gray */
+  --color-gray-100: #FCFCFC;
+  --color-gray-200: #FAFAFA;
+  --color-gray-300: #F6F6F6;
+  --color-gray-400: #F2F2F2;
+  --color-gray-500: #F1F1F1;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #E9ECEF;
+  --color-gray-800: #E5E5E5;
+  --color-gray-900: #C4C4C4;
+  --color-gray-1000: #BBB8B8;
+  --color-gray-1100: #AFAFAF;
+  --color-gray-1200: #929191;
+  --color-gray-1300: #8D8D8D;
+  --color-gray-1400: #86878B;
+  --color-gray-1500: #666;
+  --color-gray-1600: #4C4C4C;
+  --color-gray-1700: #3B3B3B;
+  --color-gray-1800: #333;
+  --color-gray-1900: #2B2B2B;
+  --color-gray-2000: #292929;
+  --color-gray-2100: #242424;
+  --color-gray-2200: #040404;
 
-  /*  */
-  --color-success: green;
-  --color-warning: yellow;
-  --color-error: red;
+  /* Green */
+  --color-green-100: #74d8c1;
+  --color-green-200: #18E094;
+  --color-green-300: #00EC98;
+  --color-green-400: #00DF80;
+  --color-green-500: #00CB7E;
+  --color-green-600: #008000;
 
-  /*  */
-  --color-red-100: #fff;
-  --color-red-200: #fff;
-  --color-red-300: #fff;
-  --color-red-400: #fff;
-  --color-red-500: #fff;
-  --color-red-600: #fff;
-  --color-red-700: #fff;
-  --color-red-800: #fff;
-  --color-red-900: #fff;
-  --color-red-1000: #fff;
+  /* Red */
+  --color-red-100: #F04349;
+  --color-red-200: #f33a58;
+  --color-red-300: #fe2c55;
+  --color-red-400: #FF014E;
+  --color-red-500: #ff0000;
 
-  /*  */
+  /* Yellow */
+  --color-yellow-100: #E9D8BD;
+  --color-yellow-200: #FFD21E;
+  --color-yellow-300: #ffff00;
 
-  --color-blue-100: #fff;
-  --color-blue-200: #fff;
-  --color-blue-300: #fff;
-  --color-blue-400: #fff;
-  --color-blue-500: #fff;
-  --color-blue-600: #fff;
-  --color-blue-700: #fff;
-  --color-blue-800: #fff;
-  --color-blue-900: #fff;
-  --color-blue-1000: #fff;
+  /* Purple */
+  --color-purple-100: #A269ff;
+  --color-purple-200: #7C5DFB;
+
+  /* action */
+  --color-success: #18e094;
+  --color-warning: #ffd21e;
+  --color-error: #FF014E;
+
+  /* Text */
+  --color-text: #333;
+
+  --color-text-sub-100: #afafaf;
+  --color-sub-text-200: #919191;
+  --color-sub-text-300: #6d6d6d;
+  --color-sub-text-400: #4c4c4c;
+
+  /* general */
+  --color-btn-primary: #A259FF;
+  --color-background: #fff;
+
+  --color-border-100: #E5E5E5;
+  --color-border-200: #bbb8b8;
+  --color-border-300: #929191;
 }
 
 * {
@@ -48,4 +89,50 @@ html {
   font-size: 62.5%;
   line-height: 1.6rem;
   box-sizing: 'border-box';
+  font-family: 'Montserrat', sans-serif;
 }
+
+a,
+li {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Text size */
+h1 {
+  font-size: 5.1rem;
+}
+
+h2 {
+  font-size: 3.8rem;
+}
+
+h3 {
+  font-size: 2.8rem;
+}
+
+h4 {
+  font-size: 2.2rem;
+}
+
+h5 {
+  font-size: 1.6rem;
+}
+
+.text-body-2 {
+  font-size: 22px;
+}
+
+.text-body-2 {
+  font-size: 16px;
+}
+
+.text-body-tiny {
+  font-size: 12px;
+}
+
+/* Grid */
