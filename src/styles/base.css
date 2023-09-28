@@ -78,6 +78,7 @@
 
 * {
   box-sizing: inherit;
+  margin: 0;
 }
 
 /* use em vs rem with text */
@@ -124,13 +125,17 @@ h5 {
 }
 
 .text-body-1 {
-  font-size: 22px;
+  font-size: 2.2rem;
 }
 
 .text-body-2 {
-  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+.text-body-3 {
+  font-size: 1.4rem;
 }
 
 .text-body-tiny {
-  font-size: 12px;
+  font-size: 1.2rem;
 }
