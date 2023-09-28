@@ -88,7 +88,7 @@
 html {
   font-size: 62.5%;
   line-height: 1.6rem;
-  box-sizing: 'border-box';
+  box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -123,7 +123,7 @@ h5 {
   font-size: 1.6rem;
 }
 
-.text-body-2 {
+.text-body-1 {
   font-size: 22px;
 }
 
@@ -134,5 +134,3 @@ h5 {
 .text-body-tiny {
   font-size: 12px;
 }
-
-/* Grid */
