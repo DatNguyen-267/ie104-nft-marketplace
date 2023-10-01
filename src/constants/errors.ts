@@ -2,4 +2,5 @@ export enum AppError {
   NOT_INSTALLED_METAMASK = "Please install metamask",
   CONNECT_WALLET_PROCESSING_PLEASE_OPEN_WALLET = "CONNECT WALLET PROCESSING PLEASE OPEN WALLET",
   API_KEY_INVALID = "Api key invalid",
+  NOT_SUPPORTED_CHAIN_ID = "Not supported chain id",
 }

@@ -6,7 +6,8 @@ import { ProviderOptions } from "../types";
 import { MetadataInput } from "../types/metadata";
 import { getProvider } from "./provider";
 
-export const STORAGE_API_KEY = process.env.STORAGE_API_KEY;
+// export const STORAGE_API_KEY = process.env.STORAGE_API_KEY || "";
+export const STORAGE_API_KEY = "";
 export async function createMetadata(
   file: File,
   title: string,

@@ -1,17 +1,29 @@
-import { connect } from "../../services/connect";
-import { NFT_ADDRESS } from "../../constants";
+import { AppError, NFT_ADDRESS } from "../../constants";
+import { getDefaultProvider, getProvider } from "../../services";
+import { connect, switchToNetwork } from "../../services/connect";
 import { convertWalletError } from "../../utils/errors";
-const btn = document.querySelector("#btn-connect") as HTMLButtonElement;
-const handleConnectWallet = () => {
-  connect()
+import "./styles.css";
+
+const btnMetamask = document.querySelector(
+  "#btn-metamask"
+) as HTMLButtonElement;
+const handleConnectWallet = async () => {
+  await connect()
     .then((res) => {
-      console.log("success");
       console.log({ walletAddress: res[0] });
     })
     .catch((err) => {
+      if (err.message === AppError.NOT_INSTALLED_METAMASK) {
+        onClickInstallMetaMask();
+      }
       console.log(convertWalletError(err));
     });
+  const provider = getDefaultProvider();
+  if (!provider) {
+    return;
+  }
+  await switchToNetwork(provider.provider, "4102");
 };
 
-console.log({ NFT_ADDRESS });
-btn.onclick = handleConnectWallet;
+const onClickInstallMetaMask = () => {};
+btnMetamask.onclick = handleConnectWallet;
