@@ -54,6 +54,16 @@
   --color-purple-100: #A269ff;
   --color-purple-200: #7C5DFB;
 
+  /* Blue */
+  --color-blue-100: #2cccff;
+  --color-blue-200: #00C5F9;
+  --color-blue-300: #04afdf;
+
+  /* Dark Blue */
+  --color-dark-blue-100: #3f3d56;
+  --color-dark-blue-200: #183153;
+  --color-dark-blue-300: #252337;
+
   /* action */
   --color-success: #18e094;
   --color-warning: #ffd21e;
@@ -62,7 +72,7 @@
   /* Text */
   --color-text: #333;
 
-  --color-text-sub-100: #afafaf;
+  --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
   --color-sub-text-400: #4c4c4c;
