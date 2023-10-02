@@ -1,6 +1,5 @@
 @import url(../../styles/base.css);
-
-
+@import url(../avatar/styles.css);
 /* ================ HEADER ============== */
 header {
     position: sticky;
@@ -90,15 +89,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.header__user .avatar {
-    /* display: none; */
-    width: 40px;
-    height: 40px;
-    background: url("./../../assets/images/avatar-default.webp");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 50%;
 }
 
 /* Button */
@@ -269,10 +259,6 @@ header {
 .pop-up--user .avatar {
     width: 70px;
     height: 70px;
-    background: url("./../../assets/images/avatar-default.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 50%;
 
 }
 
