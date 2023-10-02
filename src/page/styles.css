@@ -93,15 +93,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-.header__user .avatar {
-  /* display: none; */
-  width: 40px;
-  height: 40px;
-  background: url("../assets/images/avatar-default.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  border-radius: 50%;
-}
+
 
 /* Button */
 .btn {
@@ -271,11 +263,6 @@ header {
 .pop-up--user .avatar {
     width: 70px;
     height: 70px;
-    background: url("https://s3-alpha-sig.figma.com/img/8ac9/e0e3/bcf2d5507a81254146143702cd71f923?Expires=1696204800&Signature=BMGBF9GTDpUdF8JM2MsJRPOJ9NTCjRg0owtqo7YMsplaNFrvoBvh9AvEPXsQZlqQs~FvuUR2zZwER05taylEvx7jnrQbtSxRFO6rrQb4W7APN6B9eyMUP4-kXBL8P2tQYeHmPxn-zHs6gLvheEK1jdsmMHI7TV-hsWtlS1IrhHZp4GtntqBYhEgPPkC~GZWfKlsy6tqpZxax0aLKxEBWWsUhvq4eEglXedX5jQJ66Q1dmJ0vW6IDaAwYv7630YVh4bpUlXBq4UpQ0Chpn2vhwLVoJTGMSo9KAanCPCQRy5~m9NSKy0dc2tnj6vZ1uhAAGz5aGan57hv6nIas7w402w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 50%;
-
 }
 
 .pop-up--user .user__name {
@@ -337,7 +324,8 @@ header {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(var(--color-rgb-black), 0.6); */
+  background-color: color-mix(in srgb, var(--color-black) 60%, transparent);
 }
 
 .info .container {
@@ -417,7 +405,8 @@ header {
   flex-shrink: 0;
   align-self: stretch;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.25);
+  /* background: rgba(var(--color-rgb-black), 0.25); */
+  background-color: color-mix(in srgb, var(--color-black) 25%, transparent);
   border-radius: 0 0 20px 20px;
 }
 
@@ -438,15 +427,10 @@ header {
 }
 
 .info__nft-eg .nft-eg__user .avatar {
-  display: flex;
   width: 35px;
   height: 35px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  background: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg"), lightgray 50% / cover no-repeat;
-  background-size: cover;
-  border: 1px solid var(--color-gray-1000);
+  background-image: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg");
+  border: 2px solid var(--color-gray-1500);
 }
 
 .info__nft-eg .nft-eg__user .user-name {
@@ -516,7 +500,8 @@ header {
   flex-shrink: 0;
   align-self: stretch;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.25);
+  /* background: rgba(var(--color-rgb-black), 0.25); */
+  background-color: color-mix(in srgb, var(--color-black) 25%, transparent);
   border-radius: 0 0 20px 20px;
 }
 
@@ -537,15 +522,10 @@ header {
 }
 
 .nfts .info__nft-eg .nft-eg__user .avatar {
-  display: flex;
   width: 35px;
   height: 35px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  background: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg"), lightgray 50% / cover no-repeat;
-  background-size: cover;
-  border: 1px solid var(--color-gray-1000);
+  background-image: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg");
+  border: 2px solid var(--color-gray-1500);
 }
 
 .nfts .info__nft-eg .nft-eg__user .user-name {
