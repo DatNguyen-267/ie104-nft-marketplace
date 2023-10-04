@@ -1,0 +1,12 @@
+@import url("./../styles.css");
+/* Error */
+
+.alert--error .alert__main-icon,
+.alert__main-title,
+.alert__action-cancel {
+    color: var(--color-error);
+}
+
+.alert--error .alert__action-ok {
+    background-color: var(--color-error);
+}

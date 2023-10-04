@@ -1,0 +1,12 @@
+@import url("./../styles.css");
+/* warning */
+
+.alert--warning .alert__main-icon,
+.alert__main-title,
+.alert__action-cancel {
+    color: var(--color-warning);
+}
+
+.alert--warning .alert__action-ok {
+    background-color: var(--color-warning);
+}
