@@ -105,11 +105,6 @@ header {
     color: white;
 }
 
-.btn a {
-    font-size: 14px !important;
-    font-weight: 600;
-}
-
 .btn--primary {
     gap: 10px;
     background: var(--color-primary);
@@ -120,11 +115,10 @@ header {
     font-size: 12px;
 }
 
-.btn a {
-    color: var(--color-white);
-}
-
 .header__nav-btn {
+    color: var(--color-white);
+    font-size: 14px !important;
+    font-weight: 600;
     display: none;
 }
 
@@ -289,9 +283,11 @@ header {
 }
 
 .pop-up--user .pop-up-nav__link li {
+    padding: 12px 30px;
+}
+.pop-up--user .pop-up-nav__link li a {
     font-size: 14px;
     font-weight: 600;
-    padding: 12px 30px;
 }
 
 .pop-up--user .pop-up-nav__link li i {

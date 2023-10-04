@@ -24,16 +24,20 @@
         <ul class="pop-up-nav__link">
           <li>
             <!-- <i class="fa-solid fa-arrows-rotate"></i> -->
-            <i class="fas fa-wallet"></i>
-            Switch wallet
+            <a href="/connectWallet.html">
+              <i class="fas fa-wallet"></i>
+              Switch wallet
+            </a>
           </li>
           <!-- <li>
             <i class="fas fa-book"></i>
             Collection
           </li> -->
           <li>
-            <i class="fas fa-sign-out-alt"></i>
-            Sign Out
+            <a href="#">
+              <i class="fas fa-sign-out-alt"></i>
+              Sign Out
+            </a>
           </li>
         </ul>
       </div>
@@ -43,27 +47,25 @@
   <header class="header" id="header-template">
     <input type="checkbox" id="nav-toggle">
     <label for="nav-toggle" class="header__nav-icon">&#9776;</label>
-    <div class="header__logo">
+    <a class="header__logo">
       <i class="fab fa-gg-circle"></i>
       <span>NFTMarket</span>
-    </div>
+    </a>
     <nav class="header__nav">
       <ul class="header__nav-link">
-        <li><a href="">Home</a></li>
-        <li><a href="" class="active">Marketplace</a></li>
-        <li><a href="">Create NFT</a></li>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/explore.html">Marketplace</a></li>
+        <li><a href="/create.html">Create NFT</a></li>
       </ul>
     </nav>
     <div class="header__user">
-
       <a href="#pop-up-user" class="avatar" id="header-avatar"></a>
-
-      <button class="btn btn--primary header__nav-btn" id="btn-login">
-        <i class="fas fa-wallet"></i>
-        <a href="#">
+      <a href="/connectWallet.html">
+        <button class="btn btn--primary header__nav-btn" id="btn-login">
+          <i class="fas fa-wallet"></i>
           Connect Wallet
-        </a>
-      </button>
+        </button>
+      </a>
     </div>
   </header>
 </body>
