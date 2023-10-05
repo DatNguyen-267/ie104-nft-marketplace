@@ -20,41 +20,72 @@
   <!-- <div>dsadadasd</div>
     <div>dsa33312312</div>
     <a href="/create.html">Create page</a> -->
-  <div class="pop-up pop-up--user" id="pop-up-user">
-    <a href="#" class="overlay-close"></a>
+
+  <!-- alert sign out -->
+  <div class="alert alert--default" id="alert-sigout" style="visibility: hidden;">
+    <a href="#" class="alert-overlay-close" onclick="toggleAlertSigout()" id="alert-overlay-close"></a>
+    <div class="alert-container">
+      <div class="alert__close">
+        <i class="fas fa-times-circle" id="alert-close" onclick="toggleAlertSigout()"></i>
+      </div>
+      <div class="alert__main">
+        <i class="fab fa-gg-circle alert__main-icon"></i>
+        <p class="alert__main-title">SIGN OUT</p>
+        <div class="alert__main-content">
+          <span>
+            Are you sure to sign out of your account?
+          </span>
+        </div>
+      </div>
+      <div class="alert__action">
+        <button class="alert__action-ok" id="alert-ok">OK</button>
+        <button class="alert__action-cancel" id="alert-cancel" onclick="toggleAlertSigout()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- popup user -->
+  <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden;">
+    <a href="#" class="overlay-close" onclick="togglePopUpUser()" id="close-pop-up-user"></a>
     <div class="pop-up-container">
       <div class="user-info">
         <div class="avatar"></div>
         <div class="user__name">
-          <span>Nguyen Hoang Nam</span>
+          <span>User Name</span>
         </div>
       </div>
       <div class="pop-up-nav">
         <ul class="pop-up-nav__link">
           <li>
             <!-- <i class="fa-solid fa-arrows-rotate"></i> -->
-            <i class="fas fa-wallet"></i>
-            Switch wallet
+            <a href="/connectWallet.html">
+              <i class="fas fa-wallet"></i>
+              Switch wallet
+            </a>
           </li>
-          <li>
-            <i class="fas fa-book"></i>
-            Collection
-          </li>
-          <li>
-            <i class="fas fa-sign-out-alt"></i>
-            Sign Out
+          <!-- <li>
+          <i class="fas fa-book"></i>
+          Collection
+        </li> -->
+          <li id="header-sign-out" onclick="toggleAlertSigout()">
+            <a href="#">
+              <i class="fas fa-sign-out-alt"></i>
+              Sign Out
+            </a>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <header class="header">
+
+  <!-- header -->
+  <header class="header" id="header-template">
     <input type="checkbox" id="nav-toggle">
-    <label for="nav-toggle" class="header__nav-icon">&#9776;</label>
-    <div class="header__logo">
+    <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
+    <a class="header__logo" href="/">
       <i class="fab fa-gg-circle"></i>
       <span>NFTMarket</span>
-    </div>
+    </a>
     <nav class="header__nav">
       <ul class="header__nav-link">
         <li><a href="/" class="active">Home</a></li>
@@ -63,27 +94,28 @@
       </ul>
     </nav>
     <div class="header__user">
-      <a href="#pop-up-user" class="avatar" id="header-avatar"></a>
-      <button class="btn btn--primary header__nav-btn">
-        <i class="fas fa-wallet"></i>
-        <a href="/connectWallet.html">
+      <a href="#pop-up-user" class="avatar" id="header-avatar" onclick="togglePopUpUser()"></a>
+      <a href="/connectWallet.html">
+        <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
+          <i class="fas fa-wallet"></i>
           Connect Wallet
-        </a>
-      </button>
+        </button>
+      </a>
     </div>
   </header>
+
 
   <!-- ===================================== MAIN ============================================= -->
 
   <main>
     <!-- Info -->
-    <div class="info">
-      <!-- <div class="info__bg"></div> -->
+    <div class="section-info">
+      <!-- <div class="section-info__bg"></div> -->
       <div class="container">
         <div class="grid wide">
           <div class="row">
             <div class="col l-6 m-12 c-12">
-              <div class="info__intro">
+              <div class="section-info__intro">
                 <div class="head-line">
                   <h1 class="title">Discover digital art & Collect NFTs</h1>
                   <p class="desc">NFT marketplace UI created with Anima for Figma. Collect, buy and
@@ -91,14 +123,16 @@
                     art from
                     more than 20k NFT artists.</p>
                 </div>
-                <button class="btn btn--primary">
-                  <i class="fas fa-rocket"></i>
-                  Get Started
-                </button>
+                <a href="/connectWallet.html">
+                  <button class="home-btn section-info__btn-get-start">
+                    <i class="fas fa-rocket"></i>
+                    Get Started
+                  </button>
+                </a>
               </div>
             </div>
             <div class="col l-6 m-12 c-12">
-              <div class="info__nft-eg">
+              <div class="section-info__nft-eg">
                 <div class="nft-eg__content">
                   <div class="nft-eg__info">
                     <p class="nft-eg__name">NFT Name</p>
@@ -117,21 +151,20 @@
 
     <div class="grid wide">
       <!-- NFTs -->
-      <div class="nfts">
-        <!-- <div class="info__bg"></div> -->
+      <div class="section-nfts">
         <div class="container">
-          <div class="nfts__header navbar">
+          <div class="section-nfts__header navbar">
             <div class="head-line">
               <h3 class="head-line__title">Discover More NFTs</h3>
               <span class="head-line__desc">Explore new trending NFTs</span>
             </div>
             <div class="action">
-              <button class="btn btn--primary">
-                <i class="far fa-eye"></i>
-                <a href="#pop-up-user">
+              <a href="/explore.html">
+                <button class="home-btn">
+                  <i class="far fa-eye"></i>
                   See more
-                </a>
-              </button>
+                </button>
+              </a>
             </div>
           </div>
           <div class="row">
@@ -180,7 +213,6 @@
 
       <!-- How it work -->
       <div class="guide">
-        <!-- <div class="info__bg"></div> -->
         <div class="container">
           <div class="guide__header navbar">
             <div class="head-line">
@@ -190,7 +222,7 @@
           </div>
           <div class="row">
             <div class="col l-4 m-6 c-12">
-              <div class="guidle-item__frame">
+              <a href="/connectWallet.html" class="guidle-item__frame">
                 <div class="guide-item">
                   <div class="guide-item__image">
 
@@ -205,10 +237,10 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div class="col l-4 m-6 c-12">
-              <div class="guidle-item__frame">
+              <a href="/create.html" class="guidle-item__frame">
                 <div class="guide-item">
                   <div class="guide-item__image">
 
@@ -223,10 +255,10 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div class="col l-4 m-6 c-12">
-              <div class="guidle-item__frame">
+              <a href="/explore.html" class="guidle-item__frame">
                 <div class="guide-item">
                   <div class="guide-item__image">
 
@@ -241,13 +273,38 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Action -->
+  <script>
+    function togglePopUpUser() {
+      // event.preventDefault();
+      // var x = document.getElementById("pop-up-user");
+      // if (x.style.visibility === "hidden") {
+      //   x.style.visibility = "visible";
+      //   x.style.opacity = "1";
+      // } else {
+      //   x.style.visibility = "hidden";
+      //   x.style.opacity = "0";
+      // }
+    }
+    function toggleAlertSigout() {
+      // console.log("toggleAlertSigout");
+      // event.preventDefault();
+      // var x = document.getElementById("alert-sigout");
+      // if (x.style.visibility === "hidden") {
+      //   x.style.visibility = "visible";
+      // } else {
+      //   x.style.visibility = "hidden";
+      // }
+    }
+  </script>
 </body>
 
 </html>
