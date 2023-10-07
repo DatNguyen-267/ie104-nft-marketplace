@@ -115,3 +115,38 @@ export function listenForTransactionMined(transactionResponse: any, provider: an
     Promise.resolve()
   })
 }
+
+export async function getAllNftOfCollection(collectionAddress: string, walletAddress: string) {
+  try {
+    let listTokenId: number[] = []
+    const provider = getDefaultProvider()
+    const contract = new ethers.Contract(collectionAddress, NFT_ABI, provider)
+    const balanceOf = await contract.balanceOf(walletAddress)
+    if (balanceOf === 0) return
+    let tokenId = 0
+    while (true) {
+      try {
+        const token = await contract.ownerOf(tokenId)
+        if (token.toLowerCase() === walletAddress.toLowerCase()) listTokenId.push(tokenId)
+        tokenId++
+      } catch (error) {
+        break
+      }
+    }
+    return listTokenId
+  } catch (error) {
+    throw error
+  }
+}
+
+export function getUrlImage(cid: string) {
+  const url = cid.split('ipfs://')
+  return `https://ipfs.io/ipfs/${url[1]}`
+}
+
+export async function getMetadata(tokenUri: string) {
+  let url = tokenUri.replace('ipfs:/', '')
+  return fetch(`https://ipfs.io/ipfs${url}`)
+    .then((res) => res.json())
+    .catch((err) => undefined)
+}
