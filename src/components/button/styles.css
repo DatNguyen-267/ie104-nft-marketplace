@@ -1,17 +1,14 @@
 @import url(../../styles/base.css);
 :root{
-    --primary--color: #A259FF;
-    --secondary--color: #8148cd;
-    --white--color: #FFFFFF;
     --font--300: Work Sans;
 }
 .filled--button{
-    background-color: var(--primary--color);
+    background-color: var(--color-btn-primary);
     border-radius: 20px;
     border: none;
     font-family: var(--font--300);
     font-weight: 600;
-    color: var(--white--color);
+    color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,20 +34,20 @@
 }
 .filled--button.outline{
     background-color: transparent;
-    color: var(--primary--color);
-    border: 2px solid var(--primary--color);
+    color: var(--color-btn-primary);
+    border: 2px solid var(--color-btn-primary);
 }
 .filled--button:hover{
-    background-color: var(--secondary--color);
+    background-color: var(--color-btn-secondary);
 }
 .filled--button:active{
-    background-color: var(--primary--color);
+    background-color: var(--color-btn-primary);
 }
 .filled--button.outline:hover{
-    background-color: var(--primary--color);
-    color: var(--white--color);
+    background-color: var(--color-btn-primary);
+    color: var(--color-white);
 }
 .filled--button.outline:active{
     background-color: transparent;
-    color: var(--primary--color);
+    color: var(--color-btn-primary);
 }
