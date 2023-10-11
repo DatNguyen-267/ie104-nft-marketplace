@@ -1,1 +1,53 @@
 @import url(../../styles/base.css);
+:root{
+    --font--300: Work Sans;
+}
+.filled--button{
+    background-color: var(--color-btn-primary);
+    border-radius: 20px;
+    border: none;
+    font-family: var(--font--300);
+    font-weight: 600;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transition: 0.3s; */
+}
+.icon--button{
+    padding-right: 12px;
+}
+.filled--button#primary{
+    width: 206px;
+    height: 72px;
+    font-size: 22px;
+}
+.filled--button#secondary{
+    width: 186px;
+    height: 60px;
+    font-size: 16px;
+}
+.filled--button#tertiary{
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+}
+.filled--button.outline{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+    border: 2px solid var(--color-btn-primary);
+}
+.filled--button:hover{
+    background-color: var(--color-btn-secondary);
+}
+.filled--button:active{
+    background-color: var(--color-btn-primary);
+}
+.filled--button.outline:hover{
+    background-color: var(--color-btn-primary);
+    color: var(--color-white);
+}
+.filled--button.outline:active{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+}
