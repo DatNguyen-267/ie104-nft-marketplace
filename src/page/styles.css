@@ -1,7 +1,48 @@
-/* * {
-  box-sizing: border-box;
-  font-size: 50px;
-} */
+/* ========================== Base ====================================== */
+
+/* sroll card */
+.container-card {
+  width: 100%;
+  max-width: 540px;
+  height: 370px;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  position: relative;
+}
+
+.cards {
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.3);
+  position: absolute;
+  width: 52%;
+  height: 100%;
+  transition: all 400ms ease;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--color-border-100);
+}
+
+.cards:hover:not(.active).left {
+  transform: translateX(-50%) rotate(-10deg) scale(0.9);
+}
+
+.cards:hover:not(.active).right {
+  transform: translateX(50%) rotate(10deg) scale(0.9);
+}
+
+.cards.left {
+  transform: translateX(-50%) scale(0.9);
+}
+
+.cards.right {
+  transform: translateX(50%) scale(0.9);
+}
+
+.cards.active {
+  z-index: 1;
+  position: relative;
+}
 
 /* Button */
 .home-btn {
@@ -25,7 +66,6 @@
   color: var(--color-white);
 }
 
-
 .home-btn i {
   background-color: transparent;
   font-size: 12px;
@@ -42,7 +82,7 @@
 .section-info {
   background-color: black;
   position: relative;
-  background: url("https://s3-alpha-sig.figma.com/img/85c0/8b92/890ad3bb78d42a6892b85871b782b103?Expires=1696809600&Signature=kk4j4DUM~CZpuIYhzoZY4eq9VCYJwN2mARKR-VlP9GZq8rYF6B8lzr80r1iXQC9F-mwomGfgc7wxPjpEUsn--x-ue4KZEhSPHQBmoCx9NteSfDmOTTb8d~4hGJjR3nVMwBO2r096kqUw-lTNFrC04BRaWWy4VWNF6NnPlH9AgNJLgrNUqcqQpNyKWTHKr5NDTNAZkgnK8C1yR895SPyyBEv4x6i6xlU7QG7qw5RSTbNL3lfG-yR2M8NzLnMEsePqX-oHRY8O~AzwZtv1epW9yvvxyNfLsDAW0r3IAUIuLBQIYnosVymPhnIHz9g8rjx2V6Zdx5giVlodexq7~gWLzA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+  background: url("./../assets/images/NftEg.webp");
   background-repeat: no-repeat;
   background-size: cover, contain;
   background-position: center;
@@ -97,6 +137,7 @@
   text-transform: capitalize;
   color: var(--color-sub-text-100);
 }
+
 /* Button */
 .section-info__btn-get-start {
   height: 50px;
@@ -104,6 +145,7 @@
   font-size: 16px;
   font-weight: 600;
 }
+
 .section-info__btn-get-start i {
   background-color: transparent;
   font-size: 14px;
@@ -116,14 +158,12 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 30px 50px;
 }
 
 .section-info__nft-eg .nft-eg__content {
-  width: 100%;
   height: 370px;
   border-radius: 20px;
-  background: url("./../assets/images/NFTBackgroundEg.webp");
+  background: url('./../assets/images/NftEg.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -140,8 +180,7 @@
   flex-shrink: 0;
   align-self: stretch;
   padding: 10px;
-  /* background: rgba(var(--color-rgb-black), 0.25); */
-  background-color: color-mix(in srgb, var(--color-black) 25%, transparent);
+  background: rgba(0, 0, 0, 0.25);
   border-radius: 0 0 20px 20px;
 }
 
@@ -164,8 +203,8 @@
 .section-info__nft-eg .nft-eg__user .avatar {
   width: 35px;
   height: 35px;
-  background-image: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg");
-  border: 2px solid var(--color-gray-1500);
+  background: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg"), lightgray 50% / cover no-repeat;
+  border: 1px solid var(--color-gray-1000);
 }
 
 .section-info__nft-eg .nft-eg__user .user-name {
@@ -218,7 +257,7 @@
   width: 320px;
   height: 350px;
   border-radius: 20px;
-  background: url("./../assets/images/NFTBackgroundEg.webp");
+  background: url("./../assets/images/NftEg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -270,7 +309,6 @@
 }
 
 /* ================================= HOW IT WORK ==================================== */
-
 .guide__header {
   display: flex;
   justify-content: space-between;
@@ -298,32 +336,31 @@
 }
 
 /* Guide item */
-.guidle-item__frame {
+.guide .col {
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 30px;
+  align-items: center;
 }
 
 .guide-item {
   display: flex;
-  width: 320px;
   padding: 10px 30px 30px 30px;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   border-radius: 20px;
   background: linear-gradient(180deg, var(--color-purple-200) 0%, var(--color-gray-1700) 100%);
+  max-width: 330px;
+  max-height: 439px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 50px;
 }
 
-.guide-item__image {
+.guide-item img {
   position: relative;
-  background: url('../assets/images/CreateCollectionIcon.webp');
-  background-position: center;
-  background-size: cover;
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  max-width: 250px;
 }
 
 .guide-item__detail {
@@ -332,7 +369,6 @@
   align-items: center;
   gap: 10px;
   align-self: stretch;
-
 }
 
 .guide-item__detail-title {
@@ -355,6 +391,7 @@
   font-weight: 500;
   line-height: 140%;
 }
+
 
 /*======================== Reponsive ===================*/
 
