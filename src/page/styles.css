@@ -74,7 +74,7 @@
 /* ================================= INFORMATION ==================================== */
 .container {
   position: relative;
-  padding: 80px 0px;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
 }
@@ -103,6 +103,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  padding-bottom: 80px;
 }
 
 /* ITEM LEFT */
@@ -140,7 +141,7 @@
 
 .section-info__intro .filled--button{
   width: 210px !important; 
-  height: 50px !important;
+  /* height: 50px !important; */
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
 }
@@ -238,8 +239,8 @@
 }
 
 .section-nfts__header .filled--button{
-  height: 40px !important;
-  width: 120px !important;
+  /* height: 40px !important; */
+  width: 140px !important;
   font-size: 14px !important;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
