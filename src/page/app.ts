@@ -4,6 +4,7 @@ import './../styles/grid.css';
 import './../components/avatar/styles.css';
 import './../components/header/styles.css';
 import './../components/alert/styles.css';
+import './../components/button/styles.css';
 
 console.log("LP script");
 
