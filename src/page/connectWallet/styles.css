@@ -28,7 +28,8 @@ body {
   margin: 3.6rem auto;
 }
 
-.wallet-container .card {}
+.wallet-container .card {
+}
 
 .card {
   padding: 0;
@@ -42,12 +43,11 @@ body {
 
 .card:hover {
   border: 1px solid #3396ff;
-
 }
 
 .card-image {
   width: 8rem;
-  height: 8rem
+  height: 8rem;
 }
 
 .card-title {
@@ -57,4 +57,21 @@ body {
 .card-description {
   margin-top: 1.2rem;
   color: rgb(166, 166, 166);
+}
+
+#btn-sendEth {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  color: #000000;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#btn-sendEth:hover {
+  background-color: #000000;
+  color: #ffffff;
 }
