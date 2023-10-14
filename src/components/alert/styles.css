@@ -1,3 +1,5 @@
+@import url('./../../styles/base.css');
+
 .alert {
     display: flex;
     justify-content: center;
