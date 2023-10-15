@@ -4,11 +4,14 @@ import { connect, switchToNetwork } from '../../services/connect'
 import { convertWalletError } from '../../utils/errors'
 import './styles.css'
 
+let showAccount = document.querySelector('.showAccount') as HTMLElement
+
 const btnMetamask = document.querySelector('#btn-metamask') as HTMLButtonElement
 const handleConnectWallet = async () => {
   await connect()
     .then((res) => {
       console.log({ walletAddress: res[0] })
+      showAccount.innerHTML = res[0]
     })
     .catch((err) => {
       if (err.message === AppError.NOT_INSTALLED_METAMASK) {
