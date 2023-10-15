@@ -1,3 +1,4 @@
+import './styles.css'
 import { ethers } from 'ethers'
 import { DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
 import {
@@ -15,6 +16,28 @@ import {
 import { ERC20_TOKEN_SUPPORTED } from './../../constants/token'
 import { viewAsksByCollectionAndSeller, viewMarketCollections } from '../../services/market'
 import { NftItem } from '../../types/nft'
+// Class name compatible with the template
+enum NftItemClass {
+  Container = 'nft__container',
+  Image = 'nft__img',
+  Title = 'nft__title',
+  Description = 'nft__description',
+  Price = 'nft__price',
+  Status = 'nft__status',
+  MetadataUri = 'nft__metadataUri',
+  ButtonSell = 'nft__button-sell',
+}
+
+type NftItemElementObject = {
+  eContainer: HTMLDivElement
+  eImage: HTMLImageElement
+  eTitle: HTMLDivElement
+  eDescription: HTMLDivElement
+  ePrice: HTMLDivElement
+  eStatus: HTMLDivElement
+  eMetadataUri: HTMLDivElement
+  eButtonSell: HTMLButtonElement
+}
 
 enum PageElementId {
   ContainerNoConnection = '#container-no-connection',
@@ -24,6 +47,7 @@ enum PageElementId {
   LabelWalletAddress = '#label-wallet-address',
   LabelWalletNativeBalance = '#label-wallet-native-balance',
   ListTokenContainer = '#list-token__container',
+  ListNftContainer = '#list-nft__container',
 }
 var walletAddress = DEFAULT_ADDRESS
 var isConnected = false
@@ -44,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
   var labelWalletNativeBalance = document.querySelector(
     PageElementId.LabelWalletNativeBalance,
   ) as HTMLDivElement
-
   var listTokenContainer = document.querySelector(
     PageElementId.ListTokenContainer,
   ) as HTMLDivElement
+  var listNftContainer = document.querySelector(PageElementId.ListNftContainer) as HTMLDivElement
 
   // EVENTS LISTENER
   async function handleAccountsChanged(accounts: string[]) {
@@ -105,7 +129,42 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {}
   }
+  async function CreateNftItemComponent(nftItem: NftItem): Promise<HTMLDivElement> {
+    const template = document.querySelector('#nft-template')
+      ?.firstElementChild as HTMLDivElement | null
+    if (!template) return document.createElement('div')
 
+    const tokenItemNode = template.cloneNode(true) as HTMLDivElement
+    const eData: NftItemElementObject = {
+      eContainer: tokenItemNode,
+      eDescription: tokenItemNode.querySelector(`.${NftItemClass.Description}`) as HTMLDivElement,
+      eImage: tokenItemNode.querySelector(`.${NftItemClass.Image}`) as HTMLImageElement,
+      eMetadataUri: tokenItemNode.querySelector(`.${NftItemClass.MetadataUri}`) as HTMLDivElement,
+      ePrice: tokenItemNode.querySelector(`.${NftItemClass.Price}`) as HTMLDivElement,
+      eStatus: tokenItemNode.querySelector(`.${NftItemClass.Status}`) as HTMLDivElement,
+      eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
+      eButtonSell: tokenItemNode.querySelector(`.${NftItemClass.ButtonSell}`) as HTMLButtonElement,
+    }
+
+    console.log({ imageGatewayUrl: nftItem.imageGatewayUrl })
+    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eContainer.setAttribute('data-tokenId', nftItem.tokenId.toString())
+    eData.eContainer.setAttribute('data-cltAddress', nftItem.collectionAddress)
+    eData.eTitle.innerHTML = nftItem.title
+    eData.eDescription.innerHTML = nftItem.description
+    eData.ePrice.innerHTML = nftItem.price
+    eData.eStatus.innerHTML = nftItem.status
+    eData.eMetadataUri.innerHTML = nftItem.tokenUri
+
+    if (nftItem.status === 'NotForSale') {
+      eData.eButtonSell.style.display = 'block'
+    }
+
+    tokenItemNode.setAttribute('data-tokenId', nftItem.tokenId.toString())
+    tokenItemNode.setAttribute('data-cltAddress', nftItem.collectionAddress)
+
+    return tokenItemNode
+  }
   async function getAllNftOfAddress() {
     if (!isConnected) return
     try {
@@ -120,12 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
               0,
               100,
             )
+            console.log({ asksOfCollection })
             if (
               asksOfCollection &&
               asksOfCollection.tokenIds &&
               asksOfCollection.tokenIds.length > 0
             ) {
-              asksOfCollection.tokenIds.forEach((tokenId) => {
+              asksOfCollection.tokenIds.forEach((tokenId, index) => {
                 listNfts.push({
                   collectionAddress: collectionAddress,
                   tokenId: tokenId,
@@ -136,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   status: 'Sale',
                   imageUri: '',
                   imageGatewayUrl: '',
+                  price: asksOfCollection.askInfo[index].price,
                 })
               })
             }
@@ -166,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     status: 'NotForSale',
                     imageUri: '',
                     imageGatewayUrl: '',
+                    price: '0',
                   })
                 }
               })
@@ -177,7 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
       )
 
       // Convert the Set back to an array
-      console.log({ listNfts })
 
       await Promise.all(
         listNfts.map(async (nftItem: NftItem, index: number) => {
@@ -191,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
         listNfts.map(async (nftItem: NftItem, index: number) => {
           try {
             const metadata = await getMetadata(nftItem.tokenUri)
-            console.log({ metadata })
             listNfts[index].title = metadata.title || ''
             listNfts[index].description = metadata.description || ''
             listNfts[index].imageUri = metadata.image || ''
@@ -199,11 +259,16 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch (error) {}
         }),
       )
-      console.log(listNfts)
+      console.log({ listNfts })
+
+      listNfts.forEach(async (nftItem: NftItem, index) => {
+        listNftContainer.appendChild(await CreateNftItemComponent(nftItem))
+      })
     } catch (error) {
       console.log(error)
     }
   }
+
   async function initPage() {
     try {
       if (window.ethereum && window.ethereum.isConnected()) {

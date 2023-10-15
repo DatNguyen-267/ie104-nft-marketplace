@@ -9,4 +9,5 @@ export interface NftItem {
   status: NftItemStatus
   imageUri: string
   imageGatewayUrl: string
+  price: string
 }
