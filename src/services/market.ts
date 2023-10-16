@@ -130,3 +130,34 @@ export async function calculatePriceAndFeesForCollection(collection: string, pri
     throw error
   }
 }
+
+export async function viewAsksByCollection(
+  collection: string,
+  cursor: number = 0,
+  size: number = 10,
+) {
+  try {
+    const provider = getDefaultProvider()
+    if (!provider) {
+      throw new Error('Provider is not found')
+    }
+    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const askResponse: ViewAsksByCollectionAndSellerRaw =
+      await marketContract.calculatePriceAndFeesForCollection(collection, cursor, size)
+
+    return {
+      askInfo: askResponse[1].map((ask) => {
+        return {
+          price: ethers.utils.formatEther(ask[1].toString()),
+          seller: ask[0],
+        }
+      }),
+      tokenIds: askResponse[0].map((tokenId) => {
+        return tokenId.toNumber()
+      }),
+      size: askResponse[2].toNumber(),
+    }
+  } catch (error) {
+    throw error
+  }
+}
