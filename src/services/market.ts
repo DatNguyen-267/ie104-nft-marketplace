@@ -104,3 +104,29 @@ export async function viewAsksByCollectionAndSeller(
     throw error
   }
 }
+
+export async function calculatePriceAndFeesForCollection(collection: string, price: string) {
+  try {
+    const provider = getDefaultProvider()
+    if (!provider) {
+      throw new Error('Provider is not found')
+    }
+    const marketContract = new ethers.Contract(
+      MARKETPLACE_ADDRESS,
+      MARKETPLACE_ABI,
+      provider.getSigner(),
+    )
+    const collectionsResponse = await marketContract.calculatePriceAndFeesForCollection(
+      collection,
+      price,
+    )
+
+    return {
+      netPrice: collectionsResponse['netPrice'],
+      tradingFee: collectionsResponse['tradingFee'],
+      creatorFee: collectionsResponse['creatorFee'],
+    }
+  } catch (error) {
+    throw error
+  }
+}
