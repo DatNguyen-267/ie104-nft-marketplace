@@ -1,4 +1,47 @@
+.nft__container .nft__img-container {
+  width: 200px;
+  height: 200px;
+  color: transparent;
+  background: #eceff1;
+  background-size: 400%;
+  animation: skeleton-loading 2s ease-in-out infinite forwards;
+}
+
 .nft__container .nft__img {
   width: 200px;
-  height: auto
+  height: 200px;
+  display: none;
+}
+
+.nft__container[data-loading="loading"] .nft__img-container {
+  color: transparent;
+}
+
+.nft__container[data-loading="success"] .nft__img {
+  display: block;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+
+  50% {
+    background-color: hsl(200, 20%, 95%);
+
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 80%);
+  }
 }

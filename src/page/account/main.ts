@@ -1,6 +1,7 @@
+import { NftItem } from './../../types/nft'
 import './styles.css'
 import { ethers } from 'ethers'
-import { DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
+import { AppError, DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
 import {
   connect,
   getAllNftOfCollection,
@@ -14,9 +15,35 @@ import {
   watchErc20Asset,
 } from '../../services'
 import { ERC20_TOKEN_SUPPORTED } from './../../constants/token'
-import { viewAsksByCollectionAndSeller, viewMarketCollections } from '../../services/market'
-import { NftItem } from '../../types/nft'
+import {
+  createAskOrder,
+  viewAsksByCollectionAndSeller,
+  viewMarketCollections,
+} from '../../services/market'
 // Class name compatible with the template
+
+const defaultNftItem = {
+  collectionAddress: '',
+  tokenId: '',
+  title: '',
+  description: '',
+  tokenUri: '',
+  owner: '',
+  status: 'Sale',
+  imageUri: '',
+  imageGatewayUrl: '',
+  price: '0',
+}
+enum LoadingStatus {
+  Pending = 'pending',
+  Success = 'success',
+  Fail = 'fail',
+}
+enum AttributeName {
+  Loading = 'data-loading',
+  TokenId = 'data-token-id',
+  CltAddress = 'data-clt-address',
+}
 enum NftItemClass {
   Container = 'nft__container',
   Image = 'nft__img',
@@ -120,6 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
       )
     } catch (error) {}
   }
+  async function handleSellNft(nftItem: NftItem) {
+    if (nftItem.owner.toLowerCase() !== walletAddress.toLowerCase()) {
+      throw new Error(AppError.OWNER_IS_NOT_VALID)
+    }
+
+    // await createAskOrder(nftItem.collectionAddress, nftItem.tokenId.toString(), nftItem.price)
+  }
   async function updateBalance() {
     try {
       const balance = await getBalanceNativeToken(walletAddress)
@@ -128,6 +162,40 @@ document.addEventListener('DOMContentLoaded', () => {
           ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
       }
     } catch (error) {}
+  }
+  async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
+    if (!nftItem) return
+    const tokenItemNode = listNftContainer.querySelector(
+      `div[data-token-id="${nftItem.tokenId}"]`,
+    ) as HTMLDivElement
+
+    if (!tokenItemNode) return
+    if (nftItem.title && nftItem.imageUri) {
+      tokenItemNode?.setAttribute(AttributeName.Loading, LoadingStatus.Success)
+    } else {
+      tokenItemNode?.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
+    }
+    const eData: NftItemElementObject = {
+      eContainer: tokenItemNode,
+      eDescription: tokenItemNode.querySelector(`.${NftItemClass.Description}`) as HTMLDivElement,
+      eImage: tokenItemNode.querySelector(`.${NftItemClass.Image}`) as HTMLImageElement,
+      eMetadataUri: tokenItemNode.querySelector(`.${NftItemClass.MetadataUri}`) as HTMLDivElement,
+      ePrice: tokenItemNode.querySelector(`.${NftItemClass.Price}`) as HTMLDivElement,
+      eStatus: tokenItemNode.querySelector(`.${NftItemClass.Status}`) as HTMLDivElement,
+      eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
+      eButtonSell: tokenItemNode.querySelector(`.${NftItemClass.ButtonSell}`) as HTMLButtonElement,
+    }
+    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
+    eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
+    eData.eTitle.innerHTML = nftItem.title
+    eData.eDescription.innerHTML = nftItem.description
+    eData.ePrice.innerHTML = nftItem.price
+    eData.eStatus.innerHTML = nftItem.status
+    eData.eMetadataUri.innerHTML = nftItem.tokenUri
+    if (nftItem.status === 'NotForSale') {
+      eData.eButtonSell.style.display = 'block'
+    }
   }
   async function CreateNftItemComponent(nftItem: NftItem): Promise<HTMLDivElement> {
     const template = document.querySelector('#nft-template')
@@ -148,8 +216,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log({ imageGatewayUrl: nftItem.imageGatewayUrl })
     eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
-    eData.eContainer.setAttribute('data-tokenId', nftItem.tokenId.toString())
-    eData.eContainer.setAttribute('data-cltAddress', nftItem.collectionAddress)
+    eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
+    eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
+    eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
+
     eData.eTitle.innerHTML = nftItem.title
     eData.eDescription.innerHTML = nftItem.description
     eData.ePrice.innerHTML = nftItem.price
@@ -158,10 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
+      eData.eButtonSell.addEventListener('click', () => {
+        handleSellNft(nftItem)
+      })
     }
-
-    tokenItemNode.setAttribute('data-tokenId', nftItem.tokenId.toString())
-    tokenItemNode.setAttribute('data-cltAddress', nftItem.collectionAddress)
 
     return tokenItemNode
   }
@@ -187,15 +257,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ) {
               asksOfCollection.tokenIds.forEach((tokenId, index) => {
                 listNfts.push({
+                  ...defaultNftItem,
                   collectionAddress: collectionAddress,
                   tokenId: tokenId,
-                  title: '',
-                  description: '',
-                  tokenUri: '',
-                  owner: '',
                   status: 'Sale',
-                  imageUri: '',
-                  imageGatewayUrl: '',
                   price: asksOfCollection.askInfo[index].price,
                 })
               })
@@ -218,15 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 )
                 if (!isExist) {
                   listNfts.push({
+                    ...defaultNftItem,
                     collectionAddress: collectionAddress,
                     tokenId: tokenId,
-                    title: '',
-                    description: '',
-                    tokenUri: '',
-                    owner: '',
                     status: 'NotForSale',
-                    imageUri: '',
-                    imageGatewayUrl: '',
                     price: '0',
                   })
                 }
@@ -239,6 +299,12 @@ document.addEventListener('DOMContentLoaded', () => {
       )
 
       // Convert the Set back to an array
+      console.log('create component')
+      listNfts.forEach(async (nftItem: NftItem, index) => {
+        listNftContainer.appendChild(await CreateNftItemComponent(nftItem))
+      })
+
+      console.log('getTokenUri')
 
       await Promise.all(
         listNfts.map(async (nftItem: NftItem, index: number) => {
@@ -248,22 +314,21 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch (error) {}
         }),
       )
+
+      // Get metadata of tokenId
       await Promise.all(
         listNfts.map(async (nftItem: NftItem, index: number) => {
           try {
             const metadata = await getMetadata(nftItem.tokenUri)
-            listNfts[index].title = metadata.title || ''
+            listNfts[index].title = metadata.name || ''
             listNfts[index].description = metadata.description || ''
             listNfts[index].imageUri = metadata.image || ''
             listNfts[index].imageGatewayUrl = getUrlImage(metadata.image) || ''
+            await UpdateNftItemComponent(listNfts[index])
           } catch (error) {}
         }),
       )
       console.log({ listNfts })
-
-      listNfts.forEach(async (nftItem: NftItem, index) => {
-        listNftContainer.appendChild(await CreateNftItemComponent(nftItem))
-      })
     } catch (error) {
       console.log(error)
     }

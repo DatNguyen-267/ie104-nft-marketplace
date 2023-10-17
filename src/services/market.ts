@@ -1,7 +1,9 @@
 import { BigNumber, ethers } from 'ethers'
 import { getDefaultProvider } from './provider'
-import { MARKETPLACE_ADDRESS } from '../constants'
-import { MARKETPLACE_ABI } from '../abis'
+import { AppError, MARKETPLACE_ADDRESS } from '../constants'
+import { MARKETPLACE_ABI, NFT_ABI } from '../abis'
+import { approveTokenExchange } from './token-exchange'
+import { approveSpenderToAccessNft } from './nft'
 export type CollectionDetail = {
   creatorAddress: string
   status: number
@@ -157,6 +159,75 @@ export async function viewAsksByCollection(
       }),
       size: askResponse[2].toNumber(),
     }
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: string, price: string) {
+  try {
+    const provider = getDefaultProvider()
+    if (!provider) {
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
+    }
+    const marketContract = new ethers.Contract(
+      MARKETPLACE_ADDRESS,
+      MARKETPLACE_ABI,
+      provider.getSigner(),
+    )
+    try {
+      const receiptApprove: any = await approveTokenExchange(
+        MARKETPLACE_ADDRESS,
+        collectionAddress,
+        price,
+      )
+      console.log(receiptApprove)
+    } catch (error) {
+      throw new Error(AppError.APPROVE_TOKEN_EXCHANGE_FAILED)
+    }
+    const transaction = await marketContract.buyTokenUsingWBNB(
+      collectionAddress,
+      parseInt(tokenId),
+      price,
+    )
+    const transactionReceipt: any = await transaction.wait()
+    console.log('buyTokenUsingWBNB Receipt:', transactionReceipt)
+    return transactionReceipt
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function createAskOrder(collectionAddress: string, tokenId: string, price: string) {
+  try {
+    const provider = getDefaultProvider()
+    if (!provider) {
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
+    }
+    const marketContract = new ethers.Contract(
+      MARKETPLACE_ADDRESS,
+      MARKETPLACE_ABI,
+      provider.getSigner(),
+    )
+    try {
+      const receiptApprove = await approveSpenderToAccessNft(
+        collectionAddress,
+        MARKETPLACE_ADDRESS,
+        tokenId,
+      )
+      console.log(receiptApprove)
+    } catch (error) {
+      throw new Error(AppError.APPROVE_SPENDER_TO_ACCESS_NFT_FAILED)
+    }
+
+    const transaction = await marketContract.createAskOrder(
+      collectionAddress,
+      parseInt(tokenId),
+      ethers.utils.parseEther(price),
+    )
+    const transactionReceipt = await transaction.wait()
+    console.log('createAskOrder Receipt:', transactionReceipt)
+    return transactionReceipt
   } catch (error) {
     throw error
   }
