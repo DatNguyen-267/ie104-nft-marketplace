@@ -67,7 +67,6 @@ export async function connect() {
     return window.ethereum.request({
       method: 'eth_requestAccounts',
     })
-    switchToNetwork(window.ethereum, '4102')
   }
 }
 

@@ -1,21 +1,19 @@
-import { ethers } from "ethers";
-import { AIOZ_TESTNET_NETWORK } from "../constants/network";
+import { ethers } from 'ethers'
+import { AIOZ_TESTNET_NETWORK } from '../constants/network'
+import { ProviderOptions } from '../types'
 
 export function getRpcProvider() {
-  return new ethers.providers.JsonRpcProvider(AIOZ_TESTNET_NETWORK.rpc);
+  return new ethers.providers.JsonRpcProvider(AIOZ_TESTNET_NETWORK.rpc)
 }
 export function getDefaultProvider() {
-  if (window.ethereum && typeof window.ethereum !== "undefined") {
-    return new ethers.providers.Web3Provider(window.ethereum);
+  if (window.ethereum && typeof window.ethereum !== 'undefined') {
+    return new ethers.providers.Web3Provider(window.ethereum)
   }
 }
-export function getProvider<T>(
-  provider?: T
-): ethers.providers.JsonRpcProvider | T | ethers.providers.Web3Provider {
-  const defaultProvider = getDefaultProvider();
-  return provider
-    ? provider
-    : defaultProvider
-    ? defaultProvider
-    : getRpcProvider();
+
+export function getProvider(
+  provider?: ProviderOptions['provider'],
+): ethers.providers.JsonRpcProvider | ethers.providers.Web3Provider {
+  const defaultProvider = getDefaultProvider()
+  return provider ? provider : defaultProvider ? defaultProvider : getRpcProvider()
 }

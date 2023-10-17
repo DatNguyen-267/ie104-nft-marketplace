@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container-no-connection">
+      <button id="btn-connect">Connect your wallet to see your nfts</button>
+    </div>
+
+    <div id="container-connected" style="display: none">
+      <div id="label-wallet-status">No connection</div>
+      <div id="label-wallet-address">0x000000000000000000000000000000000000000000000</div>
+      <div id="label-wallet-native-balance"></div>
+
+      <!-- List erc20 token -->
+      <div id="list-token__container" class="list-token__container"></div>
+
+      <!-- List nft -->
+      <div id="list-nft__container" class="list-nft__container"></div>
+    </div>
+
+    <!-- NFT ITEM Template -->
+    <div id="nft-template">
+      <div class="nft__container" data-token-id="" data-clt-address="" data-loading="">
+        <div class="nft__img-container">
+          <img class="nft__img" src="#" alt="" />
+        </div>
+        <div class="nft__cltAddress"></div>
+        <div class="nft__title"></div>
+        <div class="nft__description"></div>
+        <div class="nft__metadataUri"></div>
+        <div class="nft__price"></div>
+        <div class="nft__status"></div>
+        <button class="nft__button-sell" style="display: none">Sell</button>
+      </div>
+    </div>
+  </body>
+</html>
