@@ -7,13 +7,10 @@ import './styles.css'
 let showAccount = document.querySelector('.showAccount') as HTMLElement
 
 window.onload = async () => {
-  if (window.localStorage.getItem('connected')) {
-    await connect().then((res) => {
-      console.log({ walletAddress: res[0] })
-      showAccount.innerHTML = 'Wallet address: ' + res[0]
-      window.localStorage.setItem('connected', 'injected')
-    })
-  }
+  await connect().then((res) => {
+    console.log({ walletAddress: res[0] })
+    showAccount.innerHTML = 'Wallet address: ' + res[0]
+  })
 }
 
 const btnMetamask = document.querySelector('#btn-metamask') as HTMLButtonElement
