@@ -1,0 +1,298 @@
+/* ================ Base =================== */
+.modal-buy__frame {
+    border: 1px solid var(--color-border-100);
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.modal-buy__frame-2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+}
+
+.modal-buy-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-buy .number {
+    font-size: 16px;
+    margin-right: 5px;
+    color: var(--color-text);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: end;
+}
+
+.modal-buy .unit {
+    font-size: 16px;
+    color: var(--color-text);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+}
+
+.modal-buy-not-connect {
+    color: var(--color-red-500) !important;
+    background-color: color-mix(in srgb, var(--color-red-400) 10%, transparent) !important;
+}
+
+/* ================ Modal ================= */
+.modal-buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 50;
+    background-color: color-mix(in srgb, var(--color-black) 65%, transparent);
+    position: fixed;
+    top: 0;
+}
+
+.modal-buy-overlay-close {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+.modal-buy-container {
+    position: relative;
+    width: 400px;
+    max-height: 800px;
+    display: flex;
+    padding: 32px 32px 34px 32px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    border-radius: 10px;
+    background: var(--color-white);
+    box-shadow: -38.42581px 48.03226px 105.67097px 0px var(--color-gray-1700);
+}
+
+/* ================ header ================= */
+.modal-buy__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-buy__title {
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.modal-buy__close {
+    width: 35px;
+    height: 35px;
+    color: var(--color-gray-1500);
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--color-gray-600);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-buy__close i {
+    font-size: 16px;
+}
+
+/* ================ container ================= */
+.modal-buy__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+/* nft */
+.modal-buy__nft {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-buy__nft-info {
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-buy__nft-img {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.modal-buy__nft-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.modal-buy__nft-price {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* NetWork */
+.modal-buy__network {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.modal-buy__network-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex: 2;
+}
+
+.modal-buy__network-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.modal-buy__network-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3px;
+
+}
+
+.modal-buy__network-id {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    width: 100px;
+}
+
+.modal-buy__network-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-sub-text-300);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    width: 100px;
+}
+
+.modal-buy__network-status {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-green-500);
+    background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent);
+    padding: 5px;
+    border-radius: 3px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+/* Price */
+.modal-buy__price {
+    margin-top: 10px;
+}
+
+.modal-buy__price-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-sub-text-300);
+}
+
+.modal-buy__price .number{
+    width: 150px;
+}
+
+/* Rarible */
+.modal-buy__rarible-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-sub-text-300);
+}
+
+/* Total */
+.modal-buy__total {
+    border-top: 1px solid var(--color-border-100);
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.modal-buy__total-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-sub-text-300);
+}
+.modal-buy__total .number{
+    width: 150px;
+}
+
+/*=========== Action ================*/
+.modal-buy__action {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-buy__action-ok {
+    display: flex;
+    width: 311px;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--color-dark-blue-200);
+    color: #FFF;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.modal-buy__action-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: var(--color-dark-blue-200);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
