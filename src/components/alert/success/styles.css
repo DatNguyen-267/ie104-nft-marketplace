@@ -2,8 +2,8 @@
 /* Success */
 
 .alert--success .alert__main-icon,
-.alert__main-title,
-.alert__action-cancel {
+.alert--success .alert__main-title,
+.alert--success .alert__action-cancel {
     color: var(--color-success);
 }
 

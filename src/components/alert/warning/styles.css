@@ -2,8 +2,8 @@
 /* warning */
 
 .alert--warning .alert__main-icon,
-.alert__main-title,
-.alert__action-cancel {
+.alert--warning .alert__main-title,
+.alert--warning .alert__action-cancel {
     color: var(--color-warning);
 }
 
