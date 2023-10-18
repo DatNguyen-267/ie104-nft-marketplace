@@ -8,6 +8,26 @@ import './../components/button/styles.css';
 
 console.log("LP script");
 
+const btnLogin = document.getElementById("btn-login") as HTMLButtonElement;
+const popUpUserClose = document.getElementById("close-pop-up-user") as HTMLElement;
+const headerAvatar = document.getElementById("header-avatar") as HTMLElement;
+const alertOverlay = document.getElementById("alert-overlay-close") as HTMLElement;
+const alertCancel = document.getElementById("alert-cancel") as HTMLElement;
+const alertClose = document.getElementById("alert-close") as HTMLElement;
+const signOut = document.getElementById("header-sign-out") as HTMLElement;
+
+// ========================== Check Login =======================================
+let login:boolean = false ;
+
+if (login === true as boolean) {
+    headerAvatar.style.visibility = 'flex';
+    btnLogin.style.display = 'none';
+}
+else {
+    headerAvatar.style.display = 'none';
+    btnLogin.style.display = 'flex';
+}
+
 // ============================= Toggle PopUP ====================================
 function togglePopUpUser(event: Event): void {
     event.preventDefault();
@@ -20,9 +40,6 @@ function togglePopUpUser(event: Event): void {
         x.style.opacity = "0";
     }
 }
-
-var popUpUserClose = document.getElementById("close-pop-up-user") as HTMLElement;
-const headerAvatar = document.getElementById("header-avatar") as HTMLElement;
 
 popUpUserClose.onclick = togglePopUpUser;
 headerAvatar.onclick = togglePopUpUser;
@@ -38,11 +55,6 @@ const toggleAlertSigout = (event: any) => {
     }
 }
 
-var alertOverlay = document.getElementById("alert-overlay-close") as HTMLElement;
-const alertCancel = document.getElementById("alert-cancel") as HTMLElement;
-const alertClose = document.getElementById("alert-close") as HTMLElement;
-const signOut = document.getElementById("header-sign-out") as HTMLElement;
-
 alertOverlay.onclick = toggleAlertSigout;
 alertCancel.onclick = toggleAlertSigout;
 alertClose.onclick = toggleAlertSigout;
@@ -55,7 +67,6 @@ const setClasses = () => {
     const classes = ['left', 'active', 'right'];
     cards.forEach((card, index) => card.classList.add(classes[index]))
 }
-
 
 const changePositions = (e: any) => {
     const clickedCard = e.currentTarget;
