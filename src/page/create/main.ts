@@ -5,6 +5,7 @@ import {
   getAccountAddress,
   getDefaultProvider,
   mintNFT,
+  switchToNetwork,
 } from '../../services'
 
 console.log('create page script')
@@ -49,8 +50,8 @@ const handleValidateForm = () => {
 btnCreate.addEventListener('click', async () => {
   try {
     await connect()
+    await switchToNetwork(getDefaultProvider(), '4102')
     const address = await getAccountAddress()
-
     const { imageValue, nameValue, descriptionValue } = getFormValue()
     if (!imageValue) return
     const tokenUri = await createMetadata(imageValue, nameValue, descriptionValue)

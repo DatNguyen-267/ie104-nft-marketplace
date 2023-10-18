@@ -5,14 +5,21 @@ import { convertWalletError } from '../../utils/errors'
 import './styles.css'
 
 let showAccount = document.querySelector('.showAccount') as HTMLElement
-let walletAddress: string
+
+window.onload = async () => {
+  await connect().then((res) => {
+    console.log({ walletAddress: res[0] })
+    showAccount.innerHTML = 'Wallet address: ' + res[0]
+  })
+}
 
 const btnMetamask = document.querySelector('#btn-metamask') as HTMLButtonElement
 const handleConnectWallet = async () => {
   await connect()
     .then((res) => {
-      console.log(res)
-      walletAddress = res[0]
+      console.log({ walletAddress: res[0] })
+      showAccount.innerHTML = 'Wallet address: ' + res[0]
+      window.localStorage.setItem('connected', 'injected')
     })
     .catch((err) => {
       if (err.message === AppError.NOT_INSTALLED_METAMASK) {
@@ -25,8 +32,6 @@ const handleConnectWallet = async () => {
     return
   }
   await switchToNetwork(provider.provider, '4102')
-
-  showAccount.innerHTML = walletAddress
 }
 
 const onClickInstallMetaMask = () => {}

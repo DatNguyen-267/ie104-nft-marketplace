@@ -2,8 +2,8 @@
 /* Error */
 
 .alert--error .alert__main-icon,
-.alert__main-title,
-.alert__action-cancel {
+.alert--error .alert__main-title,
+.alert--error .alert__action-cancel {
     color: var(--color-error);
 }
 

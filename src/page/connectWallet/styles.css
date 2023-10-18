@@ -28,7 +28,8 @@ body {
   margin: 3.6rem auto;
 }
 
-.wallet-container .card {}
+.wallet-container .card {
+}
 
 .card {
   padding: 0;
@@ -42,12 +43,11 @@ body {
 
 .card:hover {
   border: 1px solid #3396ff;
-
 }
 
 .card-image {
   width: 8rem;
-  height: 8rem
+  height: 8rem;
 }
 
 .card-title {
