@@ -6,12 +6,23 @@ import './styles.css'
 
 let showAccount = document.querySelector('.showAccount') as HTMLElement
 
+window.onload = async () => {
+  if (window.localStorage.getItem('connected')) {
+    await connect().then((res) => {
+      console.log({ walletAddress: res[0] })
+      showAccount.innerHTML = 'Wallet address: ' + res[0]
+      window.localStorage.setItem('connected', 'injected')
+    })
+  }
+}
+
 const btnMetamask = document.querySelector('#btn-metamask') as HTMLButtonElement
 const handleConnectWallet = async () => {
   await connect()
     .then((res) => {
       console.log({ walletAddress: res[0] })
-      showAccount.innerHTML = res[0]
+      showAccount.innerHTML = 'Wallet address: ' + res[0]
+      window.localStorage.setItem('connected', 'injected')
     })
     .catch((err) => {
       if (err.message === AppError.NOT_INSTALLED_METAMASK) {
