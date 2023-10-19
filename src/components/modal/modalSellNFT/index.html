@@ -90,9 +90,14 @@
     nftName.title = "Name of NFT of user can see to sell"
 
     // add value for network
-    var string = 'f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'
-    var shortenedString = string.substr(0, 5) + ' ... ' + string.substring(string.length - 4)
-    etherId.innerHTML = shortenedString;
+    var idExmple = 'f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'
+    if (idExmple.length > 9) {
+      var shortenedString = idExmple.substr(0, 5) + ' ... ' + idExmple.substring(idExmple.length - 4)
+      etherId.innerHTML = shortenedString;
+    }
+    else {
+      etherId.innerHTML = idExmple;
+    }
     etherId.title = "f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16"
 
     // check connnect network (mặc định của css là kết nối được)
@@ -124,7 +129,7 @@
         var x = Number(price.value);
         var y = Number(rarible.innerHTML);
         total.innerHTML = x + (x * y / 100);
-        
+        total.title = total.innerHTML + ' NFT'
       }
 
     }
