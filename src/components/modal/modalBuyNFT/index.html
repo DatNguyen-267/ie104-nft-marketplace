@@ -96,9 +96,14 @@
     nftPrice.innerHTML = "0.029"
 
     // add value for network
-    var string = 'f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'
-    var shortenedString = string.substr(0, 5) + ' ... ' + string.substring(string.length-4)
-    etherId.innerHTML=shortenedString;
+    var idExmple = 'f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'
+    if (idExmple.length > 9) {
+      var shortenedString = idExmple.substr(0, 5) + ' ... ' + idExmple.substring(idExmple.length - 4)
+      etherId.innerHTML = shortenedString;
+    }
+    else {
+      etherId.innerHTML = idExmple;
+    }
     etherId.title = "f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16"
 
     // add value for price, rarible, total
