@@ -1,36 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="NFT">
-        <div class="NFT-card">
-            <img class="NFT-image" src="./../../assets/images/AvatarDefault.webp" alt="">
-            <div class="NFT-info">
-              <div class="NFT-artist-info">
-                <span class="NFT-name">NFT Name</span>
-                <div class="NFT-artist-avartar-name">
-                  <div class="avatar"></div>
-                  <span class="artist-name">NFT Artist</span>
-                </div>
-                <div class="NFT-additional-info">
-                  <div class="price">
-                    <span class="title">Price</span>
-                    <br>
-                    <span class="value">1.63 ETH</span>
-                  </div>
-                  <button class="filled--button tertiary">
-                    <span class="text--button">Buy NFT</span>
-                </button>
-                </div>
-              </div>
-            </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="nft-card">
+    <img class="nft-card__img" src="./../../assets/images/nftDefault.webp" alt="">
+    <div class="nft-card__detail">
+      <div class="nft-card__info">
+        <div class="nft-card__address">
+          <img src="./../../assets/images/EtherIcon.webp" alt="" class="nft-card__address-img">
+          <p class="nft-card__address-value" title="0x0000000000000000000000">
+            0x000 ... 0000
+          </p>
         </div>
+        <div class="nft-card__title">
+          <p class="nft-card__name" title="nft-card Name">
+            NFT Name 
+          </p>
+          <p class="nft-card__order">#34</p>
+        </div>
+        <div class="nft-card__user">
+          <div class="avatar nft-card__user-avatar"></div>
+          <div class="nft-card__user-name" title="User Name 10 1023 02392 10393">
+            User Name 10 1023 02392 10393
+          </div>
+        </div>
+      </div>
+      <div class="nft-card__action">
+        <div class="nft-card__price">
+          <span class="nft-card__price-title">Price</span>
+          <div class="nft-card__price-value">
+            <span class="nft-card__price-number" title="1.6363">1.6363</span>
+            <span class="nft-card__price-unit">WBNB</span>
+          </div>
+        </div>
+       
+        <button class="filled--button outline tertiary nft-card__btn">
+          <span class="text--button">Buy NFT</span>
+        </button>
+      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
