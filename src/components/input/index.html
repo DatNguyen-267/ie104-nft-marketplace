@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+      <div class="upload">
+        <span class="upload-file">Upload file</span>
+        <div class="File-upload">
+          <span class="type-file">PNG, JPG, GIF, WEBP or MP4. Max 200mb.</span>
+          <label for="Upload-file" class="filled--button secondary browse" >Browse</label>
+          <input type="file" id="Upload-file">
+        </div>
+      </div>
+        <div class="input">
+        <label for="Price" class="title">Price</label>
+        <input type="text" id="Price" placeholder="Enter price for one item ( ETH )" class="Input">
+        </div>
+  </body>
 </html>
