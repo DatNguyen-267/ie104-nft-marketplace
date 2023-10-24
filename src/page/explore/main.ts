@@ -20,7 +20,7 @@ const alertClose = document.getElementById("alert-close") as HTMLElement;
 const signOut = document.getElementById("header-sign-out") as HTMLElement;
 
 // Check Login 
-let login:boolean = true ;
+let login:boolean = false ;
 if (login === true as boolean) {
     headerAvatar.style.display = 'flex';
     btnLogin.style.display = 'none';
