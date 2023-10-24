@@ -22,7 +22,7 @@ const signOut = document.getElementById("header-sign-out") as HTMLElement;
 // Check Login 
 let login:boolean = false ;
 if (login === true as boolean) {
-    headerAvatar.style.visibility = 'flex';
+    headerAvatar.style.display = 'flex';
     btnLogin.style.display = 'none';
 }
 else {
