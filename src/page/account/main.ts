@@ -53,6 +53,9 @@ enum NftItemClass {
   Status = 'nft__status',
   MetadataUri = 'nft__metadataUri',
   ButtonSell = 'nft__button-sell',
+  UserName = 'nft__user-name',
+  AddressNFT = 'nft__address',
+  OrderNFT = 'nft__order',
 }
 
 type NftItemElementObject = {
@@ -64,6 +67,9 @@ type NftItemElementObject = {
   eStatus: HTMLDivElement
   eMetadataUri: HTMLDivElement
   eButtonSell: HTMLButtonElement
+  eUserName: HTMLDivElement
+  eAddressNFT: HTMLDivElement
+  eOrderNFT: HTMLDivElement
 }
 
 enum PageElementId {
@@ -79,7 +85,7 @@ enum PageElementId {
 var walletAddress = DEFAULT_ADDRESS
 var isConnected = false
 var listNfts: NftItem[] = []
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
   // ELEMENTS
   var containerNoConnection = document.querySelector(
     PageElementId.ContainerNoConnection,
@@ -138,14 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
           if (listTokenContainer && balance) {
             const tokenItemNode = document.createElement('div')
             tokenItemNode.className = 'list-token__item'
-            tokenItemNode.innerHTML = `${ethers.utils.formatEther(balance)} ${
-              ERC20_TOKEN_SUPPORTED[key].symbol
-            }`
+            tokenItemNode.innerHTML = shortPrice(`${ethers.utils.formatEther(balance)} ${ERC20_TOKEN_SUPPORTED[key].symbol
+              }`)
+            tokenItemNode.title = `${ethers.utils.formatEther(balance)} ${ERC20_TOKEN_SUPPORTED[key].symbol
+              }`
             listTokenContainer.appendChild(tokenItemNode)
           }
         }),
       )
-    } catch (error) {}
+    } catch (error) { }
   }
   async function handleSellNft(nftItem: NftItem) {
     if (nftItem.owner.toLowerCase() !== walletAddress.toLowerCase()) {
@@ -159,9 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const balance = await getBalanceNativeToken(walletAddress)
       if (labelWalletNativeBalance && balance) {
         labelWalletNativeBalance.innerHTML =
+          shortPrice(ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME)
+        labelWalletNativeBalance.title =
           ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
       }
-    } catch (error) {}
+    } catch (error) { }
   }
   async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
     if (!nftItem) return
@@ -184,15 +193,26 @@ document.addEventListener('DOMContentLoaded', () => {
       eStatus: tokenItemNode.querySelector(`.${NftItemClass.Status}`) as HTMLDivElement,
       eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
       eButtonSell: tokenItemNode.querySelector(`.${NftItemClass.ButtonSell}`) as HTMLButtonElement,
+      eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
+      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
+      eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
     eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eTitle.innerHTML = nftItem.title
+    eData.eTitle.title = nftItem.title
     eData.eDescription.innerHTML = nftItem.description
     eData.ePrice.innerHTML = nftItem.price
+    eData.ePrice.title = nftItem.price
     eData.eStatus.innerHTML = nftItem.status
     eData.eMetadataUri.innerHTML = nftItem.tokenUri
+    eData.eUserName.innerHTML = shortString(walletAddress)
+    eData.eUserName.title = walletAddress
+    eData.eAddressNFT.innerHTML = shortString(nftItem.collectionAddress)
+    eData.eAddressNFT.title = nftItem.collectionAddress
+    eData.eOrderNFT.innerHTML = "#" + nftItem.tokenId.toString()
+    console.log("nftItem: ", nftItem)
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
     }
@@ -212,6 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
       eStatus: tokenItemNode.querySelector(`.${NftItemClass.Status}`) as HTMLDivElement,
       eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
       eButtonSell: tokenItemNode.querySelector(`.${NftItemClass.ButtonSell}`) as HTMLButtonElement,
+      eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
+      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
+      eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
 
     console.log({ imageGatewayUrl: nftItem.imageGatewayUrl })
@@ -221,11 +244,18 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
 
     eData.eTitle.innerHTML = nftItem.title
+    eData.eTitle.title = nftItem.title
     eData.eDescription.innerHTML = nftItem.description
     eData.ePrice.innerHTML = nftItem.price
+    eData.ePrice.title = nftItem.price
     eData.eStatus.innerHTML = nftItem.status
     eData.eMetadataUri.innerHTML = nftItem.tokenUri
-
+    eData.eUserName.innerHTML = shortString(walletAddress)
+    eData.eUserName.title = walletAddress
+    eData.eAddressNFT.innerHTML = shortString(nftItem.collectionAddress)
+    eData.eAddressNFT.title = nftItem.collectionAddress
+    eData.eOrderNFT.innerHTML = "#" + nftItem.tokenId.toString()
+    console.log("nftItem2: ", nftItem)
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
       eData.eButtonSell.addEventListener('click', () => {
@@ -311,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
           try {
             const tokenUri = await getTokenUri(nftItem.collectionAddress, nftItem.tokenId)
             listNfts[index].tokenUri = tokenUri || ''
-          } catch (error) {}
+          } catch (error) { }
         }),
       )
 
@@ -325,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listNfts[index].imageUri = metadata.image || ''
             listNfts[index].imageGatewayUrl = getUrlImage(metadata.image) || ''
             await UpdateNftItemComponent(listNfts[index])
-          } catch (error) {}
+          } catch (error) { }
         }),
       )
       console.log({ listNfts })
@@ -348,9 +378,13 @@ document.addEventListener('DOMContentLoaded', () => {
         isConnected = true
         if (labelWalletAddress && labelWalletStatus) {
           labelWalletStatus.innerHTML = 'Connected'
-          labelWalletAddress.innerHTML = walletAddress
+          labelWalletAddress.innerHTML = shortString(walletAddress)
+          labelWalletAddress.title = walletAddress
           containerNoConnection.style.display = 'none'
           containerConnected.style.display = 'block'
+
+          // Check login for header
+          checkLogin(true, walletAddress)
         }
         await updateBalance()
         await updateErc20Balance()
@@ -364,3 +398,167 @@ document.addEventListener('DOMContentLoaded', () => {
   initPage()
   listener()
 })
+
+// ============================ Short String =====================================
+const shortString = (string: string): string => {
+  if (string.length > 9) {
+    var shortenedString = string.substring(0, 5) + ' ... ' + string.substring(string.length - 4)
+    return shortenedString;
+  }
+  return string;
+}
+
+const shortPrice = (string: string): string => {
+  if (string.length > 12) {
+    var shortenedString = string.substring(0, 7) + ' ... ' + string.substring(string.length - 5)
+    return shortenedString;
+  }
+  return string;
+}
+
+
+// ============================ Header =====================================
+const btnLogin = document.getElementById("btn-login") as HTMLButtonElement;
+const popUpUserClose = document.getElementById("close-pop-up-user") as HTMLElement;
+const headerAvatar = document.getElementById("header-avatar") as HTMLElement;
+const alertOverlay = document.getElementById("alert-overlay-close") as HTMLElement;
+const alertCancel = document.getElementById("alert-cancel") as HTMLElement;
+const alertClose = document.getElementById("alert-close") as HTMLElement;
+const signOut = document.getElementById("header-sign-out") as HTMLElement;
+
+// Check login
+function checkLogin(login: boolean, walletAddress: string|undefined) {
+  
+  if (login === true as boolean) {
+    headerAvatar.style.display = 'flex';
+    btnLogin.style.display = 'none';
+  }
+  else {
+    headerAvatar.style.display = 'none';
+    btnLogin.style.display = 'flex';
+  }
+  if(walletAddress !== undefined) {
+    const userName = document.getElementById("pop-up-user-name") as HTMLElement;
+    userName.innerHTML = shortString(walletAddress);
+    userName.title = walletAddress;
+  }
+}
+
+// Toggle PopUP 
+function togglePopUpUser(event: Event): void {
+  event.preventDefault();
+  var x = document.getElementById("pop-up-user") as HTMLElement;
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+    x.style.opacity = "1";
+  } else {
+    x.style.visibility = "hidden";
+    x.style.opacity = "0";
+  }
+}
+
+popUpUserClose.onclick = togglePopUpUser;
+headerAvatar.onclick = togglePopUpUser;
+
+// Toggle Alert
+const toggleAlertSigout = (event: any) => {
+  event.preventDefault();
+  var x = document.getElementById("alert-sigout") as HTMLElement;
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+  } else {
+    x.style.visibility = "hidden";
+  }
+}
+
+alertOverlay.onclick = toggleAlertSigout;
+alertCancel.onclick = toggleAlertSigout;
+alertClose.onclick = toggleAlertSigout;
+signOut.onclick = toggleAlertSigout;
+
+// ============================ Catergory NFT =====================================
+var catergoryBtns = document.querySelectorAll<HTMLButtonElement>(".catergory-btn");
+
+const handleResetBtn = (number: number) => {
+  for (var i = 0; i < catergoryBtns.length; i++) {
+    catergoryBtns[i].style.backgroundColor = 'var(--color-white)';
+    catergoryBtns[i].style.color = 'var(--color-primary)';
+  }
+  catergoryBtns[number].style.backgroundColor = 'var(--color-primary)';
+  catergoryBtns[number].style.color = 'var(--color-white)';
+}
+
+const handleLoadNFTSale = () => {
+  handleResetBtn(1);
+  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
+
+  if (nfts) {
+    for (let i = 0; i < nfts.length; i++) {
+      var status: String | undefined = nfts[i].querySelector(".nft__status")?.innerHTML;
+      if (status != undefined && status != "Sale") {
+        nfts[i].style.display = "none";
+      }
+      else {
+        nfts[i].style.display = "flex";
+      }
+    }
+  }
+}
+const handleLoadNFTNotSale = () => {
+  handleResetBtn(2);
+  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
+
+  if (nfts) {
+    for (let i = 0; i < nfts.length; i++) {
+      var status: String | undefined = nfts[i].querySelector(".nft__status")?.innerHTML;
+      if (status != undefined && status == "Sale") {
+        nfts[i].style.display = "none";
+      }
+      else {
+        nfts[i].style.display = "flex";
+      }
+    }
+  }
+}
+const handleLoadNFTAll = () => {
+  handleResetBtn(0);
+  console.log("abc")
+  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
+
+  if (nfts) {
+    for (let i = 0; i < nfts.length; i++) {
+      nfts[i].style.display = "flex";
+
+    }
+  }
+}
+
+console.log("catergoryBtn: " + catergoryBtns.length);
+if (catergoryBtns.length > 0) {
+  catergoryBtns[0].onclick = handleLoadNFTAll;
+  catergoryBtns[1].onclick = handleLoadNFTSale;
+  catergoryBtns[2].onclick = handleLoadNFTNotSale;
+}
+
+// ============================ Toggle Modal NFT =====================================
+const modalOverlay = document.getElementById("modal-buy-overlay-close") as HTMLElement;
+const modalCancel = document.getElementById("modal-buy-cancel") as HTMLElement;
+const modalClose = document.getElementById("modal-buy-close") as HTMLElement;
+
+// funtion toggle
+const toggleModalBuyNFT = (event: any) => {
+    event.preventDefault();
+    var x = document.getElementById("modal-buy") as HTMLElement;
+    if (x.style.display === "none") {
+        x.style.display = "flex";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+modalOverlay.onclick = toggleModalBuyNFT;
+modalCancel.onclick = toggleModalBuyNFT;
+modalClose.onclick = toggleModalBuyNFT;
+
+
+
