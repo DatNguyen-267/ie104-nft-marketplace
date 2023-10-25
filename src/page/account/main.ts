@@ -383,8 +383,8 @@ document.addEventListener('DOMContentLoaded', () => {
           containerNoConnection.style.display = 'none'
           containerConnected.style.display = 'block'
 
-          // Check login for header
-          checkLogin(true, walletAddress)
+          // show or hide avatar when login for header
+          loadAvatarLogin(true, walletAddress)
         }
         await updateBalance()
         await updateErc20Balance()
@@ -392,6 +392,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       isConnected = false
+        // show or hide avatar when login for header
+       loadAvatarLogin(false, undefined)
     }
   }
 
@@ -426,9 +428,10 @@ const alertCancel = document.getElementById("alert-cancel") as HTMLElement;
 const alertClose = document.getElementById("alert-close") as HTMLElement;
 const signOut = document.getElementById("header-sign-out") as HTMLElement;
 
-// Check login
-function checkLogin(login: boolean, walletAddress: string|undefined) {
+// show or hide avatar when login for header
+function loadAvatarLogin(login: boolean, walletAddress: string|undefined) {
   
+  // show or hide avatar
   if (login === true as boolean) {
     headerAvatar.style.display = 'flex';
     btnLogin.style.display = 'none';
@@ -437,10 +440,16 @@ function checkLogin(login: boolean, walletAddress: string|undefined) {
     headerAvatar.style.display = 'none';
     btnLogin.style.display = 'flex';
   }
-  if(walletAddress !== undefined) {
-    const userName = document.getElementById("pop-up-user-name") as HTMLElement;
+
+  // load wallet address
+  const userName = document.getElementById("pop-up-user-name") as HTMLElement;
+  if(walletAddress) {
     userName.innerHTML = shortString(walletAddress);
     userName.title = walletAddress;
+  }
+  else{
+    userName.innerHTML = "User Name";
+    userName.title = ""
   }
 }
 
