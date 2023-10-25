@@ -240,14 +240,20 @@ body {
 }
 
 .info__user-detail .wallet__status-value{
-  color: var(--color-green-500);
-  background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent);
+  color: var(--color-red-500);
+  background-color: color-mix(in srgb, var(--color-red-400) 10%, transparent);
   font-size: 16px;
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 5px;
   
 }
+
+.wallet__status--connected{
+  color: var(--color-green-500) !important;
+  background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent) !important; 
+}
+
 .info__user-detail .wallet__balance-value{
   color: var(--color-text);
   font-weight: 600;

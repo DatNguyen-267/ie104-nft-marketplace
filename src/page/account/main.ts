@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.eAddressNFT.innerHTML = shortString(nftItem.collectionAddress)
     eData.eAddressNFT.title = nftItem.collectionAddress
     eData.eOrderNFT.innerHTML = "#" + nftItem.tokenId.toString()
-    console.log("nftItem: ", nftItem)
+    
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
     }
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.eAddressNFT.innerHTML = shortString(nftItem.collectionAddress)
     eData.eAddressNFT.title = nftItem.collectionAddress
     eData.eOrderNFT.innerHTML = "#" + nftItem.tokenId.toString()
-    console.log("nftItem2: ", nftItem)
+
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
       eData.eButtonSell.addEventListener('click', () => {
@@ -378,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isConnected = true
         if (labelWalletAddress && labelWalletStatus) {
           labelWalletStatus.innerHTML = 'Connected'
+          labelWalletStatus.classList.add('wallet__status--connected')
           labelWalletAddress.innerHTML = shortString(walletAddress)
           labelWalletAddress.title = walletAddress
           containerNoConnection.style.display = 'none'
@@ -531,7 +532,6 @@ const handleLoadNFTNotSale = () => {
 }
 const handleLoadNFTAll = () => {
   handleResetBtn(0);
-  console.log("abc")
   const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
 
   if (nfts) {
@@ -542,7 +542,6 @@ const handleLoadNFTAll = () => {
   }
 }
 
-console.log("catergoryBtn: " + catergoryBtns.length);
 if (catergoryBtns.length > 0) {
   catergoryBtns[0].onclick = handleLoadNFTAll;
   catergoryBtns[1].onclick = handleLoadNFTSale;
