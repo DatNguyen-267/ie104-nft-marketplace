@@ -378,7 +378,7 @@ body {
 }
 
 @media (max-width: 1023px) {
-  .nft-com__img {
+  .nft-card__img {
       height: 296px !important;
   }
 }
