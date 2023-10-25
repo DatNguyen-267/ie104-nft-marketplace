@@ -170,16 +170,16 @@ body {
 
 .info__bg {
   width: 100%;
-  height: 270px;
+  height: 300px;
   background-image: url(../../assets/images/accountBackground.webp);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position:center;
   position: relative;
 }
 
 .info__bg::before {
-  background-color: color-mix(in srgb, var(--color-black) 30%, transparent);
+  background-color: color-mix(in srgb, var(--color-black) 15%, transparent);
   content: "";
   position: absolute;
   top: 0px;
