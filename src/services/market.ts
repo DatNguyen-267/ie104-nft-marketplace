@@ -4,6 +4,7 @@ import { AppError, MARKETPLACE_ADDRESS } from '../constants'
 import { MARKETPLACE_ABI, NFT_ABI } from '../abis'
 import { approveTokenExchange } from './token-exchange'
 import { approveSpenderToAccessNft } from './nft'
+import { MarketContractMethods } from '../types/method'
 export type CollectionDetail = {
   creatorAddress: string
   status: number
@@ -132,32 +133,36 @@ export async function calculatePriceAndFeesForCollection(collection: string, pri
     throw error
   }
 }
-
 export async function viewAsksByCollection(
-  collection: string,
+  collectionAddress: string,
   cursor: number = 0,
   size: number = 10,
 ) {
   try {
     const provider = getDefaultProvider()
-    if (!provider) {
-      throw new Error('Provider is not found')
-    }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
-    const askResponse: ViewAsksByCollectionAndSellerRaw =
-      await marketContract.calculatePriceAndFeesForCollection(collection, cursor, size)
-
+    if (!provider) return
+    const marketContract = new ethers.Contract(
+      MARKETPLACE_ADDRESS,
+      MARKETPLACE_ABI,
+      provider.getSigner(),
+    )
+    console.log({ marketContract })
+    const asks: ViewAsksByCollectionAndSellerRaw = await marketContract.viewAsksByCollection(
+      collectionAddress,
+      cursor,
+      size,
+    )
     return {
-      askInfo: askResponse[1].map((ask) => {
+      askInfo: asks[1].map((ask) => {
         return {
           price: ethers.utils.formatEther(ask[1].toString()),
           seller: ask[0],
         }
       }),
-      tokenIds: askResponse[0].map((tokenId) => {
+      tokenIds: asks[0].map((tokenId) => {
         return tokenId.toNumber()
       }),
-      size: askResponse[2].toNumber(),
+      size: asks[2].toNumber(),
     }
   } catch (error) {
     throw error

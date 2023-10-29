@@ -82,9 +82,10 @@ enum PageElementId {
   ListTokenContainer = '#list-token__container',
   ListNftContainer = '#list-nft__container',
 }
-var walletAddress = DEFAULT_ADDRESS
+var walletAddress = ''
 var isConnected = false
 var listNfts: NftItem[] = []
+
 document.addEventListener('DOMContentLoaded', () => {
   // ELEMENTS
   var containerNoConnection = document.querySelector(
@@ -270,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isConnected) return
     try {
       const collections = await viewMarketCollections()
-      console.log({ collections })
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
@@ -334,8 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
       listNfts.forEach(async (nftItem: NftItem, index) => {
         listNftContainer.appendChild(await CreateNftItemComponent(nftItem))
       })
-
-      console.log('getTokenUri')
 
       await Promise.all(
         listNfts.map(async (nftItem: NftItem, index: number) => {
@@ -406,6 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
       await switchToNetwork(getDefaultProvider(), '4102')
     } catch (error) {}
   }
+
   try {
     initPage()
     listener()
