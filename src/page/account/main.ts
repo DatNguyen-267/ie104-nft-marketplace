@@ -109,9 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // EVENTS LISTENER
   async function handleAccountsChanged(accounts: string[]) {
     walletAddress = accounts[0]
-    await updateBalance()
-    await updateErc20Balance()
-    await getAllNftOfAddress()
+    initPage()
+    // await updateBalance()
+    // await updateErc20Balance()
+    // await getAllNftOfAddress()
   }
   async function handleChainChanged() {
     switchToNetwork(getDefaultProvider(), '4102')
@@ -122,8 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   async function listener() {
     if (isConnected && window.ethereum) {
-      window.ethereum.on('accountsChanged', handleAccountsChanged)
+      // initPage()
+
       window.ethereum.on('chainChanged', handleChainChanged)
+      window.ethereum.on('accountsChanged', handleAccountsChanged)
       window.ethereum.on('disconnect', handleDisconnect)
       watchErc20Asset(
         ERC20_TOKEN_SUPPORTED.WBNB.address,
