@@ -1,24 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NFT Marketplace Login</title>
-  <script defer src="connectWallet.js"></script><link href="connectWallet.css" rel="stylesheet"></head>
-  <body>
-    <div class="container">
-      <h1 class="title">Connect wallet</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFT Marketplace Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+<script defer src="connectWallet.js"></script><link href="connectWallet.css" rel="stylesheet"></head>
+
+<body>
+  <!-- alert sign out -->
+  <div class="alert alert--default" id="alert-sigout" style="visibility: hidden;">
+    <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
+    <div class="alert-container">
+      <div class="alert__close">
+        <i class="fas fa-times-circle" id="alert-close"></i>
+      </div>
+      <div class="alert__main">
+        <i class="fab fa-gg-circle alert__main-icon"></i>
+        <p class="alert__main-title">SIGN OUT</p>
+        <div class="alert__main-content">
+          <span>
+            Are you sure to sign out of your account?
+          </span>
+        </div>
+      </div>
+      <div class="alert__action">
+        <button class="alert__action-ok" id="alert-ok">OK</button>
+        <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- popup user -->
+  <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden;">
+    <a href="#" class="overlay-close" id="close-pop-up-user"></a>
+    <div class="pop-up-container">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user__name" id="pop-up-user-name">
+          <span>User Name</span>
+        </div>
+      </div>
+      <div class="pop-up-nav">
+        <ul class="pop-up-nav__link">
+          <li>
+            <!-- <i class="fa-solid fa-arrows-rotate"></i> -->
+            <a href="/connectWallet.html">
+              <i class="fas fa-wallet"></i>
+              Switch wallet
+            </a>
+          </li>
+          <li>
+            <a href="/account.html">
+              <i class="fas fa-book"></i>
+              Collection
+            </a>
+          </li>
+          <li id="header-sign-out">
+            <a href="#">
+              <i class="fas fa-sign-out-alt"></i>
+              Sign Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header class="header" id="header-template">
+    <input type="checkbox" id="nav-toggle">
+    <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
+    <a class="header__logo" href="/">
+      <i class="fab fa-gg-circle"></i>
+      <span>NFTMarket</span>
+    </a>
+    <nav class="header__nav">
+      <ul class="header__nav-link">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/explore.html">Marketplace</a></li>
+        <li><a href="/create.html">Create NFT</a></li>
+      </ul>
+    </nav>
+    <div class="header__user">
+      <a href="#pop-up-user" class="avatar" id="header-avatar" style="display: none;"></a>
+      <a href="/connectWallet.html">
+        <button class="filled--button secondary header__nav-btn" id="btn-login">
+          <i class="fas fa-wallet"></i>
+          Connect Wallet
+        </button>
+        <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
+          <i class="fas fa-wallet"></i>
+          Connect Wallet
+        </button> -->
+      </a>
+    </div>
+  </header>
+
+  <!-- ======================= Main ========================= -->
+  <div class="container">
+    <div class="connect-form">
+      <h3 class="title">Connect wallet</h3>
       <h6 class="subtitle">
         Choose a wallet you want to connect. There are several wallet providers.
       </h6>
       <div class="wallet-container">
         <button id="btn-metamask" class="card">
           <img class="card-image" src="MetaMask.webp" />
-          <h5 class="card-title">Metamask</h5>
-          <div class="card-description">Start exploring blockchain applications in seconds</div>
+          <div class="card-content">
+            <h5 class="card-title">Metamask</h5>
+            <div class="card-description" title="Start exploring blockchain applications in seconds">Start exploring
+              blockchain applications in seconds</div>
+          </div>
         </button>
       </div>
-      <h5><span class="showAccount"></span></h5>
+      <h5 class="wallet-address">
+        <span class="address-title">Wallet Address:</span>
+        <span class="showAccount">No connect</span>
+      </h5>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

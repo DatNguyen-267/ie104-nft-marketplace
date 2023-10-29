@@ -32380,6 +32380,301 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/services/market.ts":
+/*!********************************!*\
+  !*** ./src/services/market.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   buyTokenUsingWBNB: () => (/* binding */ buyTokenUsingWBNB),
+/* harmony export */   calculatePriceAndFeesForCollection: () => (/* binding */ calculatePriceAndFeesForCollection),
+/* harmony export */   createAskOrder: () => (/* binding */ createAskOrder),
+/* harmony export */   viewAsksByCollection: () => (/* binding */ viewAsksByCollection),
+/* harmony export */   viewAsksByCollectionAndSeller: () => (/* binding */ viewAsksByCollectionAndSeller),
+/* harmony export */   viewMarketCollections: () => (/* binding */ viewMarketCollections)
+/* harmony export */ });
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/units/lib.esm/index.js");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
+/* harmony import */ var _abis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../abis */ "./src/abis/index.ts");
+/* harmony import */ var _token_exchange__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./token-exchange */ "./src/services/token-exchange.ts");
+/* harmony import */ var _nft__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nft */ "./src/services/nft.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+function viewMarketCollections(cursor, size) {
+    if (cursor === void 0) { cursor = 0; }
+    if (size === void 0) { size = 10; }
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, marketContract, collectionsResponse, collectionDetails, collectionAddresses, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
+                    if (!provider) {
+                        throw new Error('Provider is not found');
+                    }
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    return [4 /*yield*/, marketContract.viewCollections(cursor, size)
+                        // struct Collection {
+                        //   CollectionStatus status; // status of the collection
+                        //   address creatorAddress; // address of the creator
+                        //   address whitelistChecker; // whitelist checker (if not set --> 0x00)
+                        //   uint256 tradingFee; // trading fee (100 = 1%, 500 = 5%, 5 = 0.05%)
+                        //   uint256 creatorFee; // creator fee (100 = 1%, 500 = 5%, 5 = 0.05%)
+                        // }
+                        // function viewCollections(uint256 cursor, uint256 size)
+                        // external
+                        // view
+                        // returns (
+                        //   address[] memory collectionAddresses,
+                        //   Collection[] memory collectionDetails,
+                        //   uint256
+                        // )
+                    ];
+                case 1:
+                    collectionsResponse = _a.sent();
+                    collectionDetails = collectionsResponse['collectionDetails'];
+                    collectionAddresses = collectionsResponse['collectionAddresses'];
+                    return [2 /*return*/, {
+                            collectionDetails: collectionDetails,
+                            collectionAddresses: collectionAddresses,
+                        }];
+                case 2:
+                    error_1 = _a.sent();
+                    throw error_1;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function viewAsksByCollectionAndSeller(collectionAddress, sellerAddress, cursor, size) {
+    if (cursor === void 0) { cursor = 0; }
+    if (size === void 0) { size = 10; }
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, marketContract, asks, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
+                    if (!provider)
+                        return [2 /*return*/];
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    return [4 /*yield*/, marketContract.viewAsksByCollectionAndSeller(collectionAddress, sellerAddress, cursor, size)];
+                case 1:
+                    asks = _a.sent();
+                    return [2 /*return*/, {
+                            askInfo: asks[1].map(function (ask) {
+                                return {
+                                    price: ethers__WEBPACK_IMPORTED_MODULE_6__.formatEther(ask[1].toString()),
+                                    seller: ask[0],
+                                };
+                            }),
+                            tokenIds: asks[0].map(function (tokenId) {
+                                return tokenId.toNumber();
+                            }),
+                            size: asks[2].toNumber(),
+                        }];
+                case 2:
+                    error_2 = _a.sent();
+                    throw error_2;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function calculatePriceAndFeesForCollection(collection, price) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, marketContract, collectionsResponse, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
+                    if (!provider) {
+                        throw new Error('Provider is not found');
+                    }
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    return [4 /*yield*/, marketContract.calculatePriceAndFeesForCollection(collection, price)];
+                case 1:
+                    collectionsResponse = _a.sent();
+                    return [2 /*return*/, {
+                            netPrice: collectionsResponse['netPrice'],
+                            tradingFee: collectionsResponse['tradingFee'],
+                            creatorFee: collectionsResponse['creatorFee'],
+                        }];
+                case 2:
+                    error_3 = _a.sent();
+                    throw error_3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function viewAsksByCollection(collectionAddress, cursor, size) {
+    if (cursor === void 0) { cursor = 0; }
+    if (size === void 0) { size = 10; }
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, marketContract, asks, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
+                    if (!provider)
+                        return [2 /*return*/];
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    console.log({ marketContract: marketContract });
+                    return [4 /*yield*/, marketContract.viewAsksByCollection(collectionAddress, cursor, size)];
+                case 1:
+                    asks = _a.sent();
+                    return [2 /*return*/, {
+                            askInfo: asks[1].map(function (ask) {
+                                return {
+                                    price: ethers__WEBPACK_IMPORTED_MODULE_6__.formatEther(ask[1].toString()),
+                                    seller: ask[0],
+                                };
+                            }),
+                            tokenIds: asks[0].map(function (tokenId) {
+                                return tokenId.toNumber();
+                            }),
+                            size: asks[2].toNumber(),
+                        }];
+                case 2:
+                    error_4 = _a.sent();
+                    throw error_4;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function buyTokenUsingWBNB(collectionAddress, tokenId, price) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, marketContract, receiptApprove, error_5, transaction, transactionReceipt, error_6;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 7, , 8]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0,_token_exchange__WEBPACK_IMPORTED_MODULE_3__.approveTokenExchange)(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, collectionAddress, price)];
+                case 2:
+                    receiptApprove = _a.sent();
+                    console.log(receiptApprove);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_5 = _a.sent();
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.APPROVE_TOKEN_EXCHANGE_FAILED);
+                case 4: return [4 /*yield*/, marketContract.buyTokenUsingWBNB(collectionAddress, parseInt(tokenId), price)];
+                case 5:
+                    transaction = _a.sent();
+                    return [4 /*yield*/, transaction.wait()];
+                case 6:
+                    transactionReceipt = _a.sent();
+                    console.log('buyTokenUsingWBNB Receipt:', transactionReceipt);
+                    return [2 /*return*/, transactionReceipt];
+                case 7:
+                    error_6 = _a.sent();
+                    throw error_6;
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+function createAskOrder(collectionAddress, tokenId, price) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, marketContract, receiptApprove, error_7, transaction, transactionReceipt, error_8;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 7, , 8]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0,_nft__WEBPACK_IMPORTED_MODULE_4__.approveSpenderToAccessNft)(collectionAddress, _constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, tokenId)];
+                case 2:
+                    receiptApprove = _a.sent();
+                    console.log(receiptApprove);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_7 = _a.sent();
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.APPROVE_SPENDER_TO_ACCESS_NFT_FAILED);
+                case 4: return [4 /*yield*/, marketContract.createAskOrder(collectionAddress, parseInt(tokenId), ethers__WEBPACK_IMPORTED_MODULE_6__.parseEther(price))];
+                case 5:
+                    transaction = _a.sent();
+                    return [4 /*yield*/, transaction.wait()];
+                case 6:
+                    transactionReceipt = _a.sent();
+                    console.log('createAskOrder Receipt:', transactionReceipt);
+                    return [2 /*return*/, transactionReceipt];
+                case 7:
+                    error_8 = _a.sent();
+                    throw error_8;
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+
+
+/***/ }),
+
 /***/ "./src/services/nft.ts":
 /*!*****************************!*\
   !*** ./src/services/nft.ts ***!
@@ -32714,6 +33009,158 @@ function getDefaultProvider() {
 function getProvider(provider) {
     var defaultProvider = getDefaultProvider();
     return provider ? provider : defaultProvider ? defaultProvider : getRpcProvider();
+}
+
+
+/***/ }),
+
+/***/ "./src/services/token-exchange.ts":
+/*!****************************************!*\
+  !*** ./src/services/token-exchange.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   approveTokenExchange: () => (/* binding */ approveTokenExchange),
+/* harmony export */   deposit: () => (/* binding */ deposit)
+/* harmony export */ });
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/units/lib.esm/index.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
+/* harmony import */ var _abis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abis */ "./src/abis/index.ts");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+function approveTokenExchange(nftAddressGuy, tokenExchangeAddress, wad, providerOptions) {
+    if (nftAddressGuy === void 0) { nftAddressGuy = _constants__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ADDRESS; }
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, tokenContract, transaction, transactionReceipt, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    provider = providerOptions ? providerOptions.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_3__.Contract(tokenExchangeAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.TOKEN_EXCHANGE_ABI, provider.getSigner());
+                    return [4 /*yield*/, tokenContract.approve(nftAddressGuy, ethers__WEBPACK_IMPORTED_MODULE_4__.formatEther(wad))];
+                case 1:
+                    transaction = _a.sent();
+                    return [4 /*yield*/, transaction.wait()];
+                case 2:
+                    transactionReceipt = _a.sent();
+                    console.log('approve receipt:', transactionReceipt);
+                    return [2 /*return*/, transactionReceipt];
+                case 3:
+                    error_1 = _a.sent();
+                    throw error_1;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function deposit(tokenAddress, value, providerOptions) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, tokenContract, transaction, transactionReceipt, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    provider = providerOptions ? providerOptions.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_3__.Contract(tokenAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.TOKEN_EXCHANGE_ABI, provider.getSigner());
+                    return [4 /*yield*/, tokenContract.deposit({
+                            value: ethers__WEBPACK_IMPORTED_MODULE_4__.parseEther(value),
+                        })];
+                case 1:
+                    transaction = _a.sent();
+                    return [4 /*yield*/, transaction.wait()];
+                case 2:
+                    transactionReceipt = _a.sent();
+                    console.log('deposit receipt:', transactionReceipt);
+                    return [2 /*return*/, transactionReceipt];
+                case 3:
+                    error_2 = _a.sent();
+                    throw error_2;
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+
+
+/***/ }),
+
+/***/ "./src/utils/common.ts":
+/*!*****************************!*\
+  !*** ./src/utils/common.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getDisplayMaxDecimals: () => (/* binding */ getDisplayMaxDecimals),
+/* harmony export */   shorterAddress: () => (/* binding */ shorterAddress)
+/* harmony export */ });
+function getDisplayMaxDecimals(decimals) {
+    var maxDisplayDecimals = 8;
+    if (decimals === undefined)
+        return 0;
+    return decimals < maxDisplayDecimals ? decimals : maxDisplayDecimals;
+}
+function shorterAddress(address, maxLength) {
+    if (maxLength === void 0) { maxLength = 10; }
+    var length = Math.floor(maxLength / 2);
+    if (((address === null || address === void 0 ? void 0 : address.length) || Infinity) <= maxLength) {
+        return address;
+    }
+    return address
+        ? "".concat(address.substring(0, length), "...").concat(address.substring(address.length - length, address.length))
+        : '';
 }
 
 
@@ -43701,6 +44148,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NFTcard_styles_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../components/NFTcard/styles.css */ "./src/components/NFTcard/styles.css");
 /* harmony import */ var _components_modal_modalBuyNFT_styles_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../components/modal/modalBuyNFT/styles.css */ "./src/components/modal/modalBuyNFT/styles.css");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../services/market */ "./src/services/market.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -43747,7 +44207,56 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-console.log('explore page script');
+
+
+var NftItemClass;
+(function (NftItemClass) {
+    NftItemClass["Container"] = "nft__container";
+    NftItemClass["Image"] = "nft__img";
+    NftItemClass["Title"] = "nft__title";
+    NftItemClass["Description"] = "nft__description";
+    NftItemClass["Price"] = "nft__price";
+    NftItemClass["Status"] = "nft__status";
+    NftItemClass["MetadataUri"] = "nft__metadataUri";
+    NftItemClass["ButtonBuy"] = "nft__button-buy";
+    NftItemClass["UserName"] = "nft__user-name";
+    NftItemClass["AddressNFT"] = "nft__address";
+    NftItemClass["OrderNFT"] = "nft__order";
+})(NftItemClass || (NftItemClass = {}));
+var defaultNftItem = {
+    collectionAddress: '',
+    tokenId: '',
+    title: '',
+    description: '',
+    tokenUri: '',
+    owner: '',
+    status: 'Sale',
+    imageUri: '',
+    imageGatewayUrl: '',
+    price: '0',
+};
+var LoadingStatus;
+(function (LoadingStatus) {
+    LoadingStatus["Pending"] = "pending";
+    LoadingStatus["Success"] = "success";
+    LoadingStatus["Fail"] = "fail";
+})(LoadingStatus || (LoadingStatus = {}));
+var AttributeName;
+(function (AttributeName) {
+    AttributeName["Loading"] = "data-loading";
+    AttributeName["TokenId"] = "data-token-id";
+    AttributeName["CltAddress"] = "data-clt-address";
+})(AttributeName || (AttributeName = {}));
+var PageElementId;
+(function (PageElementId) {
+    PageElementId["ContainerNoConnection"] = "#container-no-connection";
+    PageElementId["ContainerConnected"] = "#container-connected";
+    PageElementId["ButtonConnect"] = "#btn-connect";
+    PageElementId["ListNftContainer"] = "#list-nft__container";
+})(PageElementId || (PageElementId = {}));
+var walletAddress = '';
+var isConnected = false;
+var listNfts = [];
 // ========================== Header =======================================
 var btnLogin = document.getElementById('btn-login');
 var popUpUserClose = document.getElementById('close-pop-up-user');
@@ -43827,12 +44336,350 @@ var toggleModalBuyNFT = function (event) {
 modalOverlay.onclick = toggleModalBuyNFT;
 modalCancel.onclick = toggleModalBuyNFT;
 modalClose.onclick = toggleModalBuyNFT;
-// load nfts
+// ******************* DOM LOADED ***********************
 document.addEventListener('DOMContentLoaded', function () {
-    for (var i = 0; i < nfts.length; i++) {
-        var btn = nfts[i].querySelector('.nft-card__btn');
-        btn.onclick = toggleModalBuyNFT;
+    // Document elements
+    var containerNoConnection = document.querySelector(PageElementId.ContainerNoConnection);
+    var containerConnected = document.querySelector(PageElementId.ContainerConnected);
+    var btnConnect = document.querySelector(PageElementId.ButtonConnect);
+    var listNftContainer = document.querySelector(PageElementId.ListNftContainer);
+    function handleBuyNft(nftItem) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 4, , 5]);
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.connect)()];
+                    case 1:
+                        _b.sent();
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.switchToNetwork)((0,_services__WEBPACK_IMPORTED_MODULE_9__.getDefaultProvider)(), '4102')];
+                    case 2:
+                        _b.sent();
+                        return [4 /*yield*/, ((_a = (0,_services__WEBPACK_IMPORTED_MODULE_9__.getDefaultProvider)()) === null || _a === void 0 ? void 0 : _a.getSigner().getAddress())];
+                    case 3:
+                        walletAddress = (_b.sent()) || '';
+                        loadAvatarLogin(true, walletAddress);
+                        try {
+                            // open modal buy nft
+                        }
+                        catch (error) { }
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_1 = _b.sent();
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
     }
+    function handleConnectWallet() {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.connect)()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.switchToNetwork)((0,_services__WEBPACK_IMPORTED_MODULE_9__.getDefaultProvider)(), '4102')];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_2 = _a.sent();
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    }
+    function loadAvatarLogin(login, walletAddress) {
+        // show or hide avatar
+        if (login === true) {
+            headerAvatar.style.display = 'flex';
+            btnLogin.style.display = 'none';
+        }
+        else {
+            headerAvatar.style.display = 'none';
+            btnLogin.style.display = 'flex';
+        }
+        // load wallet address
+        var userName = document.getElementById('pop-up-user-name');
+        // if (walletAddress) {
+        //   userName.innerHTML = shorterAddress(walletAddress, 10) || ''
+        //   userName.title = walletAddress
+        // } else {
+        //   userName.innerHTML = 'User Name'
+        //   userName.title = ''
+        // }
+    }
+    function UpdateNftItemComponent(nftItem) {
+        return __awaiter(this, void 0, void 0, function () {
+            var tokenItemNode, eData;
+            return __generator(this, function (_a) {
+                if (!nftItem)
+                    return [2 /*return*/];
+                tokenItemNode = listNftContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"]"));
+                if (!tokenItemNode)
+                    return [2 /*return*/];
+                if (nftItem.title && nftItem.imageUri) {
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(AttributeName.Loading, LoadingStatus.Success);
+                }
+                else {
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(AttributeName.Loading, LoadingStatus.Pending);
+                }
+                eData = {
+                    eContainer: tokenItemNode,
+                    eDescription: tokenItemNode.querySelector(".".concat(NftItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(NftItemClass.Image)),
+                    eMetadataUri: tokenItemNode.querySelector(".".concat(NftItemClass.MetadataUri)),
+                    ePrice: tokenItemNode.querySelector(".".concat(NftItemClass.Price)),
+                    eStatus: tokenItemNode.querySelector(".".concat(NftItemClass.Status)),
+                    eTitle: tokenItemNode.querySelector(".".concat(NftItemClass.Title)),
+                    eButtonBuy: tokenItemNode.querySelector(".".concat(NftItemClass.ButtonBuy)),
+                    eUserName: tokenItemNode.querySelector(".".concat(NftItemClass.UserName)),
+                    eAddressNFT: tokenItemNode.querySelector(".".concat(NftItemClass.AddressNFT)),
+                    eOrderNFT: tokenItemNode.querySelector(".".concat(NftItemClass.OrderNFT)),
+                };
+                eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
+                eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString());
+                eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress);
+                eData.eTitle.innerHTML = nftItem.title;
+                eData.eTitle.title = nftItem.title;
+                eData.eDescription.innerHTML = nftItem.description;
+                eData.ePrice.innerHTML = nftItem.price;
+                eData.ePrice.title = nftItem.price;
+                eData.eStatus.innerHTML = nftItem.status;
+                eData.eMetadataUri.innerHTML = nftItem.tokenUri;
+                eData.eUserName.innerHTML = (0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.shorterAddress)(walletAddress) || '';
+                eData.eUserName.title = walletAddress || '';
+                eData.eAddressNFT.innerHTML = (0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.shorterAddress)(nftItem.collectionAddress) || '';
+                eData.eAddressNFT.title = nftItem.collectionAddress;
+                eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
+                eData.eButtonBuy.style.display = 'block';
+                eData.eButtonBuy.addEventListener('click', function () {
+                    handleBuyNft(nftItem);
+                });
+                return [2 /*return*/];
+            });
+        });
+    }
+    function CreateNftItemComponent(nftItem) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var template, tokenItemNode, eData;
+            return __generator(this, function (_b) {
+                template = (_a = document.querySelector('#nft-template')) === null || _a === void 0 ? void 0 : _a.firstElementChild;
+                if (!template)
+                    return [2 /*return*/, document.createElement('div')];
+                tokenItemNode = template.cloneNode(true);
+                eData = {
+                    eContainer: tokenItemNode,
+                    eDescription: tokenItemNode.querySelector(".".concat(NftItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(NftItemClass.Image)),
+                    eMetadataUri: tokenItemNode.querySelector(".".concat(NftItemClass.MetadataUri)),
+                    ePrice: tokenItemNode.querySelector(".".concat(NftItemClass.Price)),
+                    eStatus: tokenItemNode.querySelector(".".concat(NftItemClass.Status)),
+                    eTitle: tokenItemNode.querySelector(".".concat(NftItemClass.Title)),
+                    eButtonBuy: tokenItemNode.querySelector(".".concat(NftItemClass.ButtonBuy)),
+                    eUserName: tokenItemNode.querySelector(".".concat(NftItemClass.UserName)),
+                    eAddressNFT: tokenItemNode.querySelector(".".concat(NftItemClass.AddressNFT)),
+                    eOrderNFT: tokenItemNode.querySelector(".".concat(NftItemClass.OrderNFT)),
+                };
+                console.log({ imageGatewayUrl: nftItem.imageGatewayUrl });
+                eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
+                eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString());
+                eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress);
+                eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending);
+                eData.eTitle.innerHTML = nftItem.title;
+                eData.eTitle.title = nftItem.title;
+                eData.eDescription.innerHTML = nftItem.description;
+                eData.ePrice.innerHTML = nftItem.price;
+                eData.ePrice.title = nftItem.price;
+                eData.eStatus.innerHTML = nftItem.status;
+                eData.eMetadataUri.innerHTML = nftItem.tokenUri;
+                eData.eUserName.innerHTML = (0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.shorterAddress)(walletAddress) || '';
+                eData.eUserName.title = walletAddress;
+                eData.eAddressNFT.innerHTML = (0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.shorterAddress)(nftItem.collectionAddress) || '';
+                eData.eAddressNFT.title = nftItem.collectionAddress;
+                eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
+                eData.eButtonBuy.style.display = 'block';
+                eData.eButtonBuy.addEventListener('click', function () {
+                    handleBuyNft(nftItem);
+                });
+                return [2 /*return*/, tokenItemNode];
+            });
+        });
+    }
+    function getAllNftOfMarket() {
+        return __awaiter(this, void 0, void 0, function () {
+            var collections, error_3;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!isConnected)
+                            return [2 /*return*/];
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 6, , 7]);
+                        return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_11__.viewMarketCollections)()];
+                    case 2:
+                        collections = _a.sent();
+                        console.log({ collections: collections });
+                        return [4 /*yield*/, Promise.all(collections.collectionAddresses.map(function (collectionAddress) { return __awaiter(_this, void 0, void 0, function () {
+                                var asksOfCollection_1, error_4;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 2, , 3]);
+                                            return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_11__.viewAsksByCollection)(collectionAddress, 0, 100)];
+                                        case 1:
+                                            asksOfCollection_1 = _a.sent();
+                                            console.log({ asksOfCollection: asksOfCollection_1 });
+                                            if (asksOfCollection_1 &&
+                                                asksOfCollection_1.tokenIds &&
+                                                asksOfCollection_1.tokenIds.length > 0) {
+                                                asksOfCollection_1.tokenIds.forEach(function (tokenId, index) {
+                                                    listNfts.push(__assign(__assign({}, defaultNftItem), { collectionAddress: collectionAddress, tokenId: tokenId, status: 'Sale', price: asksOfCollection_1.askInfo[index].price }));
+                                                });
+                                            }
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            error_4 = _a.sent();
+                                            console.log(error_4);
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); }))
+                            // Convert the Set back to an array
+                        ];
+                    case 3:
+                        _a.sent();
+                        // Convert the Set back to an array
+                        console.log('create component');
+                        listNfts.forEach(function (nftItem, index) { return __awaiter(_this, void 0, void 0, function () {
+                            var _a, _b;
+                            return __generator(this, function (_c) {
+                                switch (_c.label) {
+                                    case 0:
+                                        _b = (_a = listNftContainer).appendChild;
+                                        return [4 /*yield*/, CreateNftItemComponent(nftItem)];
+                                    case 1:
+                                        _b.apply(_a, [_c.sent()]);
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); });
+                        return [4 /*yield*/, Promise.all(listNfts.map(function (nftItem, index) { return __awaiter(_this, void 0, void 0, function () {
+                                var tokenUri, error_5;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 2, , 3]);
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.getTokenUri)(nftItem.collectionAddress, nftItem.tokenId)];
+                                        case 1:
+                                            tokenUri = _a.sent();
+                                            listNfts[index].tokenUri = tokenUri || '';
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            error_5 = _a.sent();
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); }))
+                            // Get metadata of tokenId
+                        ];
+                    case 4:
+                        _a.sent();
+                        // Get metadata of tokenId
+                        return [4 /*yield*/, Promise.all(listNfts.map(function (nftItem, index) { return __awaiter(_this, void 0, void 0, function () {
+                                var metadata, error_6;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 3, , 4]);
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.getMetadata)(nftItem.tokenUri)];
+                                        case 1:
+                                            metadata = _a.sent();
+                                            listNfts[index].title = metadata.name || '';
+                                            listNfts[index].description = metadata.description || '';
+                                            listNfts[index].imageUri = metadata.image || '';
+                                            listNfts[index].imageGatewayUrl = (0,_services__WEBPACK_IMPORTED_MODULE_9__.getUrlImage)(metadata.image) || '';
+                                            return [4 /*yield*/, UpdateNftItemComponent(listNfts[index])];
+                                        case 2:
+                                            _a.sent();
+                                            return [3 /*break*/, 4];
+                                        case 3:
+                                            error_6 = _a.sent();
+                                            return [3 /*break*/, 4];
+                                        case 4: return [2 /*return*/];
+                                    }
+                                });
+                            }); }))];
+                    case 5:
+                        // Get metadata of tokenId
+                        _a.sent();
+                        console.log({ listNfts: listNfts });
+                        return [3 /*break*/, 7];
+                    case 6:
+                        error_3 = _a.sent();
+                        console.log(error_3);
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        });
+    }
+    function initPage() {
+        var _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var error_7, provider, error_8;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 8, , 9]);
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 4, , 5]);
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_9__.connect)()];
+                    case 2:
+                        _b.sent();
+                        return [4 /*yield*/, ((_a = (0,_services__WEBPACK_IMPORTED_MODULE_9__.getDefaultProvider)()) === null || _a === void 0 ? void 0 : _a.getSigner().getAddress())];
+                    case 3:
+                        walletAddress = (_b.sent()) || '';
+                        loadAvatarLogin(true, walletAddress);
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_7 = _b.sent();
+                        return [3 /*break*/, 5];
+                    case 5:
+                        isConnected = true;
+                        provider = (0,_services__WEBPACK_IMPORTED_MODULE_9__.getDefaultProvider)();
+                        return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress())];
+                    case 6:
+                        walletAddress = (_b.sent()) || '';
+                        isConnected = true;
+                        return [4 /*yield*/, getAllNftOfMarket()];
+                    case 7:
+                        _b.sent();
+                        return [3 /*break*/, 9];
+                    case 8:
+                        error_8 = _b.sent();
+                        isConnected = false;
+                        loadAvatarLogin(false, undefined);
+                        return [3 /*break*/, 9];
+                    case 9: return [2 /*return*/];
+                }
+            });
+        });
+    }
+    initPage();
 });
 
 })();

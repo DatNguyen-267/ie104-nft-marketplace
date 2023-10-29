@@ -32480,34 +32480,34 @@ function calculatePriceAndFeesForCollection(collection, price) {
         });
     });
 }
-function viewAsksByCollection(collection, cursor, size) {
+function viewAsksByCollection(collectionAddress, cursor, size) {
     if (cursor === void 0) { cursor = 0; }
     if (size === void 0) { size = 10; }
     return __awaiter(this, void 0, void 0, function () {
-        var provider, marketContract, askResponse, error_4;
+        var provider, marketContract, asks, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
                     provider = (0,_provider__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)();
-                    if (!provider) {
-                        throw new Error('Provider is not found');
-                    }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider);
-                    return [4 /*yield*/, marketContract.calculatePriceAndFeesForCollection(collection, cursor, size)];
+                    if (!provider)
+                        return [2 /*return*/];
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ABI, provider.getSigner());
+                    console.log({ marketContract: marketContract });
+                    return [4 /*yield*/, marketContract.viewAsksByCollection(collectionAddress, cursor, size)];
                 case 1:
-                    askResponse = _a.sent();
+                    asks = _a.sent();
                     return [2 /*return*/, {
-                            askInfo: askResponse[1].map(function (ask) {
+                            askInfo: asks[1].map(function (ask) {
                                 return {
                                     price: ethers__WEBPACK_IMPORTED_MODULE_6__.formatEther(ask[1].toString()),
                                     seller: ask[0],
                                 };
                             }),
-                            tokenIds: askResponse[0].map(function (tokenId) {
+                            tokenIds: asks[0].map(function (tokenId) {
                                 return tokenId.toNumber();
                             }),
-                            size: askResponse[2].toNumber(),
+                            size: asks[2].toNumber(),
                         }];
                 case 2:
                     error_4 = _a.sent();
@@ -44139,7 +44139,7 @@ var PageElementId;
     PageElementId["ListTokenContainer"] = "#list-token__container";
     PageElementId["ListNftContainer"] = "#list-nft__container";
 })(PageElementId || (PageElementId = {}));
-var walletAddress = _constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_ADDRESS;
+var walletAddress = '';
 var isConnected = false;
 var listNfts = [];
 document.addEventListener('DOMContentLoaded', function () {
@@ -44369,7 +44369,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_4__.viewMarketCollections)()];
                     case 2:
                         collections = _a.sent();
-                        console.log({ collections: collections });
                         return [4 /*yield*/, Promise.all(collections.collectionAddresses.map(function (collectionAddress) { return __awaiter(_this, void 0, void 0, function () {
                                 var asksOfCollection_1, error_3;
                                 return __generator(this, function (_a) {
@@ -44445,7 +44444,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
                             });
                         }); });
-                        console.log('getTokenUri');
                         return [4 /*yield*/, Promise.all(listNfts.map(function (nftItem, index) { return __awaiter(_this, void 0, void 0, function () {
                                 var tokenUri, error_5;
                                 return __generator(this, function (_a) {

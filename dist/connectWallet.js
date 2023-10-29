@@ -43636,15 +43636,17 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var showAccount = document.querySelector('.showAccount');
 window.onload = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_2__.connect)().then(function (res) {
-                    console.log({ walletAddress: res[0] });
-                    showAccount.innerHTML = 'Wallet address: ' + res[0];
-                })];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
+        try {
+            // await connect().then((res) => {
+            //   console.log({ walletAddress: res[0] })
+            //   showAccount.innerHTML = shortString(res[0])
+            //   showAccount.title = res[0]
+            // })
+            handleConnectWallet();
         }
+        catch (err) {
+        }
+        return [2 /*return*/];
     });
 }); };
 var btnMetamask = document.querySelector('#btn-metamask');
@@ -43655,8 +43657,11 @@ var handleConnectWallet = function () { return __awaiter(void 0, void 0, void 0,
             case 0: return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_2__.connect)()
                     .then(function (res) {
                     console.log({ walletAddress: res[0] });
-                    showAccount.innerHTML = 'Wallet address: ' + res[0];
+                    showAccount.innerHTML = shortString(res[0]);
+                    showAccount.title = res[0];
                     window.localStorage.setItem('connected', 'injected');
+                    // check login
+                    checkLogin(true, res[0]);
                 })
                     .catch(function (err) {
                     if (err.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
@@ -43679,6 +43684,67 @@ var handleConnectWallet = function () { return __awaiter(void 0, void 0, void 0,
 }); };
 var onClickInstallMetaMask = function () { };
 btnMetamask.onclick = handleConnectWallet;
+// ============================ Short String =====================================
+var shortString = function (string) {
+    if (string && string.length > 9) {
+        var shortenedString = string.substring(0, 5) + ' ... ' + string.substring(string.length - 4);
+        return shortenedString;
+    }
+    return string;
+};
+// ============================ Header =====================================
+var btnLogin = document.getElementById("btn-login");
+var popUpUserClose = document.getElementById("close-pop-up-user");
+var headerAvatar = document.getElementById("header-avatar");
+var alertOverlay = document.getElementById("alert-overlay-close");
+var alertCancel = document.getElementById("alert-cancel");
+var alertClose = document.getElementById("alert-close");
+var signOut = document.getElementById("header-sign-out");
+// Check login
+function checkLogin(login, walletAddress) {
+    if (login === true) {
+        headerAvatar.style.display = 'flex';
+        btnLogin.style.display = 'none';
+    }
+    else {
+        headerAvatar.style.display = 'none';
+        btnLogin.style.display = 'flex';
+    }
+    if (walletAddress !== undefined) {
+        var userName = document.getElementById("pop-up-user-name");
+        userName.innerHTML = shortString(walletAddress);
+    }
+}
+// Toggle PopUP 
+function togglePopUpUser(event) {
+    event.preventDefault();
+    var x = document.getElementById("pop-up-user");
+    if (x.style.visibility === "hidden") {
+        x.style.visibility = "visible";
+        x.style.opacity = "1";
+    }
+    else {
+        x.style.visibility = "hidden";
+        x.style.opacity = "0";
+    }
+}
+popUpUserClose.onclick = togglePopUpUser;
+headerAvatar.onclick = togglePopUpUser;
+// Toggle Alert
+var toggleAlertSigout = function (event) {
+    event.preventDefault();
+    var x = document.getElementById("alert-sigout");
+    if (x.style.visibility === "hidden") {
+        x.style.visibility = "visible";
+    }
+    else {
+        x.style.visibility = "hidden";
+    }
+};
+alertOverlay.onclick = toggleAlertSigout;
+alertCancel.onclick = toggleAlertSigout;
+alertClose.onclick = toggleAlertSigout;
+signOut.onclick = toggleAlertSigout;
 
 })();
 
