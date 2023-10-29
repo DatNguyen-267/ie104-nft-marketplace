@@ -85,7 +85,7 @@ enum PageElementId {
 var walletAddress = DEFAULT_ADDRESS
 var isConnected = false
 var listNfts: NftItem[] = []
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
   // ELEMENTS
   var containerNoConnection = document.querySelector(
     PageElementId.ContainerNoConnection,
@@ -144,33 +144,31 @@ document.addEventListener('DOMContentLoaded', () => {
           if (listTokenContainer && balance) {
             const tokenItemNode = document.createElement('div')
             tokenItemNode.className = 'list-token__item'
-            tokenItemNode.innerHTML = shortPrice(`${ethers.utils.formatEther(balance)} ${ERC20_TOKEN_SUPPORTED[key].symbol
-              }`)
-            tokenItemNode.title = `${ethers.utils.formatEther(balance)} ${ERC20_TOKEN_SUPPORTED[key].symbol
-              }`
+            tokenItemNode.innerHTML = shortPrice(
+              `${ethers.utils.formatEther(balance)} ${ERC20_TOKEN_SUPPORTED[key].symbol}`,
+            )
+            tokenItemNode.title = `${ethers.utils.formatEther(balance)} ${
+              ERC20_TOKEN_SUPPORTED[key].symbol
+            }`
             listTokenContainer.appendChild(tokenItemNode)
           }
         }),
       )
-    } catch (error) { }
+    } catch (error) {}
   }
   async function handleSellNft(nftItem: NftItem) {
-    if (nftItem.owner.toLowerCase() !== walletAddress.toLowerCase()) {
-      throw new Error(AppError.OWNER_IS_NOT_VALID)
-    }
-
     // await createAskOrder(nftItem.collectionAddress, nftItem.tokenId.toString(), nftItem.price)
   }
   async function updateBalance() {
     try {
       const balance = await getBalanceNativeToken(walletAddress)
       if (labelWalletNativeBalance && balance) {
-        labelWalletNativeBalance.innerHTML =
-          shortPrice(ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME)
-        labelWalletNativeBalance.title =
-          ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
+        labelWalletNativeBalance.innerHTML = shortPrice(
+          ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME,
+        )
+        labelWalletNativeBalance.title = ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
       }
-    } catch (error) { }
+    } catch (error) {}
   }
   async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
     if (!nftItem) return
@@ -211,8 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.eUserName.title = walletAddress
     eData.eAddressNFT.innerHTML = shortString(nftItem.collectionAddress)
     eData.eAddressNFT.title = nftItem.collectionAddress
-    eData.eOrderNFT.innerHTML = "#" + nftItem.tokenId.toString()
-    
+    eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
+
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
     }
@@ -254,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.eUserName.title = walletAddress
     eData.eAddressNFT.innerHTML = shortString(nftItem.collectionAddress)
     eData.eAddressNFT.title = nftItem.collectionAddress
-    eData.eOrderNFT.innerHTML = "#" + nftItem.tokenId.toString()
+    eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
 
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
@@ -341,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
           try {
             const tokenUri = await getTokenUri(nftItem.collectionAddress, nftItem.tokenId)
             listNfts[index].tokenUri = tokenUri || ''
-          } catch (error) { }
+          } catch (error) {}
         }),
       )
 
@@ -355,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listNfts[index].imageUri = metadata.image || ''
             listNfts[index].imageGatewayUrl = getUrlImage(metadata.image) || ''
             await UpdateNftItemComponent(listNfts[index])
-          } catch (error) { }
+          } catch (error) {}
         }),
       )
       console.log({ listNfts })
@@ -367,6 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
       if (window.ethereum && window.ethereum.isConnected()) {
+        await switchToNetwork(getDefaultProvider(), '4102')
         walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || DEFAULT_ADDRESS
         isConnected = true
         updateBalance()
@@ -393,180 +392,182 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       isConnected = false
-        // show or hide avatar when login for header
-       loadAvatarLogin(false, undefined)
+      // show or hide avatar when login for header
+      loadAvatarLogin(false, undefined)
     }
   }
 
-  initPage()
-  listener()
+  async function handleConnectWallet() {
+    try {
+      await connect()
+      await switchToNetwork(getDefaultProvider(), '4102')
+    } catch (error) {}
+  }
+  try {
+    initPage()
+    listener()
+  } catch (error) {
+    console.log(error)
+  }
+
+  btnConnect.onclick = handleConnectWallet
 })
 
 // ============================ Short String =====================================
 const shortString = (string: string): string => {
   if (string.length > 9) {
     var shortenedString = string.substring(0, 5) + ' ... ' + string.substring(string.length - 4)
-    return shortenedString;
+    return shortenedString
   }
-  return string;
+  return string
 }
 
 const shortPrice = (string: string): string => {
   if (string.length > 12) {
     var shortenedString = string.substring(0, 7) + ' ... ' + string.substring(string.length - 5)
-    return shortenedString;
+    return shortenedString
   }
-  return string;
+  return string
 }
 
-
 // ============================ Header =====================================
-const btnLogin = document.getElementById("btn-login") as HTMLButtonElement;
-const popUpUserClose = document.getElementById("close-pop-up-user") as HTMLElement;
-const headerAvatar = document.getElementById("header-avatar") as HTMLElement;
-const alertOverlay = document.getElementById("alert-overlay-close") as HTMLElement;
-const alertCancel = document.getElementById("alert-cancel") as HTMLElement;
-const alertClose = document.getElementById("alert-close") as HTMLElement;
-const signOut = document.getElementById("header-sign-out") as HTMLElement;
+const btnLogin = document.getElementById('btn-login') as HTMLButtonElement
+const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
+const headerAvatar = document.getElementById('header-avatar') as HTMLElement
+const alertOverlay = document.getElementById('alert-overlay-close') as HTMLElement
+const alertCancel = document.getElementById('alert-cancel') as HTMLElement
+const alertClose = document.getElementById('alert-close') as HTMLElement
+const signOut = document.getElementById('header-sign-out') as HTMLElement
 
 // show or hide avatar when login for header
-function loadAvatarLogin(login: boolean, walletAddress: string|undefined) {
-  
+function loadAvatarLogin(login: boolean, walletAddress: string | undefined) {
   // show or hide avatar
-  if (login === true as boolean) {
-    headerAvatar.style.display = 'flex';
-    btnLogin.style.display = 'none';
-  }
-  else {
-    headerAvatar.style.display = 'none';
-    btnLogin.style.display = 'flex';
+  if (login === (true as boolean)) {
+    headerAvatar.style.display = 'flex'
+    btnLogin.style.display = 'none'
+  } else {
+    headerAvatar.style.display = 'none'
+    btnLogin.style.display = 'flex'
   }
 
   // load wallet address
-  const userName = document.getElementById("pop-up-user-name") as HTMLElement;
-  if(walletAddress) {
-    userName.innerHTML = shortString(walletAddress);
-    userName.title = walletAddress;
-  }
-  else{
-    userName.innerHTML = "User Name";
-    userName.title = ""
-  }
-}
-
-// Toggle PopUP 
-function togglePopUpUser(event: Event): void {
-  event.preventDefault();
-  var x = document.getElementById("pop-up-user") as HTMLElement;
-  if (x.style.visibility === "hidden") {
-    x.style.visibility = "visible";
-    x.style.opacity = "1";
+  const userName = document.getElementById('pop-up-user-name') as HTMLElement
+  if (walletAddress) {
+    userName.innerHTML = shortString(walletAddress)
+    userName.title = walletAddress
   } else {
-    x.style.visibility = "hidden";
-    x.style.opacity = "0";
+    userName.innerHTML = 'User Name'
+    userName.title = ''
   }
 }
 
-popUpUserClose.onclick = togglePopUpUser;
-headerAvatar.onclick = togglePopUpUser;
+// Toggle PopUP
+function togglePopUpUser(event: Event): void {
+  event.preventDefault()
+  var x = document.getElementById('pop-up-user') as HTMLElement
+  if (x.style.visibility === 'hidden') {
+    x.style.visibility = 'visible'
+    x.style.opacity = '1'
+  } else {
+    x.style.visibility = 'hidden'
+    x.style.opacity = '0'
+  }
+}
+
+popUpUserClose.onclick = togglePopUpUser
+headerAvatar.onclick = togglePopUpUser
 
 // Toggle Alert
 const toggleAlertSigout = (event: any) => {
-  event.preventDefault();
-  var x = document.getElementById("alert-sigout") as HTMLElement;
-  if (x.style.visibility === "hidden") {
-    x.style.visibility = "visible";
+  event.preventDefault()
+  var x = document.getElementById('alert-sigout') as HTMLElement
+  if (x.style.visibility === 'hidden') {
+    x.style.visibility = 'visible'
   } else {
-    x.style.visibility = "hidden";
+    x.style.visibility = 'hidden'
   }
 }
 
-alertOverlay.onclick = toggleAlertSigout;
-alertCancel.onclick = toggleAlertSigout;
-alertClose.onclick = toggleAlertSigout;
-signOut.onclick = toggleAlertSigout;
+alertOverlay.onclick = toggleAlertSigout
+alertCancel.onclick = toggleAlertSigout
+alertClose.onclick = toggleAlertSigout
+signOut.onclick = toggleAlertSigout
 
 // ============================ Catergory NFT =====================================
-var catergoryBtns = document.querySelectorAll<HTMLButtonElement>(".catergory-btn");
+var catergoryBtns = document.querySelectorAll<HTMLButtonElement>('.catergory-btn')
 
 const handleResetBtn = (number: number) => {
   for (var i = 0; i < catergoryBtns.length; i++) {
-    catergoryBtns[i].style.backgroundColor = 'var(--color-white)';
-    catergoryBtns[i].style.color = 'var(--color-primary)';
+    catergoryBtns[i].style.backgroundColor = 'var(--color-white)'
+    catergoryBtns[i].style.color = 'var(--color-primary)'
   }
-  catergoryBtns[number].style.backgroundColor = 'var(--color-primary)';
-  catergoryBtns[number].style.color = 'var(--color-white)';
+  catergoryBtns[number].style.backgroundColor = 'var(--color-primary)'
+  catergoryBtns[number].style.color = 'var(--color-white)'
 }
 
 const handleLoadNFTSale = () => {
-  handleResetBtn(1);
-  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
+  handleResetBtn(1)
+  const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
 
   if (nfts) {
     for (let i = 0; i < nfts.length; i++) {
-      var status: String | undefined = nfts[i].querySelector(".nft__status")?.innerHTML;
-      if (status != undefined && status != "Sale") {
-        nfts[i].style.display = "none";
-      }
-      else {
-        nfts[i].style.display = "flex";
+      var status: String | undefined = nfts[i].querySelector('.nft__status')?.innerHTML
+      if (status != undefined && status != 'Sale') {
+        nfts[i].style.display = 'none'
+      } else {
+        nfts[i].style.display = 'flex'
       }
     }
   }
 }
 const handleLoadNFTNotSale = () => {
-  handleResetBtn(2);
-  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
+  handleResetBtn(2)
+  const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
 
   if (nfts) {
     for (let i = 0; i < nfts.length; i++) {
-      var status: String | undefined = nfts[i].querySelector(".nft__status")?.innerHTML;
-      if (status != undefined && status == "Sale") {
-        nfts[i].style.display = "none";
-      }
-      else {
-        nfts[i].style.display = "flex";
+      var status: String | undefined = nfts[i].querySelector('.nft__status')?.innerHTML
+      if (status != undefined && status == 'Sale') {
+        nfts[i].style.display = 'none'
+      } else {
+        nfts[i].style.display = 'flex'
       }
     }
   }
 }
 const handleLoadNFTAll = () => {
-  handleResetBtn(0);
-  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
+  handleResetBtn(0)
+  const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
 
   if (nfts) {
     for (let i = 0; i < nfts.length; i++) {
-      nfts[i].style.display = "flex";
-
+      nfts[i].style.display = 'flex'
     }
   }
 }
 
 if (catergoryBtns.length > 0) {
-  catergoryBtns[0].onclick = handleLoadNFTAll;
-  catergoryBtns[1].onclick = handleLoadNFTSale;
-  catergoryBtns[2].onclick = handleLoadNFTNotSale;
+  catergoryBtns[0].onclick = handleLoadNFTAll
+  catergoryBtns[1].onclick = handleLoadNFTSale
+  catergoryBtns[2].onclick = handleLoadNFTNotSale
 }
 
 // ============================ Toggle Modal NFT =====================================
-const modalOverlay = document.getElementById("modal-buy-overlay-close") as HTMLElement;
-const modalCancel = document.getElementById("modal-buy-cancel") as HTMLElement;
-const modalClose = document.getElementById("modal-buy-close") as HTMLElement;
+const modalOverlay = document.getElementById('modal-buy-overlay-close') as HTMLElement
+const modalCancel = document.getElementById('modal-buy-cancel') as HTMLElement
+const modalClose = document.getElementById('modal-buy-close') as HTMLElement
 
 // funtion toggle
 const toggleModalBuyNFT = (event: any) => {
-    event.preventDefault();
-    var x = document.getElementById("modal-buy") as HTMLElement;
-    if (x.style.display === "none") {
-        x.style.display = "flex";
-    } else {
-        x.style.display = "none";
-    }
+  event.preventDefault()
+  var x = document.getElementById('modal-buy') as HTMLElement
+  if (x.style.display === 'none') {
+    x.style.display = 'flex'
+  } else {
+    x.style.display = 'none'
+  }
 }
 
-modalOverlay.onclick = toggleModalBuyNFT;
-modalCancel.onclick = toggleModalBuyNFT;
-modalClose.onclick = toggleModalBuyNFT;
-
-
-
+modalOverlay.onclick = toggleModalBuyNFT
+modalCancel.onclick = toggleModalBuyNFT
+modalClose.onclick = toggleModalBuyNFT

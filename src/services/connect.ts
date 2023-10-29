@@ -1,56 +1,49 @@
 import { ethers } from 'ethers'
 import { AppError } from '../constants'
 import { getDefaultProvider, getProvider } from './provider'
+import { convertWalletError } from '../utils/errors'
 
 export async function switchToNetwork(
   provider: any,
   chainId: ChainIdSupported,
 ): Promise<null | void> {
   const formattedChainId = ethers.BigNumber.from(chainId).toHexString()
-  console.log({ formattedChainId })
-  console.log({ provider })
-  if (!provider?.request) {
+  if (!provider) {
     return
   }
-
   if (!Object.keys(CHAIN_INFO).includes(chainId)) {
     throw new Error(AppError.NOT_SUPPORTED_CHAIN_ID)
   }
-  console.log({ formattedChainId })
-
-  console.log({ formattedChainId })
+  if (!window.ethereum) return
   try {
-    await provider.request({
+    await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
       params: [{ chainId: formattedChainId }],
     })
   } catch (error) {
-    if ((error as any).code === 4902) {
-      const info = CHAIN_INFO[chainId]
+    console.log(error)
+    const info = CHAIN_INFO[chainId]
 
-      await provider.request({
-        method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId: info.chainId,
-            chainName: info.chainName,
-            rpcUrls: [info.rpcUrl],
-            nativeCurrency: info.nativeCurrency,
-            blockExplorerUrls: [info.blockExplorerUrl],
-          },
-        ],
+    await window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [
+        {
+          chainId: info.chainId,
+          chainName: info.chainName,
+          rpcUrls: [info.rpcUrl],
+          nativeCurrency: info.nativeCurrency,
+          blockExplorerUrls: [info.blockExplorerUrl],
+        },
+      ],
+    })
+
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: formattedChainId }],
       })
-
-      try {
-        await provider.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: formattedChainId }],
-        })
-      } catch (error) {
-        console.debug('Added network but could not switch chains', error)
-      }
-    } else {
-      throw error
+    } catch (error) {
+      console.debug('Added network but could not switch chains', error)
     }
   }
 }
@@ -69,7 +62,22 @@ export async function connect() {
     })
   }
 }
-
+export async function connectAndSwitch() {
+  try {
+    await connect()
+      .then((res) => {})
+      .catch((err) => {
+        if (err.message === AppError.NOT_INSTALLED_METAMASK) {
+        }
+        console.log(convertWalletError(err))
+      })
+    const provider = getDefaultProvider()
+    if (!provider) {
+      return
+    }
+    await switchToNetwork(provider.provider, '4102')
+  } catch (error) {}
+}
 export async function getBalance(contractAddress: string) {
   if (typeof window.ethereum !== 'undefined') {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -82,9 +90,14 @@ export type ChainIdSupported = '4102'
 export const CHAIN_INFO = {
   '4102': {
     chainId: '4102',
+    chainIdHex: '0x1006',
     chainName: 'AIOZ Network Testnet',
     rpcUrl: 'https://eth-ds.testnet.aioz.network',
-    nativeCurrency: 'AIOZ',
+    nativeCurrency: {
+      name: 'AIOZ',
+      symbol: 'AIOZ',
+      decimals: 18,
+    },
     blockExplorerUrl: 'https://testnet.explorer.aioz.network',
   },
 }
