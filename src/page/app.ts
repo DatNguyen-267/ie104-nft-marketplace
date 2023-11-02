@@ -399,19 +399,19 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
       try {
-        await connect()
-        walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
-        loadAvatarLogin(true, walletAddress)
+        // await connect()
+        // walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
+        // loadAvatarLogin(true, walletAddress)
       } catch (error) {}
 
-      isConnected = true
-      const provider = getDefaultProvider()
-      walletAddress = (await provider?.getSigner().getAddress()) || ''
-      isConnected = true
+      // isConnected = true
+      // const provider = getDefaultProvider()
+      // walletAddress = (await provider?.getSigner().getAddress()) || ''
+      // isConnected = true
       await getAllNftOfMarket()
     } catch (error) {
-      isConnected = false
-      loadAvatarLogin(false, undefined)
+      // isConnected = false
+      // loadAvatarLogin(false, undefined)
     }
   }
 

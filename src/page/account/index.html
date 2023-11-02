@@ -1,272 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
-  <title>Document</title>
-</head>
-
-<body>
-  <!-- ===================================== Modal NFT ============================================= -->
-  <form class="modal-buy" id="modal-buy" style="display: none;">
-    <a href="#" class="modal-buy-overlay-close" id="modal-buy-overlay-close"></a>
-    <div class="modal-buy-container">
-      <div class="modal-buy__header">
-        <h4 class="modal-buy__title">Buy NFT</h4>
-        <div class="modal-buy__close" id="modal-buy-close">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>
-      <div class="modal-buy__main">
-
-        <div class="modal-buy__nft modal-buy__frame">
-          <div class="modal-buy__nft-info">
-            <img src="#" alt="" class="modal-buy__nft-img" id="modal-buy-nft-img">
-            <p class="modal-buy__nft-name" id="modal-buy-nft-name">NFT Name abc abc abc abc abc</p>
-          </div>
-          <div class="modal-buy__nft-price modal-buy-value">
-            <p class="number" id="modal-buy-nft-price">0.00000029</p>
-            <p class="unit">NFT</p>
+  <body>
+    <!-- ===================================== Modal NFT ============================================= -->
+    <form class="modal-buy" id="modal-buy" style="display: none">
+      <a href="#" class="modal-buy-overlay-close" id="modal-buy-overlay-close"></a>
+      <div class="modal-buy-container">
+        <div class="modal-buy__header">
+          <h4 class="modal-buy__title">Buy NFT</h4>
+          <div class="modal-buy__close" id="modal-buy-close">
+            <i class="fas fa-times"></i>
           </div>
         </div>
-        <div class="modal-buy__network modal-buy__frame">
-          <div class="modal-buy__network-info">
-            <img src="../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img">
-            <div class="modal-buy__network-content">
-              <p id="modal-buy-ether-id" class="modal-buy__network-id">id Etherium</p>
-              <p class="modal-buy__network-name">Etherium</p>
+        <div class="modal-buy__main">
+          <div class="modal-buy__nft modal-buy__frame">
+            <div class="modal-buy__nft-info">
+              <img src="#" alt="" class="modal-buy__nft-img" id="modal-buy-nft-img" />
+              <p class="modal-buy__nft-name" id="modal-buy-nft-name">
+                NFT Name abc abc abc abc abc
+              </p>
+            </div>
+            <div class="modal-buy__nft-price modal-buy-value">
+              <p class="number" id="modal-buy-nft-price">0.00000029</p>
+              <p class="unit">NFT</p>
             </div>
           </div>
-          <p class="modal-buy__network-status" id="modal-buy-status">
-            Connected
-          </p>
-
-        </div>
-        <div class="modal-buy__price modal-buy__frame-2">
-          <p class="modal-buy__price-title">Price</p>
-          <div class="modal-buy__price-value modal-buy-value">
-            <p class="number" id="modal-buy-price">0.0029</p>
-            <p class="unit">NFT</p>
+          <div class="modal-buy__network modal-buy__frame">
+            <div class="modal-buy__network-info">
+              <img src="../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img" />
+              <div class="modal-buy__network-content">
+                <p id="modal-buy-ether-id" class="modal-buy__network-id">id Etherium</p>
+                <p class="modal-buy__network-name">Etherium</p>
+              </div>
+            </div>
+            <p class="modal-buy__network-status" id="modal-buy-status">Connected</p>
+          </div>
+          <div class="modal-buy__price modal-buy__frame-2">
+            <p class="modal-buy__price-title">Price</p>
+            <div class="modal-buy__price-value modal-buy-value">
+              <p class="number" id="modal-buy-price">0.0029</p>
+              <p class="unit">NFT</p>
+            </div>
+          </div>
+          <div class="modal-buy__rarible modal-buy__frame-2">
+            <p class="modal-buy__rarible-title">Rarible fee</p>
+            <div class="modal-buy__rarible-value modal-buy-value">
+              <p class="number" id="modal-buy-rarible">1</p>
+              <p class="unit">%</p>
+            </div>
+          </div>
+          <div class="modal-buy__total modal-buy__frame-2">
+            <p class="modal-buy__total-title">Total</p>
+            <div class="modal-buy__total-value modal-buy-value">
+              <p class="number" id="modal-buy-total">0.029</p>
+              <p class="unit">NFT</p>
+            </div>
           </div>
         </div>
-        <div class="modal-buy__rarible modal-buy__frame-2">
-          <p class="modal-buy__rarible-title">Rarible fee</p>
-          <div class="modal-buy__rarible-value modal-buy-value">
-            <p class="number" id="modal-buy-rarible">1</p>
-            <p class="unit">%</p>
+        <div class="modal-buy__action">
+          <button class="modal-buy__action-ok" id="modal-buy-ok">OK</button>
+          <button class="modal-buy__action-cancel" id="modal-buy-cancel">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- ===================================== Header ============================================= -->
+    <!-- alert sign out -->
+    <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
+      <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
+      <div class="alert-container">
+        <div class="alert__close">
+          <i class="fas fa-times-circle" id="alert-close"></i>
+        </div>
+        <div class="alert__main">
+          <i class="fab fa-gg-circle alert__main-icon"></i>
+          <p class="alert__main-title">SIGN OUT</p>
+          <div class="alert__main-content">
+            <span> Are you sure to sign out of your account? </span>
           </div>
         </div>
-        <div class="modal-buy__total modal-buy__frame-2">
-          <p class="modal-buy__total-title">Total</p>
-          <div class="modal-buy__total-value modal-buy-value">
-            <p class="number" id="modal-buy-total">0.029</p>
-            <p class="unit">NFT</p>
+        <div class="alert__action">
+          <button class="alert__action-ok" id="alert-ok">OK</button>
+          <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- popup user -->
+    <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden">
+      <a href="#" class="overlay-close" id="close-pop-up-user"></a>
+      <div class="pop-up-container">
+        <div class="user-info">
+          <div class="avatar"></div>
+          <div class="user__name" id="pop-up-user-name">
+            <span>User Name</span>
           </div>
         </div>
-      </div>
-      <div class="modal-buy__action">
-        <button class="modal-buy__action-ok" id="modal-buy-ok">OK</button>
-        <button class="modal-buy__action-cancel" id="modal-buy-cancel">Cancel</button>
-      </div>
-    </div>
-  </form>
-
-  <!-- ===================================== Header ============================================= -->
-  <!-- alert sign out -->
-  <div class="alert alert--default" id="alert-sigout" style="visibility: hidden;">
-    <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
-    <div class="alert-container">
-      <div class="alert__close">
-        <i class="fas fa-times-circle" id="alert-close"></i>
-      </div>
-      <div class="alert__main">
-        <i class="fab fa-gg-circle alert__main-icon"></i>
-        <p class="alert__main-title">SIGN OUT</p>
-        <div class="alert__main-content">
-          <span>
-            Are you sure to sign out of your account?
-          </span>
+        <div class="pop-up-nav">
+          <ul class="pop-up-nav__link">
+            <li>
+              <!-- <i class="fa-solid fa-arrows-rotate"></i> -->
+              <a href="/connectWallet.html">
+                <i class="fas fa-wallet"></i>
+                Switch wallet
+              </a>
+            </li>
+            <li>
+              <a href="/account.html">
+                <i class="fas fa-book"></i>
+                Collection
+              </a>
+            </li>
+            <li id="header-sign-out">
+              <a href="#">
+                <i class="fas fa-sign-out-alt"></i>
+                Sign Out
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="alert__action">
-        <button class="alert__action-ok" id="alert-ok">OK</button>
-        <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
-      </div>
     </div>
-  </div>
 
-  <!-- popup user -->
-  <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden;">
-    <a href="#" class="overlay-close" id="close-pop-up-user"></a>
-    <div class="pop-up-container">
-      <div class="user-info">
-        <div class="avatar"></div>
-        <div class="user__name" id="pop-up-user-name">
-          <span>User Name</span>
-        </div>
-      </div>
-      <div class="pop-up-nav">
-        <ul class="pop-up-nav__link">
-          <li>
-            <!-- <i class="fa-solid fa-arrows-rotate"></i> -->
-            <a href="/connectWallet.html">
-              <i class="fas fa-wallet"></i>
-              Switch wallet
-            </a>
-          </li>
-          <li>
-            <a href="/account.html">
-              <i class="fas fa-book"></i>
-              Collection
-            </a>
-          </li>
-          <li id="header-sign-out">
-            <a href="#">
-              <i class="fas fa-sign-out-alt"></i>
-              Sign Out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- header -->
-  <header class="header" id="header-template">
-    <input type="checkbox" id="nav-toggle">
-    <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
-    <a class="header__logo" href="/">
-      <i class="fab fa-gg-circle"></i>
-      <span>NFTMarket</span>
-    </a>
-    <nav class="header__nav">
-      <ul class="header__nav-link">
-        <li><a href="/">Home</a></li>
-        <li><a href="/explore.html">Marketplace</a></li>
-        <li><a href="/create.html">Create NFT</a></li>
-      </ul>
-    </nav>
-    <div class="header__user">
-      <a href="#pop-up-user" class="avatar" id="header-avatar" style="display: none;"></a>
-      <a href="/connectWallet.html">
-        <button class="filled--button secondary header__nav-btn" id="btn-login">
-          <i class="fas fa-wallet"></i>
-          Connect Wallet
-        </button>
+    <!-- header -->
+    <header class="header" id="header-template">
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
+      <a class="header__logo" href="/">
+        <i class="fab fa-gg-circle"></i>
+        <span>NFTMarket</span>
       </a>
-    </div>
-  </header>
+      <nav class="header__nav">
+        <ul class="header__nav-link">
+          <li><a href="/">Home</a></li>
+          <li><a href="/explore.html">Marketplace</a></li>
+          <li><a href="/create.html">Create NFT</a></li>
+        </ul>
+      </nav>
+      <div class="header__user">
+        <a href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></a>
+        <a href="/connectWallet.html">
+          <button class="filled--button secondary header__nav-btn" id="btn-login">
+            <i class="fas fa-wallet"></i>
+            Connect Wallet
+          </button>
+        </a>
+      </div>
+    </header>
 
-  <!-- ===================================== Main ============================================= -->
-  <!-- No Connect -->
-  <!-- <div id="container-no-connection">
+    <!-- ===================================== Main ============================================= -->
+    <!-- No Connect -->
+    <!-- <div id="container-no-connection">
     <button id="btn-connect">Connect your wallet to see your nfts</button>
   </div> -->
 
-  <div id="container-no-connection" class="container-no-connect" >
-    <div class="no-connect-frame">
-      <div class="no-connect__main">
-        <i class="fab fa-gg-circle no-connect__main-icon"></i>
-        <p class="no-connect__main-title">MY ACCOUNT</p>
-        <div class="no-connect__main-content">
-          <span>
-            Please connect your wallet to see your NFTs
-          </span>
+    <div id="container-no-connection" class="container-no-connect">
+      <div class="no-connect-frame">
+        <div class="no-connect__main">
+          <i class="fab fa-gg-circle no-connect__main-icon"></i>
+          <p class="no-connect__main-title">MY ACCOUNT</p>
+          <div class="no-connect__main-content">
+            <span> Please connect your wallet to see your NFTs </span>
+          </div>
+        </div>
+        <div class="no-connect__action">
+          <button id="btn-connect" class="no-connect__action-ok">Connect Wallet</button>
         </div>
       </div>
-      <div class="no-connect__action">
-          <button id="btn-connect" class="no-connect__action-ok" >Connect Wallet</button>
-      </div>
     </div>
-  </div>
 
-  <!-- Connected -->
-  <!-- <div id="container-connected" style="display: none">
+    <!-- Connected -->
+    <!-- <div id="container-connected" style="display: none">
     <div id="label-wallet-status">No connection</div>
     <div id="label-wallet-address">0x000000000000000000000000000000000000000000000</div>
     <div id="label-wallet-native-balance"></div>
     <div id="list-token__container" class="list-token__container"></div>
     <div id="list-nft__container" class="list-nft__container"></div>
   </div> -->
-  <div id="container-connected" style="display: none">
-
-    <!-- Info -->
-    <div class="info">
-      <div class="container">
-        <div class="info__bg">
-        </div>
-        <div class="grid wide">
-
-          <!-- Wallet -->
-          <div class="info__user">
-            <img class="info__user-avatar"
-              src="../../assets/images/AvatarDefault.webp"
-              alt="">
-            <h2 class="info__user-name" id="label-wallet-address">
-              0x000...0000
-            </h2>
-            <div class="info__user-detail">
-              <div class="wallet__status">
-                <h3 class="wallet__status-title">Status</h3>
-                <p class="wallet__status-value" id="label-wallet-status">No Connection</p>
+    <div id="container-connected" style="display: none">
+      <!-- Info -->
+      <div class="info">
+        <div class="container">
+          <div class="info__bg"></div>
+          <div class="grid wide">
+            <!-- Wallet -->
+            <div class="info__user">
+              <img class="info__user-avatar" src="../../assets/images/AvatarDefault.webp" alt="" />
+              <h2 class="info__user-name" id="label-wallet-address">0x000...0000</h2>
+              <div class="info__user-detail">
+                <div class="wallet__status">
+                  <h3 class="wallet__status-title">Status</h3>
+                  <p class="wallet__status-value" id="label-wallet-status">No Connection</p>
+                </div>
+                <div class="wallet__balance">
+                  <h3 class="wallet__balance-title">Balance</h3>
+                  <h3 class="wallet__balance-value" id="label-wallet-native-balance">
+                    129,21313234 ETH
+                  </h3>
+                </div>
               </div>
-              <div class="wallet__balance">
-                <h3 class="wallet__balance-title">Balance
-                </h3>
-                <h3 class="wallet__balance-value" id="label-wallet-native-balance">129,21313234 ETH</h3>
-              </div>
+              <button>deposit</button>
+              <button>import collection</button>
             </div>
-          </div>
 
-          <!-- List erc20 token -->
-          <div class="info__list-token">
-            <h3 class="list-token__title">List Token</h3>
-            <div id="list-token__container" class="list-token__container">
-              
+            <!-- List erc20 token -->
+            <div class="info__list-token">
+              <h3 class="list-token__title">List Token</h3>
+              <div id="list-token__container" class="list-token__container"></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- List nft -->
-    <div class="list-nft">
-      <div class="grid wide ">
-        <div class="container">
-          <div class="list-nft__head">
-            <div class="row">
-              <div class="col l-3 m-6 c-12">
-                <h3 class="list-nft__title">NFTs</h3>
+      <!-- List nft -->
+      <div class="list-nft">
+        <div class="grid wide">
+          <div class="container">
+            <div class="list-nft__head">
+              <div class="row">
+                <div class="col l-3 m-6 c-12">
+                  <h3 class="list-nft__title">NFTs</h3>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col l-6 m-6 c-12">
-                <div class="list-nft__catergory">
-                  <button class="filled--button outline tertiary catergory-btn">
-                    <span class="text--button">All</span>
-                  </button>
-                  <button class="filled--button outline tertiary catergory-btn">
-                    <span class="text--button">On sale</span>
-                  </button>
-                  <button class="filled--button outline tertiary catergory-btn">
-                    <span class="text--button">Not for sale</span>
-                  </button>
+              <div class="row">
+                <div class="col l-6 m-6 c-12">
+                  <div class="list-nft__catergory">
+                    <button class="filled--button outline tertiary catergory-btn">
+                      <span class="text--button">All</span>
+                    </button>
+                    <button class="filled--button outline tertiary catergory-btn">
+                      <span class="text--button">On sale</span>
+                    </button>
+                    <button class="filled--button outline tertiary catergory-btn">
+                      <span class="text--button">Not for sale</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
+            <div id="list-nft__container" class="list-nft__container row"></div>
           </div>
-          <div id="list-nft__container" class="list-nft__container row"></div>
-
         </div>
       </div>
-
     </div>
-  </div>
 
-  <!-- NFT ITEM Template -->
-  <!-- <div id="nft-template">
+    <!-- NFT ITEM Template -->
+    <!-- <div id="nft-template">
     <div class="nft__container" data-token-id="" data-clt-address="" data-loading="">
       <div class="nft__img-container">
         <img class="nft__img" src="#" alt="" />
@@ -281,53 +266,58 @@
     </div>
   </div> -->
 
-  <div id="nft-template" style="display: none;">
-    <div class="col l-3 m-6 c-12">
-      <div class="nft-item ">
-        <div class="nft-card nft__container" data-token-id="" data-clt-address="" data-loading="">
-          <div class="nft__description" style="display: none;"></div>
-          <div class="nft__metadataUri" style="display: none;"></div>
-          <div class="nft__status" style="display: none;"></div>
-          <img class="nft-card__img nft__img" src="../../assets/images/AvatarDefault.webp" alt="">
-          <div class="nft-card__detail">
-            <div class="nft-card__info">
-              <div class="nft-card__address">
-                <p class="nft-card__address-value nft__address" title="0x0000000000000000000000">
-                  0x0000000000000000000000
-                </p>
-              </div>
-              <div class="nft-card__title">
-                <p class="nft-card__name nft__title" title="NFT-card Name">
-                  NFT Name
-                </p>
-                <p class="nft-card__order nft__order">#34</p>
-              </div>
-              <div class="nft-card__user">
-                <div class="avatar nft-card__user-avatar"></div>
-                <div class="nft-card__user-name nft__user-name" title="User Name 10 1023 02392 10393">
-                  User Name 10 1023 02392 10393
+    <div id="nft-template" style="display: none">
+      <div class="col l-3 m-6 c-12">
+        <div class="nft-item">
+          <div class="nft-card nft__container" data-token-id="" data-clt-address="" data-loading="">
+            <div class="nft__description" style="display: none"></div>
+            <div class="nft__metadataUri" style="display: none"></div>
+            <div class="nft__status" style="display: none"></div>
+            <img
+              class="nft-card__img nft__img"
+              src="../../assets/images/AvatarDefault.webp"
+              alt=""
+            />
+            <div class="nft-card__detail">
+              <div class="nft-card__info">
+                <div class="nft-card__address">
+                  <p class="nft-card__address-value nft__address" title="0x0000000000000000000000">
+                    0x0000000000000000000000
+                  </p>
+                </div>
+                <div class="nft-card__title">
+                  <p class="nft-card__name nft__title" title="NFT-card Name">NFT Name</p>
+                  <p class="nft-card__order nft__order">#34</p>
+                </div>
+                <div class="nft-card__user">
+                  <div class="avatar nft-card__user-avatar"></div>
+                  <div
+                    class="nft-card__user-name nft__user-name"
+                    title="User Name 10 1023 02392 10393"
+                  >
+                    User Name 10 1023 02392 10393
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="nft-card__action">
-              <div class="nft-card__price">
-                <span class="nft-card__price-title">Price</span>
-                <div class="nft-card__price-value">
-                  <span class="nft-card__price-number  nft__price" title="1.6363">1.6363</span>
-                  <span class="nft-card__price-unit">WBNB</span>
+              <div class="nft-card__action">
+                <div class="nft-card__price">
+                  <span class="nft-card__price-title">Price</span>
+                  <div class="nft-card__price-value">
+                    <span class="nft-card__price-number nft__price" title="1.6363">1.6363</span>
+                    <span class="nft-card__price-unit">WBNB</span>
+                  </div>
                 </div>
+                <button
+                  class="filled--button outline tertiary nft-card__btn nft__button-sell"
+                  style="display: none"
+                >
+                  <span class="text--button">Sell NFT</span>
+                </button>
               </div>
-              <button class="filled--button outline tertiary nft-card__btn nft__button-sell" style="display: none;">
-                <span class="text--button">Sell NFT</span>
-              </button>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
-  </div>
-</body>
-
+  </body>
 </html>

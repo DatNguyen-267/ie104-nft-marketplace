@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import { NFTStorage } from 'nft.storage'
-import { NFT_ABI } from '../abis'
+import { MARKETPLACE_ABI, NFT_ABI } from '../abis'
 import { AppError, MARKETPLACE_ADDRESS, NFT_ADDRESS, STORAGE_API_KEY } from '../constants'
 import { ProviderOptions } from '../types'
 import { MetadataInput } from '../types/metadata'
@@ -25,6 +25,7 @@ export async function createMetadata(file: File, title: string, description: str
     throw error
   }
 }
+
 export async function approveSpenderToAccessNft(
   cltAddress: string,
   spenderAddress = MARKETPLACE_ADDRESS,
@@ -32,7 +33,7 @@ export async function approveSpenderToAccessNft(
   options?: ProviderOptions,
 ) {
   try {
-    const provider = options ? options.provider : getDefaultProvider()
+    const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
@@ -44,6 +45,7 @@ export async function approveSpenderToAccessNft(
     throw error
   }
 }
+
 export async function mintNFT(
   cltAddress: string,
   addressTo: string,
@@ -65,9 +67,10 @@ export async function mintNFT(
     throw error
   }
 }
+
 export async function getTokenUri(cltAddress: string, tokenId: number, options?: ProviderOptions) {
   try {
-    const provider = options ? options.provider : getDefaultProvider()
+    const provider = getProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
@@ -81,7 +84,7 @@ export async function getTokenUri(cltAddress: string, tokenId: number, options?:
 
 async function getOwner(cltAddress: string, tokenId: number, options?: ProviderOptions) {
   try {
-    const provider = options ? options.provider : getDefaultProvider()
+    const provider = getProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
@@ -135,7 +138,7 @@ export function listenForTransactionMined(transactionResponse: any, provider: an
 export async function getAllNftOfCollection(collectionAddress: string, walletAddress: string) {
   try {
     let listTokenId: number[] = []
-    const provider = getDefaultProvider()
+    const provider = getProvider()
     const contract = new ethers.Contract(collectionAddress, NFT_ABI, provider)
     const balanceOf = await contract.balanceOf(walletAddress)
     if (balanceOf === 0) return
@@ -165,4 +168,25 @@ export async function getMetadata(tokenUri: string) {
   return fetch(`https://ipfs.io/ipfs${url}`)
     .then((res) => res.json())
     .catch((err) => undefined)
+}
+
+/**
+ * @notice
+ * @param from: address of sender
+ * @param to: address of receiver
+ * @param tokenId: array of tokenId
+ */
+export async function transferFrom(from: string, to: string, tokenId: string) {
+  try {
+    const provider = getDefaultProvider()
+    if (!provider) {
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
+    }
+    const nftContract = new ethers.Contract(NFT_ADDRESS, NFT_ABI, provider)
+    const response = await nftContract.transferFrom(from, to, tokenId)
+    console.log({ response })
+    return {}
+  } catch (error) {
+    throw error
+  }
 }

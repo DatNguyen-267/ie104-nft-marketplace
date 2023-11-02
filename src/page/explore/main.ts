@@ -94,7 +94,7 @@ async function handleConnect() {
     connectAndSwitch()
   } catch (error) {}
 }
-handleConnect()
+
 // Check Login
 let login: boolean = false
 if (login === (true as boolean)) {
@@ -301,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return tokenItemNode
   }
   async function getAllNftOfMarket() {
-    if (!isConnected) return
     try {
       const collections = await viewMarketCollections()
       console.log({ collections })
@@ -368,19 +367,17 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
       try {
-        await connect()
-        walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
-        loadAvatarLogin(true, walletAddress)
+        // await connect()
+        // walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
+        // loadAvatarLogin(true, walletAddress)
       } catch (error) {}
 
-      isConnected = true
-      const provider = getDefaultProvider()
-      walletAddress = (await provider?.getSigner().getAddress()) || ''
-      isConnected = true
+      // const provider = getDefaultProvider()
+      // walletAddress = (await provider?.getSigner().getAddress()) || ''
       await getAllNftOfMarket()
     } catch (error) {
       isConnected = false
-      loadAvatarLogin(false, undefined)
+      // loadAvatarLogin(false, undefined)
     }
   }
 

@@ -148,9 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if (listTokenContainer && balance) {
             const tokenItemNode = document.createElement('div')
             tokenItemNode.className = 'list-token__item'
-            tokenItemNode.innerHTML = shortPrice(
-              `${ethers.utils.formatEther(balance)} ${ERC20_TOKEN_SUPPORTED[key].symbol}`,
-            )
+            tokenItemNode.innerHTML = `${ethers.utils.formatEther(balance)} ${
+              ERC20_TOKEN_SUPPORTED[key].symbol
+            }`
             tokenItemNode.title = `${ethers.utils.formatEther(balance)} ${
               ERC20_TOKEN_SUPPORTED[key].symbol
             }`
@@ -167,13 +167,13 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const balance = await getBalanceNativeToken(walletAddress)
       if (labelWalletNativeBalance && balance) {
-        labelWalletNativeBalance.innerHTML = shortPrice(
-          ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME,
-        )
+        labelWalletNativeBalance.innerHTML =
+          ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
         labelWalletNativeBalance.title = ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
       }
     } catch (error) {}
   }
+
   async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
     if (!nftItem) return
     const tokenItemNode = listNftContainer.querySelector(
