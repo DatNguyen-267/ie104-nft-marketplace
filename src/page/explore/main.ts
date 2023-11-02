@@ -143,13 +143,21 @@ const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
 
 // Toggle modal nft
 const toggleModalBuyNFT = (event: any) => {
+  
   event.preventDefault()
   var x = document.getElementById('modal-buy') as HTMLElement
+  
   if (x.style.display === 'none') {
     x.style.display = 'flex'
   } else {
     x.style.display = 'none'
   }
+}
+
+const openModalBuyNFT = () => {
+  console.log("modal-buy:")
+  var x = document.getElementById('modal-buy') as HTMLElement
+  x.style.display = 'flex'
 }
 
 modalOverlay.onclick = toggleModalBuyNFT
@@ -177,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         // open modal buy nft
+        openModalBuyNFT();
       } catch (error) {}
     } catch (error) {}
   }
