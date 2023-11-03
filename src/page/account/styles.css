@@ -46,6 +46,7 @@
   }
 } */
 @import url(./../../components/modal/modalBuyNFT/styles.css);
+@import url(./../../components/modal/modalSellNFT/styles.css);
 @import url(./../../components/NFTcard/styles.css);
 @import url(./../../components/header/styles.css);
 @import url(./../../components/alert/styles.css);
