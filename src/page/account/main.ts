@@ -564,6 +564,9 @@ const modalBuyClose = document.getElementById('modal-buy-close') as HTMLElement
 const modalSellOverlay = document.getElementById('modal-sell-overlay-close') as HTMLElement
 const modalSellCancel = document.getElementById('modal-sell-cancel') as HTMLElement
 const modalSellClose = document.getElementById('modal-sell-close') as HTMLElement
+const modalSellPrice = document.getElementById('modal-sell-price') as HTMLInputElement
+const modalSellRarible = document.getElementById('modal-sell-rarible') as HTMLElement;
+const modalSellTotal = document.getElementById('modal-sell-total') as HTMLElement;
 
 // Toggle buy modal nft
 const toggleModalBuyNFT = (event: any) => {
@@ -606,4 +609,31 @@ const openModalSellNFT = () => {
 modalSellOverlay.onclick = toggleModalSellNFT
 modalSellCancel.onclick = toggleModalSellNFT
 modalSellClose.onclick = toggleModalSellNFT
+
+ // Validate 
+ function validate() {
+  if (!Number(modalSellPrice.value) || modalSellPrice.value == undefined) {
+    modalSellPrice.classList.add("modal-input-error");
+    return false;
+  }
+  else {
+    modalSellPrice.classList.remove("modal-input-error");
+  }
+  return true;
+}
+
+// total modalpSellPrice
+function totalPrice() {
+  if (validate()) {
+    var x = Number(modalSellPrice.value);
+    var y = Number(modalSellRarible.innerHTML);
+    modalSellTotal.innerHTML = (x + (x * y / 100)).toString();
+    modalSellTotal.title = modalSellTotal.innerHTML + ' NFT'
+  }
+
+}
+
+modalSellPrice.onchange = totalPrice;
+modalSellPrice.onblur = totalPrice;
+modalSellTotal.title = modalSellTotal .innerHTML + ' NFT'
 
