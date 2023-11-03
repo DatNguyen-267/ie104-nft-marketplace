@@ -76,6 +76,65 @@
       </div>
     </form>
 
+    <form class="modal-sell" action="#" id="modal-sell" style="display: none;">
+      <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
+      <div class="modal-sell-container">
+        <div class="modal-sell__header">
+          <h4 class="modal-sell__title">Sell NFT</h4>
+          <div class="modal-sell__close" id="modal-sell-close">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+        <div class="modal-sell__main">
+  
+          <div class="modal-sell__nft modal-sell__frame">
+            <div class="modal-sell__nft-info">
+              <img src="./../assets/images/nftDefault.webp" alt="" class="modal-sell__nft-img" id="modal-sell-nft-img">
+              <p class="modal-sell__nft-name" id="modal-sell-nft-name">NFT Name abc abc abc abc abc</p>
+            </div>
+          </div>
+          <div class="modal-sell__network modal-sell__frame">
+            <div class="modal-sell__network-info">
+              <img src="./../assets/images/EtherIcon.webp" alt="" class="modal-sell__network-img">
+              <div class="modal-sell__network-content">
+                <p id="modal-sell-ether-id" class="modal-sell__network-id">id Etherium</p>
+                <p class="modal-sell__network-name">Etherium</p>
+              </div>
+            </div>
+            <p class="modal-sell__network-status" id="modal-sell-status">
+              Connected
+            </p>
+  
+          </div>
+          <div class="modal-sell__price modal-sell__frame-2">
+            <p class="modal-sell__price-title">Price</p>
+            <div class="modal-sell__price-value modal-sell-value">
+              <input type="text" class="number modal-sell-input" name="modal-sell-price" id="modal-sell-price"
+                placeholder="0">
+              <p class="unit">NFT</p>
+            </div>
+          </div>
+          <div class="modal-sell__rarible modal-sell__frame-2">
+            <p class="modal-sell__rarible-title">Rarible fee</p>
+            <div class="modal-sell__rarible-value modal-sell-value">
+              <p class="number" id="modal-sell-rarible">0</p>
+              <p class="unit">%</p>
+            </div>
+          </div>
+          <div class="modal-sell__total modal-sell__frame-2">
+            <p class="modal-sell__total-title">Total</p>
+            <div class="modal-sell__total-value modal-sell-value">
+              <p id="modal-sell-total" class="number">0</p>
+              <p class="unit">NFT</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-sell__action">
+          <button type="submit" class="modal-sell__action-ok" id="modal-sell-ok">OK</button>
+          <button class="modal-sell__action-cancel" id="modal-sell-cancel">Cancel</button>
+        </div>
+      </div>
+    </form>
     <!-- ===================================== Header ============================================= -->
     <!-- alert sign out -->
     <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">

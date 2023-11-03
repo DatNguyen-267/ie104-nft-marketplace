@@ -15,6 +15,7 @@ import './../components/avatar/styles.css'
 import './../components/button/styles.css'
 import './../components/header/styles.css'
 import './../components/modal/modalBuyNFT/styles.css'
+import './../components/modal/modalSellNFT/styles.css'
 import './../styles/base.css'
 import './../styles/grid.css'
 import './styles.css'
@@ -174,12 +175,15 @@ nftEg[2].style.backgroundImage =
   "url('https://uithcm-my.sharepoint.com/personal/19520171_ms_uit_edu_vn/Documents/IE104/image/NftEg3.png')"
 
 // ===================== NFTs ============================
-const modalOverlay = document.getElementById('modal-buy-overlay-close') as HTMLElement
-const modalCancel = document.getElementById('modal-buy-cancel') as HTMLElement
-const modalClose = document.getElementById('modal-buy-close') as HTMLElement
-const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
+const modalBuyOverlay = document.getElementById('modal-buy-overlay-close') as HTMLElement
+const modalBuyCancel = document.getElementById('modal-buy-cancel') as HTMLElement
+const modalBuyClose = document.getElementById('modal-buy-close') as HTMLElement
 
-// Toggle modal nft
+const modalSellOverlay = document.getElementById('modal-sell-overlay-close') as HTMLElement
+const modalSellCancel = document.getElementById('modal-sell-cancel') as HTMLElement
+const modalSellClose = document.getElementById('modal-sell-close') as HTMLElement
+
+// Toggle buy modal nft
 const toggleModalBuyNFT = (event: any) => {
   event.preventDefault()
   var x = document.getElementById('modal-buy') as HTMLElement
@@ -190,9 +194,36 @@ const toggleModalBuyNFT = (event: any) => {
   }
 }
 
-modalOverlay.onclick = toggleModalBuyNFT
-modalCancel.onclick = toggleModalBuyNFT
-modalClose.onclick = toggleModalBuyNFT
+const openModalBuyNFT = () => {
+  console.log("modal-buy:")
+  var x = document.getElementById('modal-buy') as HTMLElement
+  x.style.display = 'flex'
+}
+
+modalBuyOverlay.onclick = toggleModalBuyNFT
+modalBuyCancel.onclick = toggleModalBuyNFT
+modalBuyClose.onclick = toggleModalBuyNFT
+
+
+// Toggle sell modal
+const toggleModalSellNFT = (event: any) => {
+  event.preventDefault()
+  var x = document.getElementById('modal-sell') as HTMLElement
+  if (x.style.display === 'none') {
+    x.style.display = 'flex'
+  } else {
+    x.style.display = 'none'
+  }
+}
+const openModalSellNFT = () => {
+  console.log("modal-sell:")
+  var x = document.getElementById('modal-sell') as HTMLElement
+  x.style.display = 'flex'
+}
+
+modalSellOverlay.onclick = toggleModalSellNFT
+modalSellCancel.onclick = toggleModalSellNFT
+modalSellClose.onclick = toggleModalSellNFT
 
 // ******************* DOM LOADED ***********************
 document.addEventListener('DOMContentLoaded', () => {
