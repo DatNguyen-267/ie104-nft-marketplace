@@ -237,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         // open modal buy nft
+        openModalBuyNFT();
       } catch (error) {}
     } catch (error) {}
   }
