@@ -113,28 +113,6 @@ body {
     height: 204px !important;
 }
 
-
-/* Not found nft */
-.not-connect{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-.not-connect img{
-    width: 100%;
-    max-width: 500px;
-}
-.not-connect p{
-    font-size: 16px;
-    font-weight: 500;
-    max-width: 500px;
-    text-align: center;
-    line-height: 24px;
-    color: var(--color-sub-text-300);
-}
-
 /*======================== Reponsive ===================*/
 .col {
     display: flex;

@@ -206,8 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
       await switchToNetwork(getDefaultProvider(), '4102')
       walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
       loadAvatarLogin(true, walletAddress)
-      loadNoConnect(true)
-
       try {
         // open modal buy nft
         openModalBuyNFT();
@@ -240,16 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //   userName.innerHTML = 'User Name'
     //   userName.title = ''
     // }
-  }
-
-  function loadNoConnect(login: boolean){
-    const noConnect = document.getElementById('not-connect') as HTMLElement
-    if(login === (true as boolean)){
-      noConnect.style.display = 'none'
-    }
-    else {
-      noConnect.style.display = 'flex'
-    }
   }
 
   async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
@@ -415,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await connect()
         walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
         loadAvatarLogin(true, walletAddress)
-        loadNoConnect(true)
+       
       } catch (error) {}
 
       isConnected = true
@@ -426,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       isConnected = false
       loadAvatarLogin(false, undefined)
-      loadNoConnect(false)
+     
     }
   }
 
