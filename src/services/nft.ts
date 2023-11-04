@@ -29,7 +29,7 @@ export async function createMetadata(file: File, title: string, description: str
 export async function approveSpenderToAccessNft(
   cltAddress: string,
   spenderAddress = MARKETPLACE_ADDRESS,
-  tokenId: string,
+  tokenId: number,
   options?: ProviderOptions,
 ) {
   try {

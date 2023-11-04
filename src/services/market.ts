@@ -217,7 +217,7 @@ export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: numb
  * @param _tokenId: tokenId of the NFT
  * @param _askPrice: price for listing (in wei)
  */
-export async function createAskOrder(collectionAddress: string, tokenId: string, price: string) {
+export async function createAskOrder(collectionAddress: string, tokenId: number, price: string) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
@@ -241,7 +241,7 @@ export async function createAskOrder(collectionAddress: string, tokenId: string,
 
     const transaction = await marketContract.createAskOrder(
       collectionAddress,
-      parseInt(tokenId),
+      tokenId,
       ethers.utils.parseEther(price),
     )
     const transactionReceipt = await transaction.wait()

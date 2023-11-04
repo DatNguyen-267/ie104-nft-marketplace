@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import { AppError, DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
 import {
   connect,
+  connectAndSwitch,
   getAllNftOfCollection,
   getBalanceNativeToken,
   getDefaultProvider,
@@ -21,7 +22,7 @@ import {
   viewMarketCollections,
 } from '../../services/market'
 // Class name compatible with the template
-
+import { ModalSellControllerInstance } from '../../controller/modal-sell'
 const defaultNftItem = {
   collectionAddress: '',
   tokenId: '',
@@ -161,9 +162,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {}
   }
   async function handleSellNft(nftItem: NftItem) {
-    // open sell modal
-    openModalSellNFT()
-    // await createAskOrder(nftItem.collectionAddress, nftItem.tokenId.toString(), nftItem.price)
+    try {
+      await connectAndSwitch()
+      ModalSellControllerInstance.set(nftItem)
+      ModalSellControllerInstance.open()
+    } catch (error) {
+      console.log(error)
+    }
   }
   async function updateBalance() {
     try {
@@ -557,79 +562,3 @@ if (catergoryBtns.length > 0) {
 }
 
 // ============================ Toggle Modal NFT =====================================
-const modalBuyOverlay = document.getElementById('modal-buy-overlay-close') as HTMLElement
-const modalBuyCancel = document.getElementById('modal-buy-cancel') as HTMLElement
-const modalBuyClose = document.getElementById('modal-buy-close') as HTMLElement
-
-const modalSellOverlay = document.getElementById('modal-sell-overlay-close') as HTMLElement
-const modalSellCancel = document.getElementById('modal-sell-cancel') as HTMLElement
-const modalSellClose = document.getElementById('modal-sell-close') as HTMLElement
-const modalSellPrice = document.getElementById('modal-sell-price') as HTMLInputElement
-const modalSellRarible = document.getElementById('modal-sell-rarible') as HTMLElement
-const modalSellTotal = document.getElementById('modal-sell-total') as HTMLElement
-
-// Toggle buy modal nft
-const toggleModalBuyNFT = (event: any) => {
-  event.preventDefault()
-  var x = document.getElementById('modal-buy') as HTMLElement
-  if (x.style.display === 'none') {
-    x.style.display = 'flex'
-  } else {
-    x.style.display = 'none'
-  }
-}
-
-const openModalBuyNFT = () => {
-  console.log('modal-buy:')
-  var x = document.getElementById('modal-buy') as HTMLElement
-  x.style.display = 'flex'
-}
-
-modalBuyOverlay.onclick = toggleModalBuyNFT
-modalBuyCancel.onclick = toggleModalBuyNFT
-modalBuyClose.onclick = toggleModalBuyNFT
-
-// Toggle sell modal
-const toggleModalSellNFT = (event: any) => {
-  event.preventDefault()
-  var x = document.getElementById('modal-sell') as HTMLElement
-  if (x.style.display === 'none') {
-    x.style.display = 'flex'
-  } else {
-    x.style.display = 'none'
-  }
-}
-const openModalSellNFT = () => {
-  console.log('modal-sell:')
-  var x = document.getElementById('modal-sell') as HTMLElement
-  x.style.display = 'flex'
-}
-
-modalSellOverlay.onclick = toggleModalSellNFT
-modalSellCancel.onclick = toggleModalSellNFT
-modalSellClose.onclick = toggleModalSellNFT
-
-// Validate
-function validate() {
-  if (!Number(modalSellPrice.value) || modalSellPrice.value == undefined) {
-    modalSellPrice.classList.add('modal-input-error')
-    return false
-  } else {
-    modalSellPrice.classList.remove('modal-input-error')
-  }
-  return true
-}
-
-// total modalpSellPrice
-function totalPrice() {
-  if (validate()) {
-    var x = Number(modalSellPrice.value)
-    var y = Number(modalSellRarible.innerHTML)
-    modalSellTotal.innerHTML = (x + (x * y) / 100).toString()
-    modalSellTotal.title = modalSellTotal.innerHTML + ' NFT'
-  }
-}
-
-modalSellPrice.onchange = totalPrice
-modalSellPrice.onblur = totalPrice
-modalSellTotal.title = modalSellTotal.innerHTML + ' NFT'

@@ -65,7 +65,7 @@ class ModalBuyController {
       console.log(AppError.SOME_ERROR_HAS_OCCUR)
       return
     }
-
+    if (!this.nftItem) return
     try {
       const response = await buyTokenUsingWBNB(
         this.nftItem.collectionAddress,

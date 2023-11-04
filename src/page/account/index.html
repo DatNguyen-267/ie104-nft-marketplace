@@ -9,7 +9,7 @@
 
   <body>
     <!-- ===================================== Modal NFT ============================================= -->
-    <form class="modal-buy" id="modal-buy" style="display: none;">
+    <form class="modal-buy" id="modal-buy" style="display: none">
       <a href="#" class="modal-buy-overlay-close" id="modal-buy-overlay-close"></a>
       <div class="modal-buy-container">
         <div class="modal-buy__header">
@@ -19,11 +19,17 @@
           </div>
         </div>
         <div class="modal-buy__main">
-  
           <div class="modal-buy__nft modal-buy__frame">
             <div class="modal-buy__nft-info">
-              <img src="./../../assets/images/nftDefault.webp" alt="" class="modal-buy__nft-img" id="modal-buy-nft-img">
-              <p class="modal-buy__nft-name" id="modal-buy-nft-name">NFT Name abc abc abc abc abc</p>
+              <img
+                src="./../../assets/images/nftDefault.webp"
+                alt=""
+                class="modal-buy__nft-img"
+                id="modal-buy-nft-img"
+              />
+              <p class="modal-buy__nft-name" id="modal-buy-nft-name">
+                NFT Name abc abc abc abc abc
+              </p>
             </div>
             <div class="modal-buy__nft-price modal-buy-value">
               <p class="number" id="modal-buy-nft-price">0.00000029</p>
@@ -32,16 +38,13 @@
           </div>
           <div class="modal-buy__network modal-buy__frame">
             <div class="modal-buy__network-info">
-              <img src="../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img">
+              <img src="../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img" />
               <div class="modal-buy__network-content">
                 <p id="modal-buy-ether-id" class="modal-buy__network-id">id Etherium</p>
                 <p class="modal-buy__network-name">Etherium</p>
               </div>
             </div>
-            <p class="modal-buy__network-status" id="modal-buy-status">
-              Connected
-            </p>
-  
+            <p class="modal-buy__network-status" id="modal-buy-status">Connected</p>
           </div>
           <div class="modal-buy__price modal-buy__frame-2">
             <p class="modal-buy__price-title">Price</p>
@@ -71,8 +74,8 @@
         </div>
       </div>
     </form>
-  
-    <form class="modal-sell" action="#" id="modal-sell" style="display: none;">
+
+    <div class="modal-sell" action="#" id="modal-sell" style="display: none">
       <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
       <div class="modal-sell-container">
         <div class="modal-sell__header">
@@ -82,38 +85,50 @@
           </div>
         </div>
         <div class="modal-sell__main">
-  
           <div class="modal-sell__nft modal-sell__frame">
             <div class="modal-sell__nft-info">
-              <img src="./../../assets/images/nftDefault.webp" alt="" class="modal-sell__nft-img" id="modal-sell-nft-img">
-              <p class="modal-sell__nft-name" id="modal-sell-nft-name">NFT Name abc abc abc abc abc</p>
+              <img
+                src="./../../assets/images/nftDefault.webp"
+                alt=""
+                class="modal-sell__nft-img"
+                id="modal-sell-nft-img"
+              />
+              <p class="modal-sell__nft-name" id="modal-sell-nft-name">
+                NFT Name abc abc abc abc abc
+              </p>
             </div>
           </div>
           <div class="modal-sell__network modal-sell__frame">
             <div class="modal-sell__network-info">
-              <img src="./../../assets/images/EtherIcon.webp" alt="" class="modal-sell__network-img">
+              <img
+                src="./../../assets/images/EtherIcon.webp"
+                alt=""
+                class="modal-sell__network-img"
+              />
               <div class="modal-sell__network-content">
-                <p id="modal-sell-ether-id" class="modal-sell__network-id">id Etherium</p>
-                <p class="modal-sell__network-name">Etherium</p>
+                <p id="modal-sell-ether-id" class="modal-sell__network-id">AIOZ</p>
+                <p class="modal-sell__network-name">AIOZ Network</p>
               </div>
             </div>
-            <p class="modal-sell__network-status" id="modal-sell-status">
-              Connected
-            </p>
-  
+            <p class="modal-sell__network-status" id="modal-sell-status">Connected</p>
           </div>
           <div class="modal-sell__price modal-sell__frame-2">
             <p class="modal-sell__price-title">Price</p>
             <div class="modal-sell__price-value modal-sell-value">
-              <input type="text" class="number modal-sell-input" name="modal-sell-price" id="modal-sell-price"
-                placeholder="0">
-              <p class="unit">NFT</p>
+              <input
+                type="number"
+                class="number modal-sell-input"
+                name="modal-sell-price"
+                id="modal-sell-price"
+                placeholder="0"
+              />
+              <p class="unit">WBNB</p>
             </div>
           </div>
           <div class="modal-sell__rarible modal-sell__frame-2">
-            <p class="modal-sell__rarible-title">Rarible fee</p>
+            <p class="modal-sell__rarible-title">Creator fee</p>
             <div class="modal-sell__rarible-value modal-sell-value">
-              <p class="number" id="modal-sell-rarible">0</p>
+              <p class="number" id="modal-sell-fee">1</p>
               <p class="unit">%</p>
             </div>
           </div>
@@ -121,7 +136,7 @@
             <p class="modal-sell__total-title">Total</p>
             <div class="modal-sell__total-value modal-sell-value">
               <p id="modal-sell-total" class="number">0</p>
-              <p class="unit">NFT</p>
+              <p class="unit">WBNB</p>
             </div>
           </div>
         </div>
@@ -130,7 +145,7 @@
           <button class="modal-sell__action-cancel" id="modal-sell-cancel">Cancel</button>
         </div>
       </div>
-    </form>
+    </div>
 
     <!-- ===================================== Header ============================================= -->
     <!-- alert sign out -->
