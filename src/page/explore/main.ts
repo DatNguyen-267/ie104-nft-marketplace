@@ -69,7 +69,6 @@ enum PageElementId {
   ListNftContainer = '#list-nft__container',
 }
 const userController = userControllerInstance
-let walletAddress: string = userController.walletAddress.value
 var listNfts: NftItem[] = []
 
 // ========================== Header =======================================

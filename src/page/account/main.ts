@@ -23,6 +23,7 @@ import {
 } from '../../services/market'
 // Class name compatible with the template
 import { ModalSellControllerInstance } from '../../controller/modal-sell'
+import { userControllerInstance } from '../../controller/user'
 const defaultNftItem = {
   collectionAddress: '',
   tokenId: '',
@@ -86,6 +87,7 @@ enum PageElementId {
 var walletAddress = ''
 var isConnected = false
 var listNfts: NftItem[] = []
+const userController = userControllerInstance
 
 document.addEventListener('DOMContentLoaded', () => {
   // ELEMENTS
@@ -164,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function handleSellNft(nftItem: NftItem) {
     try {
       await connectAndSwitch()
+      await userController.connect()
       ModalSellControllerInstance.set(nftItem)
       ModalSellControllerInstance.open()
     } catch (error) {
