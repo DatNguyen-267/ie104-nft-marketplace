@@ -1,13 +1,4 @@
-import './styles.css'
-import './../../styles/base.css'
-import './../../styles/grid.css'
-import './../../components/avatar/styles.css'
-import './../../components/header/styles.css'
-import './../../components/alert/styles.css'
-import './../../components/button/styles.css'
-import './../../components/NFTcard/styles.css'
-import './../../components/modal/modalBuyNFT/styles.css'
-import './../../components/modal/modalSellNFT/styles.css'
+import { userControllerInstance } from '../../controller/user'
 import {
   connect,
   connectAndSwitch,
@@ -17,10 +8,21 @@ import {
   getUrlImage,
   switchToNetwork,
 } from '../../services'
+import { viewAsksByCollection, viewMarketCollections } from '../../services/market'
 import { NftItem } from '../../types/nft'
 import { shorterAddress } from '../../utils/common'
-import { viewAsksByCollection, viewMarketCollections } from '../../services/market'
-
+import './../../components/NFTcard/styles.css'
+import './../../components/alert/styles.css'
+import './../../components/avatar/styles.css'
+import './../../components/button/styles.css'
+import './../../components/header/styles.css'
+import './../../components/modal/modalBuyNFT/styles.css'
+import './../../components/modal/modalSellNFT/styles.css'
+import './../../styles/base.css'
+import './../../styles/grid.css'
+import './styles.css'
+import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
+import { ModalBuyControllerInstance } from '../../controller/modal-buy'
 type NftItemElementObject = {
   eContainer: HTMLDivElement
   eImage: HTMLImageElement
@@ -48,18 +50,7 @@ enum NftItemClass {
   AddressNFT = 'nft__address',
   OrderNFT = 'nft__order',
 }
-const defaultNftItem = {
-  collectionAddress: '',
-  tokenId: '',
-  title: '',
-  description: '',
-  tokenUri: '',
-  owner: '',
-  status: 'Sale',
-  imageUri: '',
-  imageGatewayUrl: '',
-  price: '0',
-}
+const defaultNftItem = DEFAULT_NFT_ITEM
 enum LoadingStatus {
   Pending = 'pending',
   Success = 'success',
@@ -77,8 +68,8 @@ enum PageElementId {
   ButtonConnect = '#btn-connect',
   ListNftContainer = '#list-nft__container',
 }
-var walletAddress: string = ''
-var isConnected = false
+const userController = userControllerInstance
+let walletAddress: string = userController.walletAddress.value
 var listNfts: NftItem[] = []
 
 // ========================== Header =======================================
@@ -89,22 +80,6 @@ const alertOverlay = document.getElementById('alert-overlay-close') as HTMLEleme
 const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
-
-async function handleConnect() {
-  try {
-    connectAndSwitch()
-  } catch (error) {}
-}
-
-// Check Login
-let login: boolean = false
-if (login === (true as boolean)) {
-  headerAvatar.style.display = 'flex'
-  btnLogin.style.display = 'none'
-} else {
-  headerAvatar.style.display = 'none'
-  btnLogin.style.display = 'flex'
-}
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {
@@ -157,36 +132,12 @@ const toggleModalBuyNFT = (event: any) => {
 }
 
 const openModalBuyNFT = () => {
-  console.log("modal-buy:")
+  console.log('modal-buy:')
   var x = document.getElementById('modal-buy') as HTMLElement
   x.style.display = 'flex'
 }
 
-modalBuyOverlay.onclick = toggleModalBuyNFT
-modalBuyCancel.onclick = toggleModalBuyNFT
-modalBuyClose.onclick = toggleModalBuyNFT
-
-
 // Toggle sell modal
-const toggleModalSellNFT = (event: any) => {
-  event.preventDefault()
-  var x = document.getElementById('modal-sell') as HTMLElement
-  if (x.style.display === 'none') {
-    x.style.display = 'flex'
-  } else {
-    x.style.display = 'none'
-  }
-}
-const openModalSellNFT = () => {
-  console.log("modal-sell:")
-  var x = document.getElementById('modal-sell') as HTMLElement
-  x.style.display = 'flex'
-}
-
-modalSellOverlay.onclick = toggleModalSellNFT
-modalSellCancel.onclick = toggleModalSellNFT
-modalSellClose.onclick = toggleModalSellNFT
-
 
 // ******************* DOM LOADED ***********************
 document.addEventListener('DOMContentLoaded', () => {
@@ -202,13 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
   var listNftContainer = document.querySelector(PageElementId.ListNftContainer) as HTMLDivElement
   async function handleBuyNft(nftItem: NftItem) {
     try {
-      await connect()
-      await switchToNetwork(getDefaultProvider(), '4102')
-      walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
-      loadAvatarLogin(true, walletAddress)
+      await connectAndSwitch()
+      await userController.connect()
+
       try {
         // open modal buy nft
-        openModalBuyNFT();
+        ModalBuyControllerInstance.set(nftItem)
+        openModalBuyNFT()
       } catch (error) {}
     } catch (error) {}
   }
@@ -217,27 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
       await connect()
       await switchToNetwork(getDefaultProvider(), '4102')
     } catch (error) {}
-  }
-
-  function loadAvatarLogin(login: boolean, walletAddress: string | undefined) {
-    // show or hide avatar
-    if (login === (true as boolean)) {
-      headerAvatar.style.display = 'flex'
-      btnLogin.style.display = 'none'
-    } else {
-      headerAvatar.style.display = 'none'
-      btnLogin.style.display = 'flex'
-    }
-
-    // load wallet address
-    const userName = document.getElementById('pop-up-user-name') as HTMLElement
-    // if (walletAddress) {
-    //   userName.innerHTML = shorterAddress(walletAddress, 10) || ''
-    //   userName.title = walletAddress
-    // } else {
-    //   userName.innerHTML = 'User Name'
-    //   userName.title = ''
-    // }
   }
 
   async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
@@ -275,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.ePrice.title = nftItem.price
     eData.eStatus.innerHTML = nftItem.status
     eData.eMetadataUri.innerHTML = nftItem.tokenUri
-    eData.eUserName.innerHTML = shorterAddress(walletAddress) || ''
-    eData.eUserName.title = walletAddress || ''
+    eData.eUserName.innerHTML = shorterAddress(nftItem.seller) || ''
+    eData.eUserName.title = nftItem.seller || ''
     eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
     eData.eAddressNFT.title = nftItem.collectionAddress
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
@@ -319,8 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
     eData.ePrice.title = nftItem.price
     eData.eStatus.innerHTML = nftItem.status
     eData.eMetadataUri.innerHTML = nftItem.tokenUri
-    eData.eUserName.innerHTML = shorterAddress(walletAddress) || ''
-    eData.eUserName.title = walletAddress
+    eData.eUserName.innerHTML = shorterAddress(nftItem.seller) || ''
+    eData.eUserName.title = nftItem.seller || ''
     eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
     eData.eAddressNFT.title = nftItem.collectionAddress
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
@@ -335,12 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
   async function getAllNftOfMarket() {
     try {
       const collections = await viewMarketCollections()
-      console.log({ collections })
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
             const asksOfCollection = await viewAsksByCollection(collectionAddress, 0, 100)
-            console.log({ asksOfCollection })
             if (
               asksOfCollection &&
               asksOfCollection.tokenIds &&
@@ -353,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   tokenId: tokenId,
                   status: 'Sale',
                   price: asksOfCollection.askInfo[index].price,
+                  seller: asksOfCollection.askInfo[index].seller,
                 })
               })
             }
@@ -363,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
       )
 
       // Convert the Set back to an array
-      console.log('create component')
       listNfts.forEach(async (nftItem: NftItem, index) => {
         listNftContainer.appendChild(await CreateNftItemComponent(nftItem))
       })
@@ -390,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch (error) {}
         }),
       )
-      console.log({ listNfts })
     } catch (error) {
       console.log(error)
     }
@@ -399,18 +326,9 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
       try {
-        // await connect()
-        // walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
-        // loadAvatarLogin(true, walletAddress)
       } catch (error) {}
-
-      // const provider = getDefaultProvider()
-      // walletAddress = (await provider?.getSigner().getAddress()) || ''
       await getAllNftOfMarket()
-    } catch (error) {
-      isConnected = false
-      // loadAvatarLogin(false, undefined)
-    }
+    } catch (error) {}
   }
 
   initPage()

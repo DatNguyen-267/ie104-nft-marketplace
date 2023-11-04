@@ -10,4 +10,5 @@ export interface NftItem {
   imageUri: string
   imageGatewayUrl: string
   price: string
+  seller?: string
 }

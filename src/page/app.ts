@@ -195,7 +195,7 @@ const toggleModalBuyNFT = (event: any) => {
 }
 
 const openModalBuyNFT = () => {
-  console.log("modal-buy:")
+  console.log('modal-buy:')
   var x = document.getElementById('modal-buy') as HTMLElement
   x.style.display = 'flex'
 }
@@ -203,7 +203,6 @@ const openModalBuyNFT = () => {
 modalBuyOverlay.onclick = toggleModalBuyNFT
 modalBuyCancel.onclick = toggleModalBuyNFT
 modalBuyClose.onclick = toggleModalBuyNFT
-
 
 // Toggle sell modal
 const toggleModalSellNFT = (event: any) => {
@@ -216,7 +215,7 @@ const toggleModalSellNFT = (event: any) => {
   }
 }
 const openModalSellNFT = () => {
-  console.log("modal-sell:")
+  console.log('modal-sell:')
   var x = document.getElementById('modal-sell') as HTMLElement
   x.style.display = 'flex'
 }
@@ -237,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         // open modal buy nft
-        openModalBuyNFT();
+        openModalBuyNFT()
       } catch (error) {}
     } catch (error) {}
   }

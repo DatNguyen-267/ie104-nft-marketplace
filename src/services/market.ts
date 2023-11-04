@@ -1,8 +1,8 @@
 import { BigNumber, ethers } from 'ethers'
 import { MARKETPLACE_ABI } from '../abis'
-import { AppError, DEFAULT_ADDRESS, MARKETPLACE_ADDRESS } from '../constants'
+import { AppError, DEFAULT_ADDRESS, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
 import { approveSpenderToAccessNft } from './nft'
-import { getDefaultProvider, getProvider } from './provider'
+import { getDefaultProvider, getProvider, getRpcProvider } from './provider'
 import { approveTokenExchange } from './token-exchange'
 
 export type CollectionDetail = {
@@ -31,8 +31,11 @@ export async function viewMarketCollections(
     if (!provider) {
       throw new Error('Provider is not found')
     }
+
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    console.log({ marketContract })
     const collectionsResponse = await marketContract.viewCollections(cursor, size)
+
     const collectionDetails = collectionsResponse['collectionDetails']
     const collectionAddresses = collectionsResponse['collectionAddresses']
     return {
@@ -170,9 +173,9 @@ export async function viewAsksByCollection(
  * @notice Buy token with WBNB by matching the price of an existing ask order
  * @param _collection: contract address of the NFT
  * @param _tokenId: tokenId of the NFT purchased
- * @param _price: price (must be equal to the askPrice set by the seller)
+ * @param _price: price (must be equal to the askPrice set by the seller) unit Ethers
  */
-export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: string, price: string) {
+export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: number, price: string) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
@@ -186,22 +189,24 @@ export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: stri
     try {
       const receiptApprove: any = await approveTokenExchange(
         MARKETPLACE_ADDRESS,
-        collectionAddress,
-        price,
+        WBNB_ADDRESS,
+        ethers.utils.parseEther(price).toString(),
       )
       console.log(receiptApprove)
     } catch (error) {
+      console.log(error)
       throw new Error(AppError.APPROVE_TOKEN_EXCHANGE_FAILED)
     }
     const transaction = await marketContract.buyTokenUsingWBNB(
       collectionAddress,
-      parseInt(tokenId),
-      price,
+      tokenId,
+      ethers.utils.parseEther(price),
     )
     const transactionReceipt: any = await transaction.wait()
     console.log('buyTokenUsingWBNB Receipt:', transactionReceipt)
     return transactionReceipt
   } catch (error) {
+    console.log(error)
     throw error
   }
 }

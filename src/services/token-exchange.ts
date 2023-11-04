@@ -1,7 +1,7 @@
-import { ProviderOptions } from './../types/provider'
 import { ethers } from 'ethers'
-import { AppError, MARKETPLACE_ADDRESS } from '../constants'
 import { TOKEN_EXCHANGE_ABI } from '../abis'
+import { AppError, MARKETPLACE_ADDRESS } from '../constants'
+import { ProviderOptions } from '../types/provider'
 import { getDefaultProvider } from './provider'
 
 export async function approveTokenExchange(
@@ -11,7 +11,7 @@ export async function approveTokenExchange(
   providerOptions?: ProviderOptions,
 ) {
   try {
-    let provider = providerOptions ? providerOptions.provider : getDefaultProvider()
+    let provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
@@ -20,7 +20,7 @@ export async function approveTokenExchange(
       TOKEN_EXCHANGE_ABI,
       provider.getSigner(),
     )
-    const transaction = await tokenContract.approve(nftAddressGuy, ethers.utils.formatEther(wad))
+    const transaction = await tokenContract.approve(nftAddressGuy, wad)
     const transactionReceipt: any = await transaction.wait()
     console.log('approve receipt:', transactionReceipt)
     return transactionReceipt

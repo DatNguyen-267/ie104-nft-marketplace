@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   async function handleSellNft(nftItem: NftItem) {
     // open sell modal
-    openModalSellNFT();
+    openModalSellNFT()
     // await createAskOrder(nftItem.collectionAddress, nftItem.tokenId.toString(), nftItem.price)
   }
   async function updateBalance() {
@@ -565,8 +565,8 @@ const modalSellOverlay = document.getElementById('modal-sell-overlay-close') as 
 const modalSellCancel = document.getElementById('modal-sell-cancel') as HTMLElement
 const modalSellClose = document.getElementById('modal-sell-close') as HTMLElement
 const modalSellPrice = document.getElementById('modal-sell-price') as HTMLInputElement
-const modalSellRarible = document.getElementById('modal-sell-rarible') as HTMLElement;
-const modalSellTotal = document.getElementById('modal-sell-total') as HTMLElement;
+const modalSellRarible = document.getElementById('modal-sell-rarible') as HTMLElement
+const modalSellTotal = document.getElementById('modal-sell-total') as HTMLElement
 
 // Toggle buy modal nft
 const toggleModalBuyNFT = (event: any) => {
@@ -580,7 +580,7 @@ const toggleModalBuyNFT = (event: any) => {
 }
 
 const openModalBuyNFT = () => {
-  console.log("modal-buy:")
+  console.log('modal-buy:')
   var x = document.getElementById('modal-buy') as HTMLElement
   x.style.display = 'flex'
 }
@@ -588,7 +588,6 @@ const openModalBuyNFT = () => {
 modalBuyOverlay.onclick = toggleModalBuyNFT
 modalBuyCancel.onclick = toggleModalBuyNFT
 modalBuyClose.onclick = toggleModalBuyNFT
-
 
 // Toggle sell modal
 const toggleModalSellNFT = (event: any) => {
@@ -601,7 +600,7 @@ const toggleModalSellNFT = (event: any) => {
   }
 }
 const openModalSellNFT = () => {
-  console.log("modal-sell:")
+  console.log('modal-sell:')
   var x = document.getElementById('modal-sell') as HTMLElement
   x.style.display = 'flex'
 }
@@ -610,30 +609,27 @@ modalSellOverlay.onclick = toggleModalSellNFT
 modalSellCancel.onclick = toggleModalSellNFT
 modalSellClose.onclick = toggleModalSellNFT
 
- // Validate 
- function validate() {
+// Validate
+function validate() {
   if (!Number(modalSellPrice.value) || modalSellPrice.value == undefined) {
-    modalSellPrice.classList.add("modal-input-error");
-    return false;
+    modalSellPrice.classList.add('modal-input-error')
+    return false
+  } else {
+    modalSellPrice.classList.remove('modal-input-error')
   }
-  else {
-    modalSellPrice.classList.remove("modal-input-error");
-  }
-  return true;
+  return true
 }
 
 // total modalpSellPrice
 function totalPrice() {
   if (validate()) {
-    var x = Number(modalSellPrice.value);
-    var y = Number(modalSellRarible.innerHTML);
-    modalSellTotal.innerHTML = (x + (x * y / 100)).toString();
+    var x = Number(modalSellPrice.value)
+    var y = Number(modalSellRarible.innerHTML)
+    modalSellTotal.innerHTML = (x + (x * y) / 100).toString()
     modalSellTotal.title = modalSellTotal.innerHTML + ' NFT'
   }
-
 }
 
-modalSellPrice.onchange = totalPrice;
-modalSellPrice.onblur = totalPrice;
-modalSellTotal.title = modalSellTotal .innerHTML + ' NFT'
-
+modalSellPrice.onchange = totalPrice
+modalSellPrice.onblur = totalPrice
+modalSellTotal.title = modalSellTotal.innerHTML + ' NFT'
