@@ -518,42 +518,49 @@ const handleResetBtn = (number: number) => {
 }
 
 const handleLoadNFTSale = () => {
-  handleResetBtn(1)
-  const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
+  handleResetBtn(1);
+  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
 
   if (nfts) {
     for (let i = 0; i < nfts.length; i++) {
-      var status: String | undefined = nfts[i].querySelector('.nft__status')?.innerHTML
-      if (status != undefined && status != 'Sale') {
-        nfts[i].style.display = 'none'
-      } else {
-        nfts[i].style.display = 'flex'
+      var status: String | undefined = nfts[i].querySelector(".nft__status")?.innerHTML;
+      var col = nfts[i].parentElement as HTMLElement;
+      if (status != undefined && status != "Sale") {
+        col.style.display = "none";
+      }
+      else {
+        col.style.display = "flex";
       }
     }
   }
 }
 const handleLoadNFTNotSale = () => {
-  handleResetBtn(2)
-  const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
+  handleResetBtn(2);
+  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
 
   if (nfts) {
     for (let i = 0; i < nfts.length; i++) {
-      var status: String | undefined = nfts[i].querySelector('.nft__status')?.innerHTML
-      if (status != undefined && status == 'Sale') {
-        nfts[i].style.display = 'none'
-      } else {
-        nfts[i].style.display = 'flex'
+      var status: String | undefined = nfts[i].querySelector(".nft__status")?.innerHTML;
+      var col = nfts[i].parentElement as HTMLElement;
+      if (status != undefined && status == "Sale") {
+        col.style.display = "none";
+      }
+      else {
+        col.style.display = "flex";
       }
     }
   }
 }
 const handleLoadNFTAll = () => {
-  handleResetBtn(0)
-  const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
+  handleResetBtn(0);
+  console.log("abc")
+  const nfts = document.querySelectorAll<HTMLElement>(".nft-item");
 
   if (nfts) {
     for (let i = 0; i < nfts.length; i++) {
-      nfts[i].style.display = 'flex'
+      var col = nfts[i].parentElement as HTMLElement;
+      col.style.display = "flex";
+
     }
   }
 }
