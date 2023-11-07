@@ -39,9 +39,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2.0rem 3.0rem;
-    padding-bottom: 2.5rem;
-    gap: 2.1rem;
+    padding: 1rem 2rem;
+    padding-bottom: 1.5rem;
+    gap: 1.5rem;
 }
 
 /* Info */
@@ -60,10 +60,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: 600;
+    gap: 10px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight:600;
     /* background-color: var(--color-gray-500);
     padding: 10px;
     border-radius: 5px; */
@@ -71,8 +72,8 @@
 }
 
 .nft-card__address-img {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
 }
 
 .nft-card__address-value {
@@ -80,17 +81,19 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    
 }
 
 .nft-card__title {
     position: relative;
     color: var(--color-text);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     gap: 8px;
+    line-height: 2.4rem;
 }
 
 .nft-card__name {
@@ -116,7 +119,7 @@
 }
 
 .nft-card__user-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--color-text);
     overflow: hidden;
@@ -128,30 +131,23 @@
 
 
 /* Action */
-.nft-card__action {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 15px;
-}
 
-.nft-card__action .nft-card__price {
+.nft-card__price {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
     color: var(--color-text);
-
     overflow: hidden;
 }
 
-.nft-card__action .nft-card__price-title {
+.nft-card__price-title {
     font-size: 12px;
     font-weight: 500;
     color: var(--color-sub-text-200);
 }
 
-.nft-card__action .nft-card__price-value {
+.nft-card__price-value {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -166,13 +162,21 @@
     font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 50px;
 }
 
 /* Btn */
+.nft-card__action {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
 .nft-card__btn {
-    width: 12rem !important;
+    width: 14rem !important;
+    width: 100% !important;
     height: 40px !important;
     transform: translateY(5px);
     font-size: 1.6rem !important;
+    border-radius: 10px !important;
 }
