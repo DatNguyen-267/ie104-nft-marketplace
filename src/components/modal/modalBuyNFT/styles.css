@@ -119,30 +119,39 @@
 
 /* nft */
 .modal-buy__nft {
-    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.modal-buy__nft-img {
+
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    border: 2px solid var(--color-border-100);
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.24);
 }
 
 .modal-buy__nft-info {
     flex: 2;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 15px;
-}
-
-.modal-buy__nft-img {
-    width: 25px;
-    height: 25px;
-    object-fit: cover;
-    border-radius: 5px;
+    gap: 10px;
+    width: 100%;
+    position: relative;
 }
 
 .modal-buy__nft-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--color-text);
     overflow: hidden;
@@ -151,15 +160,17 @@
     -webkit-line-clamp: 1;
 }
 
-.modal-buy__nft-price {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modal-buy__nft-address {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
-
 /* NetWork */
-.modal-buy__network {
+/* .modal-buy__network {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -221,62 +232,62 @@
     position: absolute;
     right: 15px;
     top: 15px;
-}
+} */
 
 /* Price */
 .modal-buy__price {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .modal-buy__price-title {
     font-size: 16px;
-    font-weight: 500;
-    color: var(--color-sub-text-300);
+    font-weight: 600;
+    color: var(--color-text);
 }
 
 .modal-buy__price .number{
-    width: 150px;
+    width: 200px;
 }
 
 /* Rarible */
 .modal-buy__rarible-title {
     font-size: 16px;
-    font-weight: 500;
-    color: var(--color-sub-text-300);
+    font-weight: 600;
+    color: var(--color-text);
 }
 
 /* Total */
 .modal-buy__total {
     border-top: 1px solid var(--color-border-100);
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     padding-top: 10px;
 }
 
 .modal-buy__total-title {
     font-size: 16px;
-    font-weight: 500;
-    color: var(--color-sub-text-300);
+    font-weight: 600;
+    color: var(--color-text);
 }
 .modal-buy__total .number{
-    width: 150px;
+    width: 200px;
 }
 
 /*=========== Action ================*/
 .modal-buy__action {
     display: flex;
-    flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 .modal-buy__action-ok {
+    flex: 1;
     display: flex;
-    width: 311px;
     padding: 13px 16px;
     justify-content: center;
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    background: var(--color-dark-blue-200);
+    background: var(--color-primary);
     color: #FFF;
     border: none;
     font-size: 16px;
@@ -286,11 +297,12 @@
 }
 
 .modal-buy__action-cancel {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     background: transparent;
-    color: var(--color-dark-blue-200);
+    color: var(--color-primary);
     border: none;
     font-size: 16px;
     font-weight: 600;

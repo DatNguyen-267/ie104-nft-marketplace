@@ -25,17 +25,18 @@
       </div>
       <div class="modal-buy__main">
 
-        <div class="modal-buy__nft modal-buy__frame">
+        <div class="modal-buy__nft">
           <div class="modal-buy__nft-info">
             <img src="" alt="" class="modal-buy__nft-img" id="modal-buy-nft-img">
             <p class="modal-buy__nft-name" id="modal-buy-nft-name">NFT Name abc abc abc abc abc</p>
+            <p class="modal-buy__nft-address" id="modal-buy-nft-address">0x0000 ... 0000</p>
           </div>
-          <div class="modal-buy__nft-price modal-buy-value">
+          <!-- <div class="modal-buy__nft-price modal-buy-value">
             <p class="number" id="modal-buy-nft-price">0.00000029</p>
             <p class="unit">NFT</p>
-          </div>
+          </div> -->
         </div>
-        <div class="modal-buy__network modal-buy__frame">
+        <!-- <div class="modal-buy__network modal-buy__frame">
           <div class="modal-buy__network-info">
             <img src="./../../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img">
             <div class="modal-buy__network-content">
@@ -47,11 +48,11 @@
             Connected
           </p>
          
-        </div>
+        </div> -->
         <div class="modal-buy__price modal-buy__frame-2">
             <p class="modal-buy__price-title">Price</p>
             <div class="modal-buy__price-value modal-buy-value">
-              <p class="number" id="modal-buy-price">0.0029</p>
+              <p class="number" id="modal-buy-price">0.000000000000000000000000000000029</p>
               <p class="unit">NFT</p>
             </div>
         </div>
@@ -80,8 +81,7 @@
     // Variables
     const nftImage = document.getElementById('modal-buy-nft-img');
     const nftName = document.getElementById('modal-buy-nft-name');
-    const nftPrice = document.getElementById('modal-buy-nft-price');
-    const etherId = document.getElementById('modal-buy-ether-id');
+    const nftAddress = document.getElementById('modal-buy-nft-address');
     const price = document.getElementById('modal-buy-price');
     const rarible = document.getElementById('modal-buy-rarible');
     const total = document.getElementById('modal-buy-total');
@@ -93,29 +93,30 @@
     nftName.innerHTML = "Name of NFT of user can see"
     nftName.title = "NFT of user can see"
 
-    nftPrice.innerHTML = "0.029"
+    nftAddress.innerHTML = "0xadff ... dad"
 
     // add value for network
-    var idExmple = 'f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'
-    if (idExmple.length > 9) {
-      var shortenedString = idExmple.substr(0, 5) + ' ... ' + idExmple.substring(idExmple.length - 4)
-      etherId.innerHTML = shortenedString;
-    }
-    else {
-      etherId.innerHTML = idExmple;
-    }
-    etherId.title = "f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16"
+    // var idExmple = 'f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'
+    // if (idExmple.length > 9) {
+    //   var shortenedString = idExmple.substr(0, 5) + ' ... ' + idExmple.substring(idExmple.length - 4)
+    //   etherId.innerHTML = shortenedString;
+    // }
+    // else {
+    //   etherId.innerHTML = idExmple;
+    // }
+    // etherId.title = "f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16"
 
     // add value for price, rarible, total
-    price.innerHTML = '0.029'
+    price.innerHTML = '0.0000000000000029'
     price.title = "0.029" + ' NFT'
     
     rarible.innerHTML = '1'
 
-    p = Number(price.innerHTML);
-    r = Number(rarible.innerHTML);
-    total.innerHTML = p + (p*r)/100
-    total.title = String(p + (p*r)/100) + ' NFT'
+    var p = Number(price.innerHTML);
+    var r = Number(rarible.innerHTML);
+
+    total.innerHTML = (p + (p*r)/100).toFixed(10)
+    total.title = (p + (p*r)/100).toFixed(10) + ' NFT'
   
     // check connnect network (mặc định của css là kết nối được)
     var connect = true;
