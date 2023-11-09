@@ -3,6 +3,7 @@ import { connectAndSwitch, getAccountAddress } from '../services'
 import { buyTokenUsingWBNB, createAskOrder } from '../services/market'
 import { approveTokenExchange } from '../services/token-exchange'
 import { NftItem } from '../types/nft'
+import { shorterAddress } from '../utils/common'
 
 export enum ModalSellNFTId {
   Container = 'modal-sell',
@@ -11,7 +12,9 @@ export enum ModalSellNFTId {
   ButtonCancel = 'modal-sell-cancel',
   ItemName = 'modal-sell-nft-name',
   ItemPrice = 'modal-sell-price',
-  NetWorkName = 'modal-sell__network-id',
+  ItemImage = 'modal-sell-nft-img',
+  ItemAddress = 'modal-sell-nft-address',
+  // NetWorkName = 'modal-sell__network-id',
   Fee = 'modal-sell-fee',
   Total = 'modal-sell-total',
   Overlay = 'modal-sell-overlay-close',
@@ -36,8 +39,10 @@ class ModalSellController {
   updateDomContent() {
     const modalItemName = document.getElementById(ModalSellNFTId.ItemName) as HTMLElement
     const modalItemPrice = document.getElementById(ModalSellNFTId.ItemPrice) as HTMLElement
-    const modalNetWorkName = document.getElementById(ModalSellNFTId.NetWorkName) as HTMLElement
+    // const modalNetWorkName = document.getElementById(ModalSellNFTId.NetWorkName) as HTMLElement
     const modalTotal = document.getElementById(ModalSellNFTId.Total) as HTMLElement
+    const modalItemAddress = document.getElementById(ModalSellNFTId.ItemAddress) as HTMLElement
+    const modalItemImage = document.getElementById(ModalSellNFTId.ItemImage) as HTMLImageElement
 
     modalTotal.innerHTML = (
       (Number(this.nftItem?.price) * 0.1) / 100 +
@@ -47,6 +52,8 @@ class ModalSellController {
     console.log((Number(this.nftItem?.price) * 0.1) / 100)
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
+    modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress) || ''
+    modalItemImage.src = this.nftItem?.imageGatewayUrl || '#'
   }
   async sell() {
     if (!this.nftItem) return
@@ -107,15 +114,18 @@ class ModalSellController {
     const modalSellCancel = document.getElementById(ModalSellNFTId.ButtonCancel) as HTMLElement
     const modalSellClose = document.getElementById(ModalSellNFTId.ButtonClose) as HTMLElement
     const modalItemPrice = document.getElementById(ModalSellNFTId.ItemPrice) as HTMLInputElement
-    const modalBuyOverlay = document.getElementById(ModalSellNFTId.Overlay) as HTMLElement
+    const modalSellOverlay = document.getElementById(ModalSellNFTId.Overlay) as HTMLElement
 
     modalSellClose.addEventListener('click', (e) => {
+      e.preventDefault();
       this.close()
     })
     modalSellCancel.addEventListener('click', (e) => {
+      e.preventDefault();
       this.close()
     })
-    modalBuyOverlay.addEventListener('click', (e) => {
+    modalSellOverlay.addEventListener('click', (e) => {
+      e.preventDefault();
       this.close()
     })
 
