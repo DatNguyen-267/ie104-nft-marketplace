@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./../../../styles/base.css">
+  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <form class="modal-depos" action="#" id="modal-depos">
+    <a href="#" class="modal-depos-overlay-close" id="modal-depos-overlay-close"></a>
+    <div class="modal-depos-container">
+      <div class="modal-depos__close">
+        <i class="fas fa-times-circle" id="modal-depos-close"></i>
+      </div>
+      <div class="modal-depos__main">
+       
+        <img src="./../../../assets/images/modalDeposit.webp" class="modal-depos__main-icon" alt="">
+        <p class="modal-depos__main-title">Desposit</p>
+        <div class="modal-depos__main-desc">
+          <span>Enter money you want to desposit</span>
+        </div>
+        <div class="modal-depos__price modal-depos__frame">
+          <p class="modal-depos__price-title">Value</p>
+          <input type="number" class="modal-depos-input" name="modal-depos-price" id="modal-depos-price"
+          placeholder="0">
+        </div>
+      </div>
+      <div class="modal-depos__action">
+        <button class="modal-depos__action-ok" id="modal-depos-ok">Desposit</button>
+        <button class="modal-depos__action-cancel" id="modal-depos-cancel">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    // Variables
+    const price = document.getElementById('modal-depos-price');
+
+    // Validate 
+    function validate() {
+      if (!Number(price.value) || price.value == undefined) {
+        price.classList.add("modal-input-error");
+        return false;
+      }
+      else {
+        price.classList.remove("modal-input-error");
+      }
+      return true;
+    }
+
+    price.onchange = validate;
+    price.onblur = validate;
+
+    // submit
+    function handleSubmit(){
+      event.preventDefault();
+      if(validate()){
+        console.log("submit")
+      }
+      else{
+        console.log("error")
+      }
+    }
+
+    const modalOk = document.getElementById("modal-depos-ok")
+    modalOk.onclick = handleSubmit
+    
+
+  </script>
+</body>
+
+</html>
