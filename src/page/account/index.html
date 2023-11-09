@@ -136,6 +136,57 @@
     </div>
   </form>
 
+  <form class="modal-depos" action="#" id="modal-depos" style="display: none;">
+    <a href="#" class="modal-depos-overlay-close" id="modal-depos-overlay-close"></a>
+    <div class="modal-depos-container">
+      <div class="modal-depos__close">
+        <i class="fas fa-times-circle" id="modal-depos-close"></i>
+      </div>
+      <div class="modal-depos__main">
+       
+        <img src="./../../assets/images/modalDeposit.webp" class="modal-depos__main-icon" alt="">
+        <p class="modal-depos__main-title">Desposit</p>
+        <div class="modal-depos__main-desc">
+          <span>Enter money you want to desposit</span>
+        </div>
+        <div class="modal-depos__price modal-depos__frame">
+          <p class="modal-depos__price-title">Value</p>
+          <input type="number" class="modal-depos-input" name="modal-depos-price" id="modal-depos-price"
+          placeholder="0">
+        </div>
+      </div>
+      <div class="modal-depos__action">
+        <button class="modal-depos__action-ok" id="modal-depos-ok">Desposit</button>
+        <button class="modal-depos__action-cancel" id="modal-depos-cancel">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <form class="modal-import" action="#" id="modal-import" style="display: none;">
+    <a href="#" class="modal-import-overlay-close" id="modal-import-overlay-close"></a>
+    <div class="modal-import-container">
+      <div class="modal-import__close">
+        <i class="fas fa-times-circle" id="modal-import-close"></i>
+      </div>
+      <div class="modal-import__main">
+       
+        <img src="./../../assets/images/modalImport.webp" class="modal-import__main-icon" alt="">
+        <p class="modal-import__main-title">Import Address</p>
+        <div class="modal-import__main-desc">
+          <span>Enter addres you want to import</span>
+        </div>
+        <div class="modal-import__address modal-import__frame">
+          <p class="modal-import__address-title">Address</p>
+          <input type="text" class="modal-import-input" name="modal-import-address" id="modal-import-address"
+              placeholder="Enter your address">
+        </div>
+      </div>
+      <div class="modal-import__action">
+        <button class="modal-import__action-ok" id="modal-import-ok">Import</button>
+        <button class="modal-import__action-cancel" id="modal-import-cancel">Cancel</button>
+      </div>
+    </div>
+  </form>
   <!-- ===================================== Header ============================================= -->
   <!-- alert sign out -->
   <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
@@ -268,11 +319,11 @@
 
 
               <div class="info__user-action">
-                <button class="filled--button secondary outline info__user-btn">
+                <button class="filled--button secondary outline info__user-btn" id="btn-deposit">
                   <!-- Deposit -->
                   <span class="text--button">Deposit</span>
                 </button>
-                <button class="filled--button secondary  outline info__user-btn">
+                <button class="filled--button secondary  outline info__user-btn" id="btn-import">
                   <!-- Import Collection -->
                   <span class="text--button">Import Collection</span>
                 </button>

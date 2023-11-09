@@ -24,6 +24,8 @@ import {
 // Class name compatible with the template
 import { ModalSellControllerInstance } from '../../controller/modal-sell'
 import { userControllerInstance } from '../../controller/user'
+import { ModalDepositControllerInstance } from '../../controller/modal-deposit'
+import { ModalImportControllerInstance } from '../../controller/modal-import'
 const defaultNftItem = {
   collectionAddress: '',
   tokenId: '',
@@ -572,3 +574,20 @@ if (catergoryBtns.length > 0) {
 }
 
 // ============================ Toggle Modal NFT =====================================
+
+const btnDeposit = document.getElementById('btn-deposit') as HTMLButtonElement;
+const btnImport = document.getElementById('btn-import') as HTMLButtonElement;
+
+if(btnDeposit){
+  btnDeposit.addEventListener('click', (e) =>{
+    console.log('Deposit clicked')
+    ModalDepositControllerInstance.open();
+  })
+}
+
+if(btnImport){
+  btnImport.addEventListener('click', (e) =>{
+    console.log('Import clicked')
+    ModalImportControllerInstance.open();
+  })
+}
