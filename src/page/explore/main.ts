@@ -334,18 +334,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPage()
 })
-
-
-// ============================== Text Loading ===================================
-
-const btnLogout = document.getElementById('alert-ok') as HTMLButtonElement
-function close() {
-
-}
-
-btnLogout.onclick = () => {
-  LoadingControllerInstance.set('Please wait')
-  LoadingControllerInstance.open()
-  const myTimeout = setTimeout(LoadingControllerInstance.close, 5000);
- 
-}
