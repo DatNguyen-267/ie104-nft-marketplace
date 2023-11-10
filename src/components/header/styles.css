@@ -227,6 +227,11 @@ header {
     padding-right: 10px;
 }
 
+/*=========== alert sign out ====== */
+
+.alert-logout-icon-title {
+    margin-bottom: 15px;
+}
 /*=========== Reposive ============ */
 @media (max-width: 880px) {
     .header__nav-link {
