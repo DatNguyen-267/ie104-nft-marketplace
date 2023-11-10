@@ -11,7 +11,7 @@ export enum ModalImportNFTId {
   ButtonClose = 'modal-import-close',
   ButtonCancel = 'modal-import-cancel',
   OverlayClose = 'modal-import-overlay-close',
-  
+  Address = 'modal-import-address',
 }
 
 class ModalImportController {
