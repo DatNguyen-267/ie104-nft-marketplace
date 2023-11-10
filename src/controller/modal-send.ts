@@ -11,7 +11,9 @@ export enum ModalSendNFTId {
   ButtonClose = 'modal-send-close',
   ButtonCancel = 'modal-send-cancel',
   OverlayClose = 'modal-send-overlay-close',
-  
+  FromAddress="modal-send-from",
+  ToAddress="modal-send-to",
+  TokenID="modal-send-token"
 }
 
 class ModalSendController {

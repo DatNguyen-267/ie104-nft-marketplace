@@ -11,7 +11,7 @@ export enum ModalDepositNFTId {
   ButtonClose = 'modal-depos-close',
   ButtonCancel = 'modal-depos-cancel',
   OverlayClose = 'modal-depos-overlay-close',
-  ItemPrice = 'modal-depos-price',
+  Price = 'modal-depos-price',
 }
 
 class ModalDepositController {
