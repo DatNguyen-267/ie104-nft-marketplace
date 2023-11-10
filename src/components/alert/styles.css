@@ -54,7 +54,6 @@
 
 .alert__main-icon {
     font-size: 48px;
-
 }
 
 .alert__main-title {
@@ -93,7 +92,7 @@
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    background: var(--color-dark-blue-200);
+    background: var(--color-primary);
     color: #FFF;
     border: none;
     font-size: 16px;
@@ -107,7 +106,7 @@
     justify-content: center;
     align-items: center;
     background: transparent;
-    color: var(--color-dark-blue-200);
+    color: var(--color-primary);
     border: none;
     font-size: 16px;
     font-weight: 600;
