@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NFT Marketplace | Create NFT</title>
-  </head>
-  <body>
-    <h1>
-      CREATE PAGE
 
-      <input id="input-file" type="file" />
-      <input id="input-name" />
-      <input id="input-description" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFT Marketplace | Create NFT</title>
+</head>
 
-      <button id="btn-create-nft" disabled>Create</button>
-    </h1>
-  </body>
+<body>
+  <!-- ===================================== Loading ============================================= -->
+  <div class="loading" id="container-loading" style="display: none;">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <span id="loading-text">loading...</span>
+  </div>
+
+  <!-- ===================================== Main ============================================= -->
+  <h1>
+    CREATE PAGE
+
+    <input id="input-file" type="file" />
+    <input id="input-name" />
+    <input id="input-description" />
+
+    <button id="btn-create-nft" disabled>Create</button>
+  </h1>
+</body>
+
 </html>

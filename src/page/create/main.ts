@@ -1,4 +1,5 @@
 import { NFT_ADDRESS } from '../../constants'
+import './styles.css'
 import {
   connect,
   createMetadata,

@@ -18,11 +18,13 @@ import './../../components/button/styles.css'
 import './../../components/header/styles.css'
 import './../../components/modal/modalBuyNFT/styles.css'
 import './../../components/modal/modalSellNFT/styles.css'
+import './../../components/loading/loading2/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
 import './styles.css'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 import { ModalBuyControllerInstance } from '../../controller/modal-buy'
+import { LoadingControllerInstance } from '../../controller/loading'
 type NftItemElementObject = {
   eContainer: HTMLDivElement
   eImage: HTMLImageElement
@@ -332,3 +334,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPage()
 })
+
+
+// ============================== Text Loading ===================================
+
+const btnLogout = document.getElementById('alert-ok') as HTMLButtonElement
+function close() {
+
+}
+
+btnLogout.onclick = () => {
+  LoadingControllerInstance.set('Please wait')
+  LoadingControllerInstance.open()
+  const myTimeout = setTimeout(LoadingControllerInstance.close, 5000);
+ 
+}
