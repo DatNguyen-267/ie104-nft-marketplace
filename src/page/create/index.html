@@ -5,13 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NFT Marketplace | Create NFT</title>
   </head>
+
   <body>
+    <!-- ===================================== Loading ============================================= -->
+    <div class="loading" id="container-loading" style="display: none">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <span id="loading-text">loading...</span>
+    </div>
+
+    <!-- ===================================== Toast ============================================= -->
+    <ul class="notifications" id="toast-notifications"></ul>
+
+    <!-- ===================================== Main ============================================= -->
     <h1>
       CREATE PAGE
 
       <input id="input-file" type="file" />
-      <input id="input-name" />
-      <input id="input-description" />
+      <input id="input-collection-address" placeholder="collection address" />
+      <input id="input-name" placeholder="name" />
+      <input id="input-description" placeholder="description" />
 
       <button id="btn-create-nft" disabled>Create</button>
     </h1>

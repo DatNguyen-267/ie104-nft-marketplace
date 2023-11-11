@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./../../../styles/base.css">
+  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <form class="modal-send" action="#" id="modal-send">
+    <a href="#" class="modal-send-overlay-close" id="modal-send-overlay-close"></a>
+    <div class="modal-send-container">
+      <div class="modal-send__close">
+        <i class="fas fa-times-circle" id="modal-send-close"></i>
+      </div>
+      <div class="modal-send__main">
+       
+        <img src="./../../../assets/images/modalSend.webp" class="modal-send__main-icon" alt="">
+        <p class="modal-send__main-title">Send Token</p>
+        <div class="modal-send__main-desc">
+          <span>Enter token and address you want to send</span>
+        </div>
+        <div class="modal-send__from modal-send__frame">
+          <p class="modal-send__from-label modal-send__label">From Address</p>
+          <input type="text" class="modal-send-input" name="modal-send-from" id="modal-send-from"
+          placeholder="0x00 ... 000">
+        </div>
+        <div class="modal-send__to modal-send__frame">
+          <p class="modal-send__to-label modal-send__label">To Address</p>
+          <input type="text" class="modal-send-input" name="modal-send-to" id="modal-send-to"
+          placeholder="0x00 ... 001">
+        </div>
+        <div class="modal-send__token modal-send__frame">
+          <p class="modal-send__token-label modal-send__label">ID Token</p>
+          <input type="text" class="modal-send-input" name="modal-send-token" id="modal-send-token"
+          placeholder="0x00 ... 002">
+        </div>
+      </div>
+      <div class="modal-send__action">
+        <button class="modal-send__action-ok" id="modal-send-ok">Send</button>
+        <button class="modal-send__action-cancel" id="modal-send-cancel">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    // Variables
+    const from = document.getElementById('modal-send-from');
+    const to = document.getElementById('modal-send-to');
+    const token = document.getElementById('modal-send-token');
+
+    // Validate 
+    function validate() {
+      var element = event.target
+      if (!from.value || !to.value || !token.value) {
+        console.log('abc')
+        if(element != modalOk){
+          element.classList.add("modal-input-error");
+        }
+        return false;
+      }
+      else {
+        element.classList.remove("modal-input-error");
+      }
+      return true;
+    }
+
+    from.onchange = validate;
+    from.onblur = validate;
+    
+    to.onchange = validate;
+    to.onblur = validate;
+    
+    token.onchange = validate;
+    token.onblur = validate;
+
+    // submit
+    function handleSubmit(){
+      if(validate( )){
+        console.log("submit")
+      }
+      else{
+        console.log("error")
+      }
+      
+    }
+
+    const modalOk = document.getElementById("modal-send-ok")
+    modalOk.onclick = handleSubmit
+    
+
+  </script>
+</body>
+
+</html>

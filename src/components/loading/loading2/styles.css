@@ -2,6 +2,7 @@
 
 .loading {
     display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -10,7 +11,7 @@
     position: fixed;
     top: 0;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.75)
 }
 
 .lds-ring {
@@ -52,5 +53,20 @@
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.loading span {
+    color: white;
+    font-size: 16x;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: text 3s ease-in-out infinite;
+}
+
+@keyframes text {
+    50% {
+        color: transparent;
     }
 }

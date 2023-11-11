@@ -3,6 +3,24 @@ import { AppError } from '../constants'
 import { getDefaultProvider, getProvider } from './provider'
 import { convertWalletError } from '../utils/errors'
 
+export async function connectEarly() {
+  try {
+    if (!window.ethereum) return
+
+    try {
+      await window.ethereum
+        .request({
+          method: 'eth_accounts',
+        })
+        .then((accounts: string[]) => {
+          console.log({ accounts })
+          if (accounts.length > 0) {
+            connectAndSwitch()
+          }
+        })
+    } catch (error) {}
+  } catch (error) {}
+}
 export async function switchToNetwork(
   provider: any,
   chainId: ChainIdSupported,
@@ -28,7 +46,7 @@ export async function switchToNetwork(
       method: 'wallet_addEthereumChain',
       params: [
         {
-          chainId: info.chainId,
+          chainId: info.chainIdHex,
           chainName: info.chainName,
           rpcUrls: [info.rpcUrl],
           nativeCurrency: info.nativeCurrency,
@@ -108,7 +126,7 @@ export async function getAccountAddress() {
     try {
       return provider?.getSigner().getAddress()
     } catch (error) {
-      throw error
+      return ''
     }
   }
 }

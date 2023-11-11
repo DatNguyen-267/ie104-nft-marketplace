@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./../../../styles/base.css">
+  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <form class="modal-import" action="#" id="modal-import">
+    <a href="#" class="modal-import-overlay-close" id="modal-import-overlay-close"></a>
+    <div class="modal-import-container">
+      <div class="modal-import__close">
+        <i class="fas fa-times-circle" id="modal-import-close"></i>
+      </div>
+      <div class="modal-import__main">
+       
+        <img src="./../../../assets/images/modalImport.webp" class="modal-import__main-icon" alt="">
+        <p class="modal-import__main-title">Import Address</p>
+        <div class="modal-import__main-desc">
+          <span>Enter address you want to import</span>
+        </div>
+        <div class="modal-import__address modal-import__frame">
+          <p class="modal-import__address-title">Address</p>
+          <input type="text" class="modal-import-input" name="modal-import-address" id="modal-import-address"
+              placeholder="Enter your address">
+        </div>
+      </div>
+      <div class="modal-import__action">
+        <button class="modal-import__action-ok" id="modal-import-ok">Import</button>
+        <button class="modal-import__action-cancel" id="modal-import-cancel">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    // Variables
+    const address = document.getElementById('modal-import-address');
+
+    // Validate 
+    function validate() {
+      if (!address.value) {
+        address.classList.add("modal-input-error");
+        return false;
+      }
+      else {
+        address.classList.remove("modal-input-error");
+      }
+      return true;
+    }
+
+    address.onchange = validate;
+    address.onblur = validate;
+
+    // submit
+    function handleSubmit(){
+      event.preventDefault();
+      if(validate()){
+        console.log("submit")
+      }
+      else{
+        console.log("error")
+      }
+    }
+
+    const modalOk = document.getElementById("modal-import-ok")
+    modalOk.onclick = handleSubmit
+    
+
+  </script>
+</body>
+
+</html>

@@ -1,6 +1,8 @@
 import { NFT_ADDRESS } from '../../constants'
+import './styles.css'
 import {
   connect,
+  connectAndSwitch,
   createMetadata,
   getAccountAddress,
   getDefaultProvider,
@@ -13,10 +15,14 @@ console.log('create page script')
 export enum PageElementId {
   ImageInput = '#input-file',
   NameInput = '#input-name',
+  CollectionAddressInput = '#input-collection-address',
   DescriptionInput = '#input-description',
   ButtonCreate = '#btn-create-nft',
 }
 const imageInput = document.querySelector(PageElementId.ImageInput) as HTMLInputElement
+const inputCollectionAddress = document.querySelector(
+  PageElementId.CollectionAddressInput,
+) as HTMLInputElement
 const nameInput = document.querySelector(PageElementId.NameInput) as HTMLInputElement
 const descriptionInput = document.querySelector(PageElementId.DescriptionInput) as HTMLInputElement
 const btnCreate = document.querySelector(PageElementId.ButtonCreate) as HTMLButtonElement
@@ -49,8 +55,7 @@ const handleValidateForm = () => {
 }
 btnCreate.addEventListener('click', async () => {
   try {
-    await connect()
-    await switchToNetwork(getDefaultProvider(), '4102')
+    await connectAndSwitch()
     const address = await getAccountAddress()
     const { imageValue, nameValue, descriptionValue } = getFormValue()
     if (!imageValue) return
@@ -60,8 +65,11 @@ btnCreate.addEventListener('click', async () => {
         console.log(err)
       })
     console.log({ tokenUri })
-    if (!address || !tokenUri) return
-    const mintNftTx = await mintNFT(NFT_ADDRESS, address, tokenUri.url)
+    if (!address || !tokenUri || !inputCollectionAddress.value) {
+      console.log('Invalid input')
+      return
+    }
+    const mintNftTx = await mintNFT(inputCollectionAddress.value, address, tokenUri.url)
     console.log(mintNftTx)
   } catch (error) {
     console.log(error)

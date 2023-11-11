@@ -46,9 +46,14 @@
   }
 } */
 @import url(./../../components/modal/modalBuyNFT/styles.css);
+@import url(./../../components/modal/modalSellNFT/styles.css);
+@import url(./../../components/modal/modalDeposit/styles.css);
+@import url(./../../components/modal/modalImport/styles.css);
 @import url(./../../components/NFTcard/styles.css);
 @import url(./../../components/header/styles.css);
 @import url(./../../components/alert/styles.css);
+@import url(./../../components/loading/loading2/styles.css);
+@import url(./../../components/toast/styles.css);
 @import url(./../../styles/grid.css);
 @import url(./../../styles/base.css);
 
@@ -58,7 +63,7 @@ body {
 /* =============== No connect ================= */
 .container-no-connect{
   background-color: var(--color-black);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -195,7 +200,7 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
-  gap: 50px;
+  gap: 35px;
 }
 
 .info__user-avatar {
@@ -207,18 +212,40 @@ body {
   top: -80px;
 }
 
-.info__user-name {
+.info__user-content {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+}
+
+.info__user-name {
+  width: 50%;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   font-weight: 700;
+  
+}
+
+.info__user-action{
+  width: 50%;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.info__user-btn{
+  flex: 1;
+  display: flex;
+  max-width: 186px !important;
 }
 
 .info__user-detail{
+  padding-top: 35px;
+  border-top: 2px solid var(--color-border-100);
   width: 100%;
   display: flex;
   gap: 10%;
@@ -232,6 +259,10 @@ body {
   flex-direction: column;
   gap: 30px;
 }
+.info__user-detail .wallet__balance{
+  flex: 1 1 auto;
+}
+
 
 .info__user-detail .wallet__status-title,
 .info__user-detail .wallet__balance-title{
@@ -246,7 +277,8 @@ body {
   font-weight: 700;
   padding: 10px 20px;
   border-radius: 5px;
-  
+  width: 180px;
+  text-align: center;
 }
 
 .wallet__status--connected{
@@ -261,7 +293,8 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  
+  text-overflow: ellipsis;
+  word-break:break-all;
 }
 
 /* List token */
@@ -291,6 +324,8 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   line-height: 3.36rem !important;
+  text-overflow: ellipsis;
+  word-break:break-all;
 }
 /* List NFT */
 .container {
@@ -394,6 +429,27 @@ body {
   .info .info__user{
     padding-left: 5%;
     padding-right: 5%;
+  }
+
+  .info__user-content {
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .info__user-action {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .info .info__user-detail{
+    flex-direction: column;
+    gap: 50px;
   }
 
   .info .info__list-token{

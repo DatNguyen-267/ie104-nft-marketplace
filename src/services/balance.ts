@@ -17,6 +17,7 @@ export async function getErc20Balance(
     throw error
   }
 }
+
 export async function getBalanceNativeToken(walletAddress: string, options?: ProviderOptions) {
   try {
     const provider = getDefaultProvider()
@@ -27,6 +28,7 @@ export async function getBalanceNativeToken(walletAddress: string, options?: Pro
     throw error
   }
 }
+
 export async function watchErc20Asset(erc20Address: string, symbol: string, decimals: number) {
   if (!window.ethereum) {
     return

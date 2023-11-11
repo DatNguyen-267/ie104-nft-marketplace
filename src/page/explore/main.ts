@@ -1,87 +1,21 @@
-import './styles.css'
+import { LoadingControllerInstance } from '../../controller/loading'
+import { ModalBuyControllerInstance, ModalBuyNFTId } from '../../controller/modal-buy'
+import { connectEarly } from '../../services'
+import './../../components/NFTcard/styles.css'
+import './../../components/alert/styles.css'
+import './../../components/avatar/styles.css'
+import './../../components/button/styles.css'
+import './../../components/header/styles.css'
+import './../../components/loading/loading2/styles.css'
+import './../../components/modal/modalBuyNFT/styles.css'
+import './../../components/modal/modalSellNFT/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
-import './../../components/avatar/styles.css'
-import './../../components/header/styles.css'
-import './../../components/alert/styles.css'
-import './../../components/button/styles.css'
-import './../../components/NFTcard/styles.css'
-import './../../components/modal/modalBuyNFT/styles.css'
-import {
-  connect,
-  connectAndSwitch,
-  getDefaultProvider,
-  getMetadata,
-  getTokenUri,
-  getUrlImage,
-  switchToNetwork,
-} from '../../services'
-import { NftItem } from '../../types/nft'
-import { shorterAddress } from '../../utils/common'
-import { viewAsksByCollection, viewMarketCollections } from '../../services/market'
-
-type NftItemElementObject = {
-  eContainer: HTMLDivElement
-  eImage: HTMLImageElement
-  eTitle: HTMLDivElement
-  eDescription: HTMLDivElement
-  ePrice: HTMLDivElement
-  eStatus: HTMLDivElement
-  eMetadataUri: HTMLDivElement
-  eButtonBuy: HTMLButtonElement
-  eUserName: HTMLDivElement
-  eAddressNFT: HTMLDivElement
-  eOrderNFT: HTMLDivElement
-}
-
-enum NftItemClass {
-  Container = 'nft__container',
-  Image = 'nft__img',
-  Title = 'nft__title',
-  Description = 'nft__description',
-  Price = 'nft__price',
-  Status = 'nft__status',
-  MetadataUri = 'nft__metadataUri',
-  ButtonBuy = 'nft__button-buy',
-  UserName = 'nft__user-name',
-  AddressNFT = 'nft__address',
-  OrderNFT = 'nft__order',
-}
-const defaultNftItem = {
-  collectionAddress: '',
-  tokenId: '',
-  title: '',
-  description: '',
-  tokenUri: '',
-  owner: '',
-  status: 'Sale',
-  imageUri: '',
-  imageGatewayUrl: '',
-  price: '0',
-}
-enum LoadingStatus {
-  Pending = 'pending',
-  Success = 'success',
-  Fail = 'fail',
-}
-enum AttributeName {
-  Loading = 'data-loading',
-  TokenId = 'data-token-id',
-  CltAddress = 'data-clt-address',
-}
-
-enum PageElementId {
-  ContainerNoConnection = '#container-no-connection',
-  ContainerConnected = '#container-connected',
-  ButtonConnect = '#btn-connect',
-  ListNftContainer = '#list-nft__container',
-}
-var walletAddress: string = ''
-var isConnected = false
-var listNfts: NftItem[] = []
+import './styles.css'
+import { ExplorePageControllerInstance } from './controller'
+import { UserPopoverControllerInstance } from '../../controller/user'
 
 // ========================== Header =======================================
-const btnLogin = document.getElementById('btn-login') as HTMLButtonElement
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
 const headerAvatar = document.getElementById('header-avatar') as HTMLElement
 const alertOverlay = document.getElementById('alert-overlay-close') as HTMLElement
@@ -89,21 +23,10 @@ const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
 
-async function handleConnect() {
-  try {
-    connectAndSwitch()
-  } catch (error) {}
-}
-handleConnect()
-// Check Login
-let login: boolean = false
-if (login === (true as boolean)) {
-  headerAvatar.style.display = 'flex'
-  btnLogin.style.display = 'none'
-} else {
-  headerAvatar.style.display = 'none'
-  btnLogin.style.display = 'flex'
-}
+connectEarly().then(() => {
+  UserPopoverControllerInstance.isConnected.set(true)
+  UserPopoverControllerInstance.isConnected.loadAvatar()
+})
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {
@@ -135,254 +58,43 @@ alertCancel.onclick = toggleAlertSigout
 alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
 
-// ===================== NFTs ============================
-const modalOverlay = document.getElementById('modal-buy-overlay-close') as HTMLElement
-const modalCancel = document.getElementById('modal-buy-cancel') as HTMLElement
-const modalClose = document.getElementById('modal-buy-close') as HTMLElement
-const nfts = document.querySelectorAll<HTMLElement>('.nft-item')
-
-// Toggle modal nft
-const toggleModalBuyNFT = (event: any) => {
-  event.preventDefault()
-  var x = document.getElementById('modal-buy') as HTMLElement
-  if (x.style.display === 'none') {
-    x.style.display = 'flex'
-  } else {
-    x.style.display = 'none'
-  }
-}
-
-modalOverlay.onclick = toggleModalBuyNFT
-modalCancel.onclick = toggleModalBuyNFT
-modalClose.onclick = toggleModalBuyNFT
-
-// ******************* DOM LOADED ***********************
 document.addEventListener('DOMContentLoaded', () => {
-  // Document elements
-  var containerNoConnection = document.querySelector(
-    PageElementId.ContainerNoConnection,
-  ) as HTMLDivElement
-  var containerConnected = document.querySelector(
-    PageElementId.ContainerConnected,
-  ) as HTMLDivElement
-  var btnConnect = document.querySelector(PageElementId.ButtonConnect) as HTMLButtonElement
-
-  var listNftContainer = document.querySelector(PageElementId.ListNftContainer) as HTMLDivElement
-  async function handleBuyNft(nftItem: NftItem) {
-    try {
-      await connect()
-      await switchToNetwork(getDefaultProvider(), '4102')
-      walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
-      loadAvatarLogin(true, walletAddress)
-
-      try {
-        // open modal buy nft
-      } catch (error) {}
-    } catch (error) {}
-  }
-  async function handleConnectWallet() {
-    try {
-      await connect()
-      await switchToNetwork(getDefaultProvider(), '4102')
-    } catch (error) {}
-  }
-
-  function loadAvatarLogin(login: boolean, walletAddress: string | undefined) {
-    // show or hide avatar
-    if (login === (true as boolean)) {
-      headerAvatar.style.display = 'flex'
-      btnLogin.style.display = 'none'
-    } else {
-      headerAvatar.style.display = 'none'
-      btnLogin.style.display = 'flex'
-    }
-
-    // load wallet address
-    const userName = document.getElementById('pop-up-user-name') as HTMLElement
-    // if (walletAddress) {
-    //   userName.innerHTML = shorterAddress(walletAddress, 10) || ''
-    //   userName.title = walletAddress
-    // } else {
-    //   userName.innerHTML = 'User Name'
-    //   userName.title = ''
-    // }
-  }
-
-  async function UpdateNftItemComponent(nftItem: NftItem): Promise<void> {
-    if (!nftItem) return
-    const tokenItemNode = listNftContainer.querySelector(
-      `div[data-token-id="${nftItem.tokenId}"]`,
-    ) as HTMLDivElement
-
-    if (!tokenItemNode) return
-    if (nftItem.title && nftItem.imageUri) {
-      tokenItemNode?.setAttribute(AttributeName.Loading, LoadingStatus.Success)
-    } else {
-      tokenItemNode?.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
-    }
-    const eData: NftItemElementObject = {
-      eContainer: tokenItemNode,
-      eDescription: tokenItemNode.querySelector(`.${NftItemClass.Description}`) as HTMLDivElement,
-      eImage: tokenItemNode.querySelector(`.${NftItemClass.Image}`) as HTMLImageElement,
-      eMetadataUri: tokenItemNode.querySelector(`.${NftItemClass.MetadataUri}`) as HTMLDivElement,
-      ePrice: tokenItemNode.querySelector(`.${NftItemClass.Price}`) as HTMLDivElement,
-      eStatus: tokenItemNode.querySelector(`.${NftItemClass.Status}`) as HTMLDivElement,
-      eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
-      eButtonBuy: tokenItemNode.querySelector(`.${NftItemClass.ButtonBuy}`) as HTMLButtonElement,
-      eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
-      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
-      eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
-    }
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
-    eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
-    eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
-    eData.eTitle.innerHTML = nftItem.title
-    eData.eTitle.title = nftItem.title
-    eData.eDescription.innerHTML = nftItem.description
-    eData.ePrice.innerHTML = nftItem.price
-    eData.ePrice.title = nftItem.price
-    eData.eStatus.innerHTML = nftItem.status
-    eData.eMetadataUri.innerHTML = nftItem.tokenUri
-    eData.eUserName.innerHTML = shorterAddress(walletAddress) || ''
-    eData.eUserName.title = walletAddress || ''
-    eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
-    eData.eAddressNFT.title = nftItem.collectionAddress
-    eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
-
-    eData.eButtonBuy.style.display = 'block'
-    eData.eButtonBuy.addEventListener('click', () => {
-      handleBuyNft(nftItem)
-    })
-  }
-  async function CreateNftItemComponent(nftItem: NftItem): Promise<HTMLDivElement> {
-    const template = document.querySelector('#nft-template')
-      ?.firstElementChild as HTMLDivElement | null
-    if (!template) return document.createElement('div')
-
-    const tokenItemNode = template.cloneNode(true) as HTMLDivElement
-    const eData: NftItemElementObject = {
-      eContainer: tokenItemNode,
-      eDescription: tokenItemNode.querySelector(`.${NftItemClass.Description}`) as HTMLDivElement,
-      eImage: tokenItemNode.querySelector(`.${NftItemClass.Image}`) as HTMLImageElement,
-      eMetadataUri: tokenItemNode.querySelector(`.${NftItemClass.MetadataUri}`) as HTMLDivElement,
-      ePrice: tokenItemNode.querySelector(`.${NftItemClass.Price}`) as HTMLDivElement,
-      eStatus: tokenItemNode.querySelector(`.${NftItemClass.Status}`) as HTMLDivElement,
-      eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
-      eButtonBuy: tokenItemNode.querySelector(`.${NftItemClass.ButtonBuy}`) as HTMLButtonElement,
-      eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
-      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
-      eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
-    }
-
-    console.log({ imageGatewayUrl: nftItem.imageGatewayUrl })
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
-    eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
-    eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
-    eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
-
-    eData.eTitle.innerHTML = nftItem.title
-    eData.eTitle.title = nftItem.title
-    eData.eDescription.innerHTML = nftItem.description
-    eData.ePrice.innerHTML = nftItem.price
-    eData.ePrice.title = nftItem.price
-    eData.eStatus.innerHTML = nftItem.status
-    eData.eMetadataUri.innerHTML = nftItem.tokenUri
-    eData.eUserName.innerHTML = shorterAddress(walletAddress) || ''
-    eData.eUserName.title = walletAddress
-    eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
-    eData.eAddressNFT.title = nftItem.collectionAddress
-    eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
-
-    eData.eButtonBuy.style.display = 'block'
-    eData.eButtonBuy.addEventListener('click', () => {
-      handleBuyNft(nftItem)
-    })
-
-    return tokenItemNode
-  }
-  async function getAllNftOfMarket() {
-    if (!isConnected) return
-    try {
-      const collections = await viewMarketCollections()
-      console.log({ collections })
-      await Promise.all(
-        collections.collectionAddresses.map(async (collectionAddress: string) => {
-          try {
-            const asksOfCollection = await viewAsksByCollection(collectionAddress, 0, 100)
-            console.log({ asksOfCollection })
-            if (
-              asksOfCollection &&
-              asksOfCollection.tokenIds &&
-              asksOfCollection.tokenIds.length > 0
-            ) {
-              asksOfCollection.tokenIds.forEach((tokenId, index) => {
-                listNfts.push({
-                  ...defaultNftItem,
-                  collectionAddress: collectionAddress,
-                  tokenId: tokenId,
-                  status: 'Sale',
-                  price: asksOfCollection.askInfo[index].price,
-                })
-              })
-            }
-          } catch (error) {
-            console.log(error)
-          }
-        }),
-      )
-
-      // Convert the Set back to an array
-      console.log('create component')
-      listNfts.forEach(async (nftItem: NftItem, index) => {
-        listNftContainer.appendChild(await CreateNftItemComponent(nftItem))
-      })
-
-      await Promise.all(
-        listNfts.map(async (nftItem: NftItem, index: number) => {
-          try {
-            const tokenUri = await getTokenUri(nftItem.collectionAddress, nftItem.tokenId)
-            listNfts[index].tokenUri = tokenUri || ''
-          } catch (error) {}
-        }),
-      )
-
-      // Get metadata of tokenId
-      await Promise.all(
-        listNfts.map(async (nftItem: NftItem, index: number) => {
-          try {
-            const metadata = await getMetadata(nftItem.tokenUri)
-            listNfts[index].title = metadata.name || ''
-            listNfts[index].description = metadata.description || ''
-            listNfts[index].imageUri = metadata.image || ''
-            listNfts[index].imageGatewayUrl = getUrlImage(metadata.image) || ''
-            await UpdateNftItemComponent(listNfts[index])
-          } catch (error) {}
-        }),
-      )
-      console.log({ listNfts })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   async function initPage() {
     try {
       try {
-        await connect()
-        walletAddress = (await getDefaultProvider()?.getSigner().getAddress()) || ''
-        loadAvatarLogin(true, walletAddress)
       } catch (error) {}
-
-      isConnected = true
-      const provider = getDefaultProvider()
-      walletAddress = (await provider?.getSigner().getAddress()) || ''
-      isConnected = true
-      await getAllNftOfMarket()
-    } catch (error) {
-      isConnected = false
-      loadAvatarLogin(false, undefined)
-    }
+      await ExplorePageControllerInstance.getAllNftOfMarket()
+    } catch (error) {}
   }
+
+  const modalButtonAccept = document.getElementById(ModalBuyNFTId.ButtonAccept) as HTMLButtonElement
+  modalButtonAccept.addEventListener('click', (e) => {
+    LoadingControllerInstance.open()
+    ModalBuyControllerInstance.buy()
+      .then((res) => {
+        ExplorePageControllerInstance.getAllNftOfMarket()
+      })
+      .finally(() => {
+        LoadingControllerInstance.close()
+      })
+  })
 
   initPage()
 })
+
+// ============================= Test Toast ====================================
+
+// const btnLogout = document.getElementById('alert-ok') as HTMLButtonElement;
+// var test = true;
+// btnLogout.onclick = () =>{
+//   if(test){
+//     ToastControllerInstance.set('alert ok',ToastType.success)
+//     ToastControllerInstance.open()
+//     test = false;
+//   }
+//   else{
+//     ToastControllerInstance.set('alert error',ToastType.error)
+//     ToastControllerInstance.open()
+//     test = true;
+//   }
+// }

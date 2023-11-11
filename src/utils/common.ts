@@ -6,7 +6,7 @@ export function getDisplayMaxDecimals(decimals?: number) {
   return decimals < maxDisplayDecimals ? decimals : maxDisplayDecimals
 }
 
-export function shorterAddress(address?: string, maxLength = 10) {
+export function shorterAddress(address: string, maxLength = 10) {
   const length = Math.floor(maxLength / 2)
 
   if ((address?.length || Infinity) <= maxLength) {
