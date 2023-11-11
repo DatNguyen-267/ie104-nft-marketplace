@@ -14,10 +14,19 @@
 <body>
   <!-- ===================================== Loading ============================================= -->
   <div class="loading" id="container-loading" style="display: none;">
-    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <span id="loading-text">loading...</span>
   </div>
-  
+  <!-- ===================================== Toast ============================================= -->
+  <ul class="notifications" id="toast-notifications">
+
+  </ul>
+
   <!-- ===================================== Modal NFT ============================================= -->
   <form class="modal-buy" id="modal-buy" style="display: none;">
     <a href="#" class="modal-buy-overlay-close" id="modal-buy-overlay-close"></a>
@@ -42,18 +51,18 @@
             </div> -->
         </div>
         <div class="modal-buy__network modal-buy__frame" style="display: none;">
-            <div class="modal-buy__network-info">
-              <img src="./../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img">
-              <div class="modal-buy__network-content">
-                <p id="modal-buy-ether-id" class="modal-buy__network-id">id Etherium</p>
-                <p class="modal-buy__network-name">Etherium</p>
-              </div>
+          <div class="modal-buy__network-info">
+            <img src="./../../assets/images/EtherIcon.webp" alt="" class="modal-buy__network-img">
+            <div class="modal-buy__network-content">
+              <p id="modal-buy-ether-id" class="modal-buy__network-id">id Etherium</p>
+              <p class="modal-buy__network-name">Etherium</p>
             </div>
-            <p class="modal-buy__network-status" id="modal-buy-status">
-              Connected
-            </p>
-           
           </div>
+          <p class="modal-buy__network-status" id="modal-buy-status">
+            Connected
+          </p>
+
+        </div>
         <div class="modal-buy__price modal-buy__frame-2">
           <p class="modal-buy__price-title">Price</p>
           <div class="modal-buy__price-value modal-buy-value">
