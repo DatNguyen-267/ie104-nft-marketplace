@@ -173,7 +173,8 @@
 }
 
 .modal-sell__nft-name {
-    font-size: 14px;
+    font-size: 26px;
+    line-height: 1;
     font-weight: 600;
     color: var(--color-text);
     overflow: hidden;
@@ -183,7 +184,7 @@
 }
 
 .modal-sell__nft-address {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--color-text);
     overflow: hidden;

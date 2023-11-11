@@ -4,6 +4,7 @@ import { buyTokenUsingWBNB } from '../services/market'
 import { approveTokenExchange } from '../services/token-exchange'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
+import { LoadingControllerInstance } from './loading'
 
 export enum ModalBuyNFTId {
   Container = 'modal-buy',
@@ -52,12 +53,10 @@ class ModalBuyController {
     console.log((Number(this.nftItem?.price) * 0.1) / 100)
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
-    modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress) || ''
+    modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress || '')
     modalItemImage.src = this.nftItem?.imageGatewayUrl || '#'
   }
   async buy() {
-    console.log(this)
-
     try {
       connectAndSwitch()
     } catch (error) {
@@ -67,11 +66,10 @@ class ModalBuyController {
     const currentAddress = await getAccountAddress()
     if (this.nftItem?.seller?.toLowerCase() === currentAddress?.toLowerCase()) {
       console.log(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
-      return
+      throw new Error(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
     }
     if (!this.nftItem?.price) {
-      console.log(AppError.SOME_ERROR_HAS_OCCUR)
-      return
+      throw new Error(AppError.SOME_ERROR_HAS_OCCUR)
     }
     if (!this.nftItem) return
     try {
@@ -89,15 +87,8 @@ class ModalBuyController {
   }
 
   listener() {
-    const modalButtonAccept = document.getElementById(
-      ModalBuyNFTId.ButtonAccept,
-    ) as HTMLButtonElement
-
     const modalFee = document.getElementById(ModalBuyNFTId.Fee) as HTMLElement
     modalFee.innerHTML = '0.1'
-    modalButtonAccept.addEventListener('click', (e) => {
-      this.buy()
-    })
 
     const modalBuyCancel = document.getElementById(ModalBuyNFTId.ButtonCancel) as HTMLElement
     const modalBuyClose = document.getElementById(ModalBuyNFTId.ButtonClose) as HTMLElement
@@ -108,14 +99,13 @@ class ModalBuyController {
       this.close()
     })
     modalBuyCancel.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
     modalOverlayClose.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
-
   }
 
   close() {

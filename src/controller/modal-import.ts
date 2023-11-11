@@ -1,6 +1,6 @@
 import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
 import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB } from '../services/market'
+import { buyTokenUsingWBNB, importCollection } from '../services/market'
 import { approveTokenExchange } from '../services/token-exchange'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
@@ -15,23 +15,16 @@ export enum ModalImportNFTId {
 }
 
 class ModalImportController {
-
   constructor() {
     this.listener()
   }
 
-  set(){
+  set() {}
 
-  }
+  get() {}
 
-  get(){
-    
-  }
+  updateDomContent() {}
 
-  updateDomContent() {
- 
-  }
-  
   listener() {
     const modalButtonAccept = document.getElementById(
       ModalImportNFTId.ButtonAccept,
@@ -40,20 +33,23 @@ class ModalImportController {
     const ModalImportCancel = document.getElementById(ModalImportNFTId.ButtonCancel) as HTMLElement
     const ModalImportClose = document.getElementById(ModalImportNFTId.ButtonClose) as HTMLElement
     const modalOverlayClose = document.getElementById(ModalImportNFTId.OverlayClose) as HTMLElement
+    const buttonAccept = document.getElementById(ModalImportNFTId.ButtonAccept) as HTMLElement
 
     ModalImportClose.addEventListener('click', (e) => {
       e.preventDefault()
       this.close()
     })
     ModalImportCancel.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
     modalOverlayClose.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
-
+    buttonAccept.addEventListener('click', (e) => {
+      this.importCollection()
+    })
   }
 
   close() {
@@ -77,6 +73,25 @@ class ModalImportController {
     console.log('open desposit')
     let modal = document.getElementById(ModalImportNFTId.Container) as HTMLElement
     modal.style.display = 'flex'
+  }
+
+  async importCollection() {
+    try {
+      const cltAdressInput = document.getElementById(ModalImportNFTId.Address) as HTMLInputElement
+      if (!cltAdressInput) {
+        console.log('invalid input')
+        return
+      }
+      const currentAddress = await getAccountAddress()
+      if (!currentAddress) {
+        console.log('invalid input')
+        return
+      }
+      const response = await importCollection(cltAdressInput.value, currentAddress)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

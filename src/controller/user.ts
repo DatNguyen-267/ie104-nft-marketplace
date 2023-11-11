@@ -6,9 +6,9 @@ import {
   WalletSupported,
 } from '../services'
 
-// Instance UserController
+// Instance userPopoverController
 // ? when call <connect> can auto update isConnected, walletAddress
-export class UserController {
+export class userPopoverController {
   isAvailableConnect: {
     value: boolean
     set: (value: boolean) => void
@@ -57,7 +57,6 @@ export class UserController {
       getOnChange: async function () {
         if (this.value) {
           try {
-            await handleConnect()
             this.loadAvatar()
           } catch (error) {
             this.set(false)
@@ -96,7 +95,6 @@ export class UserController {
 
   async connect() {
     try {
-      await handleConnect()
       this.isConnected.set(true)
       await this.walletAddress.get()
     } catch (error) {
@@ -110,6 +108,7 @@ export class UserController {
       this.walletAddress.set('')
     } catch (error) {}
   }
+
   accountChanged(accounts: string[]) {
     try {
       if (accounts && accounts.length > 0) {
@@ -120,6 +119,7 @@ export class UserController {
       }
     } catch (error) {}
   }
+
   listener() {
     try {
       // window.ethereum.on('chainChanged', handleChainChanged)
@@ -127,8 +127,6 @@ export class UserController {
       window.ethereum.on('disconnect', this.disconnect)
       window.ethereum.on('connect', async (e: any) => {
         try {
-          console.log(await this.walletAddress.get())
-          console.log('connect', e)
           this.connect()
         } catch (error) {}
       })
@@ -136,4 +134,4 @@ export class UserController {
   }
 }
 
-export const userControllerInstance = new UserController()
+export const UserPopoverControllerInstance = new userPopoverController()

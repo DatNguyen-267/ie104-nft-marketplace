@@ -1,9 +1,3 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
-import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
-import { shorterAddress } from '../utils'
-
 export enum LoadingId {
   Container = 'container-loading',
   LoadingText = 'loading-text',
@@ -27,14 +21,11 @@ class LoadingController {
 
   updateDomContent() {
     const LoadingText = document.getElementById(LoadingId.LoadingText) as HTMLElement
-   
-    LoadingText.innerHTML = this.loadingText? this.loadingText + "..." : 'LOADING...'
+
+    LoadingText.innerHTML = this.loadingText ? this.loadingText + '...' : 'LOADING...'
   }
- 
-  listener() {
-   
-    
-  }
+
+  listener() {}
 
   close() {
     const modal = document.getElementById(LoadingId.Container) as HTMLElement

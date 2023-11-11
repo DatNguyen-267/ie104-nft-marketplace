@@ -45,14 +45,15 @@ class ModalSellController {
     const modalItemImage = document.getElementById(ModalSellNFTId.ItemImage) as HTMLImageElement
 
     modalTotal.innerHTML = (
-      (Number(this.nftItem?.price) * 0.1) / 100 +
+      -(Number(this.nftItem?.price) * 0.1) / 100 +
       Number(this.nftItem?.price)
     ).toFixed(8)
 
     console.log((Number(this.nftItem?.price) * 0.1) / 100)
+    console.log(-(Number(this.nftItem?.price) * 0.1) / 100 + Number(this.nftItem?.price))
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
-    modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress) || ''
+    modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress || '')
     modalItemImage.src = this.nftItem?.imageGatewayUrl || '#'
   }
   async sell() {
@@ -98,37 +99,30 @@ class ModalSellController {
 
     var fee = Number(modalSellFee.innerHTML)
     console.log({ price, fee })
-    modalSellTotal.innerHTML = (price + (price * fee) / 100).toString()
+    modalSellTotal.innerHTML = (price - (price * fee) / 100).toString()
     modalSellTotal.title = modalSellTotal.innerHTML
   }
   listener() {
-    const modalButtonAccept = document.getElementById(
-      ModalSellNFTId.ButtonAccept,
-    ) as HTMLButtonElement
-
     const modalFee = document.getElementById(ModalSellNFTId.Fee) as HTMLElement
     modalFee.innerHTML = '0.1'
-    modalButtonAccept.addEventListener('click', (e) => {
-      this.sell()
-    })
+
     const modalSellCancel = document.getElementById(ModalSellNFTId.ButtonCancel) as HTMLElement
     const modalSellClose = document.getElementById(ModalSellNFTId.ButtonClose) as HTMLElement
     const modalItemPrice = document.getElementById(ModalSellNFTId.ItemPrice) as HTMLInputElement
     const modalSellOverlay = document.getElementById(ModalSellNFTId.Overlay) as HTMLElement
 
     modalSellClose.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
     modalSellCancel.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
     modalSellOverlay.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
-
     modalItemPrice.addEventListener('keyup', (e) => {
       this.updateTotal()
     })

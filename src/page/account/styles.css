@@ -62,7 +62,7 @@ body {
 /* =============== No connect ================= */
 .container-no-connect{
   background-color: var(--color-black);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100%;

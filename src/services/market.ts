@@ -27,7 +27,7 @@ export async function viewMarketCollections(
   size: number = 10,
 ): Promise<ViewMarketCollectionsResponse> {
   try {
-    const provider = getProvider()
+    const provider = getRpcProvider()
     if (!provider) {
       throw new Error('Provider is not found')
     }
@@ -141,7 +141,7 @@ export async function viewAsksByCollection(
   size: number = 10,
 ) {
   try {
-    const provider = getProvider()
+    const provider = getRpcProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
@@ -273,7 +273,11 @@ export async function importCollection(
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(
+      MARKETPLACE_ADDRESS,
+      MARKETPLACE_ABI,
+      provider.getSigner(),
+    )
     const addResponse = await marketContract.addCollection(
       collectionAddress,
       creatorAddress,

@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFT Marketplace | Create NFT</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFT Marketplace | Create NFT</title>
-</head>
-
-<body>
-  <!-- ===================================== Loading ============================================= -->
-  <div class="loading" id="container-loading" style="display: none;">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <body>
+    <!-- ===================================== Loading ============================================= -->
+    <div class="loading" id="container-loading" style="display: none">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <span id="loading-text">loading...</span>
     </div>
-    <span id="loading-text">loading...</span>
-  </div>
 
-  <!-- ===================================== Main ============================================= -->
-  <h1>
-    CREATE PAGE
+    <!-- ===================================== Main ============================================= -->
+    <h1>
+      CREATE PAGE
 
-    <input id="input-file" type="file" />
-    <input id="input-name" />
-    <input id="input-description" />
+      <input id="input-file" type="file" />
+      <input id="input-collection-address" placeholder="collection address" />
+      <input id="input-name" placeholder="name" />
+      <input id="input-description" placeholder="description" />
 
-    <button id="btn-create-nft" disabled>Create</button>
-  </h1>
-</body>
-
+      <button id="btn-create-nft" disabled>Create</button>
+    </h1>
+  </body>
 </html>

@@ -1,9 +1,7 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
+import { AppError, WBNB_ADDRESS } from '../constants'
+import { AccountPageControllerInstance } from '../page/account/controller'
 import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
-import { NftItem } from '../types/nft'
-import { shorterAddress } from '../utils'
+import { deposit } from '../services/token-exchange'
 
 export enum ModalDepositNFTId {
   Container = 'modal-depos',
@@ -15,45 +13,45 @@ export enum ModalDepositNFTId {
 }
 
 class ModalDepositController {
-
   constructor() {
     this.listener()
   }
 
-  set(){
+  set() {}
 
-  }
+  get() {}
 
-  get(){
-    
-  }
+  updateDomContent() {}
 
-  updateDomContent() {
- 
-  }
-  
   listener() {
     const modalButtonAccept = document.getElementById(
       ModalDepositNFTId.ButtonAccept,
     ) as HTMLButtonElement
 
-    const ModalDepositCancel = document.getElementById(ModalDepositNFTId.ButtonCancel) as HTMLElement
+    const ModalDepositCancel = document.getElementById(
+      ModalDepositNFTId.ButtonCancel,
+    ) as HTMLElement
     const ModalDepositClose = document.getElementById(ModalDepositNFTId.ButtonClose) as HTMLElement
     const modalOverlayClose = document.getElementById(ModalDepositNFTId.OverlayClose) as HTMLElement
+    const modalOverlayAcccept = document.getElementById(
+      ModalDepositNFTId.ButtonAccept,
+    ) as HTMLElement
 
     ModalDepositClose.addEventListener('click', (e) => {
       e.preventDefault()
       this.close()
     })
     ModalDepositCancel.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
     modalOverlayClose.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
-
+    modalOverlayAcccept.addEventListener('click', (e) => {
+      this.deposit()
+    })
   }
 
   close() {
@@ -77,6 +75,33 @@ class ModalDepositController {
     console.log('open desposit')
     let modal = document.getElementById(ModalDepositNFTId.Container) as HTMLElement
     modal.style.display = 'flex'
+  }
+
+  async deposit() {
+    const priceInput = document.getElementById(ModalDepositNFTId.Price) as HTMLInputElement
+
+    console.log(priceInput.value)
+    if (!priceInput.value) {
+      throw new Error(AppError.INPUT_INVALID)
+    }
+
+    try {
+      connectAndSwitch()
+    } catch (error) {
+      throw new Error(AppError.CONNECT_WALLET_FAIL)
+    }
+
+    const currentAddress = await getAccountAddress()
+
+    try {
+      const response = await deposit(WBNB_ADDRESS, priceInput.value.toString())
+      console.log(response)
+      AccountPageControllerInstance.reloadBalance()
+      this.close()
+    } catch (error) {
+      console.log(error)
+      return
+    }
   }
 }
 

@@ -9,6 +9,7 @@ export enum AppError {
   APPROVE_SPENDER_TO_ACCESS_NFT_FAILED = 'Approve spender to access nft failed',
   OWNER_IS_NOT_VALID = 'Owner is not valid',
   CONNECT_WALLET_FAIL = 'Connect wallet fail',
+  INPUT_INVALID = 'Input invalid',
 }
 
 export enum BuyNftErrorMessage {

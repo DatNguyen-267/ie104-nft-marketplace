@@ -1,7 +1,7 @@
 const path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-let htmlPageNames = ['create', 'explore', 'connectWallet', 'account']
+let htmlPageNames = ['create', 'explore', 'connectWallet', 'account', 'collection', 'explore-collections']
 let htmlLayouts = ['header']
 
 let multipleHtmlPlugins = htmlPageNames.map((name) => {
