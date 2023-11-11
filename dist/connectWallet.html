@@ -13,6 +13,22 @@
 <script defer src="connectWallet.js"></script><link href="connectWallet.css" rel="stylesheet"></head>
 
 <body>
+  <!-- ===================================== Loading ============================================= -->
+  <div class="loading" id="container-loading" style="display: none;">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <span id="loading-text">loading...</span>
+  </div>
+
+   <!-- ===================================== Toast ============================================= -->
+   <ul class="notifications" id="toast-notifications">
+
+   </ul>
+  <!-- ===================================== Header ============================================= -->
   <!-- alert sign out -->
   <div class="alert alert--default" id="alert-sigout" style="visibility: hidden;">
     <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
@@ -21,7 +37,7 @@
         <i class="fas fa-times-circle" id="alert-close"></i>
       </div>
       <div class="alert__main">
-        <i class="fab fa-gg-circle alert__main-icon"></i>
+        <i class="fas fa-door-open alert__main-icon alert-logout-icon-title"></i>
         <p class="alert__main-title">SIGN OUT</p>
         <div class="alert__main-content">
           <span>
