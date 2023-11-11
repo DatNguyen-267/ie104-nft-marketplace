@@ -19,12 +19,14 @@ import './../../components/header/styles.css'
 import './../../components/modal/modalBuyNFT/styles.css'
 import './../../components/modal/modalSellNFT/styles.css'
 import './../../components/loading/loading2/styles.css'
+import './../../components/toast/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
 import './styles.css'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 import { ModalBuyControllerInstance } from '../../controller/modal-buy'
 import { LoadingControllerInstance } from '../../controller/loading'
+import { ToastControllerInstance, ToastType } from '../../controller/toast'
 type NftItemElementObject = {
   eContainer: HTMLDivElement
   eImage: HTMLImageElement
@@ -334,3 +336,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPage()
 })
+
+// ============================= Test Toast ====================================
+
+// const btnLogout = document.getElementById('alert-ok') as HTMLButtonElement;
+// var test = true;
+// btnLogout.onclick = () =>{
+//   if(test){
+//     ToastControllerInstance.set('alert ok',ToastType.success)
+//     ToastControllerInstance.open()
+//     test = false;
+//   }
+//   else{
+//     ToastControllerInstance.set('alert error',ToastType.error)
+//     ToastControllerInstance.open()
+//     test = true;
+//   }
+// }
