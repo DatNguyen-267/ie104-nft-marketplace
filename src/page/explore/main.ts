@@ -81,3 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPage()
 })
+
+// ============================= Test Toast ====================================
+
+// const btnLogout = document.getElementById('alert-ok') as HTMLButtonElement;
+// var test = true;
+// btnLogout.onclick = () =>{
+//   if(test){
+//     ToastControllerInstance.set('alert ok',ToastType.success)
+//     ToastControllerInstance.open()
+//     test = false;
+//   }
+//   else{
+//     ToastControllerInstance.set('alert error',ToastType.error)
+//     ToastControllerInstance.open()
+//     test = true;
+//   }
+// }
