@@ -26,6 +26,22 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (12) ***!
   \****************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (14) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (16) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (18) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (20) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (1) ***!
   \***************************************************************************/
@@ -197,6 +213,79 @@ h6 {
 
 .text-body-tiny {
   font-size: 1.2rem;
+}
+/*!**********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/loading/loading2/styles.css ***!
+  \**********************************************************************************************/
+.loading {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.75)
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 8px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading span {
+    color: white;
+    font-size: 16x;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: text 3s ease-in-out infinite;
+}
+
+@keyframes text {
+    50% {
+        color: transparent;
+    }
 }
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
@@ -370,8 +459,298 @@ h6 {
 .text-body-tiny {
   font-size: 1.2rem;
 }
+/*!***********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/toast/styles.css ***!
+  \***********************************************************************************/
+.toast-container {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  
+}
+.notifications {
+  z-index: 1000;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+.toast-column,
+.toast {
+  display: flex;
+  align-items: center;
+}
+.toast {
+  width: 400px;
+  position: relative;
+  list-style: none;
+  background: var(--color-gray-100);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 20px;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+  animation: show_toast 0.5s ease forwards;
+}
+@keyframes show_toast {
+  0% {
+    transform: translateY(-100%);
+  }
+  40% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(-8%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.toast::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  animation: progress 5s linear forwards;
+}
+@keyframes progress {
+  100% {
+    width: 0%;
+  }
+}
+.toast-success::before{
+  background-color: var(--color-success);
+}
+.toast-error::before{
+  background-color: var(--color-error);
+}
+.toast-warning::before{
+  background-color: var(--color-warning);
+}
+.toast-info::before{
+  background-color: var(--color-blue-300);
+}
+.toast-column i {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+.toast-success i {
+  color: var(--color-success);
+}
+.toast-error i {
+  color: var(--color-error);
+}
+.toast-warning i {
+  color: var(--color-warning);
+}
+.toast-info i {
+  color:  var(--color-blue-300);
+}
+.toast-column span {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* Button click show toast */
+.buttons .btn {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+}
+.buttons .btn:hover {
+  transform: scale(1.05);
+}
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (5) ***!
+  \***************************************************************************/
+:root {
+  /* ================ HEX ==================== */
+  --color-primary: #A259FF;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-plum: #b80257;
+
+  /* Gray */
+  --color-gray-100: #FCFCFC;
+  --color-gray-200: #FAFAFA;
+  --color-gray-300: #F6F6F6;
+  --color-gray-400: #F2F2F2;
+  --color-gray-500: #F1F1F1;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #E9ECEF;
+  --color-gray-800: #E5E5E5;
+  --color-gray-900: #C4C4C4;
+  --color-gray-1000: #BBB8B8;
+  --color-gray-1100: #AFAFAF;
+  --color-gray-1200: #929191;
+  --color-gray-1300: #8D8D8D;
+  --color-gray-1400: #86878B;
+  --color-gray-1500: #666;
+  --color-gray-1600: #4C4C4C;
+  --color-gray-1700: #3B3B3B;
+  --color-gray-1800: #333;
+  --color-gray-1900: #2B2B2B;
+  --color-gray-2000: #292929;
+  --color-gray-2100: #242424;
+  --color-gray-2200: #040404;
+
+  /* Green */
+  --color-green-100: #74d8c1;
+  --color-green-200: #18E094;
+  --color-green-300: #00EC98;
+  --color-green-400: #00DF80;
+  --color-green-500: #00CB7E;
+  --color-green-600: #008000;
+
+  /* Red */
+  --color-red-100: #F04349;
+  --color-red-200: #f33a58;
+  --color-red-300: #fe2c55;
+  --color-red-400: #FF014E;
+  --color-red-500: #ff0000;
+
+  /* Yellow */
+  --color-yellow-100: #E9D8BD;
+  --color-yellow-200: #FFD21E;
+  --color-yellow-300: #ffff00;
+
+  /* Purple */
+  --color-purple-100: #A269ff;
+  --color-purple-200: #7C5DFB;
+
+  /* Blue */
+  --color-blue-100: #2cccff;
+  --color-blue-200: #00C5F9;
+  --color-blue-300: #04afdf;
+
+  /* Dark Blue */
+  --color-dark-blue-100: #3f3d56;
+  --color-dark-blue-200: #183153;
+  --color-dark-blue-300: #252337;
+
+  /* action */
+  --color-success: #18e094;
+  --color-warning: #ffd21e;
+  --color-error: #FF014E;
+
+  /* Text */
+  --color-text: #333;
+
+  --color-sub-text-100: #afafaf;
+  --color-sub-text-200: #919191;
+  --color-sub-text-300: #6d6d6d;
+  --color-sub-text-400: #4c4c4c;
+
+  /* general */
+  --color-btn-primary: #A259FF;
+  --color-btn-secondary: #8148cd;
+  --color-background: #fff;
+
+  --color-border-100: #E5E5E5;
+  --color-border-200: #bbb8b8;
+  --color-border-300: #929191;
+
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  color: inherit;
+}
+
+/* use em vs rem with text */
+/* 0.1rem ~ 1px */
+/* 1.6rem ~ 16px */
+/* 2rem ~ 20px */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a,
+li {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Text size */
+h1 {
+  font-size: 5.1rem;
+  line-height: 6.12rem;
+  /* 1.2 times the font-size */
+}
+
+h2 {
+  font-size: 3.8rem;
+  line-height: 4.56rem;
+  /* 1.2 times the font-size */
+}
+
+h3 {
+  font-size: 2.8rem;
+  line-height: 3.36rem;
+  /* 1.2 times the font-size */
+}
+
+h4 {
+  font-size: 2.2rem;
+  line-height: 2.64rem;
+  /* 1.2 times the font-size */
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+  /* 1.2 times the font-size */
+}
+
+h6 {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  /* 1.2 times the font-size */
+}
+
+.text-body-1 {
+  font-size: 2.2rem;
+}
+
+.text-body-2 {
+  font-size: 1.6rem;
+}
+
+.text-body-3 {
+  font-size: 1.4rem;
+}
+
+.text-body-tiny {
+  font-size: 1.2rem;
+}
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (7) ***!
   \***************************************************************************/
 :root {
   /* ================ HEX ==================== */
@@ -558,7 +937,7 @@ h6 {
     border: 2px solid  var(--color-gray-1000);
 }
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (7) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (9) ***!
   \***************************************************************************/
 :root {
   /* ================ HEX ==================== */
@@ -1085,9 +1464,406 @@ header {
     }
 }
 
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (9) ***!
-  \***************************************************************************/
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (11) ***!
+  \****************************************************************************/
+:root {
+  /* ================ HEX ==================== */
+  --color-primary: #A259FF;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-plum: #b80257;
+
+  /* Gray */
+  --color-gray-100: #FCFCFC;
+  --color-gray-200: #FAFAFA;
+  --color-gray-300: #F6F6F6;
+  --color-gray-400: #F2F2F2;
+  --color-gray-500: #F1F1F1;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #E9ECEF;
+  --color-gray-800: #E5E5E5;
+  --color-gray-900: #C4C4C4;
+  --color-gray-1000: #BBB8B8;
+  --color-gray-1100: #AFAFAF;
+  --color-gray-1200: #929191;
+  --color-gray-1300: #8D8D8D;
+  --color-gray-1400: #86878B;
+  --color-gray-1500: #666;
+  --color-gray-1600: #4C4C4C;
+  --color-gray-1700: #3B3B3B;
+  --color-gray-1800: #333;
+  --color-gray-1900: #2B2B2B;
+  --color-gray-2000: #292929;
+  --color-gray-2100: #242424;
+  --color-gray-2200: #040404;
+
+  /* Green */
+  --color-green-100: #74d8c1;
+  --color-green-200: #18E094;
+  --color-green-300: #00EC98;
+  --color-green-400: #00DF80;
+  --color-green-500: #00CB7E;
+  --color-green-600: #008000;
+
+  /* Red */
+  --color-red-100: #F04349;
+  --color-red-200: #f33a58;
+  --color-red-300: #fe2c55;
+  --color-red-400: #FF014E;
+  --color-red-500: #ff0000;
+
+  /* Yellow */
+  --color-yellow-100: #E9D8BD;
+  --color-yellow-200: #FFD21E;
+  --color-yellow-300: #ffff00;
+
+  /* Purple */
+  --color-purple-100: #A269ff;
+  --color-purple-200: #7C5DFB;
+
+  /* Blue */
+  --color-blue-100: #2cccff;
+  --color-blue-200: #00C5F9;
+  --color-blue-300: #04afdf;
+
+  /* Dark Blue */
+  --color-dark-blue-100: #3f3d56;
+  --color-dark-blue-200: #183153;
+  --color-dark-blue-300: #252337;
+
+  /* action */
+  --color-success: #18e094;
+  --color-warning: #ffd21e;
+  --color-error: #FF014E;
+
+  /* Text */
+  --color-text: #333;
+
+  --color-sub-text-100: #afafaf;
+  --color-sub-text-200: #919191;
+  --color-sub-text-300: #6d6d6d;
+  --color-sub-text-400: #4c4c4c;
+
+  /* general */
+  --color-btn-primary: #A259FF;
+  --color-btn-secondary: #8148cd;
+  --color-background: #fff;
+
+  --color-border-100: #E5E5E5;
+  --color-border-200: #bbb8b8;
+  --color-border-300: #929191;
+
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  color: inherit;
+}
+
+/* use em vs rem with text */
+/* 0.1rem ~ 1px */
+/* 1.6rem ~ 16px */
+/* 2rem ~ 20px */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a,
+li {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Text size */
+h1 {
+  font-size: 5.1rem;
+  line-height: 6.12rem;
+  /* 1.2 times the font-size */
+}
+
+h2 {
+  font-size: 3.8rem;
+  line-height: 4.56rem;
+  /* 1.2 times the font-size */
+}
+
+h3 {
+  font-size: 2.8rem;
+  line-height: 3.36rem;
+  /* 1.2 times the font-size */
+}
+
+h4 {
+  font-size: 2.2rem;
+  line-height: 2.64rem;
+  /* 1.2 times the font-size */
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+  /* 1.2 times the font-size */
+}
+
+h6 {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  /* 1.2 times the font-size */
+}
+
+.text-body-1 {
+  font-size: 2.2rem;
+}
+
+.text-body-2 {
+  font-size: 1.6rem;
+}
+
+.text-body-3 {
+  font-size: 1.4rem;
+}
+
+.text-body-tiny {
+  font-size: 1.2rem;
+}
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (13) ***!
+  \****************************************************************************/
+:root {
+  /* ================ HEX ==================== */
+  --color-primary: #A259FF;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-plum: #b80257;
+
+  /* Gray */
+  --color-gray-100: #FCFCFC;
+  --color-gray-200: #FAFAFA;
+  --color-gray-300: #F6F6F6;
+  --color-gray-400: #F2F2F2;
+  --color-gray-500: #F1F1F1;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #E9ECEF;
+  --color-gray-800: #E5E5E5;
+  --color-gray-900: #C4C4C4;
+  --color-gray-1000: #BBB8B8;
+  --color-gray-1100: #AFAFAF;
+  --color-gray-1200: #929191;
+  --color-gray-1300: #8D8D8D;
+  --color-gray-1400: #86878B;
+  --color-gray-1500: #666;
+  --color-gray-1600: #4C4C4C;
+  --color-gray-1700: #3B3B3B;
+  --color-gray-1800: #333;
+  --color-gray-1900: #2B2B2B;
+  --color-gray-2000: #292929;
+  --color-gray-2100: #242424;
+  --color-gray-2200: #040404;
+
+  /* Green */
+  --color-green-100: #74d8c1;
+  --color-green-200: #18E094;
+  --color-green-300: #00EC98;
+  --color-green-400: #00DF80;
+  --color-green-500: #00CB7E;
+  --color-green-600: #008000;
+
+  /* Red */
+  --color-red-100: #F04349;
+  --color-red-200: #f33a58;
+  --color-red-300: #fe2c55;
+  --color-red-400: #FF014E;
+  --color-red-500: #ff0000;
+
+  /* Yellow */
+  --color-yellow-100: #E9D8BD;
+  --color-yellow-200: #FFD21E;
+  --color-yellow-300: #ffff00;
+
+  /* Purple */
+  --color-purple-100: #A269ff;
+  --color-purple-200: #7C5DFB;
+
+  /* Blue */
+  --color-blue-100: #2cccff;
+  --color-blue-200: #00C5F9;
+  --color-blue-300: #04afdf;
+
+  /* Dark Blue */
+  --color-dark-blue-100: #3f3d56;
+  --color-dark-blue-200: #183153;
+  --color-dark-blue-300: #252337;
+
+  /* action */
+  --color-success: #18e094;
+  --color-warning: #ffd21e;
+  --color-error: #FF014E;
+
+  /* Text */
+  --color-text: #333;
+
+  --color-sub-text-100: #afafaf;
+  --color-sub-text-200: #919191;
+  --color-sub-text-300: #6d6d6d;
+  --color-sub-text-400: #4c4c4c;
+
+  /* general */
+  --color-btn-primary: #A259FF;
+  --color-btn-secondary: #8148cd;
+  --color-background: #fff;
+
+  --color-border-100: #E5E5E5;
+  --color-border-200: #bbb8b8;
+  --color-border-300: #929191;
+
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  color: inherit;
+}
+
+/* use em vs rem with text */
+/* 0.1rem ~ 1px */
+/* 1.6rem ~ 16px */
+/* 2rem ~ 20px */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a,
+li {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Text size */
+h1 {
+  font-size: 5.1rem;
+  line-height: 6.12rem;
+  /* 1.2 times the font-size */
+}
+
+h2 {
+  font-size: 3.8rem;
+  line-height: 4.56rem;
+  /* 1.2 times the font-size */
+}
+
+h3 {
+  font-size: 2.8rem;
+  line-height: 3.36rem;
+  /* 1.2 times the font-size */
+}
+
+h4 {
+  font-size: 2.2rem;
+  line-height: 2.64rem;
+  /* 1.2 times the font-size */
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+  /* 1.2 times the font-size */
+}
+
+h6 {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  /* 1.2 times the font-size */
+}
+
+.text-body-1 {
+  font-size: 2.2rem;
+}
+
+.text-body-2 {
+  font-size: 1.6rem;
+}
+
+.text-body-3 {
+  font-size: 1.4rem;
+}
+
+.text-body-tiny {
+  font-size: 1.2rem;
+}
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css (1) ***!
+  \****************************************************************************************/
+.filled--button{
+    background-color: var(--color-btn-primary);
+    border-radius: 20px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+.icon--button{
+    padding-right: 12px;
+}
+.filled--button.primary{
+    width: 206px;
+    height: 72px;
+    font-size: 22px;
+}
+.filled--button.secondary{
+    width: 186px;
+    height: 60px;
+    font-size: 16px;
+}
+.filled--button.tertiary{
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+}
+.filled--button.outline{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+    border: 2px solid var(--color-btn-primary);
+}
+.filled--button:hover{
+    background-color: var(--color-btn-secondary);
+}
+.filled--button:active{
+    background-color: var(--color-btn-primary);
+}
+.filled--button.outline:hover{
+    background-color: var(--color-btn-primary);
+    color: var(--color-white);
+}
+.filled--button.outline:active{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+}
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (15) ***!
+  \****************************************************************************/
 :root {
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
@@ -1373,7 +2149,7 @@ h6 {
     cursor: pointer;
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (11) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (17) ***!
   \****************************************************************************/
 :root {
   /* ================ HEX ==================== */
@@ -1543,82 +2319,9 @@ h6 {
 
 .text-body-tiny {
   font-size: 1.2rem;
-}
-/*!**********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/loading/loading2/styles.css ***!
-  \**********************************************************************************************/
-.loading {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.75)
-}
-
-.lds-ring {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-
-.lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 51px;
-    height: 51px;
-    margin: 8px;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
-}
-
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
-
-@keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.loading span {
-    color: white;
-    font-size: 16x;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    animation: text 3s ease-in-out infinite;
-}
-
-@keyframes text {
-    50% {
-        color: transparent;
-    }
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (13) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (19) ***!
   \****************************************************************************/
 :root {
   /* ================ HEX ==================== */
@@ -1789,258 +2492,542 @@ h6 {
 .text-body-tiny {
   font-size: 1.2rem;
 }
-/*!***********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/toast/styles.css ***!
-  \***********************************************************************************/
-.toast-container {
-  gap: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  font-family: "Roboto", sans-serif;
-  
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css (2) ***!
+  \****************************************************************************************/
+.filled--button{
+    background-color: var(--color-btn-primary);
+    border-radius: 20px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* transition: 0.3s; */
 }
-.notifications {
-  z-index: 1000;
-  position: fixed;
-  top: 30px;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;  
-  justify-content: center;
-  align-items: center;
-  padding: 0 !important;
+.icon--button{
+    padding-right: 12px;
 }
-.toast-column,
-.toast {
-  display: flex;
-  align-items: center;
+.filled--button.primary{
+    width: 206px;
+    height: 72px;
+    font-size: 22px;
 }
-.toast {
-  width: 400px;
-  position: relative;
-  list-style: none;
-  background: var(--color-gray-100);
-  border-radius: 4px;
-  margin-bottom: 10px;
-  padding: 20px;
-  justify-content: space-between;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
-  animation: show_toast 0.5s ease forwards;
+.filled--button.secondary{
+    width: 186px;
+    height: 60px;
+    font-size: 16px;
 }
-@keyframes show_toast {
-  0% {
-    transform: translateY(-100%);
-  }
-  40% {
-    transform: translateY(0%);
-  }
-  80% {
-    transform: translateY(-8%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
+.filled--button.tertiary{
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
 }
-.toast::before {
-  content: "";
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  animation: progress 5s linear forwards;
+.filled--button.outline{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+    border: 2px solid var(--color-btn-primary);
 }
-@keyframes progress {
-  100% {
-    width: 0%;
-  }
+.filled--button:hover{
+    background-color: var(--color-btn-secondary);
 }
-.toast-success::before{
-  background-color: var(--color-success);
+.filled--button:active{
+    background-color: var(--color-btn-primary);
 }
-.toast-error::before{
-  background-color: var(--color-error);
+.filled--button.outline:hover{
+    background-color: var(--color-btn-primary);
+    color: var(--color-white);
 }
-.toast-warning::before{
-  background-color: var(--color-warning);
+.filled--button.outline:active{
+    background-color: transparent;
+    color: var(--color-btn-primary);
 }
-.toast-info::before{
-  background-color: var(--color-blue-300);
-}
-.toast-column i {
-  font-size: 2rem;
-  margin-right: 10px;
-}
-.toast-success i {
-  color: var(--color-success);
-}
-.toast-error i {
-  color: var(--color-error);
-}
-.toast-warning i {
-  color: var(--color-warning);
-}
-.toast-info i {
-  color:  var(--color-blue-300);
-}
-.toast-column span {
-  font-size: 1.4rem;
-  font-weight: 500;
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (21) ***!
+  \****************************************************************************/
+:root {
+  /* ================ HEX ==================== */
+  --color-primary: #A259FF;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-plum: #b80257;
+
+  /* Gray */
+  --color-gray-100: #FCFCFC;
+  --color-gray-200: #FAFAFA;
+  --color-gray-300: #F6F6F6;
+  --color-gray-400: #F2F2F2;
+  --color-gray-500: #F1F1F1;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #E9ECEF;
+  --color-gray-800: #E5E5E5;
+  --color-gray-900: #C4C4C4;
+  --color-gray-1000: #BBB8B8;
+  --color-gray-1100: #AFAFAF;
+  --color-gray-1200: #929191;
+  --color-gray-1300: #8D8D8D;
+  --color-gray-1400: #86878B;
+  --color-gray-1500: #666;
+  --color-gray-1600: #4C4C4C;
+  --color-gray-1700: #3B3B3B;
+  --color-gray-1800: #333;
+  --color-gray-1900: #2B2B2B;
+  --color-gray-2000: #292929;
+  --color-gray-2100: #242424;
+  --color-gray-2200: #040404;
+
+  /* Green */
+  --color-green-100: #74d8c1;
+  --color-green-200: #18E094;
+  --color-green-300: #00EC98;
+  --color-green-400: #00DF80;
+  --color-green-500: #00CB7E;
+  --color-green-600: #008000;
+
+  /* Red */
+  --color-red-100: #F04349;
+  --color-red-200: #f33a58;
+  --color-red-300: #fe2c55;
+  --color-red-400: #FF014E;
+  --color-red-500: #ff0000;
+
+  /* Yellow */
+  --color-yellow-100: #E9D8BD;
+  --color-yellow-200: #FFD21E;
+  --color-yellow-300: #ffff00;
+
+  /* Purple */
+  --color-purple-100: #A269ff;
+  --color-purple-200: #7C5DFB;
+
+  /* Blue */
+  --color-blue-100: #2cccff;
+  --color-blue-200: #00C5F9;
+  --color-blue-300: #04afdf;
+
+  /* Dark Blue */
+  --color-dark-blue-100: #3f3d56;
+  --color-dark-blue-200: #183153;
+  --color-dark-blue-300: #252337;
+
+  /* action */
+  --color-success: #18e094;
+  --color-warning: #ffd21e;
+  --color-error: #FF014E;
+
+  /* Text */
+  --color-text: #333;
+
+  --color-sub-text-100: #afafaf;
+  --color-sub-text-200: #919191;
+  --color-sub-text-300: #6d6d6d;
+  --color-sub-text-400: #4c4c4c;
+
+  /* general */
+  --color-btn-primary: #A259FF;
+  --color-btn-secondary: #8148cd;
+  --color-background: #fff;
+
+  --color-border-100: #E5E5E5;
+  --color-border-200: #bbb8b8;
+  --color-border-300: #929191;
+
 }
 
-/* Button click show toast */
-.buttons .btn {
-  border: none;
-  outline: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: all 0.2s ease-in-out;
+* {
+  box-sizing: inherit;
+  margin: 0;
+  color: inherit;
 }
-.buttons .btn:hover {
-  transform: scale(1.05);
+
+/* use em vs rem with text */
+/* 0.1rem ~ 1px */
+/* 1.6rem ~ 16px */
+/* 2rem ~ 20px */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a,
+li {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Text size */
+h1 {
+  font-size: 5.1rem;
+  line-height: 6.12rem;
+  /* 1.2 times the font-size */
+}
+
+h2 {
+  font-size: 3.8rem;
+  line-height: 4.56rem;
+  /* 1.2 times the font-size */
+}
+
+h3 {
+  font-size: 2.8rem;
+  line-height: 3.36rem;
+  /* 1.2 times the font-size */
+}
+
+h4 {
+  font-size: 2.2rem;
+  line-height: 2.64rem;
+  /* 1.2 times the font-size */
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+  /* 1.2 times the font-size */
+}
+
+h6 {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  /* 1.2 times the font-size */
+}
+
+.text-body-1 {
+  font-size: 2.2rem;
+}
+
+.text-body-2 {
+  font-size: 1.6rem;
+}
+
+.text-body-3 {
+  font-size: 1.4rem;
+}
+
+.text-body-tiny {
+  font-size: 1.2rem;
+}
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/avatar/styles.css (1) ***!
+  \****************************************************************************************/
+.avatar {
+    /* display: none; */
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(AvatarDefault.webp);
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    border-radius: 50%;
+    background-position: center;
+    border: 2px solid  var(--color-gray-1000);
 }
 /*!*************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/connectWallet/styles.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/NFTcard/styles.css ***!
   \*************************************************************************************/
-body {
-  background-color: #141414;
-  color: var(--color-text);
+/* ====================== nft-card ============================== */
+.nft-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    max-width: 330px;
+    width: 100%;
+    height: 100%;
+    /* margin: 50px; */
+    background: #FFF;
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.15);
+    margin-bottom: 36px;
+    transition: transform ease-in 0.2s;
 }
 
-/* Container */
+.nft-card:hover {
+    transform: translateY(-5px) translateX(5px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.nft-card__img {
+    /* flex: 1; */
+    width: 100%;
+    height: 100%;
+    height: 296px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+/* ======================= Detail =========================== */
+.nft-card__detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    padding-bottom: 1.5rem;
+    gap: 1.5rem;
+}
+
+/* Info */
+.nft-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.nft-card__address {
+    position: relative;
+    color: var(--color-text);
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight:600;
+    /* background-color: var(--color-gray-500);
+    padding: 10px;
+    border-radius: 5px; */
+    line-height: 2rem !important;
+}
+
+.nft-card__address-img {
+    width: 24px;
+    height: 24px;
+}
+
+.nft-card__address-value {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    
+}
+
+.nft-card__title {
+    position: relative;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    line-height: 2.4rem;
+}
+
+.nft-card__name {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.nft-card__user {
+    position: relative;
+    flex: 1 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nft-card__user-avatar {
+    width: 25px !important;
+    height: 25px !important;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.nft-card__user-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    max-width: 150px;
+}
+
+
+/* Action */
+
+.nft-card__price {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--color-text);
+    overflow: hidden;
+}
+
+.nft-card__price-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-sub-text-200);
+}
+
+.nft-card__price-value {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--color-text);
+}
+
+.nft-card__price-number {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Btn */
+.nft-card__action {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.nft-card__btn {
+    width: 14rem !important;
+    width: 100% !important;
+    height: 40px !important;
+    transform: translateY(5px);
+    font-size: 1.6rem !important;
+    border-radius: 10px !important;
+}
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/create/styles.css ***!
+  \******************************************************************************/
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url(connectBackground.webp);
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  width: 100%;
-  transform: translateY(-60px);
+    display: flex;
+    align-items: flex-start;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
 }
-
-.container::before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  /* background-color: rgba(var(--color-rgb-black), 0.6); */
-  background-color: color-mix(in srgb, var(--color-black) 0%, transparent);
+/* .example {
+    margin-top: 30px;
+    float: inline-end;
+    
+} */
+.example {
+    margin-top: 30px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
 }
-
-/* Form */
-.connect-form {
-  position: relative;
-  width: 400px;
-  gap: 10px;
-  padding: 32px 50px 34px 50px;
-  margin: 10px;
-  margin-top: 6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background: var(--color-white);
-  box-shadow: 0px 2px 50px 0px var(--color-gray-800);
+.title_example {
+    width: 143px;
+    height: 22px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
 }
-
-.subtitle {
-  margin-top: 10px;
-  color: var(--color-sub-text-100);
-  font-weight: 500;
-  text-align: center;
+.nft-card {
+    margin-top: 30px;
 }
-
-.wallet-container {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.header {
+    background: url(exploreBackground.webp);
+    background-size: cover;
+    box-shadow: none !important;
 }
-
-/* card */
-.card {
-  padding: 0;
-  background-color: var(--color-gray-300);
-  border-radius: 1.2rem;
-  border: 2px solid transparent;
-  grid-column: 2;
-  cursor: pointer;
-  padding: 1.0rem ;
-  display: flex;
-  gap: 15px;
+.banner {
+    position: sticky !important;
+    width: 100%;
+    height: 147px;
+    background: url(exploreBackground.webp);
+    background-size: cover;
+    margin-top: 0px;
 }
-
-.card:hover {
-  border: 2px solid #3396ff;
+.form {
+    background-color: white;
+    width: 810px;
+    height: 795px;
+    margin-left: 20px;
+    margin: 30px;
 }
-
-.card-image {
-  width: 5rem;
-  height: 5rem;
+.upload {
+    width: 806px;
+    height: 278px;
 }
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  align-items:flex-start;
+.upload-file{
+    width: 143px;
+    height: 22px;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    margin-bottom: 30px;
 }
-
-.card-title {
-  color: var(--color-text);
+.File-upload {
+    width: 806px;
+    height: 226px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 3px dashed #68676e;
+    border-radius: 25px;
 }
-
-.card-description {
-  margin-top: 1rem;
-  color: rgb(166, 166, 166);
-  text-align: left;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+input[type="file"] {
+    display: none;
 }
-
-/* Wallet Address */
-.wallet-address {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-top: 2px solid var(--color-border-100);
-  gap: 10px;
+.type-file {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
 }
-
-.address-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #3396ff;
-  padding: 2rem 0;
+.input {
+    width: 810px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
 }
-
-.showAccount {
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 500;
-  /* background-color: color-mix(in srgb, var(--color-gray-900) 20%, transparent); */
-  text-align: center;
-  padding: 1rem;
-  border-radius: 8px;
+.title {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.Input {
+    width: 806px;
+    height: 50px;
+    border: 0.5px solid #68676e;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;
+}
+.create-item {
+    width: 140px !important;
+    height: 38px !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    margin-top: 30px;
 }
 
 
-/*# sourceMappingURL=connectWallet.css.map*/
+/*# sourceMappingURL=create.css.map*/

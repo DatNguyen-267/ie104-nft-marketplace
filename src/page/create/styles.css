@@ -1,2 +1,119 @@
 @import url(../../components/loading/loading2/styles.css);
 @import url(../../components/toast/styles.css);
+@import url(../../components/header/styles.css);
+@import url(../../styles/base.css);
+@import url('../../components/button/styles.css');
+@import url(../../components/alert/styles.css);
+@import url(../../components/NFTcard/styles.css);
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+.container {
+    display: flex;
+    align-items: flex-start;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+}
+/* .example {
+    margin-top: 30px;
+    float: inline-end;
+    
+} */
+.example {
+    margin-top: 30px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.title_example {
+    width: 143px;
+    height: 22px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.nft-card {
+    margin-top: 30px;
+}
+.header {
+    background: url(../../assets/images/exploreBackground.webp);
+    background-size: cover;
+    box-shadow: none !important;
+}
+.banner {
+    position: sticky !important;
+    width: 100%;
+    height: 147px;
+    background: url(../../assets/images/exploreBackground.webp);
+    background-size: cover;
+    margin-top: 0px;
+}
+.form {
+    background-color: white;
+    width: 810px;
+    height: 795px;
+    margin-left: 20px;
+    margin: 30px;
+}
+.upload {
+    width: 806px;
+    height: 278px;
+}
+.upload-file{
+    width: 143px;
+    height: 22px;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    margin-bottom: 30px;
+}
+.File-upload {
+    width: 806px;
+    height: 226px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 3px dashed #68676e;
+    border-radius: 25px;
+}
+input[type="file"] {
+    display: none;
+}
+.type-file {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.input {
+    width: 810px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.title {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.Input {
+    width: 806px;
+    height: 50px;
+    border: 0.5px solid #68676e;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;
+}
+.create-item {
+    width: 140px !important;
+    height: 38px !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    margin-top: 30px;
+}
