@@ -256,9 +256,23 @@ export class LandingPageController {
 
       this.clearNftContainer()
 
+      const classesCard = ['left', 'active', 'right']
+
+      const changePositions = (e: any) => {
+        const clickedCard = e.currentTarget
+        const activeCard = document.querySelector('.cards.active') as HTMLElement
+        if (clickedCard.classList.contains('active')) return
+        const classesFrom = e.currentTarget.className
+        const classesTo = activeCard.className
+        clickedCard.className = classesTo
+        activeCard.className = classesFrom
+      }
+
       listCard = listNfts.slice(6, 9)
       listCard.forEach(async (nftItem: NftItem, index) => {
         listCardHeroContainer.appendChild(await this.CreateCardComponent(nftItem))
+        listCardHeroContainer.children[index].classList.add(classesCard[index])
+        listCardHeroContainer.children[index].addEventListener('click', changePositions)
       })
 
       listNftReview = listNfts.slice(0, 6)
