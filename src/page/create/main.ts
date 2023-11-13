@@ -124,7 +124,9 @@ signOut.onclick = toggleAlertSigout
 // ============================== UPLOAD IMAGE ===================================
 const drogArea = document.getElementById('drop-area') as HTMLElement;
 const inputFile = document.getElementById('input-file') as HTMLInputElement;
-const imgView = document.getElementById('img-view') as HTMLElement;
+const imgContent = document.getElementById('img-content') as HTMLElement;
+const imgView = document.getElementById('img-view') as HTMLImageElement;
+const imgClose = document.getElementById('img-close') as HTMLImageElement;
 
 
 inputFile.addEventListener('change', uploadImage)
@@ -135,8 +137,10 @@ function uploadImage() {
     var mimeType = item['type'] ? item['type'] : ''
     if (mimeType.split('/')[0] === 'image' && inputFile.files) {
       let url = URL.createObjectURL(inputFile.files[0]).toString();
-      imgView.style.backgroundImage = `url(${url})`
-      imgView.textContent = ''
+      imgView.src = `${url}`
+      imgView.style.display = 'flex'
+      imgContent.style.display = 'none';
+      imgClose.style.display ='flex'
     }
 
   }
@@ -166,3 +170,11 @@ drogArea.addEventListener('drop', (e) => {
 // btn.addEventListener('click', ()=>{
 //     console.log(file.files)
 // })
+
+imgClose.addEventListener('click', ()=>{
+  inputFile.value = '';
+  imgView.src = "#"
+  imgView.style.display = 'none'
+  imgContent.style.display ='flex'
+  imgClose.style.display ='none'
+})

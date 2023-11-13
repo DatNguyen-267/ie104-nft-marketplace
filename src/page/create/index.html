@@ -142,12 +142,17 @@
     <div class="form">
       <span class="upload-file">Upload file</span>
       <div class="File-upload">
+        <div class="img__close" id="img-close" style="display: none;">
+          <i class="fas fa-times"></i>
+        </div>
         <label for="input-file" id="drop-area">
+          
           <input type="file" accept="image/*" id="input-file" hidden>
-          <div id="img-view" class="view">
-            <img class="view-icon" src="./../../assets/images/uploadImg.webp" alt="img-view">
-            <p class="view-des">Drog and drag or click here<br> to upload image </p>
-            <span class="view-note">Upload any image from desktop </span>
+          <img src="#" alt="" style="display: none;" id="img-view" class="img-view">
+          <div id="img-content" class="content">
+            <img class="content-icon" src="./../../assets/images/uploadImg.webp" alt="img-content">
+            <p class="content-des">Drog and drag or click here<br> to upload image </p>
+            <span class="content-note">Upload any image from desktop </span>
             <!-- <span class="type-file"> Drog and drag or click here<br> to upload image </span>
             <span class="filled--button secondary">Browse</span> -->
           </div>
