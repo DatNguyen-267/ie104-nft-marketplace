@@ -3,12 +3,14 @@ import './styles.css'
 import {
   connect,
   connectAndSwitch,
+  connectEarly,
   createMetadata,
   getAccountAddress,
   getDefaultProvider,
   mintNFT,
   switchToNetwork,
 } from '../../services'
+import { UserPopoverControllerInstance } from '../../controller/user'
 
 console.log('create page script')
 
@@ -75,3 +77,80 @@ btnCreate.addEventListener('click', async () => {
     console.log(error)
   }
 })
+
+// ========================== Header =======================================
+const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
+const headerAvatar = document.getElementById('header-avatar') as HTMLElement
+const alertOverlay = document.getElementById('alert-overlay-close') as HTMLElement
+const alertCancel = document.getElementById('alert-cancel') as HTMLElement
+const alertClose = document.getElementById('alert-close') as HTMLElement
+const signOut = document.getElementById('header-sign-out') as HTMLElement
+
+connectEarly().then(() => {
+  UserPopoverControllerInstance.isConnected.set(true)
+  UserPopoverControllerInstance.isConnected.loadAvatar()
+})
+
+// Toggle PopUP
+function togglePopUpUser(event: Event): void {
+  event.preventDefault()
+  var x = document.getElementById('pop-up-user') as HTMLElement
+  if (x.style.visibility === 'hidden') {
+    x.style.visibility = 'visible'
+    x.style.opacity = '1'
+  } else {
+    x.style.visibility = 'hidden'
+    x.style.opacity = '0'
+  }
+}
+popUpUserClose.onclick = togglePopUpUser
+headerAvatar.onclick = togglePopUpUser
+
+// Toggle Alert
+const toggleAlertSigout = (event: any) => {
+  event.preventDefault()
+  var x = document.getElementById('alert-sigout') as HTMLElement
+  if (x.style.visibility === 'hidden') {
+    x.style.visibility = 'visible'
+  } else {
+    x.style.visibility = 'hidden'
+  }
+}
+alertOverlay.onclick = toggleAlertSigout
+alertCancel.onclick = toggleAlertSigout
+alertClose.onclick = toggleAlertSigout
+signOut.onclick = toggleAlertSigout
+
+// ============================== UPLOAD IMAGE ===================================
+const drogArea = document.getElementById('drop-area') as HTMLElement;
+const inputFile = document.getElementById('input-file') as HTMLInputElement;
+const imgView = document.getElementById('img-view') as HTMLElement;
+
+
+inputFile.addEventListener('change', uploadImage)
+
+function uploadImage() {
+    var mimeType=inputFile.files? inputFile.files[0]["type"]: ''
+
+    if (mimeType.split('/')[0] === 'image' && inputFile.files) {
+        let url = URL.createObjectURL(inputFile.files[0]).toString();
+        imgView.style.backgroundImage = `url(${url})`
+        imgView.textContent = ''
+    }
+
+}
+
+drogArea.addEventListener('dragover', (e)=>{
+    e.preventDefault();
+})
+drogArea.addEventListener('drop', (e)=>{
+    e.preventDefault();
+    if(e.dataTransfer){
+      inputFile.files =  e.dataTransfer.files;
+    }
+    uploadImage();
+})
+
+// btn.addEventListener('click', ()=>{
+//     console.log(file.files)
+// })
