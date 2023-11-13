@@ -130,25 +130,37 @@ const imgView = document.getElementById('img-view') as HTMLElement;
 inputFile.addEventListener('change', uploadImage)
 
 function uploadImage() {
-    var mimeType=inputFile.files? inputFile.files[0]["type"]: ''
-
+  var item = inputFile.files ? inputFile.files[0] : null
+  if (item) {
+    var mimeType = item['type'] ? item['type'] : ''
     if (mimeType.split('/')[0] === 'image' && inputFile.files) {
-        let url = URL.createObjectURL(inputFile.files[0]).toString();
-        imgView.style.backgroundImage = `url(${url})`
-        imgView.textContent = ''
+      let url = URL.createObjectURL(inputFile.files[0]).toString();
+      imgView.style.backgroundImage = `url(${url})`
+      imgView.textContent = ''
     }
 
+  }
+  // var mimeType=inputFile.files? inputFile.files[0]["type"]: ''
+ 
+ 
+  //   if (mimeType.split('/')[0] === 'image' && inputFile.files) {
+  //       let url = URL.createObjectURL(inputFile.files[0]).toString();
+  //       imgView.style.backgroundImage = `url(${url})`
+  //       imgView.textContent = ''
+    
+  //   }
+  
 }
 
-drogArea.addEventListener('dragover', (e)=>{
-    e.preventDefault();
+drogArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
 })
-drogArea.addEventListener('drop', (e)=>{
-    e.preventDefault();
-    if(e.dataTransfer){
-      inputFile.files =  e.dataTransfer.files;
-    }
-    uploadImage();
+drogArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  if (e.dataTransfer) {
+    inputFile.files = e.dataTransfer.files;
+  }
+  uploadImage();
 })
 
 // btn.addEventListener('click', ()=>{
