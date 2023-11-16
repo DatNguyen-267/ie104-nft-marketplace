@@ -65,7 +65,7 @@
 }
 
 /* So luong */
-.collection-item__account {
+.collection-item__amount {
     width: 100%;
     display: flex;
     gap: 8px;
@@ -75,14 +75,14 @@
     overflow: hidden;
 }
 
-.collection-item__account-title {
+.collection-item__amount-title {
     font-size: 12px;
     font-weight: 500;
     color: var(--color-sub-text-200);
     text-align: flex-start;
 }
 
-.collection-item__account-number {
+.collection-item__amount-number {
     font-weight: 600;
     font-size: 14px;
     color: var(--color-text);
