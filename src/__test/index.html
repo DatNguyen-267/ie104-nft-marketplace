@@ -1,9 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TEST</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <title>NFT Marketplace | Create NFT</title>
+  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!-- ===================================== Loading ============================================= -->
+  <div class="loading" id="container-loading" style="display: none">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <span id="loading-text">loading...</span>
+  </div>
+
+  <!-- ===================================== Toast ============================================= -->
+  <ul class="notifications" id="toast-notifications"></ul>
+
+
+  <!-- ===================================== Header ============================================= -->
+  <!-- alert sign out -->
+  <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
+    <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
+    <div class="alert-container">
+      <div class="alert__close">
+        <i class="fas fa-times-circle" id="alert-close"></i>
+      </div>
+      <div class="alert__main">
+        <i class="fas fa-door-open alert__main-icon alert-logout-icon-title"></i>
+        <p class="alert__main-title">SIGN OUT</p>
+        <div class="alert__main-content">
+          <span> Are you sure to sign out of your account? </span>
+        </div>
+      </div>
+      <div class="alert__action">
+        <button class="alert__action-ok" id="alert-ok">OK</button>
+        <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- popup user -->
+  <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden">
+    <a href="#" class="overlay-close" id="close-pop-up-user"></a>
+    <div class="pop-up-container">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user__name" id="pop-up-user-name">
+          <span>User Name</span>
+        </div>
+      </div>
+      <div class="pop-up-nav">
+        <ul class="pop-up-nav__link">
+          <!-- <li>
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <a href="/connectWallet.html">
+                <i class="fas fa-wallet"></i>
+                Switch wallet
+              </a>
+            </li> -->
+          <li>
+            <a href="/account.html">
+              <i class="fas fa-book"></i>
+              Collection
+            </a>
+          </li>
+          <li id="header-sign-out" style="display: none;">
+            <a href="#">
+              <i class="fas fa-sign-out-alt"></i>
+              Sign Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header class="header" id="header-template">
+    <input type="checkbox" id="nav-toggle" />
+    <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
+    <a class="header__logo" href="/">
+      <i class="fab fa-gg-circle"></i>
+      <span>NFTMarket</span>
+    </a>
+    <nav class="header__nav">
+      <ul class="header__nav-link">
+        <li><a href="/">Home</a></li>
+        <li><a href="/explore.html" >Marketplace</a></li>
+        <li><a href="/create.html" class="active">Create NFT</a></li>
+        <li><a href="/explore-collections.html">Explore Collections</a></li>
+      </ul>
+    </nav>
+    <div class="header__user">
+      <a href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></a>
+      <a href="/connectWallet.html">
+        <button class="filled--button secondary header__nav-btn" id="btn-login">
+          <i class="fas fa-wallet"></i>
+          Connect Wallet
+        </button>
+        <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
+          <i class="fas fa-wallet"></i>
+          Connect Wallet
+        </button> -->
+      </a>
+    </div>
+  </header>
+
+  <!-- ======================= Main ========================= -->
+  <!-- Main header -->
+  <div class="main-header">
+    <div class="main-header-container">
+      <div class="grid wide">
+        <div class="row">
+          <div class="col l-9 m-6 c-12">
+            <div class="main-header__head-line">
+              <h1 class="main-header-title">Create New NFT</h1>
+              <p class="desc">You can create a new NFT and add to your collection</p>
+            </div>
+          </div>
+          <div class="col l-3 m-6 c-12">
+            <div class="main-header__image">
+              <img src="../../assets/images/createPageIcon.webp" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ======================== Main form ====================== -->
+  <div class="container">
+    <div class="form">
+      <span class="upload-file">Upload file</span>
+      <div class="File-upload">
+        <div class="img__close" id="img-close" style="display: none;">
+          <i class="fas fa-times"></i>
+        </div>
+        <label for="input-file" id="drop-area">
+          
+          <input type="file" accept="image/*" id="input-file" hidden>
+          <img src="#" alt="" style="display: none;" id="img-view" class="img-view">
+          <div id="img-content" class="content">
+            <img class="content-icon" src="./../../assets/images/uploadImg.webp" alt="img-content">
+            <p class="content-des">Drog and drag or click here<br> to upload image </p>
+            <span class="content-note">Upload any image from desktop </span>
+          </div>
+      </div>
+      </label>
+      <div class="input">
+        <label for="input-name" class="title">Title</label>
+        <input type="text" id="input-name" placeholder="Name NFT" class="Input">
+      </div>
+      <div class="input">
+        <label for="input-collection-address" class="title">Address</label>
+        <input type="text" id="input-collection-address" placeholder="Collection address" class="Input">
+      </div>
+      <div class="input">
+        <label for="input-description" class="title">Description</label>
+        <input type="text" id="input-description" placeholder="Description for NFT" class="Input">
+      </div>
+      <button class="filled--button secondary create-item" id="btn-create-nft">
+        <span class=" text--button">Create item</span>
+      </button>
+    </div>
+  </div>
+  </div>
+</body>
+
 </html>
