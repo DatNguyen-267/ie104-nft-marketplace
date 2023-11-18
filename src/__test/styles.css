@@ -1,283 +1,137 @@
+@import url(../../styles/base.css);
+@import url(../../components/header/styles.css);
+@import url(../../components/alert/styles.css);
 @import url(../../components/loading/loading2/styles.css);
 @import url(../../components/toast/styles.css);
-@import url(../../components/header/styles.css);
-@import url(../../styles/base.css);
-@import url('../../components/button/styles.css');
-@import url(../../components/alert/styles.css);
-@import url(../../components/NFTcard/styles.css);
-@import url(../../styles/grid.css);
 
+body {
+  background-color: #141414;
+  color: var(--color-text);
+}
+
+/* Container */
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-/* .example {
-    margin-top: 30px;
-    float: inline-end;
-    
-} */
-.example {
-    margin-top: 30px;
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-}
-.title_example {
-    width: 143px;
-    height: 22px;
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-}
-.nft-card {
-    margin-top: 30px;
-}
-/* ====header=== */
-.main-header-container {
-    position: relative;
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-}
-.main-header {
-    background-color: var(--color-black);
-    position: relative;
-    background: url(../../assets/images/createPageBg.webp);
-    background-repeat: no-repeat;
-    background-size: cover, contain;
-    background-position: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../../assets/images/connectBackground.webp);
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  transform: translateY(-60px);
 }
 
-.main-header::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    /* background-color: rgba(0, 0, 0, 0.4); */
-    background-color: color-mix(in srgb, var(--color-black) 50%, transparent);
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* background-color: rgba(var(--color-rgb-black), 0.6); */
+  background-color: color-mix(in srgb, var(--color-black) 0%, transparent);
 }
 
-.main-header .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
+/* Form */
+.connect-form {
+  position: relative;
+  width: 400px;
+  gap: 10px;
+  padding: 32px 50px 34px 50px;
+  margin: 10px;
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--color-white);
+  box-shadow: 0px 2px 50px 0px var(--color-gray-800);
 }
 
-/* ITEM LEFT */
-.main-header__head-line {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: center;
+.subtitle {
+  margin-top: 10px;
+  color: var(--color-sub-text-100);
+  font-weight: 500;
+  text-align: center;
 }
 
-.main-header__head-line .main-header-title {
-    font-weight: 700;
-    line-height: 140%;
-    text-transform: capitalize;
-    color: var(--color-white);
+.wallet-container {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-header__head-line .desc {
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 160%;
-    text-transform: capitalize;
-    color: var(--color-sub-text-100);
+/* card */
+.card {
+  padding: 0;
+  background-color: var(--color-gray-300);
+  border-radius: 1.2rem;
+  border: 2px solid transparent;
+  grid-column: 2;
+  cursor: pointer;
+  padding: 1.0rem ;
+  display: flex;
+  gap: 15px;
 }
 
-/* ITEM RIGHT */
-.main-header__image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+.card:hover {
+  border: 2px solid #3396ff;
 }
 
-.main-header__image img {
-    width: 300px;
-    height: 300px;
+.card-image {
+  width: 5rem;
+  height: 5rem;
 }
 
-/* ============================ Form Create ==================================== */
-.form {
-    background-color: white;
-    max-width: 810px;
-    width: 100%;
-    margin-left: 20px;
-    margin: 30px;
-    margin-top: 50px;
-}
-.upload {
-    width: 100%;
-    /* width: 806px; */
-    height: 300px;
-}
-.upload-file{
-    /* width: 143px; */
-    width: 100%;
-    height: 22px;
-    color: var(--color-black);
-    font-size: 18px;
-    font-weight: 600;
-    display: flex;
-    margin-bottom: 30px;
-    font-weight: bold;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
 }
 
-
-.File-upload {
-    width: 100%;
-    /* width: 806px; */
-    border: 3px dashed var(--color-border-200);
-    border-radius: 25px;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.img__close {
-    top: 5px;
-    right: 10px;
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    color: var(--color-gray-1500);
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: var(--color-gray-600);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.img__close i{
-    font-size: 16px;
+.card-title {
+  color: var(--color-text);
 }
 
-.img-view{
-    max-width: 500px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-}
-.content {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    gap: 30px;
-    /* background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
-}
-.content-icon {
-    max-width: 80px;
-}
-.content-des {
-   color: var(--color-text);
-   font-size: 18px;
-   font-weight: 700;
-   text-align: center;
-   line-height: 2.4rem;
-}
-.content-note {
-   color: var(--color-sub-text-300);
-   font-size: 16px;
-   font-weight: 500;
-   text-align: center;
-}
-.type-file {
-    color: var(--color-text);
-    font-size: 22px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 3.5rem;
-}
-.input {
-    /* width: 810px; */
-    width: 100%;
-    height: 81px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 50px;
-}
-.title {
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-.Input {
-    width: 100%;
-    /* max-width: 806px; */
-    height: 80px;
-    border: 1px solid var(--color-border-200);
-    background-color: white;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 20px;
-    color: var(--color-text);
-}
-.Input:hover, .Input:focus {
-    outline: none;
-    border: 2px solid var(--color-gray-1500);
-}
-.create-item {
-    width: 186px !important;
-    height: 50px !important;
-    font-size: 14px !important;
-    margin-top: 50px;
-    float:right;
-}
-.text {
-    padding: 10px 0px;
+.card-description {
+  margin-top: 1rem;
+  color: rgb(166, 166, 166);
+  text-align: left;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
-/*======================== Reponsive ===================*/
-.col {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Wallet Address */
+.wallet-address {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 2px solid var(--color-border-100);
+  gap: 10px;
 }
 
-.wide {
-    max-width: 1200px !important;
+.address-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3396ff;
+  padding: 2rem 0;
 }
 
-@media (max-width: 740px) {
-
-    /* .container {
-        justify-content: center;
-        align-items: center;
-    } */
-
-    .main-header__head-line {
-        justify-content: center;
-        align-items: center;
-        padding-top: 30px;
-    }
-
-    .main-header-title,
-
-    .main-header__head-line .desc {
-        text-align: center;
-    }
-
+.showAccount {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  /* background-color: color-mix(in srgb, var(--color-gray-900) 20%, transparent); */
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
 }
