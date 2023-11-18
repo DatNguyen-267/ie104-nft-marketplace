@@ -182,6 +182,189 @@ h6 {
 .text-body-tiny {
   font-size: 1.2rem;
 }
+/*!***********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/alert/styles.css ***!
+  \***********************************************************************************/
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 100;
+    background-color: color-mix(in srgb, var(--color-black) 65%, transparent);
+    position: fixed;
+    top: 0;
+}
+
+.alert-overlay-close {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+.alert-container {
+    position: relative;
+    width: 375px;
+    max-height: 400px;
+    display: flex;
+    padding: 32px 32px 34px 32px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    border-radius: 10px;
+    background: var(--color-white);
+    box-shadow: -38.42581px 48.03226px 105.67097px 0px var(--color-gray-1700);
+}
+
+.alert__close {
+    font-size: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--color-gray-1300);
+    cursor: pointer;
+}
+
+/* main */
+.alert__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-height: 202px;
+}
+
+.alert__main-icon {
+    font-size: 48px;
+}
+
+.alert__main-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--color-text);
+}
+
+.alert__main-content {
+    flex: 1;
+    font-size: 14px;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    line-height: 2rem !important;
+
+}
+
+.alert__main-content span {
+    text-align: center;
+    color: var(--color-text);
+}
+
+/* button */
+.alert__action {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.alert__action-ok {
+    display: flex;
+    width: 311px;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--color-primary);
+    color: #FFF;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.alert__action-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: var(--color-primary);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/avatar/styles.css ***!
+  \************************************************************************************/
+.avatar {
+    /* display: none; */
+    display: block;
+    width: 40px;
+    height: 40px;
+    /* background: url("./../../assets/images/AvatarDefault.webp"); */
+    /* background-repeat: no-repeat !important; */
+    /* background-size: cover !important; */
+    border-radius: 50%;
+    /* background-position: center; */
+    border: 2px solid  var(--color-gray-1000);
+}
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css ***!
+  \************************************************************************************/
+.filled--button{
+    background-color: var(--color-btn-primary);
+    border-radius: 20px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+.icon--button{
+    padding-right: 12px;
+}
+.filled--button.primary{
+    width: 206px;
+    height: 72px;
+    font-size: 22px;
+}
+.filled--button.secondary{
+    width: 186px;
+    height: 60px;
+    font-size: 16px;
+}
+.filled--button.tertiary{
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+}
+.filled--button.outline{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+    border: 2px solid var(--color-btn-primary);
+}
+.filled--button:hover{
+    background-color: var(--color-btn-secondary);
+}
+.filled--button:active{
+    background-color: var(--color-btn-primary);
+}
+.filled--button.outline:hover{
+    background-color: var(--color-btn-primary);
+    color: var(--color-white);
+}
+.filled--button.outline:active{
+    background-color: transparent;
+    color: var(--color-btn-primary);
+}
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
   \***************************************************************************/
@@ -353,59 +536,6 @@ h6 {
 
 .text-body-tiny {
   font-size: 1.2rem;
-}
-/*!************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css ***!
-  \************************************************************************************/
-.filled--button{
-    background-color: var(--color-btn-primary);
-    border-radius: 20px;
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    /* transition: 0.3s; */
-}
-.icon--button{
-    padding-right: 12px;
-}
-.filled--button.primary{
-    width: 206px;
-    height: 72px;
-    font-size: 22px;
-}
-.filled--button.secondary{
-    width: 186px;
-    height: 60px;
-    font-size: 16px;
-}
-.filled--button.tertiary{
-    width: 186px;
-    height: 46px;
-    font-size: 16px;
-}
-.filled--button.outline{
-    background-color: transparent;
-    color: var(--color-btn-primary);
-    border: 2px solid var(--color-btn-primary);
-}
-.filled--button:hover{
-    background-color: var(--color-btn-secondary);
-}
-.filled--button:active{
-    background-color: var(--color-btn-primary);
-}
-.filled--button.outline:hover{
-    background-color: var(--color-btn-primary);
-    color: var(--color-white);
-}
-.filled--button.outline:active{
-    background-color: transparent;
-    color: var(--color-btn-primary);
 }
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (5) ***!
@@ -579,316 +709,113 @@ h6 {
 .text-body-tiny {
   font-size: 1.2rem;
 }
-/*!************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/avatar/styles.css ***!
-  \************************************************************************************/
-.avatar {
-    /* display: none; */
-    display: block;
-    width: 40px;
-    height: 40px;
-    /* background: url("./../../assets/images/AvatarDefault.webp"); */
-    /* background-repeat: no-repeat !important; */
-    /* background-size: cover !important; */
-    border-radius: 50%;
-    /* background-position: center; */
-    border: 2px solid  var(--color-gray-1000);
-}
-/*!*************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/NFTcard/styles.css ***!
-  \*************************************************************************************/
-/* ====================== nft-card ============================== */
-.nft-card {
+/*!****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/collection/styles.css ***!
+  \****************************************************************************************/
+/* ====================== collection-item ============================== */
+.collection-item__container {
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 20px;
-    max-width: 330px;
+    /* align-items: center; */
+    border-radius: 8px;
+    max-width: 300px;
     width: 100%;
     height: 100%;
-    /* margin: 50px; */
+    padding: 16px;
+    gap: 15px;
     background: #FFF;
-    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 4px  rgba(0, 0, 0, 0.16);
     margin-bottom: 36px;
     transition: transform ease-in 0.2s;
 }
 
-.nft-card:hover {
+.collection-item__container:hover {
     transform: translateY(-5px) translateX(5px);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.nft-card__img {
+.collection-item__image {
     /* flex: 1; */
-    width: 100%;
-    height: 100%;
-    height: 296px;
-    border-radius: 20px 20px 0 0;
+    width: 100px;
+    height: 100px;
+    /* border-radius: 50%; */
     object-fit: cover;
 }
 
-/* ======================= Detail =========================== */
-.nft-card__detail {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 2rem;
-    padding-bottom: 1.5rem;
-    gap: 1.5rem;
-}
-
-/* Info */
-.nft-card__info {
+/* ======================= Info =========================== */
+.collection-item__info {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex-shrink: 0;
-    align-self: stretch;
-}
-
-.nft-card__address {
-    position: relative;
-    color: var(--color-text);
-    width: 100%;
-    display: flex;
     justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    margin-top: 3px;
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight:600;
-    /* background-color: var(--color-gray-500);
-    padding: 10px;
-    border-radius: 5px; */
-    line-height: 2rem !important;
+    flex: 1;
 }
 
-.nft-card__address-img {
-    width: 24px;
-    height: 24px;
-}
-
-.nft-card__address-value {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    
-}
-
-.nft-card__title {
-    position: relative;
-    color: var(--color-text);
-    font-size: 18px;
-    font-weight: 600;
+/* Name */
+.collection-item__name {
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    gap: 8px;
-    line-height: 2.4rem;
-}
-
-.nft-card__name {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-}
-
-.nft-card__user {
-    position: relative;
-    flex: 1 0 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.nft-card__user-avatar {
-    width: 25px !important;
-    height: 25px !important;
-    width: 100%;
-    flex-shrink: 0;
-}
-
-.nft-card__user-name {
     font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text);
+    font-weight: 600;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    max-width: 150px;
+    word-break: break-all;
 }
 
 
-/* Action */
-
-.nft-card__price {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: var(--color-text);
+/* address */
+.collection-item__address {
     overflow: hidden;
-}
-
-.nft-card__price-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     font-size: 12px;
-    font-weight: 500;
+    font-weight:500;
     color: var(--color-sub-text-200);
 }
 
-.nft-card__price-value {
+/* So luong */
+.collection-item__amount {
+    width: 100%;
     display: flex;
+    gap: 8px;
+    color: var(--color-text);
     justify-content: flex-start;
     align-items: center;
-    gap: 5px;
-    font-weight: 600;
-    font-size: 18px;
-    color: var(--color-text);
+    overflow: hidden;
 }
 
-.nft-card__price-number {
-    font-family: 'Roboto Mono', monospace;
+.collection-item__amount-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-sub-text-200);
+    text-align: flex-start;
+}
+
+.collection-item__amount-number {
     font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Btn */
-.nft-card__action {
-    padding-top: 5px;
-    padding-bottom: 5px;
+.collection-item__owner-container {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-}
-.nft-card__btn {
-    width: 14rem !important;
-    width: 100% !important;
-    height: 40px !important;
-    transform: translateY(5px);
-    font-size: 1.6rem !important;
-    border-radius: 10px !important;
-}
-/*!***********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/alert/styles.css ***!
-  \***********************************************************************************/
-.alert {
-    display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    z-index: 100;
-    background-color: color-mix(in srgb, var(--color-black) 65%, transparent);
-    position: fixed;
-    top: 0;
+    gap: 8px;
 }
-
-.alert-overlay-close {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: default;
+.collection-item__owner-avatar  {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }
-
-.alert-container {
-    position: relative;
-    width: 375px;
-    max-height: 400px;
-    display: flex;
-    padding: 32px 32px 34px 32px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
-    border-radius: 10px;
-    background: var(--color-white);
-    box-shadow: -38.42581px 48.03226px 105.67097px 0px var(--color-gray-1700);
-}
-
-.alert__close {
-    font-size: 20px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: var(--color-gray-1300);
-    cursor: pointer;
-}
-
-/* main */
-.alert__main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    max-height: 202px;
-}
-
-.alert__main-icon {
-    font-size: 48px;
-}
-
-.alert__main-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--color-text);
-}
-
-.alert__main-content {
-    flex: 1;
-    font-size: 14px;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-    line-height: 2rem !important;
-
-}
-
-.alert__main-content span {
-    text-align: center;
-    color: var(--color-text);
-}
-
-/* button */
-.alert__action {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.alert__action-ok {
-    display: flex;
-    width: 311px;
-    padding: 13px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    background: var(--color-primary);
-    color: #FFF;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-
-}
-
-.alert__action-cancel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    color: var(--color-primary);
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+.collection-item__owner-address {
+    font-size: 12px;
 }
 /*!************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/header/styles.css ***!
@@ -1265,655 +1192,6 @@ header {
     50% {
         color: transparent;
     }
-}
-/*!***********************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/modal/modalBuyNFT/styles.css ***!
-  \***********************************************************************************************/
-/* ================ Base =================== */
-.modal-buy__frame {
-    border: 1px solid var(--color-border-100);
-    padding: 15px;
-    border-radius: 10px;
-    width: 100%;
-}
-
-.modal-buy__frame-2 {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0px;
-}
-
-.modal-buy-value {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-buy .number {
-    font-size: 16px;
-    margin-right: 5px;
-    color: var(--color-text);
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    width: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: end;
-}
-
-.modal-buy .unit {
-    font-size: 16px;
-    color: var(--color-text);
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-}
-
-.modal-buy-not-connect {
-    color: var(--color-red-500) !important;
-    background-color: color-mix(in srgb, var(--color-red-400) 10%, transparent) !important;
-}
-
-/* ================ Modal ================= */
-.modal-buy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    z-index: 50;
-    background-color: color-mix(in srgb, var(--color-black) 65%, transparent);
-    position: fixed;
-    top: 0;
-}
-
-.modal-buy-overlay-close {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: default;
-}
-
-.modal-buy-container {
-    position: relative;
-    width: 400px;
-    max-height: 800px;
-    display: flex;
-    padding: 32px 32px 34px 32px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
-    border-radius: 10px;
-    background: var(--color-white);
-    box-shadow: -38.42581px 48.03226px 105.67097px 0px var(--color-gray-1700);
-}
-
-/* ================ header ================= */
-.modal-buy__header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-buy__title {
-    font-weight: 700;
-    color: var(--color-text);
-}
-
-.modal-buy__close {
-    width: 35px;
-    height: 35px;
-    color: var(--color-gray-1500);
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: var(--color-gray-600);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-buy__close i {
-    font-size: 16px;
-}
-
-/* ================ container ================= */
-.modal-buy__main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-}
-
-/* nft */
-.modal-buy__nft {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    position: relative;
-    width: 100%;
-}
-
-.modal-buy__nft-img {
-
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 10px;
-    border: 2px solid var(--color-border-100);
-    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.24);
-}
-
-.modal-buy__nft-info {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    position: relative;
-}
-
-.modal-buy__nft-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-}
-
-.modal-buy__nft-address {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-text);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-}
-/* NetWork */
-/* .modal-buy__network {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-}
-
-.modal-buy__network-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex: 2;
-}
-
-.modal-buy__network-img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.modal-buy__network-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 3px;
-
-}
-
-.modal-buy__network-id {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-    width: 100px;
-}
-
-.modal-buy__network-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-sub-text-300);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    width: 100px;
-}
-
-.modal-buy__network-status {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--color-green-500);
-    background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent);
-    padding: 5px;
-    border-radius: 3px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-} */
-
-/* Price */
-.modal-buy__price {
-    margin-top: 15px;
-}
-
-.modal-buy__price-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-.modal-buy__price .number{
-    width: 200px;
-}
-
-/* Rarible */
-.modal-buy__rarible-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-/* Total */
-.modal-buy__total {
-    border-top: 1px solid var(--color-border-100);
-    margin-bottom: 25px;
-    padding-top: 10px;
-}
-
-.modal-buy__total-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-.modal-buy__total .number{
-    width: 200px;
-}
-
-/*=========== Action ================*/
-.modal-buy__action {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-}
-
-.modal-buy__action-ok {
-    flex: 1;
-    display: flex;
-    padding: 13px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    background: var(--color-primary);
-    color: #FFF;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-
-}
-
-.modal-buy__action-cancel {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    color: var(--color-primary);
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-}
-/*!************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/modal/modalSellNFT/styles.css ***!
-  \************************************************************************************************/
-/* ================ Base =================== */
-.modal-sell__frame {
-    border: 1px solid var(--color-border-100);
-    padding: 15px;
-    border-radius: 10px;
-    width: 100%;
-}
-
-.modal-sell__frame-2 {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0px;
-}
-
-.modal-sell-input{
-    padding: 5px 10px !important;
-    border: none;
-    background-color: var(--color-gray-300);
-    border-radius: 5px;
-    /* border-bottom: 1px solid var(--color-border-100); */
-}
-
-.modal-sell-input:focus{
-    outline: none;
-    /* border-bottom: 2px solid var(--color-border-200); */
-}
-
-.modal-sell-value {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.modal-sell .number {
-    font-size: 16px;
-    margin-right: 5px;
-    color: var(--color-text);
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    width: 150px;
-    /* overflow: hidden;
-    text-overflow: ellipsis; */
-    text-align: end;
-    padding: 0px 10px;
-}
-
-.modal-sell .unit {
-    font-size: 16px;
-    color: var(--color-text);
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    width: 20px;
-    text-align: end;
-}
-
-.modal-sell-not-connect {
-    color: var(--color-red-500) !important;
-    background-color: color-mix(in srgb, var(--color-red-400) 10%, transparent) !important;
-}
-
-.modal-input-error{
-    border: 2px solid var(--color-red-300) !important;
-    box-shadow: color-mix(in srgb, var(--color-red-100) 30%, transparent) 0px 0px 0px 1px;
-    background-color: var(--color-gray-200) !important;
-}
-/* ================ modal-sell ================= */
-.modal-sell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    z-index: 50;
-    background-color: color-mix(in srgb, var(--color-black) 65%, transparent);
-    position: fixed;
-    top: 0;
-}
-
-.modal-sell-overlay-close {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: default;
-}
-
-.modal-sell-container {
-    position: relative;
-    width: 400px;
-    max-height: 800px;
-    display: flex;
-    padding: 32px 32px 34px 32px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 32px;
-    border-radius: 10px;
-    background: var(--color-white);
-    box-shadow: -38.42581px 48.03226px 105.67097px 0px var(--color-gray-1700);
-}
-
-/* ================ header ================= */
-.modal-sell__header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-sell__title {
-    font-weight: 700;
-    color: var(--color-text);
-}
-
-.modal-sell__close {
-    width: 35px;
-    height: 35px;
-    color: var(--color-gray-1500);
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: var(--color-gray-600);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-sell__close i {
-    font-size: 16px;
-}
-
-/* ================ container ================= */
-.modal-sell__main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-}
-
-/*============ nft ============*/
-.modal-sell__nft {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    position: relative;
-    width: 100%;
-}
-
-.modal-sell__nft-img {
-
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 10px;
-    border: 2px solid var(--color-border-100);
-    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.24);
-}
-
-.modal-sell__nft-info {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    position: relative;
-}
-
-.modal-sell__nft-name {
-    font-size: 26px;
-    line-height: 1;
-    font-weight: 600;
-    color: var(--color-text);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-}
-
-.modal-sell__nft-address {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--color-text);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-}
-/*============ NetWork ============*/
-.modal-sell__network {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-}
-
-/* network info */
-.modal-sell__network-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex: 2;
-}
-
-.modal-sell__network-img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.modal-sell__network-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 3px;
-
-}
-
-.modal-sell__network-id {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-    width: 100px;
-}
-
-.modal-sell__network-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-sub-text-300);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    width: 100px;
-}
-
-/* network status */
-.modal-sell__network-status {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--color-green-500);
-    background-color: color-mix(in srgb, var(--color-green-400) 10%, transparent);
-    padding: 5px;
-    border-radius: 3px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-}
-
-/*=========== Price ================*/
-.modal-sell__price {
-    margin-top: 15px;
-}
-
-.modal-sell__price-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-/*=========== Rarible ================*/
-.modal-sell__rarible-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-/*=========== Total ================*/
-.modal-sell__total {
-    border-top: 1px solid var(--color-border-100);
-    margin-bottom: 25px;
-    padding-top: 10px;
-}
-
-.modal-sell__total-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-.modal-sell__total-value .number {
-    width: 200px;
-  overflow: hidden;
-text-overflow: ellipsis;
-}
-
-/*=========== Action ================*/
-.modal-sell__action {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-}
-
-.modal-sell__action-ok {
-    flex: 1;
-    display: flex;
-    padding: 13px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    background: var(--color-primary);
-    color: #FFF;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-
-}
-
-.modal-sell__action-cancel {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    color: var(--color-primary);
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
 }
 /*!***********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/grid.css ***!
@@ -2513,9 +1791,9 @@ text-overflow: ellipsis;
       margin-left: 91.66667%;
   }
 }
-/*!*******************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/explore/styles.css ***!
-  \*******************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/explore-collections/styles.css ***!
+  \*******************************************************************************************/
 /* ================ MAIN ============== */
 body {
     display: flex;
@@ -2533,10 +1811,11 @@ body {
 .main-header {
     background-color: black;
     position: relative;
-    background: url(exploreBackground.webp);
+    background: url(astronaut-digital-art-wallpaper.webp);
     background-repeat: no-repeat;
     background-size: cover, contain;
     background-position: center;
+    height: 300px;
 
 }
 
@@ -2597,26 +1876,26 @@ body {
 .main-header__image img {
     width: 300px;
     height: 300px;
+    object-fit: cover;
 }
 
 
 /* ================================= NFTs ==================================== */
 
 /* Head line */
-.main-nfts__headline {
+.main-collections__headline {
     width: 100%;
 }
-.main-nfts__title {
+.main-collections__title {
     color: var(--color-text);
     font-weight: 700;
     padding-bottom: 30px;
     max-width: 330px;
     width: 100%;
-
 }
 
 /* ITEM NFT */
-.nft-item {
+.collection-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2625,10 +1904,6 @@ body {
     max-width: 330px;
     width: 100%;
     height: 100%;
-}
-
-.nft-card__img {
-    height: 204px !important;
 }
 
 /*======================== Reponsive ===================*/
@@ -2643,9 +1918,6 @@ body {
 }
 @media (max-width: 1023px) {
 
-    .nft-card__img {
-        height: 296px !important;
-    }
 }
 
 @media (max-width: 740px) {
@@ -2670,4 +1942,4 @@ body {
 }
 
 
-/*# sourceMappingURL=explore.css.map*/
+/*# sourceMappingURL=explore-collections.css.map*/

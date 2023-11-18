@@ -31812,6 +31812,42 @@ var CollectionsOfMarket = {
         address: '0x1Def42fc65c3251087Bb61A410003981bE75e1d8',
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
     },
+    SupperIdol: {
+        address: '0x9fbC241d05A8c6Ef9324A1229c23f4b8bD09b0Fa',
+        owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
+    },
+    Wilzard: {
+        address: '0x4Fd34fc9eFa5f64cD0aF30bdDf8c42008CeffeFb',
+        owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
+    },
+    OpepenEdition: {
+        address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    NeoTokyoOuterCitizenV2: {
+        address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    BlockGame: {
+        address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    LongLiveNft: {
+        address: '0x542F920fCf0CBD1c02Cdff3d630A321Ac704eDa4',
+        owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5
+    },
+    EmpressTrash: {
+        address: '0xB1759D417821C61AfEEd7B46cbAb6093ed441892',
+        owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5
+    },
+    BRAINMELT: {
+        address: '0x4d635714967de6bF42A88102b1fdA537c1B2E979',
+        owner: '0x93503541f3ee2c41289c94d1e80d051867c7ddb4', //account 6
+    },
+    AZUKI: {
+        address: '0xc9a643a6551a7d19f36dEa439318fE2b1cB86509',
+        owner: '0x70c9f7141c86e9d0612a3599ded77669121ca195', //account 7
+    },
 };
 
 
@@ -31901,6 +31937,175 @@ var AIOZ_TESTNET_NETWORK = {
     CurrencySymbol: "AIOZ",
     blockExplorer: "https://testnet.explorer.aioz.network",
 };
+
+
+/***/ }),
+
+/***/ "./src/controller/wallet.ts":
+/*!**********************************!*\
+  !*** ./src/controller/wallet.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WalletManagerInstance: () => (/* binding */ WalletManagerInstance),
+/* harmony export */   hiddenWalletInfo: () => (/* binding */ hiddenWalletInfo),
+/* harmony export */   showWalletInfo: () => (/* binding */ showWalletInfo)
+/* harmony export */ });
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services */ "./src/services/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
+/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/avatar */ "./src/utils/avatar.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+var showWalletInfo = function (account) { return __awaiter(void 0, void 0, void 0, function () {
+    var headerAvatar, btnLogin, userName, userImg, address, error_1, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 5, , 6]);
+                headerAvatar = document.getElementById('header-avatar');
+                btnLogin = document.getElementById('btn-login');
+                userName = document.getElementById('pop-up-user-name');
+                userImg = document.getElementById('header-avatar');
+                headerAvatar.style.display = 'flex';
+                btnLogin.style.display = 'none';
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_0__.getAccountAddress)()
+                        .then(function (res) { return res; })
+                        .catch(function (err) {
+                        console.log(err);
+                    })];
+            case 2:
+                address = _a.sent();
+                userName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shorterAddress)(account, 10) || '';
+                userName.title = account;
+                console.log(account);
+                userImg.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_2__.getAvatarByAddress)(address);
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _a.sent();
+                headerAvatar.style.display = 'flex';
+                btnLogin.style.display = 'none';
+                return [3 /*break*/, 4];
+            case 4: return [3 /*break*/, 6];
+            case 5:
+                error_2 = _a.sent();
+                console.log(error_2);
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
+        }
+    });
+}); };
+var hiddenWalletInfo = function () {
+    var headerAvatar = document.getElementById('header-avatar');
+    var btnLogin = document.getElementById('btn-login');
+    headerAvatar.style.display = 'none';
+    btnLogin.style.display = 'flex';
+};
+var WalletManager = /** @class */ (function () {
+    function WalletManager() {
+        this.currentAddress = '';
+    }
+    WalletManager.prototype.updateAccountAddress = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var accounts, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, window.ethereum.request({
+                                method: 'eth_accounts',
+                            })];
+                    case 1:
+                        accounts = _a.sent();
+                        this.currentAddress = accounts[0];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_3 = _a.sent();
+                        this.currentAddress = '';
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    WalletManager.prototype.handleChainChanged = function (chainId) {
+        if (chainId !== '4102') {
+            try {
+                (0,_services__WEBPACK_IMPORTED_MODULE_0__.switchToNetwork)((0,_services__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)(), '4102');
+            }
+            catch (error) { }
+        }
+    };
+    WalletManager.prototype.accountChanged = function (accounts) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (accounts.length > 0) {
+                    this.currentAddress = accounts[0];
+                    showWalletInfo(accounts[0]);
+                }
+                else {
+                    this.currentAddress = '';
+                    hiddenWalletInfo();
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    WalletManager.prototype.disconnect = function (e) {
+        hiddenWalletInfo();
+    };
+    WalletManager.prototype.listener = function () {
+        if (window && window.ethereum) {
+            window.ethereum.on('chainChanged', this.handleChainChanged);
+            window.ethereum.on('accountsChanged', this.accountChanged);
+            window.ethereum.on('', this.accountChanged);
+        }
+    };
+    return WalletManager;
+}());
+var WalletManagerInstance = new WalletManager();
 
 
 /***/ }),
@@ -32098,44 +32303,40 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 function connectEarly() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_1, error_2;
+        var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 5, , 6]);
-                    if (!window.ethereum)
-                        return [2 /*return*/];
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    if (!window.ethereum) {
+                        throw new Error('No connect detected');
+                    }
                     return [4 /*yield*/, window.ethereum
                             .request({
                             method: 'eth_accounts',
                         })
-                            .then(function (accounts) {
-                            console.log({ accounts: accounts });
-                            if (accounts.length > 0) {
-                                connectAndSwitch();
-                            }
-                        })];
-                case 2:
+                            .then(function (accounts) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (!(accounts.length > 0)) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, connectAndSwitch()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/, accounts[0]];
+                                    case 2: throw new Error('No connect detected');
+                                }
+                            });
+                        }); })];
+                case 1:
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    return [3 /*break*/, 4];
-                case 4: return [3 /*break*/, 6];
-                case 5:
-                    error_2 = _a.sent();
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
+                    return [2 /*return*/];
             }
         });
     });
 }
 function switchToNetwork(provider, chainId) {
     return __awaiter(this, void 0, void 0, function () {
-        var formattedChainId, error_3, info, error_4;
+        var formattedChainId, error_1, info, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32159,8 +32360,8 @@ function switchToNetwork(provider, chainId) {
                     _a.sent();
                     return [3 /*break*/, 9];
                 case 3:
-                    error_3 = _a.sent();
-                    console.log(error_3);
+                    error_1 = _a.sent();
+                    console.log(error_1);
                     info = CHAIN_INFO[chainId];
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_addEthereumChain',
@@ -32187,8 +32388,8 @@ function switchToNetwork(provider, chainId) {
                     _a.sent();
                     return [3 /*break*/, 8];
                 case 7:
-                    error_4 = _a.sent();
-                    console.debug('Added network but could not switch chains', error_4);
+                    error_2 = _a.sent();
+                    console.debug('Added network but could not switch chains', error_2);
                     return [3 /*break*/, 8];
                 case 8: return [3 /*break*/, 9];
                 case 9: return [2 /*return*/];
@@ -32217,7 +32418,7 @@ function connect() {
 }
 function connectAndSwitch() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, error_5;
+        var provider, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32240,7 +32441,7 @@ function connectAndSwitch() {
                     _a.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    error_5 = _a.sent();
+                    error_3 = _a.sent();
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
@@ -32281,22 +32482,26 @@ var CHAIN_INFO = {
 };
 function getAccountAddress() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider;
+        var provider, address, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 2];
+                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
                     return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)()];
                 case 1:
                     provider = _a.sent();
-                    try {
-                        return [2 /*return*/, provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress()];
-                    }
-                    catch (error) {
-                        return [2 /*return*/, ''];
-                    }
                     _a.label = 2;
-                case 2: return [2 /*return*/];
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress())];
+                case 3:
+                    address = _a.sent();
+                    return [2 /*return*/, address];
+                case 4:
+                    error_4 = _a.sent();
+                    console.log(error_4);
+                    return [2 /*return*/, ''];
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -32323,15 +32528,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   connectEarly: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.connectEarly),
 /* harmony export */   createMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.createMetadata),
 /* harmony export */   getAccountAddress: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getAccountAddress),
-/* harmony export */   getAllNftOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllNftOfCollection),
+/* harmony export */   getAllNftOfCollectionAndOwnerAddress: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllNftOfCollectionAndOwnerAddress),
+/* harmony export */   getAllTokenIdOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllTokenIdOfCollection),
 /* harmony export */   getBalance: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getBalance),
 /* harmony export */   getBalanceNativeToken: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getBalanceNativeToken),
 /* harmony export */   getDefaultProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider),
 /* harmony export */   getErc20Balance: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getErc20Balance),
 /* harmony export */   getMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getMetadata),
+/* harmony export */   getNameOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getNameOfCollection),
+/* harmony export */   getOwnerOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getOwnerOfCollection),
 /* harmony export */   getProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getProvider),
 /* harmony export */   getRpcProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider),
 /* harmony export */   getTokenUri: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getTokenUri),
+/* harmony export */   getTotalSupply: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getTotalSupply),
 /* harmony export */   getUrlImage: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getUrlImage),
 /* harmony export */   isConnectedWallet: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.isConnectedWallet),
 /* harmony export */   listenForTransactionMined: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.listenForTransactionMined),
@@ -32363,9 +32572,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   approveSpenderToAccessNft: () => (/* binding */ approveSpenderToAccessNft),
 /* harmony export */   createMetadata: () => (/* binding */ createMetadata),
-/* harmony export */   getAllNftOfCollection: () => (/* binding */ getAllNftOfCollection),
+/* harmony export */   getAllNftOfCollectionAndOwnerAddress: () => (/* binding */ getAllNftOfCollectionAndOwnerAddress),
+/* harmony export */   getAllTokenIdOfCollection: () => (/* binding */ getAllTokenIdOfCollection),
 /* harmony export */   getMetadata: () => (/* binding */ getMetadata),
+/* harmony export */   getNameOfCollection: () => (/* binding */ getNameOfCollection),
+/* harmony export */   getOwnerOfCollection: () => (/* binding */ getOwnerOfCollection),
 /* harmony export */   getTokenUri: () => (/* binding */ getTokenUri),
+/* harmony export */   getTotalSupply: () => (/* binding */ getTotalSupply),
 /* harmony export */   getUrlImage: () => (/* binding */ getUrlImage),
 /* harmony export */   listenForTransactionMined: () => (/* binding */ listenForTransactionMined),
 /* harmony export */   mintNFT: () => (/* binding */ mintNFT),
@@ -32597,9 +32810,48 @@ function listenForTransactionMined(transactionResponse, provider) {
         Promise.resolve();
     });
 }
-function getAllNftOfCollection(collectionAddress, walletAddress) {
+function getAllTokenIdOfCollection(collectionAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, balanceOf, tokenId, token, error_7, error_8;
+        var listTokenId, provider, contract, tokenId, owner, error_7, error_8;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 7, , 8]);
+                    listTokenId = [];
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    tokenId = 0;
+                    _a.label = 1;
+                case 1:
+                    if (false) {}
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, contract.ownerOf(tokenId)];
+                case 3:
+                    owner = _a.sent();
+                    listTokenId.push({
+                        owner: owner,
+                        tokenId: tokenId.toString(),
+                    });
+                    tokenId++;
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_7 = _a.sent();
+                    return [3 /*break*/, 6];
+                case 5: return [3 /*break*/, 1];
+                case 6: return [2 /*return*/, listTokenId];
+                case 7:
+                    error_8 = _a.sent();
+                    throw error_8;
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var listTokenId, provider, contract, balanceOf, tokenId, token, error_9, error_10;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32627,13 +32879,13 @@ function getAllNftOfCollection(collectionAddress, walletAddress) {
                     tokenId++;
                     return [3 /*break*/, 6];
                 case 5:
-                    error_7 = _a.sent();
+                    error_9 = _a.sent();
                     return [3 /*break*/, 7];
                 case 6: return [3 /*break*/, 2];
                 case 7: return [2 /*return*/, listTokenId];
                 case 8:
-                    error_8 = _a.sent();
-                    throw error_8;
+                    error_10 = _a.sent();
+                    throw error_10;
                 case 9: return [2 /*return*/];
             }
         });
@@ -32662,7 +32914,7 @@ function getMetadata(tokenUri) {
  */
 function transferFrom(from, to, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, response, error_9;
+        var provider, nftContract, response, error_11;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32675,13 +32927,72 @@ function transferFrom(from, to, tokenId) {
                     return [4 /*yield*/, nftContract.transferFrom(from, to, tokenId)];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, {}];
                 case 2:
-                    error_9 = _a.sent();
-                    throw error_9;
+                    error_11 = _a.sent();
+                    throw error_11;
                 case 3: return [2 /*return*/];
             }
+        });
+    });
+}
+function getOwnerOfCollection(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.owner();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function getNameOfCollection(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.name();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function getTotalSupply(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.totalSupply();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
         });
     });
 }
@@ -32743,6 +33054,65 @@ function isConnectedWallet(wallet) {
 
 /***/ }),
 
+/***/ "./src/utils/avatar.ts":
+/*!*****************************!*\
+  !*** ./src/utils/avatar.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAvatarByAddress: () => (/* binding */ getAvatarByAddress)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
+/* harmony import */ var _regex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./regex */ "./src/utils/regex.ts");
+
+
+var getAvatarByAddress = function (address) {
+    if (_regex__WEBPACK_IMPORTED_MODULE_1__.ethereumAddressRegex.test(address)) {
+        return "https://effigy.im/a/".concat(address, ".svg");
+    }
+    else {
+        return "https://effigy.im/a/".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS, ".svg");
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/utils/common.ts":
+/*!*****************************!*\
+  !*** ./src/utils/common.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getDisplayMaxDecimals: () => (/* binding */ getDisplayMaxDecimals),
+/* harmony export */   shorterAddress: () => (/* binding */ shorterAddress)
+/* harmony export */ });
+function getDisplayMaxDecimals(decimals) {
+    var maxDisplayDecimals = 8;
+    if (decimals === undefined)
+        return 0;
+    return decimals < maxDisplayDecimals ? decimals : maxDisplayDecimals;
+}
+function shorterAddress(address, maxLength) {
+    if (maxLength === void 0) { maxLength = 10; }
+    var length = Math.floor(maxLength / 2);
+    if (((address === null || address === void 0 ? void 0 : address.length) || Infinity) <= maxLength) {
+        return address;
+    }
+    return address
+        ? "".concat(address.substring(0, length), "...").concat(address.substring(address.length - length, address.length))
+        : '';
+}
+
+
+/***/ }),
+
 /***/ "./src/utils/errors.ts":
 /*!*****************************!*\
   !*** ./src/utils/errors.ts ***!
@@ -32766,6 +33136,45 @@ function convertWalletError(error) {
         }
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/utils/index.ts":
+/*!****************************!*\
+  !*** ./src/utils/index.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   convertWalletError: () => (/* reexport safe */ _errors__WEBPACK_IMPORTED_MODULE_0__.convertWalletError),
+/* harmony export */   getDisplayMaxDecimals: () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_1__.getDisplayMaxDecimals),
+/* harmony export */   shorterAddress: () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_1__.shorterAddress)
+/* harmony export */ });
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./errors */ "./src/utils/errors.ts");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/regex.ts":
+/*!****************************!*\
+  !*** ./src/utils/regex.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ethereumAddressRegex: () => (/* binding */ ethereumAddressRegex),
+/* harmony export */   ethereumTxHashRegex: () => (/* binding */ ethereumTxHashRegex)
+/* harmony export */ });
+var ethereumAddressRegex = /^0x[a-fA-F0-9]{40}$/;
+var ethereumTxHashRegex = /^0x([A-Fa-f0-9]{64})$/;
 
 
 /***/ }),
@@ -43718,8 +44127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   PageElementId: () => (/* binding */ PageElementId)
 /* harmony export */ });
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ "./src/page/create/styles.css");
+/* harmony import */ var _controller_wallet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../controller/wallet */ "./src/controller/wallet.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles.css */ "./src/page/create/styles.css");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -43758,7 +44168,17 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
-console.log('create page script');
+
+_controller_wallet__WEBPACK_IMPORTED_MODULE_0__.WalletManagerInstance.listener();
+(0,_services__WEBPACK_IMPORTED_MODULE_1__.connectEarly)()
+    .then(function () {
+    _controller_wallet__WEBPACK_IMPORTED_MODULE_0__.WalletManagerInstance.listener();
+    _controller_wallet__WEBPACK_IMPORTED_MODULE_0__.WalletManagerInstance.updateAccountAddress();
+    (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_0__.showWalletInfo)(_controller_wallet__WEBPACK_IMPORTED_MODULE_0__.WalletManagerInstance.currentAddress);
+})
+    .catch(function (err) {
+    console.log(err);
+});
 var PageElementId;
 (function (PageElementId) {
     PageElementId["ImageInput"] = "#input-file";
@@ -43818,7 +44238,6 @@ btnCreate.addEventListener('click', function () { return __awaiter(void 0, void 
                     })];
             case 3:
                 tokenUri = _b.sent();
-                console.log({ tokenUri: tokenUri });
                 if (!address || !tokenUri || !inputCollectionAddress.value) {
                     console.log('Invalid input');
                     return [2 /*return*/];
@@ -43836,6 +44255,89 @@ btnCreate.addEventListener('click', function () { return __awaiter(void 0, void 
         }
     });
 }); });
+// ========================== Header =======================================
+var popUpUserClose = document.getElementById('close-pop-up-user');
+var headerAvatar = document.getElementById('header-avatar');
+var alertOverlay = document.getElementById('alert-overlay-close');
+var alertCancel = document.getElementById('alert-cancel');
+var alertClose = document.getElementById('alert-close');
+var signOut = document.getElementById('header-sign-out');
+// Toggle PopUP
+function togglePopUpUser(event) {
+    event.preventDefault();
+    var x = document.getElementById('pop-up-user');
+    if (x.style.visibility === 'hidden') {
+        x.style.visibility = 'visible';
+        x.style.opacity = '1';
+    }
+    else {
+        x.style.visibility = 'hidden';
+        x.style.opacity = '0';
+    }
+}
+popUpUserClose.onclick = togglePopUpUser;
+headerAvatar.onclick = togglePopUpUser;
+// Toggle Alert
+var toggleAlertSigout = function (event) {
+    event.preventDefault();
+    var x = document.getElementById('alert-sigout');
+    if (x.style.visibility === 'hidden') {
+        x.style.visibility = 'visible';
+    }
+    else {
+        x.style.visibility = 'hidden';
+    }
+};
+alertOverlay.onclick = toggleAlertSigout;
+alertCancel.onclick = toggleAlertSigout;
+alertClose.onclick = toggleAlertSigout;
+signOut.onclick = toggleAlertSigout;
+// ============================== UPLOAD IMAGE ===================================
+var drogArea = document.getElementById('drop-area');
+var inputFile = document.getElementById('input-file');
+var imgContent = document.getElementById('img-content');
+var imgView = document.getElementById('img-view');
+var imgClose = document.getElementById('img-close');
+inputFile.addEventListener('change', uploadImage);
+function uploadImage() {
+    var item = inputFile.files ? inputFile.files[0] : null;
+    if (item) {
+        var mimeType = item['type'] ? item['type'] : '';
+        if (mimeType.split('/')[0] === 'image' && inputFile.files) {
+            var url = URL.createObjectURL(inputFile.files[0]).toString();
+            imgView.src = "".concat(url);
+            imgView.style.display = 'flex';
+            imgContent.style.display = 'none';
+            imgClose.style.display = 'flex';
+        }
+    }
+    // var mimeType=inputFile.files? inputFile.files[0]["type"]: ''
+    //   if (mimeType.split('/')[0] === 'image' && inputFile.files) {
+    //       let url = URL.createObjectURL(inputFile.files[0]).toString();
+    //       imgView.style.backgroundImage = `url(${url})`
+    //       imgView.textContent = ''
+    //   }
+}
+drogArea.addEventListener('dragover', function (e) {
+    e.preventDefault();
+});
+drogArea.addEventListener('drop', function (e) {
+    e.preventDefault();
+    if (e.dataTransfer) {
+        inputFile.files = e.dataTransfer.files;
+    }
+    uploadImage();
+});
+// btn.addEventListener('click', ()=>{
+//     console.log(file.files)
+// })
+imgClose.addEventListener('click', function () {
+    inputFile.value = '';
+    imgView.src = '#';
+    imgView.style.display = 'none';
+    imgContent.style.display = 'flex';
+    imgClose.style.display = 'none';
+});
 
 })();
 
