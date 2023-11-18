@@ -14,6 +14,7 @@ import './../../styles/grid.css'
 import './styles.css'
 import { ExplorePageControllerInstance } from './controller'
 import { UserPopoverControllerInstance } from '../../controller/user'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -23,10 +24,15 @@ const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
 
-connectEarly().then(() => {
-  UserPopoverControllerInstance.isConnected.set(true)
-  UserPopoverControllerInstance.isConnected.loadAvatar()
-})
+connectEarly()
+  .then(() => {
+    WalletManagerInstance.listener()
+    WalletManagerInstance.updateAccountAddress()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {

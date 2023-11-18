@@ -149,7 +149,6 @@ export class AccountPageController {
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
 
-    console.log({ imageGatewayUrl: nftItem.imageGatewayUrl })
     eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
@@ -218,7 +217,7 @@ export class AccountPageController {
     const walletAddress = (await getAccountAddress()) || ''
     if (!walletAddress) {
       console.log('Wallet address is not valid')
-      return
+      throw new Error('Wallet address is not valid')
     }
     try {
       const collections = await viewMarketCollections()
@@ -231,7 +230,6 @@ export class AccountPageController {
               0,
               100,
             )
-            console.log({ asksOfCollection })
             if (
               asksOfCollection &&
               asksOfCollection.tokenIds &&
@@ -280,6 +278,7 @@ export class AccountPageController {
         }),
       )
 
+      console.log({ listNfts })
       // Convert the Set back to an array
       await AccountPageControllerInstance.clearNftContainer()
 
@@ -311,7 +310,6 @@ export class AccountPageController {
           } catch (error) {}
         }),
       )
-      console.log({ listNfts })
     } catch (error) {
       console.log(error)
     }

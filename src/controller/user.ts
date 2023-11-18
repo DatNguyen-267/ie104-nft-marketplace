@@ -54,15 +54,7 @@ export class userPopoverController {
 
     this.isConnected = {
       value: false,
-      getOnChange: async function () {
-        if (this.value) {
-          try {
-            this.loadAvatar()
-          } catch (error) {
-            this.set(false)
-          }
-        }
-      },
+      getOnChange: async function () {},
       set: function (value: boolean) {
         this.value = value
         this.getOnChange()
@@ -102,6 +94,7 @@ export class userPopoverController {
       this.walletAddress.set('')
     }
   }
+
   disconnect() {
     try {
       this.isConnected.set(false)
@@ -122,14 +115,6 @@ export class userPopoverController {
 
   listener() {
     try {
-      // window.ethereum.on('chainChanged', handleChainChanged)
-      window.ethereum.on('accountsChanged', this.accountChanged)
-      window.ethereum.on('disconnect', this.disconnect)
-      window.ethereum.on('connect', async (e: any) => {
-        try {
-          this.connect()
-        } catch (error) {}
-      })
     } catch (error) {}
   }
 }

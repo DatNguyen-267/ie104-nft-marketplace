@@ -49,8 +49,6 @@ class ModalSellController {
       Number(this.nftItem?.price)
     ).toFixed(8)
 
-    console.log((Number(this.nftItem?.price) * 0.1) / 100)
-    console.log(-(Number(this.nftItem?.price) * 0.1) / 100 + Number(this.nftItem?.price))
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
     modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress || '')
@@ -98,7 +96,6 @@ class ModalSellController {
     var price = Number(modalItemPrice.value)
 
     var fee = Number(modalSellFee.innerHTML)
-    console.log({ price, fee })
     modalSellTotal.innerHTML = (price - (price * fee) / 100).toString()
     modalSellTotal.title = modalSellTotal.innerHTML
   }

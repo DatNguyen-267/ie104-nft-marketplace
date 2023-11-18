@@ -1,18 +1,25 @@
-import { NFT_ADDRESS } from '../../constants'
-import './styles.css'
+import { UserPopoverControllerInstance } from '../../controller/user'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import {
-  connect,
   connectAndSwitch,
   connectEarly,
   createMetadata,
   getAccountAddress,
-  getDefaultProvider,
   mintNFT,
-  switchToNetwork,
 } from '../../services'
-import { UserPopoverControllerInstance } from '../../controller/user'
+import './styles.css'
 
-console.log('create page script')
+WalletManagerInstance.listener()
+
+connectEarly()
+  .then(() => {
+    WalletManagerInstance.listener()
+    WalletManagerInstance.updateAccountAddress()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 export enum PageElementId {
   ImageInput = '#input-file',
@@ -66,7 +73,6 @@ btnCreate.addEventListener('click', async () => {
       .catch((err) => {
         console.log(err)
       })
-    console.log({ tokenUri })
     if (!address || !tokenUri || !inputCollectionAddress.value) {
       console.log('Invalid input')
       return
@@ -85,11 +91,6 @@ const alertOverlay = document.getElementById('alert-overlay-close') as HTMLEleme
 const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
-
-connectEarly().then(() => {
-  UserPopoverControllerInstance.isConnected.set(true)
-  UserPopoverControllerInstance.isConnected.loadAvatar()
-})
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {
@@ -122,12 +123,11 @@ alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
 
 // ============================== UPLOAD IMAGE ===================================
-const drogArea = document.getElementById('drop-area') as HTMLElement;
-const inputFile = document.getElementById('input-file') as HTMLInputElement;
-const imgContent = document.getElementById('img-content') as HTMLElement;
-const imgView = document.getElementById('img-view') as HTMLImageElement;
-const imgClose = document.getElementById('img-close') as HTMLImageElement;
-
+const drogArea = document.getElementById('drop-area') as HTMLElement
+const inputFile = document.getElementById('input-file') as HTMLInputElement
+const imgContent = document.getElementById('img-content') as HTMLElement
+const imgView = document.getElementById('img-view') as HTMLImageElement
+const imgClose = document.getElementById('img-close') as HTMLImageElement
 
 inputFile.addEventListener('change', uploadImage)
 
@@ -136,45 +136,42 @@ function uploadImage() {
   if (item) {
     var mimeType = item['type'] ? item['type'] : ''
     if (mimeType.split('/')[0] === 'image' && inputFile.files) {
-      let url = URL.createObjectURL(inputFile.files[0]).toString();
+      let url = URL.createObjectURL(inputFile.files[0]).toString()
       imgView.src = `${url}`
       imgView.style.display = 'flex'
-      imgContent.style.display = 'none';
-      imgClose.style.display ='flex'
+      imgContent.style.display = 'none'
+      imgClose.style.display = 'flex'
     }
-
   }
   // var mimeType=inputFile.files? inputFile.files[0]["type"]: ''
- 
- 
+
   //   if (mimeType.split('/')[0] === 'image' && inputFile.files) {
   //       let url = URL.createObjectURL(inputFile.files[0]).toString();
   //       imgView.style.backgroundImage = `url(${url})`
   //       imgView.textContent = ''
-    
+
   //   }
-  
 }
 
 drogArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
+  e.preventDefault()
 })
 drogArea.addEventListener('drop', (e) => {
-  e.preventDefault();
+  e.preventDefault()
   if (e.dataTransfer) {
-    inputFile.files = e.dataTransfer.files;
+    inputFile.files = e.dataTransfer.files
   }
-  uploadImage();
+  uploadImage()
 })
 
 // btn.addEventListener('click', ()=>{
 //     console.log(file.files)
 // })
 
-imgClose.addEventListener('click', ()=>{
-  inputFile.value = '';
-  imgView.src = "#"
+imgClose.addEventListener('click', () => {
+  inputFile.value = ''
+  imgView.src = '#'
   imgView.style.display = 'none'
-  imgContent.style.display ='flex'
-  imgClose.style.display ='none'
+  imgContent.style.display = 'flex'
+  imgClose.style.display = 'none'
 })

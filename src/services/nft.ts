@@ -184,7 +184,6 @@ export async function transferFrom(from: string, to: string, tokenId: string) {
     }
     const nftContract = new ethers.Contract(NFT_ADDRESS, NFT_ABI, provider)
     const response = await nftContract.transferFrom(from, to, tokenId)
-    console.log({ response })
     return {}
   } catch (error) {
     throw error
