@@ -5,7 +5,7 @@
 @import url(../../components/toast/styles.css);
 
 body {
-  background-color: #141414;
+  background-color: black;
   color: var(--color-text);
 }
 
