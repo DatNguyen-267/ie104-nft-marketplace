@@ -49,5 +49,3 @@ class LoadingController {
     modal.style.display = 'flex'
   }
 }
-
-export const LoadingControllerInstance = new LoadingController()
