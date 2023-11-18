@@ -20,7 +20,6 @@ export enum NftItemClass {
   UserName = 'nft__user-name',
   AddressNFT = 'nft__address',
   OrderNFT = 'nft__order',
-
   UserAvatar = 'nft-card__user-avatar',
 }
 
@@ -36,7 +35,7 @@ export type NftItemElementObject = {
   eUserName: HTMLDivElement
   eAddressNFT: HTMLDivElement
   eOrderNFT: HTMLDivElement
-  eUserAvatar: HTMLImageElement
+  eUserAvatar?: HTMLImageElement
 }
 
 export enum PageElementId {
@@ -44,4 +43,9 @@ export enum PageElementId {
   ContainerConnected = '#container-connected',
   ButtonConnect = '#btn-connect',
   ListNftContainer = '#list-nft__container',
+
+  LabelCollectionAddress = '#label-collection-address',
+  LabelCollectionOwner = '#label-collection-owner',
+
+  CltImage = '#info__collection-avatar',
 }

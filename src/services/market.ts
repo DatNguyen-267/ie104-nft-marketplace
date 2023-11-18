@@ -8,8 +8,8 @@ import { approveTokenExchange } from './token-exchange'
 export type CollectionDetail = {
   creatorAddress: string
   status: number
-  creatorFee: BigNumber
-  tradingFee: BigNumber
+  creatorFee: number
+  tradingFee: number
   whitelistChecker: string
 }
 export type ViewMarketCollectionsResponse = {
@@ -34,8 +34,17 @@ export async function viewMarketCollections(
 
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
     const collectionsResponse = await marketContract.viewCollections(cursor, size)
-
-    const collectionDetails = collectionsResponse['collectionDetails']
+    const collectionDetails = collectionsResponse['collectionDetails'].map(
+      (collectionDeital: any) => {
+        return {
+          status: collectionDeital[0],
+          creatorAddress: collectionDeital[1],
+          whitelistChecker: collectionDeital[2],
+          tradingFee: Number(BigInt(collectionDeital[3]).toString()) / 100,
+          creatorFee: Number(BigInt(collectionDeital[4]).toString()) / 100,
+        }
+      },
+    )
     const collectionAddresses = collectionsResponse['collectionAddresses']
     return {
       collectionDetails,

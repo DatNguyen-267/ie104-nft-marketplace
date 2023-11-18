@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Collection</title>
+    <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Collection</title>
-  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500&display=swap"
-    rel="stylesheet" />
-</head>
-
-<body>
-  <!-- <h1>Explore Collection</h1>
+  <body>
+    <!-- <h1>Explore Collection</h1>
     <div class="list-collection__container">
       <div class="collection-item__container">
         <div class="collection-item__image"></div>
@@ -21,271 +21,187 @@
       </div>
     </div> -->
 
-  <!-- ===================================== Loading ============================================= -->
-  <div class="loading" id="container-loading" style="display: none">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <span id="loading-text">loading...</span>
-  </div>
-  <!-- ===================================== Header ============================================= -->
-  <!-- alert sign out -->
-  <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
-    <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
-    <div class="alert-container">
-      <div class="alert__close">
-        <i class="fas fa-times-circle" id="alert-close"></i>
+    <!-- ===================================== Loading ============================================= -->
+    <div class="loading" id="container-loading" style="display: none">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <div class="alert__main">
-        <i class="fas fa-door-open alert__main-icon alert-logout-icon-title"></i>
-        <p class="alert__main-title">SIGN OUT</p>
-        <div class="alert__main-content">
-          <span> Are you sure to sign out of your account? </span>
+      <span id="loading-text">loading...</span>
+    </div>
+    <!-- ===================================== Header ============================================= -->
+    <!-- alert sign out -->
+    <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
+      <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
+      <div class="alert-container">
+        <div class="alert__close">
+          <i class="fas fa-times-circle" id="alert-close"></i>
+        </div>
+        <div class="alert__main">
+          <i class="fas fa-door-open alert__main-icon alert-logout-icon-title"></i>
+          <p class="alert__main-title">SIGN OUT</p>
+          <div class="alert__main-content">
+            <span> Are you sure to sign out of your account? </span>
+          </div>
+        </div>
+        <div class="alert__action">
+          <button class="alert__action-ok" id="alert-ok">OK</button>
+          <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
         </div>
       </div>
-      <div class="alert__action">
-        <button class="alert__action-ok" id="alert-ok">OK</button>
-        <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
-      </div>
     </div>
-  </div>
 
-  <!-- popup user -->
-  <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden">
-    <a href="#" class="overlay-close" id="close-pop-up-user"></a>
-    <div class="pop-up-container">
-      <div class="user-info">
-        <div class="avatar"></div>
-        <div class="user__name" id="pop-up-user-name">
-          <span>User Name</span>
+    <!-- popup user -->
+    <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden">
+      <a href="#" class="overlay-close" id="close-pop-up-user"></a>
+      <div class="pop-up-container">
+        <div class="user-info">
+          <div class="avatar"></div>
+          <div class="user__name" id="pop-up-user-name">
+            <span>User Name</span>
+          </div>
         </div>
-      </div>
-      <div class="pop-up-nav">
-        <ul class="pop-up-nav__link">
-          <!-- <li>
+        <div class="pop-up-nav">
+          <ul class="pop-up-nav__link">
+            <!-- <li>
           <i class="fa-solid fa-arrows-rotate"></i>
           <a href="/connectWallet.html">
             <i class="fas fa-wallet"></i>
             Switch wallet
           </a>
         </li> -->
-          <li>
-            <a href="/account.html">
-              <i class="fas fa-book"></i>
-              Collection
-            </a>
-          </li>
-          <li id="header-sign-out" style="display: none;">
-            <a href="#">
-              <i class="fas fa-sign-out-alt"></i>
-              Sign Out
-            </a>
-          </li>
-        </ul>
+            <li>
+              <a href="/account.html">
+                <i class="fas fa-book"></i>
+                Collection
+              </a>
+            </li>
+            <li id="header-sign-out" style="display: none">
+              <a href="#">
+                <i class="fas fa-sign-out-alt"></i>
+                Sign Out
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- header -->
-  <header class="header" id="header-template">
-    <input type="checkbox" id="nav-toggle" />
-    <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
-    <a class="header__logo" href="/">
-      <i class="fab fa-gg-circle"></i>
-      <span>NFTMarket</span>
-    </a>
-    <nav class="header__nav">
-      <ul class="header__nav-link">
-        <li><a href="/">Home</a></li>
-        <li><a href="/explore.html">Marketplace</a></li>
-        <li><a href="/create.html">Create NFT</a></li>
-        <li><a href="/explore-collections.html" class="active">Explore Collections</a></li>
-      </ul>
-    </nav>
-    <div class="header__user">
-      <a href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></a>
-      <a href="/connectWallet.html">
-        <button class="filled--button secondary header__nav-btn" id="btn-login">
-          <i class="fas fa-wallet"></i>
-          Connect Wallet
-        </button>
-        <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
+    <!-- header -->
+    <header class="header" id="header-template">
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
+      <a class="header__logo" href="/">
+        <i class="fab fa-gg-circle"></i>
+        <span>NFTMarket</span>
+      </a>
+      <nav class="header__nav">
+        <ul class="header__nav-link">
+          <li><a href="/">Home</a></li>
+          <li><a href="/explore.html">Marketplace</a></li>
+          <li><a href="/create.html">Create NFT</a></li>
+          <li><a href="/explore-collections.html" class="active">Explore Collections</a></li>
+        </ul>
+      </nav>
+      <div class="header__user">
+        <img href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></img>
+        <a href="/connectWallet.html">
+          <button class="filled--button secondary header__nav-btn" id="btn-login">
+            <i class="fas fa-wallet"></i>
+            Connect Wallet
+          </button>
+          <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
       <i class="fas fa-wallet"></i>
       Connect Wallet
     </button> -->
-      </a>
-    </div>
-  </header>
-
-  <!-- ===================================== MAIN ============================================= -->
-  <main>
-    <!-- Main header -->
-    <div class="main-header">
-      <div class="container">
-        <div class="grid wide">
-          <div class="row">
-            <div class="col l-12 m-12 c-12">
-              <div class="main-header__head-line">
-                <h1 class="title">All Collections</h1>
-                <p class="desc">There are all collections on the markertplace</p>
-              </div>
-            </div>
-            <div class="col l-3 m-6 c-12" style="display: none;">
-              <div class="main-header__image" >
-                <img src="https://img.pikbest.com/origin/08/96/77/993pIkbEsTDNR.png!bw700" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
+        </a>
       </div>
-    </div>
+    </header>
 
-    <!-- Collections -->
-    <div class="main-collections grid wide">
-      <div class="container">
-        <div class="row main-collections__headline">
-          <div class="col l-3 m-6 c-12">
-            <h3 class="main-collections__title">Collections</h3>
-          </div>
-        </div>
-        <!-- List Collection (add collection in this) -->
-        <div class="row list-collection__container">
-          <div class="col l-3 m-6 c-12">
-            <div class="collection-item">
-              <div class="collection-item__container">
-                <img class="collection-item__image"
-                  src="https://img.freepik.com/premium-photo/boy-is-using-laptop-with-word-s-screen_972034-586.jpg" alt="">
-                <div class="collection-item__info">
-                  <p class="collection-item__name collection-item__title" title="Nam Collection">
-                    Name Collection
-                  </p>
-                  <p class="collection-item__address collection__address" title="0x0000000000000000000000">
-                    0x000 ... 0000
-                  </p>
-                  <div class="collection-item__amount">
-                    <span class="collection-item__amount-title">NFTs: </span>
-                    <span class="collection-item__amount-number" title="1.6363">34</span>
-                  </div>
-                  <!-- Noi dung hidden-->
-                  <span class="collection__owner" style="display: none;">
-                  </span>
-                  <span class="collection-item__description" style="display: none;">
-                  </span>
+    <!-- ===================================== MAIN ============================================= -->
+    <main>
+      <!-- Main header -->
+      <div class="main-header">
+        <div class="container">
+          <div class="grid wide">
+            <div class="row">
+              <div class="col l-12 m-12 c-12">
+                <div class="main-header__head-line">
+                  <h1 class="title">All Collections</h1>
+                  <p class="desc">There are all collections on the markertplace</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col l-3 m-6 c-12">
-            <div class="collection-item">
-              <div class="collection-item__container">
-                <img class="collection-item__image"
-                  src="https://img.freepik.com/premium-photo/boy-is-using-laptop-with-word-s-screen_972034-586.jpg" alt="">
-                <div class="collection-item__info">
-                  <p class="collection-item__name collection-item__title" title="Nam Collection">
-                    Name Collection
-                  </p>
-                  <p class="collection-item__address collection__address" title="0x0000000000000000000000">
-                    0x000 ... 0000
-                  </p>
-                  <div class="collection-item__amount">
-                    <span class="collection-item__amount-title">NFTs: </span>
-                    <span class="collection-item__amount-number" title="1.6363">34</span>
-                  </div>
-                  <!-- Noi dung hidden-->
-                  <span class="collection__owner" style="display: none;">
-                  </span>
-                  <span class="collection-item__description" style="display: none;">
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col l-3 m-6 c-12">
-            <div class="collection-item">
-              <div class="collection-item__container">
-                <img class="collection-item__image"
-                  src="https://img.freepik.com/premium-photo/boy-is-using-laptop-with-word-s-screen_972034-586.jpg" alt="">
-                <div class="collection-item__info">
-                  <p class="collection-item__name collection-item__title" title="Nam Collection">
-                    Name Collection
-                  </p>
-                  <p class="collection-item__address collection__address" title="0x0000000000000000000000">
-                    0x000 ... 0000
-                  </p>
-                  <div class="collection-item__amount">
-                    <span class="collection-item__amount-title">NFTs: </span>
-                    <span class="collection-item__amount-number" title="1.6363">34</span>
-                  </div>
-                  <!-- Noi dung hidden-->
-                  <span class="collection__owner" style="display: none;">
-                  </span>
-                  <span class="collection-item__description" style="display: none;">
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col l-3 m-6 c-12">
-            <div class="collection-item">
-              <div class="collection-item__container">
-                <img class="collection-item__image"
-                  src="https://img.freepik.com/premium-photo/boy-is-using-laptop-with-word-s-screen_972034-586.jpg" alt="">
-                <div class="collection-item__info">
-                  <p class="collection-item__name collection-item__title" title="Nam Collection">
-                    Name Collection
-                  </p>
-                  <p class="collection-item__address collection__address" title="0x0000000000000000000000">
-                    0x000 ... 0000
-                  </p>
-                  <div class="collection-item__amount">
-                    <span class="collection-item__amount-title">NFTs: </span>
-                    <span class="collection-item__amount-number" title="1.6363">34</span>
-                  </div>
-                  <!-- Noi dung hidden-->
-                  <span class="collection__owner" style="display: none;">
-                  </span>
-                  <span class="collection-item__description" style="display: none;">
-                  </span>
+              <div class="col l-3 m-6 c-12" style="display: none">
+                <div class="main-header__image">
+                  <img
+                    src="https://img.pikbest.com/origin/08/96/77/993pIkbEsTDNR.png!bw700"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
 
-  <!-- Collections Teamplate -->
-  <div id="Collection-template" style="display: none">
-    <div class="col l-3 m-6 c-12">
-      <div class="collection-item">
-        <div class="collection-item__container">
-          <img class="collection-item__image"
-            src="https://img.freepik.com/premium-photo/boy-is-using-laptop-with-word-s-screen_972034-586.jpg" alt="">
-          <div class="collection-item__info">
-            <p class="collection-item__name collection-item__title" title="Nam Collection">
-              Name Collection
-            </p>
-            <p class="collection-item__address collection__address" title="0x0000000000000000000000">
-              0x000 ... 0000
-            </p>
-            <div class="collection-item__amount">
-              <span class="collection-item__amount-title">NFTs: </span>
-              <span class="collection-item__amount-number" title="1.6363">34</span>
+      <!-- Collections -->
+      <div class="main-collections grid wide">
+        <div class="container">
+          <div class="row main-collections__headline">
+            <div class="col l-3 m-6 c-12">
+              <h3 class="main-collections__title">Collections</h3>
             </div>
-            <!-- Noi dung hidden-->
-            <span class="collection__owner" style="display: none;">
-            </span>
-            <span class="collection-item__description" style="display: none;">
-            </span>
+          </div>
+          <!-- List Collection (add collection in this) -->
+          <div class="row list-collection__container" id="list-collection__container"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Collections Teamplate -->
+    <div id="collection-template" style="display: none">
+      <a class="col l-3 m-6 c-12">
+        <div class="collection-item">
+          <div class="collection-item__container">
+            <img
+              class="collection-item__image"
+              src="https://img.freepik.com/premium-photo/boy-is-using-laptop-with-word-s-screen_972034-586.jpg"
+              alt=""
+            />
+            <div class="collection-item__info">
+              <p class="collection-item__name collection-item__title" title="Nam Collection">
+                Name Collection
+              </p>
+              <p
+              target="_blank"
+                class="collection-item__address collection__address"
+                title="0x0000000000000000000000"
+              >
+                0x000 ... 0000
+              </p>
+              <div class="collection-item__owner-container">
+                <img class="collection-item__owner-avatar "></img>
+                <p
+                 target="_blank"
+                  class="collection-item__owner-address"
+                  title=""
+                >
+                0x000 ... 0000
+                </p>
+              </div>
+              <div class="collection-item__amount">
+                <span class="collection-item__amount-title">NFTs: </span>
+                <span class="collection-item__amount-number" title="1.6363">34</span>
+              </div>
+              <!-- Noi dung hidden-->
+              <span class="collection__owner" style="display: none"> </span>
+              <span class="collection-item__description" style="display: none"> </span>
+            </div:>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

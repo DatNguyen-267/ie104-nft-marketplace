@@ -1,18 +1,15 @@
-import { ExploreCollectionPageControllerInstance } from './controller'
-import './styles.css'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
+import { connectEarly } from '../../services'
 import './../../components/alert/styles.css'
 import './../../components/avatar/styles.css'
 import './../../components/button/styles.css'
+import './../../components/collection/styles.css'
 import './../../components/header/styles.css'
 import './../../components/loading/loading2/styles.css'
-import './../../components/collection/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
-import { UserPopoverControllerInstance } from '../../controller/user'
-import { connectEarly } from '../../services'
-
-
-ExploreCollectionPageControllerInstance.getAllCollectionOfMarket()
+import { ExploreCollectionPageControllerInstance } from './controller'
+import './styles.css'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -22,10 +19,15 @@ const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
 
-connectEarly().then(() => {
-  UserPopoverControllerInstance.isConnected.set(true)
-  UserPopoverControllerInstance.isConnected.loadAvatar()
-})
+connectEarly()
+  .then(() => {
+    WalletManagerInstance.listener()
+    WalletManagerInstance.updateAccountAddress()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {
@@ -56,3 +58,15 @@ alertOverlay.onclick = toggleAlertSigout
 alertCancel.onclick = toggleAlertSigout
 alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
+
+document.addEventListener('DOMContentLoaded', () => {
+  async function initPage() {
+    try {
+      try {
+      } catch (error) {}
+      await ExploreCollectionPageControllerInstance.getAllCollectionOfMarket()
+    } catch (error) {}
+  }
+
+  initPage()
+})

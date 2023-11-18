@@ -1,3 +1,4 @@
+import { DEFAULT_ADDRESS } from '../../constants'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 import { ModalBuyControllerInstance } from '../../controller/modal-buy'
 import { UserPopoverControllerInstance } from '../../controller/user'
@@ -11,6 +12,7 @@ import {
 import { viewAsksByCollection, viewMarketCollections } from '../../services/market'
 import { NftItem } from '../../types/nft'
 import { shorterAddress } from '../../utils'
+import { getAvatarByAddress } from '../../utils/avatar'
 import {
   AttributeName,
   LoadingStatus,
@@ -51,6 +53,7 @@ export class ExplorePageController {
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
+      eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
     eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
@@ -67,6 +70,7 @@ export class ExplorePageController {
     eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
     eData.eAddressNFT.title = nftItem.collectionAddress
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
+    eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)
 
     eData.eButtonBuy.style.display = 'block'
     eData.eButtonBuy.addEventListener('click', () => {
@@ -91,6 +95,7 @@ export class ExplorePageController {
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
+      eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
 
     eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
@@ -110,6 +115,7 @@ export class ExplorePageController {
     eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
     eData.eAddressNFT.title = nftItem.collectionAddress
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
+    eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)
 
     eData.eButtonBuy.style.display = 'block'
     eData.eButtonBuy.addEventListener('click', () => {

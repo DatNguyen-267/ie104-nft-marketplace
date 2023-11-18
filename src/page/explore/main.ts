@@ -1,5 +1,6 @@
 import { LoadingControllerInstance } from '../../controller/loading'
 import { ModalBuyControllerInstance, ModalBuyNFTId } from '../../controller/modal-buy'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import { connectEarly } from '../../services'
 import './../../components/NFTcard/styles.css'
 import './../../components/alert/styles.css'
@@ -11,10 +12,8 @@ import './../../components/modal/modalBuyNFT/styles.css'
 import './../../components/modal/modalSellNFT/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
-import './styles.css'
 import { ExplorePageControllerInstance } from './controller'
-import { UserPopoverControllerInstance } from '../../controller/user'
-import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
+import './styles.css'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement

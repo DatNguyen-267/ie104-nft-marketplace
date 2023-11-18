@@ -1,8 +1,13 @@
-import { getAddress } from 'ethers/lib/utils'
+import { ethers } from 'ethers'
+import { NATIVE_TOKEN_NAME } from '../../constants'
+import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
+import { ERC20_TOKEN_SUPPORTED } from '../../constants/token'
+import { ModalSellControllerInstance } from '../../controller/modal-sell'
+import { UserPopoverControllerInstance } from '../../controller/user'
 import {
   connectAndSwitch,
   getAccountAddress,
-  getAllNftOfCollection,
+  getAllNftOfCollectionAndOwnerAddress,
   getBalanceNativeToken,
   getDefaultProvider,
   getErc20Balance,
@@ -10,10 +15,9 @@ import {
   getTokenUri,
   getUrlImage,
 } from '../../services'
-import { ethers } from 'ethers'
-import { NATIVE_TOKEN_NAME } from '../../constants'
-import { ERC20_TOKEN_SUPPORTED } from '../../constants/token'
+import { viewAsksByCollectionAndSeller, viewMarketCollections } from '../../services/market'
 import { NftItem } from '../../types/nft'
+import { shorterAddress } from '../../utils'
 import {
   AttributeName,
   LoadingStatus,
@@ -21,11 +25,6 @@ import {
   NftItemElementObject,
   PageElementId,
 } from './types'
-import { shorterAddress } from '../../utils'
-import { ModalSellControllerInstance } from '../../controller/modal-sell'
-import { UserPopoverControllerInstance } from '../../controller/user'
-import { viewAsksByCollectionAndSeller, viewMarketCollections } from '../../services/market'
-import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 
 export class AccountPageController {
   constructor() {}
@@ -254,7 +253,10 @@ export class AccountPageController {
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
-            const nftsOfCollection = await getAllNftOfCollection(collectionAddress, walletAddress)
+            const nftsOfCollection = await getAllNftOfCollectionAndOwnerAddress(
+              collectionAddress,
+              walletAddress,
+            )
             if (nftsOfCollection && nftsOfCollection.length > 0) {
               nftsOfCollection.forEach((tokenId) => {
                 const isExist = listNfts.find(
