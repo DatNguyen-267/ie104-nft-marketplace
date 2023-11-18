@@ -1,0 +1,80 @@
+import { getDefaultProvider, switchToNetwork } from '../services'
+import { shorterAddress } from '../utils'
+
+export const showWalletInfo = (account: string) => {
+  try {
+    const headerAvatar = document.getElementById('header-avatar') as HTMLElement
+    const btnLogin = document.getElementById('btn-login') as HTMLButtonElement
+    const userName = document.getElementById('pop-up-user-name') as HTMLElement
+
+    headerAvatar.style.display = 'flex'
+    btnLogin.style.display = 'none'
+
+    try {
+      userName.innerHTML = shorterAddress(account, 10) || ''
+      userName.title = account
+    } catch (error) {
+      headerAvatar.style.display = 'flex'
+      btnLogin.style.display = 'none'
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const hiddenWalletInfo = () => {
+  const headerAvatar = document.getElementById('header-avatar') as HTMLElement
+  const btnLogin = document.getElementById('btn-login') as HTMLButtonElement
+  headerAvatar.style.display = 'none'
+  btnLogin.style.display = 'flex'
+}
+
+class WalletManager {
+  currentAddress: string = ''
+
+  constructor() {}
+
+  async updateAccountAddress() {
+    try {
+      const accounts = await window.ethereum.request({
+        method: 'eth_accounts',
+      })
+
+      this.currentAddress = accounts[0]
+    } catch (error) {
+      this.currentAddress = ''
+    }
+  }
+
+  handleChainChanged(chainId: string) {
+    if (chainId !== '4102') {
+      try {
+        switchToNetwork(getDefaultProvider(), '4102')
+      } catch (error) {}
+    }
+  }
+
+  async accountChanged(accounts: any) {
+    if (accounts.length > 0) {
+      this.currentAddress = accounts[0]
+      showWalletInfo(accounts[0])
+    } else {
+      this.currentAddress = ''
+      hiddenWalletInfo()
+    }
+  }
+
+  disconnect(e: any) {
+    hiddenWalletInfo()
+  }
+
+  listener() {
+    if (window && window.ethereum) {
+      window.ethereum.on('chainChanged', this.handleChainChanged)
+      window.ethereum.on('accountsChanged', this.accountChanged)
+      window.ethereum.on('', this.accountChanged)
+    }
+  }
+}
+
+export const WalletManagerInstance = new WalletManager()

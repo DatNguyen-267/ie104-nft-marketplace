@@ -33,7 +33,6 @@ export async function viewMarketCollections(
     }
 
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
-    console.log({ marketContract })
     const collectionsResponse = await marketContract.viewCollections(cursor, size)
 
     const collectionDetails = collectionsResponse['collectionDetails']
@@ -146,7 +145,6 @@ export async function viewAsksByCollection(
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
-    console.log({ marketContract })
     const asks: ViewAsksByCollectionAndSellerRaw = await marketContract.viewAsksByCollection(
       collectionAddress,
       cursor,
@@ -285,7 +283,6 @@ export async function importCollection(
       tradingFee,
       creatorFee,
     )
-    console.log({ addResponse })
     return {}
   } catch (error) {
     throw error
@@ -305,7 +302,6 @@ export async function cancelAskOrder(collectionAddress: string, tokenId: string)
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
     const response = await marketContract.cancelAskOrder(collectionAddress, tokenId)
-    console.log({ response })
     return true
   } catch (error) {
     throw error
@@ -326,7 +322,6 @@ export async function modifyAskOrder(collectionAddress: string, tokenId: string,
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
     const response = await marketContract.modifyAskOrder(collectionAddress, tokenId, newPrice)
-    console.log({ response })
     return {}
   } catch (error) {
     throw error
@@ -348,7 +343,6 @@ export async function viewAskByCollectionAndTokenId(collectionAddress: string, t
     const response = await marketContract.viewAsksByCollectionAndTokenIds(collectionAddress, [
       tokenId,
     ])
-    console.log({ response })
     return {}
   } catch (error) {
     throw error
@@ -374,7 +368,6 @@ export async function viewAsksByCollectionAndTokenIds(
       collectionAddress,
       tokenIds,
     )
-    console.log({ response })
     return {}
   } catch (error) {
     throw error

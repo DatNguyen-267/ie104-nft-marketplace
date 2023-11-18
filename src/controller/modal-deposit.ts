@@ -62,8 +62,6 @@ class ModalDepositController {
   toggle(event: any) {
     event.preventDefault()
     let modal = document.getElementById(ModalDepositNFTId.Container) as HTMLElement
-    console.log(modal)
-    console.log(modal.style.display === 'none')
     if (modal.style.display === 'none') {
       modal.style.display = 'flex'
     } else {
@@ -72,7 +70,6 @@ class ModalDepositController {
   }
 
   open() {
-    console.log('open desposit')
     let modal = document.getElementById(ModalDepositNFTId.Container) as HTMLElement
     modal.style.display = 'flex'
   }
@@ -80,7 +77,6 @@ class ModalDepositController {
   async deposit() {
     const priceInput = document.getElementById(ModalDepositNFTId.Price) as HTMLInputElement
 
-    console.log(priceInput.value)
     if (!priceInput.value) {
       throw new Error(AppError.INPUT_INVALID)
     }
@@ -95,7 +91,6 @@ class ModalDepositController {
 
     try {
       const response = await deposit(WBNB_ADDRESS, priceInput.value.toString())
-      console.log(response)
       AccountPageControllerInstance.reloadBalance()
       this.close()
     } catch (error) {

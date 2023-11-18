@@ -4,22 +4,21 @@ import { getDefaultProvider, getProvider } from './provider'
 import { convertWalletError } from '../utils/errors'
 
 export async function connectEarly() {
-  try {
-    if (!window.ethereum) return
-
-    try {
-      await window.ethereum
-        .request({
-          method: 'eth_accounts',
-        })
-        .then((accounts: string[]) => {
-          console.log({ accounts })
-          if (accounts.length > 0) {
-            connectAndSwitch()
-          }
-        })
-    } catch (error) {}
-  } catch (error) {}
+  if (!window.ethereum) {
+    throw new Error('No connect detected')
+  }
+  await window.ethereum
+    .request({
+      method: 'eth_accounts',
+    })
+    .then(async (accounts: string[]) => {
+      if (accounts.length > 0) {
+        await connectAndSwitch()
+        return accounts[0]
+      } else {
+        throw new Error('No connect detected')
+      }
+    })
 }
 export async function switchToNetwork(
   provider: any,
@@ -124,8 +123,10 @@ export async function getAccountAddress() {
   if (typeof window.ethereum !== 'undefined') {
     const provider = await getDefaultProvider()
     try {
-      return provider?.getSigner().getAddress()
+      const address = await provider?.getSigner().getAddress()
+      return address
     } catch (error) {
+      console.log(error)
       return ''
     }
   }
