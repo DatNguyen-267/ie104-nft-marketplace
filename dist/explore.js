@@ -31942,6 +31942,42 @@ var CollectionsOfMarket = {
         address: '0x1Def42fc65c3251087Bb61A410003981bE75e1d8',
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
     },
+    SupperIdol: {
+        address: '0x9fbC241d05A8c6Ef9324A1229c23f4b8bD09b0Fa',
+        owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
+    },
+    Wilzard: {
+        address: '0x4Fd34fc9eFa5f64cD0aF30bdDf8c42008CeffeFb',
+        owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
+    },
+    OpepenEdition: {
+        address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    NeoTokyoOuterCitizenV2: {
+        address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    BlockGame: {
+        address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    LongLiveNft: {
+        address: '0x542F920fCf0CBD1c02Cdff3d630A321Ac704eDa4',
+        owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5
+    },
+    EmpressTrash: {
+        address: '0xB1759D417821C61AfEEd7B46cbAb6093ed441892',
+        owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5
+    },
+    BRAINMELT: {
+        address: '0x4d635714967de6bF42A88102b1fdA537c1B2E979',
+        owner: '0x93503541f3ee2c41289c94d1e80d051867c7ddb4', //account 6
+    },
+    AZUKI: {
+        address: '0xc9a643a6551a7d19f36dEa439318fE2b1cB86509',
+        owner: '0x70c9f7141c86e9d0612a3599ded77669121ca195', //account 7
+    },
 };
 
 
@@ -32104,8 +32140,6 @@ var LoadingController = /** @class */ (function () {
     LoadingController.prototype.toggle = function (event) {
         event.preventDefault();
         var modal = document.getElementById(LoadingId.Container);
-        console.log(modal);
-        console.log(modal.style.display === 'none');
         if (modal.style.display === 'none') {
             modal.style.display = 'flex';
         }
@@ -32208,7 +32242,7 @@ var ModalBuyController = /** @class */ (function () {
         return this.nftItem;
     };
     ModalBuyController.prototype.updateDomContent = function () {
-        var _a, _b, _c, _d, _e, _f, _g;
+        var _a, _b, _c, _d, _e, _f;
         var modalItemName = document.getElementById(ModalBuyNFTId.ItemName);
         var modalItemPrice = document.getElementById(ModalBuyNFTId.ItemPrice);
         // const modalNetWorkName = document.getElementById(ModalBuyNFTId.NetWorkName) as HTMLElement
@@ -32217,11 +32251,10 @@ var ModalBuyController = /** @class */ (function () {
         var modalItemImage = document.getElementById(ModalBuyNFTId.ItemImage);
         modalTotal.innerHTML = ((Number((_a = this.nftItem) === null || _a === void 0 ? void 0 : _a.price) * 0.1) / 100 +
             Number((_b = this.nftItem) === null || _b === void 0 ? void 0 : _b.price)).toFixed(8);
-        console.log((Number((_c = this.nftItem) === null || _c === void 0 ? void 0 : _c.price) * 0.1) / 100);
-        modalItemName.innerHTML = ((_d = this.nftItem) === null || _d === void 0 ? void 0 : _d.title) || '';
-        modalItemPrice.innerHTML = ((_e = this.nftItem) === null || _e === void 0 ? void 0 : _e.price) || '';
-        modalItemAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.shorterAddress)(((_f = this.nftItem) === null || _f === void 0 ? void 0 : _f.collectionAddress) || '');
-        modalItemImage.src = ((_g = this.nftItem) === null || _g === void 0 ? void 0 : _g.imageGatewayUrl) || '#';
+        modalItemName.innerHTML = ((_c = this.nftItem) === null || _c === void 0 ? void 0 : _c.title) || '';
+        modalItemPrice.innerHTML = ((_d = this.nftItem) === null || _d === void 0 ? void 0 : _d.price) || '';
+        modalItemAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.shorterAddress)(((_e = this.nftItem) === null || _e === void 0 ? void 0 : _e.collectionAddress) || '');
+        modalItemImage.src = ((_f = this.nftItem) === null || _f === void 0 ? void 0 : _f.imageGatewayUrl) || '#';
     };
     ModalBuyController.prototype.buy = function () {
         var _a, _b, _c;
@@ -32240,7 +32273,6 @@ var ModalBuyController = /** @class */ (function () {
                     case 1:
                         currentAddress = _d.sent();
                         if (((_b = (_a = this.nftItem) === null || _a === void 0 ? void 0 : _a.seller) === null || _b === void 0 ? void 0 : _b.toLowerCase()) === (currentAddress === null || currentAddress === void 0 ? void 0 : currentAddress.toLowerCase())) {
-                            console.log(_constants__WEBPACK_IMPORTED_MODULE_0__.BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER);
                             throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER);
                         }
                         if (!((_c = this.nftItem) === null || _c === void 0 ? void 0 : _c.price)) {
@@ -32293,8 +32325,6 @@ var ModalBuyController = /** @class */ (function () {
     ModalBuyController.prototype.toggle = function (event) {
         event.preventDefault();
         var modal = document.getElementById(ModalBuyNFTId.Container);
-        console.log(modal);
-        console.log(modal.style.display === 'none');
         if (modal.style.display === 'none') {
             modal.style.display = 'flex';
         }
@@ -32403,19 +32433,9 @@ var userPopoverController = /** @class */ (function () {
         this.isConnected = {
             value: false,
             getOnChange: function () {
-                return __awaiter(this, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        if (this.value) {
-                            try {
-                                this.loadAvatar();
-                            }
-                            catch (error) {
-                                this.set(false);
-                            }
-                        }
-                        return [2 /*return*/];
-                    });
-                });
+                return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
+                    return [2 /*return*/];
+                }); });
             },
             set: function (value) {
                 this.value = value;
@@ -32498,20 +32518,7 @@ var userPopoverController = /** @class */ (function () {
         catch (error) { }
     };
     userPopoverController.prototype.listener = function () {
-        var _this = this;
         try {
-            // window.ethereum.on('chainChanged', handleChainChanged)
-            window.ethereum.on('accountsChanged', this.accountChanged);
-            window.ethereum.on('disconnect', this.disconnect);
-            window.ethereum.on('connect', function (e) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    try {
-                        this.connect();
-                    }
-                    catch (error) { }
-                    return [2 /*return*/];
-                });
-            }); });
         }
         catch (error) { }
     };
@@ -32519,6 +32526,175 @@ var userPopoverController = /** @class */ (function () {
 }());
 
 var UserPopoverControllerInstance = new userPopoverController();
+
+
+/***/ }),
+
+/***/ "./src/controller/wallet.ts":
+/*!**********************************!*\
+  !*** ./src/controller/wallet.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WalletManagerInstance: () => (/* binding */ WalletManagerInstance),
+/* harmony export */   hiddenWalletInfo: () => (/* binding */ hiddenWalletInfo),
+/* harmony export */   showWalletInfo: () => (/* binding */ showWalletInfo)
+/* harmony export */ });
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services */ "./src/services/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
+/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/avatar */ "./src/utils/avatar.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+var showWalletInfo = function (account) { return __awaiter(void 0, void 0, void 0, function () {
+    var headerAvatar, btnLogin, userName, userImg, address, error_1, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 5, , 6]);
+                headerAvatar = document.getElementById('header-avatar');
+                btnLogin = document.getElementById('btn-login');
+                userName = document.getElementById('pop-up-user-name');
+                userImg = document.getElementById('header-avatar');
+                headerAvatar.style.display = 'flex';
+                btnLogin.style.display = 'none';
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_0__.getAccountAddress)()
+                        .then(function (res) { return res; })
+                        .catch(function (err) {
+                        console.log(err);
+                    })];
+            case 2:
+                address = _a.sent();
+                userName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shorterAddress)(account, 10) || '';
+                userName.title = account;
+                console.log(account);
+                userImg.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_2__.getAvatarByAddress)(address);
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _a.sent();
+                headerAvatar.style.display = 'flex';
+                btnLogin.style.display = 'none';
+                return [3 /*break*/, 4];
+            case 4: return [3 /*break*/, 6];
+            case 5:
+                error_2 = _a.sent();
+                console.log(error_2);
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
+        }
+    });
+}); };
+var hiddenWalletInfo = function () {
+    var headerAvatar = document.getElementById('header-avatar');
+    var btnLogin = document.getElementById('btn-login');
+    headerAvatar.style.display = 'none';
+    btnLogin.style.display = 'flex';
+};
+var WalletManager = /** @class */ (function () {
+    function WalletManager() {
+        this.currentAddress = '';
+    }
+    WalletManager.prototype.updateAccountAddress = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var accounts, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, window.ethereum.request({
+                                method: 'eth_accounts',
+                            })];
+                    case 1:
+                        accounts = _a.sent();
+                        this.currentAddress = accounts[0];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_3 = _a.sent();
+                        this.currentAddress = '';
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    WalletManager.prototype.handleChainChanged = function (chainId) {
+        if (chainId !== '4102') {
+            try {
+                (0,_services__WEBPACK_IMPORTED_MODULE_0__.switchToNetwork)((0,_services__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)(), '4102');
+            }
+            catch (error) { }
+        }
+    };
+    WalletManager.prototype.accountChanged = function (accounts) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (accounts.length > 0) {
+                    this.currentAddress = accounts[0];
+                    showWalletInfo(accounts[0]);
+                }
+                else {
+                    this.currentAddress = '';
+                    hiddenWalletInfo();
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    WalletManager.prototype.disconnect = function (e) {
+        hiddenWalletInfo();
+    };
+    WalletManager.prototype.listener = function () {
+        if (window && window.ethereum) {
+            window.ethereum.on('chainChanged', this.handleChainChanged);
+            window.ethereum.on('accountsChanged', this.accountChanged);
+            window.ethereum.on('', this.accountChanged);
+        }
+    };
+    return WalletManager;
+}());
+var WalletManagerInstance = new WalletManager();
 
 
 /***/ }),
@@ -32535,13 +32711,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ExplorePageController: () => (/* binding */ ExplorePageController),
 /* harmony export */   ExplorePageControllerInstance: () => (/* binding */ ExplorePageControllerInstance)
 /* harmony export */ });
-/* harmony import */ var _constants_default_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants/default-data */ "./src/constants/default-data.ts");
-/* harmony import */ var _controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../controller/modal-buy */ "./src/controller/modal-buy.ts");
-/* harmony import */ var _controller_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../controller/user */ "./src/controller/user.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
-/* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/market */ "./src/services/market.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.ts");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./types */ "./src/page/explore/types.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ "./src/constants/index.ts");
+/* harmony import */ var _constants_default_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/default-data */ "./src/constants/default-data.ts");
+/* harmony import */ var _controller_modal_buy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../controller/modal-buy */ "./src/controller/modal-buy.ts");
+/* harmony import */ var _controller_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../controller/user */ "./src/controller/user.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/market */ "./src/services/market.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.ts");
+/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/avatar */ "./src/utils/avatar.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./types */ "./src/page/explore/types.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -32596,6 +32774,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var ExplorePageController = /** @class */ (function () {
     function ExplorePageController() {
     }
@@ -32604,7 +32784,7 @@ var ExplorePageController = /** @class */ (function () {
             var listNftContainer, tokenItemNode, eData;
             var _this = this;
             return __generator(this, function (_a) {
-                listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_6__.PageElementId.ListNftContainer);
+                listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_8__.PageElementId.ListNftContainer);
                 if (!listNftContainer) {
                     console.log('listNftContainer is not exists');
                     return [2 /*return*/];
@@ -32613,27 +32793,28 @@ var ExplorePageController = /** @class */ (function () {
                 if (!tokenItemNode)
                     return [2 /*return*/];
                 if (nftItem.title && nftItem.imageUri) {
-                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_6__.LoadingStatus.Success);
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_8__.LoadingStatus.Success);
                 }
                 else {
-                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_6__.LoadingStatus.Pending);
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_8__.LoadingStatus.Pending);
                 }
                 eData = {
                     eContainer: tokenItemNode,
-                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Description)),
-                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Image)),
-                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.MetadataUri)),
-                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Price)),
-                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Status)),
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Title)),
-                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.ButtonBuy)),
-                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.UserName)),
-                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.AddressNFT)),
-                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.OrderNFT)),
+                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Image)),
+                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.MetadataUri)),
+                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Price)),
+                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Status)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Title)),
+                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.ButtonBuy)),
+                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.UserName)),
+                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.AddressNFT)),
+                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.OrderNFT)),
+                    eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.UserAvatar)),
                 };
                 eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.TokenId, nftItem.tokenId.toString());
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.CltAddress, nftItem.collectionAddress);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.TokenId, nftItem.tokenId.toString());
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, nftItem.collectionAddress);
                 eData.eTitle.innerHTML = nftItem.title;
                 eData.eTitle.title = nftItem.title;
                 eData.eDescription.innerHTML = nftItem.description;
@@ -32641,11 +32822,12 @@ var ExplorePageController = /** @class */ (function () {
                 eData.ePrice.title = nftItem.price;
                 eData.eStatus.innerHTML = nftItem.status;
                 eData.eMetadataUri.innerHTML = nftItem.tokenUri;
-                eData.eUserName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.shorterAddress)(nftItem.seller || '');
+                eData.eUserName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_6__.shorterAddress)(nftItem.seller || '');
                 eData.eUserName.title = nftItem.seller || '';
-                eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.shorterAddress)(nftItem.collectionAddress) || '';
+                eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_6__.shorterAddress)(nftItem.collectionAddress) || '';
                 eData.eAddressNFT.title = nftItem.collectionAddress;
                 eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
+                eData.eUserAvatar.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_7__.getAvatarByAddress)(nftItem.seller || _constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS);
                 eData.eButtonBuy.style.display = 'block';
                 eData.eButtonBuy.addEventListener('click', function () {
                     _this.handleBuyNft(nftItem);
@@ -32666,22 +32848,22 @@ var ExplorePageController = /** @class */ (function () {
                 tokenItemNode = template.cloneNode(true);
                 eData = {
                     eContainer: tokenItemNode,
-                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Description)),
-                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Image)),
-                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.MetadataUri)),
-                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Price)),
-                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Status)),
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.Title)),
-                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.ButtonBuy)),
-                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.UserName)),
-                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.AddressNFT)),
-                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_6__.NftItemClass.OrderNFT)),
+                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Image)),
+                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.MetadataUri)),
+                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Price)),
+                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Status)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.Title)),
+                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.ButtonBuy)),
+                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.UserName)),
+                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.AddressNFT)),
+                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.OrderNFT)),
+                    eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.UserAvatar)),
                 };
-                console.log({ imageGatewayUrl: nftItem.imageGatewayUrl });
                 eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.TokenId, nftItem.tokenId.toString());
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.CltAddress, nftItem.collectionAddress);
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_6__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_6__.LoadingStatus.Pending);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.TokenId, nftItem.tokenId.toString());
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, nftItem.collectionAddress);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_8__.LoadingStatus.Pending);
                 eData.eTitle.innerHTML = nftItem.title;
                 eData.eTitle.title = nftItem.title;
                 eData.eDescription.innerHTML = nftItem.description;
@@ -32689,11 +32871,12 @@ var ExplorePageController = /** @class */ (function () {
                 eData.ePrice.title = nftItem.price;
                 eData.eStatus.innerHTML = nftItem.status;
                 eData.eMetadataUri.innerHTML = nftItem.tokenUri;
-                eData.eUserName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.shorterAddress)(nftItem.seller || '') || '';
+                eData.eUserName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_6__.shorterAddress)(nftItem.seller || '') || '';
                 eData.eUserName.title = nftItem.seller || '';
-                eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.shorterAddress)(nftItem.collectionAddress) || '';
+                eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_6__.shorterAddress)(nftItem.collectionAddress) || '';
                 eData.eAddressNFT.title = nftItem.collectionAddress;
                 eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
+                eData.eUserAvatar.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_7__.getAvatarByAddress)(nftItem.seller || _constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS);
                 eData.eButtonBuy.style.display = 'block';
                 eData.eButtonBuy.addEventListener('click', function () {
                     _this.handleBuyNft(nftItem);
@@ -32707,7 +32890,7 @@ var ExplorePageController = /** @class */ (function () {
             var listNftContainer;
             return __generator(this, function (_a) {
                 try {
-                    listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_6__.PageElementId.ListNftContainer);
+                    listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_8__.PageElementId.ListNftContainer);
                     if (!listNftContainer) {
                         console.log('listNftContainer is not exists');
                         return [2 /*return*/];
@@ -32728,15 +32911,15 @@ var ExplorePageController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_3__.connectAndSwitch)()];
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_4__.connectAndSwitch)()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, _controller_user__WEBPACK_IMPORTED_MODULE_2__.UserPopoverControllerInstance.connect()];
+                        return [4 /*yield*/, _controller_user__WEBPACK_IMPORTED_MODULE_3__.UserPopoverControllerInstance.connect()];
                     case 2:
                         _a.sent();
                         try {
-                            _controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__.ModalBuyControllerInstance.set(nftItem);
-                            _controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__.ModalBuyControllerInstance.open();
+                            _controller_modal_buy__WEBPACK_IMPORTED_MODULE_2__.ModalBuyControllerInstance.set(nftItem);
+                            _controller_modal_buy__WEBPACK_IMPORTED_MODULE_2__.ModalBuyControllerInstance.open();
                         }
                         catch (error) { }
                         return [3 /*break*/, 4];
@@ -32756,7 +32939,7 @@ var ExplorePageController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         listNfts = [];
-                        listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_6__.PageElementId.ListNftContainer);
+                        listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_8__.PageElementId.ListNftContainer);
                         if (!listNftContainer) {
                             console.log('listNftContainer is not exists');
                             return [2 /*return*/];
@@ -32764,7 +32947,7 @@ var ExplorePageController = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 7, , 8]);
-                        return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_4__.viewMarketCollections)()];
+                        return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_5__.viewMarketCollections)()];
                     case 2:
                         collections = _a.sent();
                         return [4 /*yield*/, Promise.all(collections.collectionAddresses.map(function (collectionAddress) { return __awaiter(_this, void 0, void 0, function () {
@@ -32773,14 +32956,14 @@ var ExplorePageController = /** @class */ (function () {
                                     switch (_a.label) {
                                         case 0:
                                             _a.trys.push([0, 2, , 3]);
-                                            return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_4__.viewAsksByCollection)(collectionAddress, 0, 100)];
+                                            return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_5__.viewAsksByCollection)(collectionAddress, 0, 100)];
                                         case 1:
                                             asksOfCollection_1 = _a.sent();
                                             if (asksOfCollection_1 &&
                                                 asksOfCollection_1.tokenIds &&
                                                 asksOfCollection_1.tokenIds.length > 0) {
                                                 asksOfCollection_1.tokenIds.forEach(function (tokenId, index) {
-                                                    listNfts.push(__assign(__assign({}, _constants_default_data__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_NFT_ITEM), { collectionAddress: collectionAddress, tokenId: tokenId, status: 'Sale', price: asksOfCollection_1.askInfo[index].price, seller: asksOfCollection_1.askInfo[index].seller }));
+                                                    listNfts.push(__assign(__assign({}, _constants_default_data__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_NFT_ITEM), { collectionAddress: collectionAddress, tokenId: tokenId, status: 'Sale', price: asksOfCollection_1.askInfo[index].price, seller: asksOfCollection_1.askInfo[index].seller }));
                                                 });
                                             }
                                             return [3 /*break*/, 3];
@@ -32816,7 +32999,7 @@ var ExplorePageController = /** @class */ (function () {
                                     switch (_a.label) {
                                         case 0:
                                             _a.trys.push([0, 2, , 3]);
-                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_3__.getTokenUri)(nftItem.collectionAddress, nftItem.tokenId)];
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_4__.getTokenUri)(nftItem.collectionAddress, nftItem.tokenId)];
                                         case 1:
                                             tokenUri = _a.sent();
                                             listNfts[index].tokenUri = tokenUri || '';
@@ -32836,13 +33019,13 @@ var ExplorePageController = /** @class */ (function () {
                                     switch (_a.label) {
                                         case 0:
                                             _a.trys.push([0, 3, , 4]);
-                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_3__.getMetadata)(nftItem.tokenUri)];
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_4__.getMetadata)(nftItem.tokenUri)];
                                         case 1:
                                             metadata = _a.sent();
                                             listNfts[index].title = metadata.name || '';
                                             listNfts[index].description = metadata.description || '';
                                             listNfts[index].imageUri = metadata.image || '';
-                                            listNfts[index].imageGatewayUrl = (0,_services__WEBPACK_IMPORTED_MODULE_3__.getUrlImage)(metadata.image) || '';
+                                            listNfts[index].imageGatewayUrl = (0,_services__WEBPACK_IMPORTED_MODULE_4__.getUrlImage)(metadata.image) || '';
                                             return [4 /*yield*/, this.UpdateNftItemComponent(listNfts[index])];
                                         case 2:
                                             _a.sent();
@@ -32913,6 +33096,7 @@ var NftItemClass;
     NftItemClass["UserName"] = "nft__user-name";
     NftItemClass["AddressNFT"] = "nft__address";
     NftItemClass["OrderNFT"] = "nft__order";
+    NftItemClass["UserAvatar"] = "nft-card__user-avatar";
 })(NftItemClass || (NftItemClass = {}));
 var PageElementId;
 (function (PageElementId) {
@@ -33118,44 +33302,40 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 function connectEarly() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_1, error_2;
+        var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 5, , 6]);
-                    if (!window.ethereum)
-                        return [2 /*return*/];
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    if (!window.ethereum) {
+                        throw new Error('No connect detected');
+                    }
                     return [4 /*yield*/, window.ethereum
                             .request({
                             method: 'eth_accounts',
                         })
-                            .then(function (accounts) {
-                            console.log({ accounts: accounts });
-                            if (accounts.length > 0) {
-                                connectAndSwitch();
-                            }
-                        })];
-                case 2:
+                            .then(function (accounts) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (!(accounts.length > 0)) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, connectAndSwitch()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/, accounts[0]];
+                                    case 2: throw new Error('No connect detected');
+                                }
+                            });
+                        }); })];
+                case 1:
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    return [3 /*break*/, 4];
-                case 4: return [3 /*break*/, 6];
-                case 5:
-                    error_2 = _a.sent();
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
+                    return [2 /*return*/];
             }
         });
     });
 }
 function switchToNetwork(provider, chainId) {
     return __awaiter(this, void 0, void 0, function () {
-        var formattedChainId, error_3, info, error_4;
+        var formattedChainId, error_1, info, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -33179,8 +33359,8 @@ function switchToNetwork(provider, chainId) {
                     _a.sent();
                     return [3 /*break*/, 9];
                 case 3:
-                    error_3 = _a.sent();
-                    console.log(error_3);
+                    error_1 = _a.sent();
+                    console.log(error_1);
                     info = CHAIN_INFO[chainId];
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_addEthereumChain',
@@ -33207,8 +33387,8 @@ function switchToNetwork(provider, chainId) {
                     _a.sent();
                     return [3 /*break*/, 8];
                 case 7:
-                    error_4 = _a.sent();
-                    console.debug('Added network but could not switch chains', error_4);
+                    error_2 = _a.sent();
+                    console.debug('Added network but could not switch chains', error_2);
                     return [3 /*break*/, 8];
                 case 8: return [3 /*break*/, 9];
                 case 9: return [2 /*return*/];
@@ -33237,7 +33417,7 @@ function connect() {
 }
 function connectAndSwitch() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, error_5;
+        var provider, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -33260,7 +33440,7 @@ function connectAndSwitch() {
                     _a.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    error_5 = _a.sent();
+                    error_3 = _a.sent();
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
@@ -33301,22 +33481,26 @@ var CHAIN_INFO = {
 };
 function getAccountAddress() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider;
+        var provider, address, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 2];
+                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
                     return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)()];
                 case 1:
                     provider = _a.sent();
-                    try {
-                        return [2 /*return*/, provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress()];
-                    }
-                    catch (error) {
-                        return [2 /*return*/, ''];
-                    }
                     _a.label = 2;
-                case 2: return [2 /*return*/];
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress())];
+                case 3:
+                    address = _a.sent();
+                    return [2 /*return*/, address];
+                case 4:
+                    error_4 = _a.sent();
+                    console.log(error_4);
+                    return [2 /*return*/, ''];
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -33343,15 +33527,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   connectEarly: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.connectEarly),
 /* harmony export */   createMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.createMetadata),
 /* harmony export */   getAccountAddress: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getAccountAddress),
-/* harmony export */   getAllNftOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllNftOfCollection),
+/* harmony export */   getAllNftOfCollectionAndOwnerAddress: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllNftOfCollectionAndOwnerAddress),
+/* harmony export */   getAllTokenIdOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllTokenIdOfCollection),
 /* harmony export */   getBalance: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getBalance),
 /* harmony export */   getBalanceNativeToken: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getBalanceNativeToken),
 /* harmony export */   getDefaultProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider),
 /* harmony export */   getErc20Balance: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getErc20Balance),
 /* harmony export */   getMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getMetadata),
+/* harmony export */   getNameOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getNameOfCollection),
+/* harmony export */   getOwnerOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getOwnerOfCollection),
 /* harmony export */   getProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getProvider),
 /* harmony export */   getRpcProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider),
 /* harmony export */   getTokenUri: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getTokenUri),
+/* harmony export */   getTotalSupply: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getTotalSupply),
 /* harmony export */   getUrlImage: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getUrlImage),
 /* harmony export */   isConnectedWallet: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.isConnectedWallet),
 /* harmony export */   listenForTransactionMined: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.listenForTransactionMined),
@@ -33461,11 +33649,18 @@ function viewMarketCollections(cursor, size) {
                         throw new Error('Provider is not found');
                     }
                     marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
-                    console.log({ marketContract: marketContract });
                     return [4 /*yield*/, marketContract.viewCollections(cursor, size)];
                 case 1:
                     collectionsResponse = _a.sent();
-                    collectionDetails = collectionsResponse['collectionDetails'];
+                    collectionDetails = collectionsResponse['collectionDetails'].map(function (collectionDeital) {
+                        return {
+                            status: collectionDeital[0],
+                            creatorAddress: collectionDeital[1],
+                            whitelistChecker: collectionDeital[2],
+                            tradingFee: Number(BigInt(collectionDeital[3]).toString()) / 100,
+                            creatorFee: Number(BigInt(collectionDeital[4]).toString()) / 100,
+                        };
+                    });
                     collectionAddresses = collectionsResponse['collectionAddresses'];
                     return [2 /*return*/, {
                             collectionDetails: collectionDetails,
@@ -33575,7 +33770,6 @@ function viewAsksByCollection(collectionAddress, cursor, size) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
                     marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
-                    console.log({ marketContract: marketContract });
                     return [4 /*yield*/, marketContract.viewAsksByCollection(collectionAddress, cursor, size)];
                 case 1:
                     asks = _a.sent();
@@ -33718,7 +33912,6 @@ function importCollection(collectionAddress, creatorAddress, tradingFee, creator
                     return [4 /*yield*/, marketContract.addCollection(collectionAddress, creatorAddress, whiteListChecker, tradingFee, creatorFee)];
                 case 1:
                     addResponse = _a.sent();
-                    console.log({ addResponse: addResponse });
                     return [2 /*return*/, {}];
                 case 2:
                     error_9 = _a.sent();
@@ -33748,7 +33941,6 @@ function cancelAskOrder(collectionAddress, tokenId) {
                     return [4 /*yield*/, marketContract.cancelAskOrder(collectionAddress, tokenId)];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, true];
                 case 2:
                     error_10 = _a.sent();
@@ -33779,7 +33971,6 @@ function modifyAskOrder(collectionAddress, tokenId, newPrice) {
                     return [4 /*yield*/, marketContract.modifyAskOrder(collectionAddress, tokenId, newPrice)];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, {}];
                 case 2:
                     error_11 = _a.sent();
@@ -33811,7 +34002,6 @@ function viewAskByCollectionAndTokenId(collectionAddress, tokenId) {
                         ])];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, {}];
                 case 2:
                     error_12 = _a.sent();
@@ -33841,7 +34031,6 @@ function viewAsksByCollectionAndTokenIds(collectionAddress, tokenIds) {
                     return [4 /*yield*/, marketContract.viewAsksByCollectionAndTokenIds(collectionAddress, tokenIds)];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, {}];
                 case 2:
                     error_13 = _a.sent();
@@ -33866,9 +34055,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   approveSpenderToAccessNft: () => (/* binding */ approveSpenderToAccessNft),
 /* harmony export */   createMetadata: () => (/* binding */ createMetadata),
-/* harmony export */   getAllNftOfCollection: () => (/* binding */ getAllNftOfCollection),
+/* harmony export */   getAllNftOfCollectionAndOwnerAddress: () => (/* binding */ getAllNftOfCollectionAndOwnerAddress),
+/* harmony export */   getAllTokenIdOfCollection: () => (/* binding */ getAllTokenIdOfCollection),
 /* harmony export */   getMetadata: () => (/* binding */ getMetadata),
+/* harmony export */   getNameOfCollection: () => (/* binding */ getNameOfCollection),
+/* harmony export */   getOwnerOfCollection: () => (/* binding */ getOwnerOfCollection),
 /* harmony export */   getTokenUri: () => (/* binding */ getTokenUri),
+/* harmony export */   getTotalSupply: () => (/* binding */ getTotalSupply),
 /* harmony export */   getUrlImage: () => (/* binding */ getUrlImage),
 /* harmony export */   listenForTransactionMined: () => (/* binding */ listenForTransactionMined),
 /* harmony export */   mintNFT: () => (/* binding */ mintNFT),
@@ -34100,9 +34293,48 @@ function listenForTransactionMined(transactionResponse, provider) {
         Promise.resolve();
     });
 }
-function getAllNftOfCollection(collectionAddress, walletAddress) {
+function getAllTokenIdOfCollection(collectionAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, balanceOf, tokenId, token, error_7, error_8;
+        var listTokenId, provider, contract, tokenId, owner, error_7, error_8;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 7, , 8]);
+                    listTokenId = [];
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    tokenId = 0;
+                    _a.label = 1;
+                case 1:
+                    if (false) {}
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, contract.ownerOf(tokenId)];
+                case 3:
+                    owner = _a.sent();
+                    listTokenId.push({
+                        owner: owner,
+                        tokenId: tokenId.toString(),
+                    });
+                    tokenId++;
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_7 = _a.sent();
+                    return [3 /*break*/, 6];
+                case 5: return [3 /*break*/, 1];
+                case 6: return [2 /*return*/, listTokenId];
+                case 7:
+                    error_8 = _a.sent();
+                    throw error_8;
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var listTokenId, provider, contract, balanceOf, tokenId, token, error_9, error_10;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -34130,13 +34362,13 @@ function getAllNftOfCollection(collectionAddress, walletAddress) {
                     tokenId++;
                     return [3 /*break*/, 6];
                 case 5:
-                    error_7 = _a.sent();
+                    error_9 = _a.sent();
                     return [3 /*break*/, 7];
                 case 6: return [3 /*break*/, 2];
                 case 7: return [2 /*return*/, listTokenId];
                 case 8:
-                    error_8 = _a.sent();
-                    throw error_8;
+                    error_10 = _a.sent();
+                    throw error_10;
                 case 9: return [2 /*return*/];
             }
         });
@@ -34165,7 +34397,7 @@ function getMetadata(tokenUri) {
  */
 function transferFrom(from, to, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, response, error_9;
+        var provider, nftContract, response, error_11;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -34178,13 +34410,72 @@ function transferFrom(from, to, tokenId) {
                     return [4 /*yield*/, nftContract.transferFrom(from, to, tokenId)];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, {}];
                 case 2:
-                    error_9 = _a.sent();
-                    throw error_9;
+                    error_11 = _a.sent();
+                    throw error_11;
                 case 3: return [2 /*return*/];
             }
+        });
+    });
+}
+function getOwnerOfCollection(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.owner();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function getNameOfCollection(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.name();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function getTotalSupply(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.totalSupply();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
         });
     });
 }
@@ -34366,6 +34657,33 @@ function deposit(tokenAddress, value) {
 
 /***/ }),
 
+/***/ "./src/utils/avatar.ts":
+/*!*****************************!*\
+  !*** ./src/utils/avatar.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAvatarByAddress: () => (/* binding */ getAvatarByAddress)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
+/* harmony import */ var _regex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./regex */ "./src/utils/regex.ts");
+
+
+var getAvatarByAddress = function (address) {
+    if (_regex__WEBPACK_IMPORTED_MODULE_1__.ethereumAddressRegex.test(address)) {
+        return "https://effigy.im/a/".concat(address, ".svg");
+    }
+    else {
+        return "https://effigy.im/a/".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS, ".svg");
+    }
+};
+
+
+/***/ }),
+
 /***/ "./src/utils/common.ts":
 /*!*****************************!*\
   !*** ./src/utils/common.ts ***!
@@ -34442,6 +34760,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
 
 
+
+
+/***/ }),
+
+/***/ "./src/utils/regex.ts":
+/*!****************************!*\
+  !*** ./src/utils/regex.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ethereumAddressRegex: () => (/* binding */ ethereumAddressRegex),
+/* harmony export */   ethereumTxHashRegex: () => (/* binding */ ethereumTxHashRegex)
+/* harmony export */ });
+var ethereumAddressRegex = /^0x[a-fA-F0-9]{40}$/;
+var ethereumTxHashRegex = /^0x([A-Fa-f0-9]{64})$/;
 
 
 /***/ }),
@@ -45393,20 +45729,20 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _controller_loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../controller/loading */ "./src/controller/loading.ts");
 /* harmony import */ var _controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../controller/modal-buy */ "./src/controller/modal-buy.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
-/* harmony import */ var _components_NFTcard_styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../components/NFTcard/styles.css */ "./src/components/NFTcard/styles.css");
-/* harmony import */ var _components_alert_styles_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../components/alert/styles.css */ "./src/components/alert/styles.css");
-/* harmony import */ var _components_avatar_styles_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../components/avatar/styles.css */ "./src/components/avatar/styles.css");
-/* harmony import */ var _components_button_styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../components/button/styles.css */ "./src/components/button/styles.css");
-/* harmony import */ var _components_header_styles_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../components/header/styles.css */ "./src/components/header/styles.css");
-/* harmony import */ var _components_loading_loading2_styles_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../components/loading/loading2/styles.css */ "./src/components/loading/loading2/styles.css");
-/* harmony import */ var _components_modal_modalBuyNFT_styles_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../components/modal/modalBuyNFT/styles.css */ "./src/components/modal/modalBuyNFT/styles.css");
-/* harmony import */ var _components_modal_modalSellNFT_styles_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../../components/modal/modalSellNFT/styles.css */ "./src/components/modal/modalSellNFT/styles.css");
-/* harmony import */ var _styles_base_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../../styles/base.css */ "./src/styles/base.css");
-/* harmony import */ var _styles_grid_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./../../styles/grid.css */ "./src/styles/grid.css");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./styles.css */ "./src/page/explore/styles.css");
+/* harmony import */ var _controller_wallet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../controller/wallet */ "./src/controller/wallet.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _components_NFTcard_styles_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../components/NFTcard/styles.css */ "./src/components/NFTcard/styles.css");
+/* harmony import */ var _components_alert_styles_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../components/alert/styles.css */ "./src/components/alert/styles.css");
+/* harmony import */ var _components_avatar_styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../components/avatar/styles.css */ "./src/components/avatar/styles.css");
+/* harmony import */ var _components_button_styles_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../components/button/styles.css */ "./src/components/button/styles.css");
+/* harmony import */ var _components_header_styles_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../components/header/styles.css */ "./src/components/header/styles.css");
+/* harmony import */ var _components_loading_loading2_styles_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../components/loading/loading2/styles.css */ "./src/components/loading/loading2/styles.css");
+/* harmony import */ var _components_modal_modalBuyNFT_styles_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../../components/modal/modalBuyNFT/styles.css */ "./src/components/modal/modalBuyNFT/styles.css");
+/* harmony import */ var _components_modal_modalSellNFT_styles_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../../components/modal/modalSellNFT/styles.css */ "./src/components/modal/modalSellNFT/styles.css");
+/* harmony import */ var _styles_base_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./../../styles/base.css */ "./src/styles/base.css");
+/* harmony import */ var _styles_grid_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./../../styles/grid.css */ "./src/styles/grid.css");
 /* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./controller */ "./src/page/explore/controller.ts");
-/* harmony import */ var _controller_user__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../controller/user */ "./src/controller/user.ts");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./styles.css */ "./src/page/explore/styles.css");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -45466,9 +45802,14 @@ var alertOverlay = document.getElementById('alert-overlay-close');
 var alertCancel = document.getElementById('alert-cancel');
 var alertClose = document.getElementById('alert-close');
 var signOut = document.getElementById('header-sign-out');
-(0,_services__WEBPACK_IMPORTED_MODULE_2__.connectEarly)().then(function () {
-    _controller_user__WEBPACK_IMPORTED_MODULE_15__.UserPopoverControllerInstance.isConnected.set(true);
-    _controller_user__WEBPACK_IMPORTED_MODULE_15__.UserPopoverControllerInstance.isConnected.loadAvatar();
+(0,_services__WEBPACK_IMPORTED_MODULE_3__.connectEarly)()
+    .then(function () {
+    _controller_wallet__WEBPACK_IMPORTED_MODULE_2__.WalletManagerInstance.listener();
+    _controller_wallet__WEBPACK_IMPORTED_MODULE_2__.WalletManagerInstance.updateAccountAddress();
+    (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_2__.showWalletInfo)(_controller_wallet__WEBPACK_IMPORTED_MODULE_2__.WalletManagerInstance.currentAddress);
+})
+    .catch(function (err) {
+    console.log(err);
 });
 // Toggle PopUP
 function togglePopUpUser(event) {

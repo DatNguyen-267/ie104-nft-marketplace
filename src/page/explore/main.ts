@@ -1,5 +1,6 @@
 import { LoadingControllerInstance } from '../../controller/loading'
 import { ModalBuyControllerInstance, ModalBuyNFTId } from '../../controller/modal-buy'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import { connectEarly } from '../../services'
 import './../../components/NFTcard/styles.css'
 import './../../components/alert/styles.css'
@@ -11,9 +12,8 @@ import './../../components/modal/modalBuyNFT/styles.css'
 import './../../components/modal/modalSellNFT/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
-import './styles.css'
 import { ExplorePageControllerInstance } from './controller'
-import { UserPopoverControllerInstance } from '../../controller/user'
+import './styles.css'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -23,10 +23,15 @@ const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
 
-connectEarly().then(() => {
-  UserPopoverControllerInstance.isConnected.set(true)
-  UserPopoverControllerInstance.isConnected.loadAvatar()
-})
+connectEarly()
+  .then(() => {
+    WalletManagerInstance.listener()
+    WalletManagerInstance.updateAccountAddress()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {

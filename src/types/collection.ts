@@ -1,6 +1,10 @@
 export interface CollectionItem {
   collectionAddress: string
+  owner: string
+  tradingFee: number
+  creatorFee: number
   title: string
   description: string
-  owner: string
+  totalSupply: string
+  name: string
 }

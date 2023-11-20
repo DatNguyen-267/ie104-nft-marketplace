@@ -60,8 +60,6 @@ class ModalImportController {
   toggle(event: any) {
     event.preventDefault()
     let modal = document.getElementById(ModalImportNFTId.Container) as HTMLElement
-    console.log(modal)
-    console.log(modal.style.display === 'none')
     if (modal.style.display === 'none') {
       modal.style.display = 'flex'
     } else {
@@ -70,7 +68,6 @@ class ModalImportController {
   }
 
   open() {
-    console.log('open desposit')
     let modal = document.getElementById(ModalImportNFTId.Container) as HTMLElement
     modal.style.display = 'flex'
   }

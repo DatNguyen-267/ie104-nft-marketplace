@@ -31812,6 +31812,42 @@ var CollectionsOfMarket = {
         address: '0x1Def42fc65c3251087Bb61A410003981bE75e1d8',
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
     },
+    SupperIdol: {
+        address: '0x9fbC241d05A8c6Ef9324A1229c23f4b8bD09b0Fa',
+        owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
+    },
+    Wilzard: {
+        address: '0x4Fd34fc9eFa5f64cD0aF30bdDf8c42008CeffeFb',
+        owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
+    },
+    OpepenEdition: {
+        address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    NeoTokyoOuterCitizenV2: {
+        address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    BlockGame: {
+        address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
+    LongLiveNft: {
+        address: '0x542F920fCf0CBD1c02Cdff3d630A321Ac704eDa4',
+        owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5
+    },
+    EmpressTrash: {
+        address: '0xB1759D417821C61AfEEd7B46cbAb6093ed441892',
+        owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5
+    },
+    BRAINMELT: {
+        address: '0x4d635714967de6bF42A88102b1fdA537c1B2E979',
+        owner: '0x93503541f3ee2c41289c94d1e80d051867c7ddb4', //account 6
+    },
+    AZUKI: {
+        address: '0xc9a643a6551a7d19f36dEa439318fE2b1cB86509',
+        owner: '0x70c9f7141c86e9d0612a3599ded77669121ca195', //account 7
+    },
 };
 
 
@@ -32098,44 +32134,40 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 function connectEarly() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_1, error_2;
+        var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 5, , 6]);
-                    if (!window.ethereum)
-                        return [2 /*return*/];
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    if (!window.ethereum) {
+                        throw new Error('No connect detected');
+                    }
                     return [4 /*yield*/, window.ethereum
                             .request({
                             method: 'eth_accounts',
                         })
-                            .then(function (accounts) {
-                            console.log({ accounts: accounts });
-                            if (accounts.length > 0) {
-                                connectAndSwitch();
-                            }
-                        })];
-                case 2:
+                            .then(function (accounts) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (!(accounts.length > 0)) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, connectAndSwitch()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/, accounts[0]];
+                                    case 2: throw new Error('No connect detected');
+                                }
+                            });
+                        }); })];
+                case 1:
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    return [3 /*break*/, 4];
-                case 4: return [3 /*break*/, 6];
-                case 5:
-                    error_2 = _a.sent();
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
+                    return [2 /*return*/];
             }
         });
     });
 }
 function switchToNetwork(provider, chainId) {
     return __awaiter(this, void 0, void 0, function () {
-        var formattedChainId, error_3, info, error_4;
+        var formattedChainId, error_1, info, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32159,8 +32191,8 @@ function switchToNetwork(provider, chainId) {
                     _a.sent();
                     return [3 /*break*/, 9];
                 case 3:
-                    error_3 = _a.sent();
-                    console.log(error_3);
+                    error_1 = _a.sent();
+                    console.log(error_1);
                     info = CHAIN_INFO[chainId];
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_addEthereumChain',
@@ -32187,8 +32219,8 @@ function switchToNetwork(provider, chainId) {
                     _a.sent();
                     return [3 /*break*/, 8];
                 case 7:
-                    error_4 = _a.sent();
-                    console.debug('Added network but could not switch chains', error_4);
+                    error_2 = _a.sent();
+                    console.debug('Added network but could not switch chains', error_2);
                     return [3 /*break*/, 8];
                 case 8: return [3 /*break*/, 9];
                 case 9: return [2 /*return*/];
@@ -32217,7 +32249,7 @@ function connect() {
 }
 function connectAndSwitch() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, error_5;
+        var provider, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32240,7 +32272,7 @@ function connectAndSwitch() {
                     _a.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    error_5 = _a.sent();
+                    error_3 = _a.sent();
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
@@ -32281,22 +32313,26 @@ var CHAIN_INFO = {
 };
 function getAccountAddress() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider;
+        var provider, address, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 2];
+                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
                     return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)()];
                 case 1:
                     provider = _a.sent();
-                    try {
-                        return [2 /*return*/, provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress()];
-                    }
-                    catch (error) {
-                        return [2 /*return*/, ''];
-                    }
                     _a.label = 2;
-                case 2: return [2 /*return*/];
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.getSigner().getAddress())];
+                case 3:
+                    address = _a.sent();
+                    return [2 /*return*/, address];
+                case 4:
+                    error_4 = _a.sent();
+                    console.log(error_4);
+                    return [2 /*return*/, ''];
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -32323,15 +32359,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   connectEarly: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.connectEarly),
 /* harmony export */   createMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.createMetadata),
 /* harmony export */   getAccountAddress: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getAccountAddress),
-/* harmony export */   getAllNftOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllNftOfCollection),
+/* harmony export */   getAllNftOfCollectionAndOwnerAddress: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllNftOfCollectionAndOwnerAddress),
+/* harmony export */   getAllTokenIdOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllTokenIdOfCollection),
 /* harmony export */   getBalance: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getBalance),
 /* harmony export */   getBalanceNativeToken: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getBalanceNativeToken),
 /* harmony export */   getDefaultProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider),
 /* harmony export */   getErc20Balance: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getErc20Balance),
 /* harmony export */   getMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getMetadata),
+/* harmony export */   getNameOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getNameOfCollection),
+/* harmony export */   getOwnerOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getOwnerOfCollection),
 /* harmony export */   getProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getProvider),
 /* harmony export */   getRpcProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider),
 /* harmony export */   getTokenUri: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getTokenUri),
+/* harmony export */   getTotalSupply: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getTotalSupply),
 /* harmony export */   getUrlImage: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getUrlImage),
 /* harmony export */   isConnectedWallet: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.isConnectedWallet),
 /* harmony export */   listenForTransactionMined: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.listenForTransactionMined),
@@ -32363,9 +32403,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   approveSpenderToAccessNft: () => (/* binding */ approveSpenderToAccessNft),
 /* harmony export */   createMetadata: () => (/* binding */ createMetadata),
-/* harmony export */   getAllNftOfCollection: () => (/* binding */ getAllNftOfCollection),
+/* harmony export */   getAllNftOfCollectionAndOwnerAddress: () => (/* binding */ getAllNftOfCollectionAndOwnerAddress),
+/* harmony export */   getAllTokenIdOfCollection: () => (/* binding */ getAllTokenIdOfCollection),
 /* harmony export */   getMetadata: () => (/* binding */ getMetadata),
+/* harmony export */   getNameOfCollection: () => (/* binding */ getNameOfCollection),
+/* harmony export */   getOwnerOfCollection: () => (/* binding */ getOwnerOfCollection),
 /* harmony export */   getTokenUri: () => (/* binding */ getTokenUri),
+/* harmony export */   getTotalSupply: () => (/* binding */ getTotalSupply),
 /* harmony export */   getUrlImage: () => (/* binding */ getUrlImage),
 /* harmony export */   listenForTransactionMined: () => (/* binding */ listenForTransactionMined),
 /* harmony export */   mintNFT: () => (/* binding */ mintNFT),
@@ -32597,9 +32641,48 @@ function listenForTransactionMined(transactionResponse, provider) {
         Promise.resolve();
     });
 }
-function getAllNftOfCollection(collectionAddress, walletAddress) {
+function getAllTokenIdOfCollection(collectionAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, balanceOf, tokenId, token, error_7, error_8;
+        var listTokenId, provider, contract, tokenId, owner, error_7, error_8;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 7, , 8]);
+                    listTokenId = [];
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    tokenId = 0;
+                    _a.label = 1;
+                case 1:
+                    if (false) {}
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, contract.ownerOf(tokenId)];
+                case 3:
+                    owner = _a.sent();
+                    listTokenId.push({
+                        owner: owner,
+                        tokenId: tokenId.toString(),
+                    });
+                    tokenId++;
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_7 = _a.sent();
+                    return [3 /*break*/, 6];
+                case 5: return [3 /*break*/, 1];
+                case 6: return [2 /*return*/, listTokenId];
+                case 7:
+                    error_8 = _a.sent();
+                    throw error_8;
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var listTokenId, provider, contract, balanceOf, tokenId, token, error_9, error_10;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32627,13 +32710,13 @@ function getAllNftOfCollection(collectionAddress, walletAddress) {
                     tokenId++;
                     return [3 /*break*/, 6];
                 case 5:
-                    error_7 = _a.sent();
+                    error_9 = _a.sent();
                     return [3 /*break*/, 7];
                 case 6: return [3 /*break*/, 2];
                 case 7: return [2 /*return*/, listTokenId];
                 case 8:
-                    error_8 = _a.sent();
-                    throw error_8;
+                    error_10 = _a.sent();
+                    throw error_10;
                 case 9: return [2 /*return*/];
             }
         });
@@ -32662,7 +32745,7 @@ function getMetadata(tokenUri) {
  */
 function transferFrom(from, to, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, response, error_9;
+        var provider, nftContract, response, error_11;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -32675,13 +32758,72 @@ function transferFrom(from, to, tokenId) {
                     return [4 /*yield*/, nftContract.transferFrom(from, to, tokenId)];
                 case 1:
                     response = _a.sent();
-                    console.log({ response: response });
                     return [2 /*return*/, {}];
                 case 2:
-                    error_9 = _a.sent();
-                    throw error_9;
+                    error_11 = _a.sent();
+                    throw error_11;
                 case 3: return [2 /*return*/];
             }
+        });
+    });
+}
+function getOwnerOfCollection(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.owner();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function getNameOfCollection(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.name();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
+        });
+    });
+}
+function getTotalSupply(cltAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var provider, contract, addressOwner;
+        return __generator(this, function (_a) {
+            try {
+                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                if (!provider) {
+                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                }
+                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                addressOwner = contract.totalSupply();
+                return [2 /*return*/, addressOwner];
+            }
+            catch (error) {
+                throw error;
+            }
+            return [2 /*return*/];
         });
     });
 }
@@ -43762,20 +43904,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 var showAccount = document.querySelector('.showAccount');
-window.onload = function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        try {
-            // await connect().then((res) => {
-            //   console.log({ walletAddress: res[0] })
-            //   showAccount.innerHTML = shortString(res[0])
-            //   showAccount.title = res[0]
-            // })
-            // handleConnectWallet()
-        }
-        catch (err) { }
-        return [2 /*return*/];
-    });
-}); };
 var btnMetamask = document.querySelector('#btn-metamask');
 var handleConnectWallet = function () { return __awaiter(void 0, void 0, void 0, function () {
     var provider;
@@ -43783,7 +43911,6 @@ var handleConnectWallet = function () { return __awaiter(void 0, void 0, void 0,
         switch (_a.label) {
             case 0: return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_2__.connect)()
                     .then(function (res) {
-                    console.log({ walletAddress: res[0] });
                     showAccount.innerHTML = shortString(res[0]);
                     showAccount.title = res[0];
                     window.localStorage.setItem('connected', 'injected');

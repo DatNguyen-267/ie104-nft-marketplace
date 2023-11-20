@@ -587,11 +587,11 @@ h6 {
     display: block;
     width: 40px;
     height: 40px;
-    background: url(AvatarDefault.webp);
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+    /* background: url("./../../assets/images/AvatarDefault.webp"); */
+    /* background-repeat: no-repeat !important; */
+    /* background-size: cover !important; */
     border-radius: 50%;
-    background-position: center;
+    /* background-position: center; */
     border: 2px solid  var(--color-gray-1000);
 }
 /*!*************************************************************************************!*\
@@ -2656,6 +2656,7 @@ text-overflow: ellipsis;
   transition: all 400ms ease;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   border: 3px solid var(--color-border-100);
 }
 
@@ -2795,9 +2796,9 @@ text-overflow: ellipsis;
   height: 370px;
   border-radius: 20px;
   background: url(NftEg.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -2834,7 +2835,7 @@ text-overflow: ellipsis;
 .section-info__nft-eg .nft-eg__user .avatar {
   width: 35px;
   height: 35px;
-  background: url("https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg"), lightgray 50% / cover no-repeat;
+  background: url(AvatarDefault.webp), lightgray 50% / cover no-repeat;
   border: 1px solid var(--color-gray-1000);
 }
 

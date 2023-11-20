@@ -35,8 +35,6 @@ class LoadingController {
   toggle(event: any) {
     event.preventDefault()
     let modal = document.getElementById(LoadingId.Container) as HTMLElement
-    console.log(modal)
-    console.log(modal.style.display === 'none')
     if (modal.style.display === 'none') {
       modal.style.display = 'flex'
     } else {

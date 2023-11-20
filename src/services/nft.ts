@@ -4,7 +4,7 @@ import { MARKETPLACE_ABI, NFT_ABI } from '../abis'
 import { AppError, MARKETPLACE_ADDRESS, NFT_ADDRESS, STORAGE_API_KEY } from '../constants'
 import { ProviderOptions } from '../types'
 import { MetadataInput } from '../types/metadata'
-import { getDefaultProvider, getProvider } from './provider'
+import { getDefaultProvider, getProvider, getRpcProvider } from './provider'
 
 // export const STORAGE_API_KEY = process.env.STORAGE_API_KEY || "";
 export async function createMetadata(file: File, title: string, description: string) {
@@ -135,7 +135,42 @@ export function listenForTransactionMined(transactionResponse: any, provider: an
   })
 }
 
-export async function getAllNftOfCollection(collectionAddress: string, walletAddress: string) {
+export type GetAllTokenIdOfCollectionResponse = {
+  tokenId: string
+  owner: string
+}[]
+
+export async function getAllTokenIdOfCollection(
+  collectionAddress: string,
+): Promise<GetAllTokenIdOfCollectionResponse> {
+  try {
+    let listTokenId: GetAllTokenIdOfCollectionResponse = []
+    const provider = getProvider()
+    const contract = new ethers.Contract(collectionAddress, NFT_ABI, provider)
+
+    let tokenId = 0
+    while (true) {
+      try {
+        const owner = await contract.ownerOf(tokenId)
+        listTokenId.push({
+          owner: owner,
+          tokenId: tokenId.toString(),
+        })
+        tokenId++
+      } catch (error) {
+        break
+      }
+    }
+
+    return listTokenId
+  } catch (error) {
+    throw error
+  }
+}
+export async function getAllNftOfCollectionAndOwnerAddress(
+  collectionAddress: string,
+  walletAddress: string,
+) {
   try {
     let listTokenId: number[] = []
     const provider = getProvider()
@@ -184,8 +219,52 @@ export async function transferFrom(from: string, to: string, tokenId: string) {
     }
     const nftContract = new ethers.Contract(NFT_ADDRESS, NFT_ABI, provider)
     const response = await nftContract.transferFrom(from, to, tokenId)
-    console.log({ response })
     return {}
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function getOwnerOfCollection(cltAddress: string) {
+  try {
+    const provider = getRpcProvider()
+    if (!provider) {
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
+    }
+
+    const contract = new ethers.Contract(cltAddress, NFT_ABI, provider)
+    const addressOwner = contract.owner()
+    return addressOwner
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function getNameOfCollection(cltAddress: string) {
+  try {
+    const provider = getRpcProvider()
+    if (!provider) {
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
+    }
+
+    const contract = new ethers.Contract(cltAddress, NFT_ABI, provider)
+    const addressOwner = contract.name()
+    return addressOwner
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function getTotalSupply(cltAddress: string) {
+  try {
+    const provider = getRpcProvider()
+    if (!provider) {
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
+    }
+
+    const contract = new ethers.Contract(cltAddress, NFT_ABI, provider)
+    const addressOwner = contract.totalSupply()
+    return addressOwner
   } catch (error) {
     throw error
   }

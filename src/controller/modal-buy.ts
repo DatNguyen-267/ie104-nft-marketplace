@@ -50,7 +50,6 @@ class ModalBuyController {
       Number(this.nftItem?.price)
     ).toFixed(8)
 
-    console.log((Number(this.nftItem?.price) * 0.1) / 100)
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
     modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress || '')
@@ -65,7 +64,6 @@ class ModalBuyController {
 
     const currentAddress = await getAccountAddress()
     if (this.nftItem?.seller?.toLowerCase() === currentAddress?.toLowerCase()) {
-      console.log(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
       throw new Error(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
     }
     if (!this.nftItem?.price) {
@@ -116,8 +114,6 @@ class ModalBuyController {
   toggle(event: any) {
     event.preventDefault()
     let modal = document.getElementById(ModalBuyNFTId.Container) as HTMLElement
-    console.log(modal)
-    console.log(modal.style.display === 'none')
     if (modal.style.display === 'none') {
       modal.style.display = 'flex'
     } else {

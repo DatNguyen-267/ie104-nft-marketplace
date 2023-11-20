@@ -1,12 +1,12 @@
 import { UserPopoverControllerInstance } from '../../controller/user'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import { connectEarly } from '../../services'
 import { ethereumAddressRegex } from '../../utils/regex'
+import { CollectionPageControllerInstance } from './controller'
 import './styles.css'
 
 const search = window.location.search
-console.log({ search })
 const collectionAddress = search.replace('?cltAddress=', '')
-console.log({ collectionAddress })
 
 if (ethereumAddressRegex.test(collectionAddress)) {
   console.log('valid')
@@ -56,3 +56,25 @@ alertOverlay.onclick = toggleAlertSigout
 alertCancel.onclick = toggleAlertSigout
 alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
+
+connectEarly()
+  .then(() => {
+    WalletManagerInstance.listener()
+    WalletManagerInstance.updateAccountAddress()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+
+document.addEventListener('DOMContentLoaded', () => {
+  async function initPage() {
+    try {
+      try {
+      } catch (error) {}
+      await CollectionPageControllerInstance.getAllNftOfCollection()
+    } catch (error) {}
+  }
+
+  initPage()
+})

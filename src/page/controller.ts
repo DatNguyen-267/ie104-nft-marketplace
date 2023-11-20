@@ -93,11 +93,9 @@ export class LandingPageController {
       console.log('listCardContainer is not exists')
       return
     }
-    console.log({ listCardContainer })
     const tokenItemNode = listCardContainer.querySelector(
       `div[data-token-id="${nftItem.tokenId}"]`,
     ) as HTMLDivElement
-    console.log({ tokenItemNode, nftItem })
     if (!tokenItemNode) return
     tokenItemNode.style.display = 'flex'
 
@@ -111,7 +109,6 @@ export class LandingPageController {
       eTitle: tokenItemNode.querySelector(`.${CardItemClass.Title}`) as HTMLDivElement,
       eUserName: tokenItemNode.querySelector(`.${CardItemClass.UserName}`) as HTMLDivElement,
     }
-    console.log({ imageGatewayUrl: nftItem.imageGatewayUrl })
     eData.eContainer.style.setProperty('background', `url(${nftItem.imageGatewayUrl})`)
     try {
       eData.eTitle.innerHTML = nftItem.title
@@ -226,12 +223,10 @@ export class LandingPageController {
 
     try {
       const collections = await viewMarketCollections()
-      console.log({ collections })
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
             const asksOfCollection = await viewAsksByCollection(collectionAddress, 0, 100)
-            console.log({ asksOfCollection })
             if (
               asksOfCollection &&
               asksOfCollection.tokenIds &&

@@ -1,15 +1,15 @@
 import { DEFAULT_ADDRESS } from '../../constants'
-import { connectEarly, getDefaultProvider, switchToNetwork } from '../../services'
+import { connectEarly } from '../../services'
 import './styles.css'
 // Class name compatible with the template
 import { LoadingControllerInstance } from '../../controller/loading'
 import { ModalDepositControllerInstance } from '../../controller/modal-deposit'
 import { ModalImportControllerInstance } from '../../controller/modal-import'
 import { ModalSellControllerInstance, ModalSellNFTId } from '../../controller/modal-sell'
-import { UserPopoverControllerInstance } from '../../controller/user'
+import { WalletManagerInstance, hiddenWalletInfo, showWalletInfo } from '../../controller/wallet'
+import { shorterAddress } from '../../utils'
 import { AccountPageControllerInstance } from './controller'
 import { PageElementId } from './types'
-import { shorterAddress } from '../../utils'
 
 document.addEventListener('DOMContentLoaded', () => {
   let containerNoConnection = document.querySelector(
@@ -23,64 +23,65 @@ document.addEventListener('DOMContentLoaded', () => {
     PageElementId.LabelWalletAddress,
   ) as HTMLDivElement
 
-  async function handleAccountsChanged(accounts: string[]) {
-    initPage()
-  }
-
-  async function handleChainChanged() {
-    switchToNetwork(getDefaultProvider(), '4102')
-  }
-
-  async function handleDisconnect() {
-    containerNoConnection.style.display = 'flex'
-  }
-
-  async function listener() {
-    if (window.ethereum) {
-      window.ethereum.on('chainChanged', handleChainChanged)
-      window.ethereum.on('accountsChanged', handleAccountsChanged)
-      window.ethereum.on('disconnect', handleDisconnect)
-      // watchErc20Asset(
-      //   ERC20_TOKEN_SUPPORTED.WBNB.address,
-      //   ERC20_TOKEN_SUPPORTED.WBNB.symbol,
-      //   ERC20_TOKEN_SUPPORTED.WBNB.decimals,
-      // )
-    }
-  }
-
-  // MAIN FUNCTION
-
   async function initPage() {
     try {
-      connectEarly()
-      UserPopoverControllerInstance.isConnected.set(true)
-      UserPopoverControllerInstance.isConnected.loadAvatar()
+      WalletManagerInstance.listener()
+      await connectEarly()
+        .then(async () => {
+          showWalletInfo(WalletManagerInstance.currentAddress)
 
-      const provider = getDefaultProvider()
-      const walletAddress = (await provider?.getSigner().getAddress()) || DEFAULT_ADDRESS
-      if (labelWalletAddress && labelWalletStatus) {
-        labelWalletStatus.innerHTML = 'Connected'
-        labelWalletStatus.classList.add('wallet__status--connected')
-        labelWalletAddress.innerHTML = shorterAddress(walletAddress)
-        labelWalletAddress.title = walletAddress
-        containerNoConnection.style.display = 'none'
-        containerConnected.style.display = 'block'
-        loadAvatarLogin(true, walletAddress)
-        loadAvatarLogin(true, walletAddress)
-        loadAvatarLogin(true, walletAddress)
-      }
-      await AccountPageControllerInstance.updateBalance()
-      await AccountPageControllerInstance.updateErc20Balance()
-      await AccountPageControllerInstance.getAllNftOfAddress()
+          await WalletManagerInstance.updateAccountAddress()
+
+          const walletAddress = WalletManagerInstance.currentAddress || DEFAULT_ADDRESS
+          labelWalletStatus.innerHTML = 'Connected'
+          labelWalletStatus.classList.add('wallet__status--connected')
+
+          labelWalletAddress.innerHTML = shorterAddress(walletAddress)
+          labelWalletAddress.title = walletAddress
+
+          containerNoConnection.style.display = 'none'
+          containerConnected.style.display = 'block'
+
+          showWalletInfo(WalletManagerInstance.currentAddress)
+
+          await AccountPageControllerInstance.updateBalance()
+          await AccountPageControllerInstance.updateErc20Balance()
+          await AccountPageControllerInstance.getAllNftOfAddress()
+        })
+        .catch((err) => {
+          containerConnected.style.display = 'none'
+          containerNoConnection.style.display = 'flex'
+        })
+
+      window.ethereum.on('accountsChanged', async (accounts: string[]) => {
+        if (accounts.length === 0) {
+          containerNoConnection.style.display = 'flex'
+          containerConnected.style.display = 'none'
+
+          hiddenWalletInfo()
+        } else {
+          await WalletManagerInstance.updateAccountAddress()
+          showWalletInfo(accounts[0])
+
+          labelWalletStatus.innerHTML = 'Connected'
+          labelWalletStatus.classList.add('wallet__status--connected')
+
+          labelWalletAddress.innerHTML = shorterAddress(accounts[0])
+          labelWalletAddress.title = accounts[0]
+
+          await AccountPageControllerInstance.updateBalance()
+          await AccountPageControllerInstance.updateErc20Balance()
+          await AccountPageControllerInstance.getAllNftOfAddress()
+        }
+      })
     } catch (error) {
       containerNoConnection.style.display = 'flex'
-      loadAvatarLogin(false, undefined)
+      containerConnected.style.display = 'none'
     }
   }
 
   try {
     initPage()
-    listener()
   } catch (error) {
     console.log(error)
   }

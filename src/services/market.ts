@@ -8,8 +8,8 @@ import { approveTokenExchange } from './token-exchange'
 export type CollectionDetail = {
   creatorAddress: string
   status: number
-  creatorFee: BigNumber
-  tradingFee: BigNumber
+  creatorFee: number
+  tradingFee: number
   whitelistChecker: string
 }
 export type ViewMarketCollectionsResponse = {
@@ -33,10 +33,18 @@ export async function viewMarketCollections(
     }
 
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
-    console.log({ marketContract })
     const collectionsResponse = await marketContract.viewCollections(cursor, size)
-
-    const collectionDetails = collectionsResponse['collectionDetails']
+    const collectionDetails = collectionsResponse['collectionDetails'].map(
+      (collectionDeital: any) => {
+        return {
+          status: collectionDeital[0],
+          creatorAddress: collectionDeital[1],
+          whitelistChecker: collectionDeital[2],
+          tradingFee: Number(BigInt(collectionDeital[3]).toString()) / 100,
+          creatorFee: Number(BigInt(collectionDeital[4]).toString()) / 100,
+        }
+      },
+    )
     const collectionAddresses = collectionsResponse['collectionAddresses']
     return {
       collectionDetails,
@@ -146,7 +154,6 @@ export async function viewAsksByCollection(
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
-    console.log({ marketContract })
     const asks: ViewAsksByCollectionAndSellerRaw = await marketContract.viewAsksByCollection(
       collectionAddress,
       cursor,
@@ -285,7 +292,6 @@ export async function importCollection(
       tradingFee,
       creatorFee,
     )
-    console.log({ addResponse })
     return {}
   } catch (error) {
     throw error
@@ -305,7 +311,6 @@ export async function cancelAskOrder(collectionAddress: string, tokenId: string)
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
     const response = await marketContract.cancelAskOrder(collectionAddress, tokenId)
-    console.log({ response })
     return true
   } catch (error) {
     throw error
@@ -326,7 +331,6 @@ export async function modifyAskOrder(collectionAddress: string, tokenId: string,
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
     const response = await marketContract.modifyAskOrder(collectionAddress, tokenId, newPrice)
-    console.log({ response })
     return {}
   } catch (error) {
     throw error
@@ -348,7 +352,6 @@ export async function viewAskByCollectionAndTokenId(collectionAddress: string, t
     const response = await marketContract.viewAsksByCollectionAndTokenIds(collectionAddress, [
       tokenId,
     ])
-    console.log({ response })
     return {}
   } catch (error) {
     throw error
@@ -374,7 +377,6 @@ export async function viewAsksByCollectionAndTokenIds(
       collectionAddress,
       tokenIds,
     )
-    console.log({ response })
     return {}
   } catch (error) {
     throw error

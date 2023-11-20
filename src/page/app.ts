@@ -16,13 +16,18 @@ import './../styles/base.css'
 import './../styles/grid.css'
 import { LandingPageControllerInstance } from './controller'
 import './styles.css'
+import { WalletManagerInstance, showWalletInfo } from '../controller/wallet'
 
-connectEarly().then(() => {
-  UserPopoverControllerInstance.isConnected.set(true)
-  UserPopoverControllerInstance.isConnected.loadAvatar()
-})
+connectEarly()
+  .then(() => {
+    WalletManagerInstance.listener()
+    WalletManagerInstance.updateAccountAddress()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
-// ========================== Header =======================================
 const btnLogin = document.getElementById('btn-login') as HTMLButtonElement
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
 const headerAvatar = document.getElementById('header-avatar') as HTMLElement
@@ -31,7 +36,6 @@ const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
 
-// Check Login
 let login: boolean = false
 if (login === (true as boolean)) {
   headerAvatar.style.display = 'flex'
@@ -41,7 +45,6 @@ if (login === (true as boolean)) {
   btnLogin.style.display = 'flex'
 }
 
-// Toggle PopUP
 function togglePopUpUser(event: Event): void {
   event.preventDefault()
   var x = document.getElementById('pop-up-user') as HTMLElement
@@ -56,7 +59,6 @@ function togglePopUpUser(event: Event): void {
 popUpUserClose.onclick = togglePopUpUser
 headerAvatar.onclick = togglePopUpUser
 
-// Toggle Alert
 const toggleAlertSigout = (event: any) => {
   event.preventDefault()
   var x = document.getElementById('alert-sigout') as HTMLElement
@@ -71,33 +73,6 @@ alertCancel.onclick = toggleAlertSigout
 alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
 
-// ============================= INFORMATION ====================================
-
-// Active sroll card
-const cards = document.querySelectorAll('.cards')
-
-// const setClasses = () => {
-//   const classes = ['left', 'active', 'right']
-//   cards.forEach((card, index) => card.classList.add(classes[index]))
-// }
-
-// const changePositions = (e: any) => {
-//   const clickedCard = e.currentTarget
-//   const activeCard = document.querySelector('.cards.active') as HTMLElement
-//   if (clickedCard.classList.contains('active')) return
-//   const classesFrom = e.currentTarget.className
-//   const classesTo = activeCard.className
-//   clickedCard.className = classesTo
-//   activeCard.className = classesFrom
-// }
-// cards.forEach((card) => {
-//   card.addEventListener('click', changePositions)
-// })
-// setClasses()
-
-// Set image for card
-
-// ******************* DOM LOADED ***********************
 document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
@@ -107,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {}
   }
   const modalButtonAccept = document.getElementById(ModalBuyNFTId.ButtonAccept) as HTMLButtonElement
+
   modalButtonAccept.addEventListener('click', (e) => {
     LoadingControllerInstance.open()
     ModalBuyControllerInstance.buy()
@@ -120,5 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         LoadingControllerInstance.close()
       })
   })
+
   initPage()
 })
