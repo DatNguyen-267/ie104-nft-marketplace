@@ -123,11 +123,7 @@ alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
 
 // ============================== UPLOAD IMAGE ===================================
-<<<<<<< HEAD
-const dropArea = document.getElementById('drop-area') as HTMLElement
-=======
 const drogArea = document.getElementById('drop-area') as HTMLElement
->>>>>>> 7ed847e9d60d9ee84b264582165ffb71698c6bf6
 const inputFile = document.getElementById('input-file') as HTMLInputElement
 const imgContent = document.getElementById('img-content') as HTMLElement
 const imgView = document.getElementById('img-view') as HTMLImageElement
@@ -157,17 +153,10 @@ function uploadImage() {
   //   }
 }
 
-<<<<<<< HEAD
-dropArea.addEventListener('dragover', (e) => {
-  e.preventDefault()
-})
-dropArea.addEventListener('drop', (e) => {
-=======
 drogArea.addEventListener('dragover', (e) => {
   e.preventDefault()
 })
 drogArea.addEventListener('drop', (e) => {
->>>>>>> 7ed847e9d60d9ee84b264582165ffb71698c6bf6
   e.preventDefault()
   if (e.dataTransfer) {
     inputFile.files = e.dataTransfer.files
