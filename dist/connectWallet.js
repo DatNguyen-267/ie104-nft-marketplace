@@ -32138,6 +32138,7 @@ function connectEarly() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log('run');
                     if (!window.ethereum) {
                         throw new Error('No connect detected');
                     }

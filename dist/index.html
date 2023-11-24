@@ -1,415 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page</title>
-    <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" defer></script>
-    <!-- <script
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page</title>
+  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" defer></script>
+  <!-- <script
       src="../layout/header/main.ts"
       type="text/javascript"
       defer
     ></script> -->
-  <script defer src="app.js"></script><link href="app.css" rel="stylesheet"></head>
+<script defer src="app.js"></script><link href="app.css" rel="stylesheet"></head>
 
-  <body>
-    <!-- ===================================== Loading ============================================= -->
-    <div class="loading" id="container-loading" style="display: none">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <span id="loading-text">loading...</span>
+<body>
+  <!-- ===================================== Loading ============================================= -->
+  <div class="loading" id="container-loading" style="display: none">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+    <span id="loading-text">loading...</span>
+  </div>
 
-    <ul class="notifications" id="toast-notifications"></ul>
-    <!-- ===================================== Modal NFT ============================================= -->
-    <div class="modal-buy" id="modal-buy" style="display: none">
-      <a href="#" class="modal-buy-overlay-close" id="modal-buy-overlay-close"></a>
-      <div class="modal-buy-container">
-        <div class="modal-buy__header">
-          <h4 class="modal-buy__title">Buy NFT</h4>
-          <div class="modal-buy__close" id="modal-buy-close">
-            <i class="fas fa-times"></i>
+  <ul class="notifications" id="toast-notifications"></ul>
+  <!-- ===================================== Modal NFT ============================================= -->
+  <div class="modal-buy" id="modal-buy" style="display: none">
+    <a href="#" class="modal-buy-overlay-close" id="modal-buy-overlay-close"></a>
+    <div class="modal-buy-container">
+      <div class="modal-buy__header">
+        <h4 class="modal-buy__title">Buy NFT</h4>
+        <div class="modal-buy__close" id="modal-buy-close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-buy__main">
+        <div class="modal-buy__nft">
+          <div class="modal-buy__nft-info">
+            <img src="nftDefault.webp" alt="" class="modal-buy__nft-img" id="modal-buy-nft-img" />
+            <p class="modal-buy__nft-name" id="modal-buy-nft-name">
+              NFT Name abc abc abc abc abc
+            </p>
+            <p class="modal-buy__nft-address" id="modal-buy-nft-address">0x0000 ... 0000</p>
           </div>
         </div>
-        <div class="modal-buy__main">
-          <div class="modal-buy__nft">
-            <div class="modal-buy__nft-info">
-              <img
-                src="nftDefault.webp"
-                alt=""
-                class="modal-buy__nft-img"
-                id="modal-buy-nft-img"
-              />
-              <p class="modal-buy__nft-name" id="modal-buy-nft-name">
-                NFT Name abc abc abc abc abc
-              </p>
-              <p class="modal-buy__nft-address" id="modal-buy-nft-address">0x0000 ... 0000</p>
-            </div>
-          </div>
-          <div class="modal-buy__price modal-buy__frame-2">
-            <p class="modal-buy__price-title">Price</p>
-            <div class="modal-buy__price-value modal-buy-value">
-              <p class="number" id="modal-buy-price">0.000000000000000000000000000000029</p>
-              <p class="unit">NFT</p>
-            </div>
-          </div>
-          <div class="modal-buy__rarible modal-buy__frame-2">
-            <p class="modal-buy__rarible-title">Rarible fee</p>
-            <div class="modal-buy__rarible-value modal-buy-value">
-              <p class="number" id="modal-buy-fee">1</p>
-              <p class="unit">%</p>
-            </div>
-          </div>
-          <div class="modal-buy__total modal-buy__frame-2">
-            <p class="modal-buy__total-title">Total</p>
-            <div class="modal-buy__total-value modal-buy-value">
-              <p class="number" id="modal-buy-total">0.029</p>
-              <p class="unit">NFT</p>
-            </div>
+        <div class="modal-buy__price modal-buy__frame-2">
+          <p class="modal-buy__price-title">Price</p>
+          <div class="modal-buy__price-value modal-buy-value">
+            <p class="number" id="modal-buy-price">0.000000000000000000000000000000029</p>
+            <p class="unit">NFT</p>
           </div>
         </div>
-        <div class="modal-buy__action">
-          <button class="modal-buy__action-ok" id="modal-buy-ok">OK</button>
-          <button class="modal-buy__action-cancel" id="modal-buy-cancel">Cancel</button>
+        <div class="modal-buy__rarible modal-buy__frame-2">
+          <p class="modal-buy__rarible-title">Rarible fee</p>
+          <div class="modal-buy__rarible-value modal-buy-value">
+            <p class="number" id="modal-buy-fee">1</p>
+            <p class="unit">%</p>
+          </div>
         </div>
+        <div class="modal-buy__total modal-buy__frame-2">
+          <p class="modal-buy__total-title">Total</p>
+          <div class="modal-buy__total-value modal-buy-value">
+            <p class="number" id="modal-buy-total">0.029</p>
+            <p class="unit">NFT</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-buy__action">
+        <button class="modal-buy__action-ok" id="modal-buy-ok">OK</button>
+        <button class="modal-buy__action-cancel" id="modal-buy-cancel">Cancel</button>
       </div>
     </div>
+  </div>
 
-    <form class="modal-sell" action="#" id="modal-sell" style="display: none">
-      <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
-      <div class="modal-sell-container">
-        <div class="modal-sell__header">
-          <h4 class="modal-sell__title">Sell NFT</h4>
-          <div class="modal-sell__close" id="modal-sell-close">
-            <i class="fas fa-times"></i>
-          </div>
-        </div>
-        <div class="modal-sell__main">
-          <div class="modal-sell__nft">
-            <div class="modal-sell__nft-info">
-              <img
-                src="nftDefault.webp"
-                alt=""
-                class="modal-sell__nft-img"
-                id="modal-sell-nft-img"
-              />
-              <p class="modal-sell__nft-name" id="modal-sell-nft-name">
-                NFT Name abc abc abc abc abc
-              </p>
-              <p class="modal-sell__nft-address" id="modal-sell-nft-address">0xadb...000</p>
-            </div>
-          </div>
-          <div class="modal-sell__price modal-sell__frame-2">
-            <p class="modal-sell__price-title">Price</p>
-            <div class="modal-sell__price-value modal-sell-value">
-              <input
-                type="number"
-                class="number modal-sell-input"
-                name="modal-sell-price"
-                id="modal-sell-price"
-                placeholder="0"
-              />
-              <p class="unit">NFT</p>
-            </div>
-          </div>
-          <div class="modal-sell__rarible modal-sell__frame-2">
-            <p class="modal-sell__rarible-title">Rarible fee</p>
-            <div class="modal-sell__rarible-value modal-sell-value">
-              <p class="number" id="modal-sell-fee">0</p>
-              <p class="unit">%</p>
-            </div>
-          </div>
-          <div class="modal-sell__total modal-sell__frame-2">
-            <p class="modal-sell__total-title">Total</p>
-            <div class="modal-sell__total-value modal-sell-value">
-              <p id="modal-sell-total" class="number">0</p>
-              <p class="unit">NFT</p>
-            </div>
-          </div>
-        </div>
-        <div class="modal-sell__action">
-          <button type="submit" class="modal-sell__action-ok" id="modal-sell-ok">OK</button>
-          <button class="modal-sell__action-cancel" id="modal-sell-cancel">Cancel</button>
+  <form class="modal-sell" action="#" id="modal-sell" style="display: none">
+    <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
+    <div class="modal-sell-container">
+      <div class="modal-sell__header">
+        <h4 class="modal-sell__title">Sell NFT</h4>
+        <div class="modal-sell__close" id="modal-sell-close">
+          <i class="fas fa-times"></i>
         </div>
       </div>
-    </form>
-    <!-- ===================================== Header ============================================= -->
-    <!-- alert sign out -->
-    <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
-      <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
-      <div class="alert-container">
-        <div class="alert__close">
-          <i class="fas fa-times-circle" id="alert-close"></i>
-        </div>
-        <div class="alert__main">
-          <i class="fas fa-door-open alert__main-icon alert-logout-icon-title"></i>
-          <p class="alert__main-title">SIGN OUT</p>
-          <div class="alert__main-content">
-            <span> Are you sure to sign out of your account? </span>
+      <div class="modal-sell__main">
+        <div class="modal-sell__nft">
+          <div class="modal-sell__nft-info">
+            <img src="nftDefault.webp" alt="" class="modal-sell__nft-img" id="modal-sell-nft-img" />
+            <p class="modal-sell__nft-name" id="modal-sell-nft-name">
+              NFT Name abc abc abc abc abc
+            </p>
+            <p class="modal-sell__nft-address" id="modal-sell-nft-address">0xadb...000</p>
           </div>
         </div>
-        <div class="alert__action">
-          <button class="alert__action-ok" id="alert-ok">OK</button>
-          <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
+        <div class="modal-sell__price modal-sell__frame-2">
+          <p class="modal-sell__price-title">Price</p>
+          <div class="modal-sell__price-value modal-sell-value">
+            <input type="number" class="number modal-sell-input" name="modal-sell-price" id="modal-sell-price"
+              placeholder="0" />
+            <p class="unit">NFT</p>
+          </div>
         </div>
+        <div class="modal-sell__rarible modal-sell__frame-2">
+          <p class="modal-sell__rarible-title">Rarible fee</p>
+          <div class="modal-sell__rarible-value modal-sell-value">
+            <p class="number" id="modal-sell-fee">0</p>
+            <p class="unit">%</p>
+          </div>
+        </div>
+        <div class="modal-sell__total modal-sell__frame-2">
+          <p class="modal-sell__total-title">Total</p>
+          <div class="modal-sell__total-value modal-sell-value">
+            <p id="modal-sell-total" class="number">0</p>
+            <p class="unit">NFT</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-sell__action">
+        <button type="submit" class="modal-sell__action-ok" id="modal-sell-ok">OK</button>
+        <button class="modal-sell__action-cancel" id="modal-sell-cancel">Cancel</button>
       </div>
     </div>
-
-    <!-- popup user -->
-    <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden">
-      <a href="#" class="overlay-close" id="close-pop-up-user"></a>
-      <div class="pop-up-container">
-        <div class="user-info">
-          <div class="avatar"></div>
-          <div class="user__name" id="pop-up-user-name">
-            <span>User Name</span>
-          </div>
+  </form>
+  <!-- ===================================== Header ============================================= -->
+  <!-- alert sign out -->
+  <div class="alert alert--default" id="alert-sigout" style="visibility: hidden">
+    <a href="#" class="alert-overlay-close" id="alert-overlay-close"></a>
+    <div class="alert-container">
+      <div class="alert__close">
+        <i class="fas fa-times-circle" id="alert-close"></i>
+      </div>
+      <div class="alert__main">
+        <i class="fas fa-door-open alert__main-icon alert-logout-icon-title"></i>
+        <p class="alert__main-title">SIGN OUT</p>
+        <div class="alert__main-content">
+          <span> Are you sure to sign out of your account? </span>
         </div>
-        <div class="pop-up-nav">
-          <ul class="pop-up-nav__link">
-            <!-- <li>
+      </div>
+      <div class="alert__action">
+        <button class="alert__action-ok" id="alert-ok">OK</button>
+        <button class="alert__action-cancel" id="alert-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- popup user -->
+  <div class="pop-up pop-up--user" id="pop-up-user" style="visibility: hidden">
+    <a href="#" class="overlay-close" id="close-pop-up-user"></a>
+    <div class="pop-up-container">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <div class="user__name" id="pop-up-user-name">
+          <span>User Name</span>
+        </div>
+      </div>
+      <div class="pop-up-nav">
+        <ul class="pop-up-nav__link">
+          <!-- <li>
               <i class="fa-solid fa-arrows-rotate"></i>
               <a href="/connectWallet.html">
                 <i class="fas fa-wallet"></i>
                 Switch wallet
               </a>
             </li> -->
-            <li>
-              <a href="/account.html">
-                <i class="fas fa-book"></i>
-                Collection
-              </a>
-            </li>
-            <li id="header-sign-out" style="display: none;">
-              <a href="#">
-                <i class="fas fa-sign-out-alt"></i>
-                Sign Out
-              </a>
-            </li>
-          </ul>
-        </div>
+          <li>
+            <a href="/account.html">
+              <i class="fas fa-book"></i>
+              Collection
+            </a>
+          </li>
+          <li id="header-sign-out" style="display: none;">
+            <a href="#">
+              <i class="fas fa-sign-out-alt"></i>
+              Sign Out
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
 
-    <!-- header -->
-    <header class="header" id="header-template">
-      <input type="checkbox" id="nav-toggle" />
-      <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
-      <a class="header__logo" href="/">
-        <i class="fab fa-gg-circle"></i>
-        <span>NFTMarket</span>
-      </a>
-      <nav class="header__nav">
-        <ul class="header__nav-link">
-          <li><a href="/" class="active">Home</a></li>
-          <li><a href="/explore.html">Marketplace</a></li>
-          <li><a href="/create.html">Create NFT</a></li>
-          <li><a href="/explore-collections.html">Explore Collections</a></li>
-        </ul>
-      </nav>
-      <div class="header__user">
-        <img href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></img>
-        <a href="/connectWallet.html">
-          <button class="filled--button secondary header__nav-btn" id="btn-login">
-            <i class="fas fa-wallet"></i>
-            Connect Wallet
-          </button>
-          <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
+  <!-- header -->
+  <div id="header-panel">
+    <div class="header-panel-scroll">
+      <h5 class="header-panel__item">Decentralized marketplace</h5>
+      <h4 class="header-panel__item-icon">〄</h4>
+      <h5 class="header-panel__item">Announcing Regressive Fees on IE104 Market</h5>
+      <h4 class="header-panel__item-icon">❂</h4>
+      <h5 class="header-panel__item">One-stop platform for all things NFTs</h5>
+      <h4 class="header-panel__item-icon">❍</h4>
+      <h5 class="header-panel__item">Trade NFTs securely on IE104 Market</h5>
+      <h4 class="header-panel__item-icon">〄</h4>
+      <h5 class="header-panel__item">Visionary product for the next generation of NFT use case</h5>
+      <h4 class="header-panel__item-icon">☢</h4>
+      <h5 class="header-panel__item">Create NFT marketplace for your community</h5>
+      <h4 class="header-panel__item-icon">◍</h4>
+      <h5 class="header-panel__item">Limited Edition NFTs</h5>
+      <h4 class="header-panel__item-icon">◌</h4>
+      <h5 class="header-panel__item">DISCOVER, COLLECT AND SELL EXTRAORDINARY NFTs</h5>
+    </div>
+    <div class="header-panel-scroll">
+      <h5 class="header-panel__item">Decentralized marketplace</h5>
+      <h4 class="header-panel__item-icon">〄</h4>
+      <h5 class="header-panel__item">Announcing Regressive Fees on IE104 Market</h5>
+      <h4 class="header-panel__item-icon">❂</h4>
+      <h5 class="header-panel__item">One-stop platform for all things NFTs</h5>
+      <h4 class="header-panel__item-icon">❍</h4>
+      <h5 class="header-panel__item">Trade NFTs securely on IE104 Market</h5>
+      <h4 class="header-panel__item-icon">〄</h4>
+      <h5 class="header-panel__item">Visionary product for the next generation of NFT use case</h5>
+      <h4 class="header-panel__item-icon">☢</h4>
+      <h5 class="header-panel__item">Create NFT marketplace for your community</h5>
+      <h4 class="header-panel__item-icon">◍</h4>
+      <h5 class="header-panel__item">Limited Edition NFTs</h5>
+      <h4 class="header-panel__item-icon">◌</h4>
+      <h5 class="header-panel__item">DISCOVER, COLLECT AND SELL EXTRAORDINARY NFTs</h5>
+    </div>
+  </div>
+  <header class="header" id="header-template">
+    <input type="checkbox" id="nav-toggle" />
+    <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
+    <a class="header__logo" href="/">
+      <svg width="258" height="39" viewBox="0 0 258 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="95.8182" height="38.6263" rx="8" fill="#FEDA03"/>
+        <path d="M8 8H13.6566C14.0606 8 15.2186 30.6263 13.6566 30.6263H8V22.1414L8 8Z" fill="black"/>
+        <path d="M18.101 14.4646L16.0808 11.6364C16.0808 10.0743 18.9632 8 20.5253 8H29.8182L29.4141 11.2323L29.0101 14.4646H18.101Z" fill="black"/>
+        <path d="M29.4141 21.7374H17.697L18.101 17.899H29.4141V21.7374Z" fill="black"/>
+        <path d="M16.0808 30.6263V24.1616C16.0808 22.5996 21.3333 24.5657 21.3333 25.7778H29.0101V27.798V30.6263H16.0808Z" fill="black"/>
+        <path d="M21.3333 25.7778L16.0808 24.1616V11.6364H20.5253L21.3333 25.7778Z" fill="black"/>
+        <path d="M8 8H13.6566C14.0606 8 15.2186 30.6263 13.6566 30.6263H8V22.1414L8 8Z" fill="black"/>
+        <path d="M42.2151 30.0405H36.1383V15.1718H30.3525V11.0668H31.1605C32.3457 11.0668 33.3908 10.8944 34.2959 10.5496C35.2009 10.2048 35.9551 9.48295 36.5585 8.38396H42.2151V30.0405ZM53.7618 30.3638C51.3052 30.3638 49.2473 29.9005 47.5881 28.9739C45.9288 28.0257 44.6682 26.722 43.8062 25.0627C42.9658 23.3819 42.5456 21.4318 42.5456 19.2122C42.5456 16.9927 42.9658 15.0533 43.8062 13.3941C44.6682 11.7133 45.9288 10.4096 47.5881 9.48295C49.2473 8.5348 51.3052 8.06073 53.7618 8.06073C56.2184 8.06073 58.2763 8.5348 59.9355 9.48295C61.5948 10.4096 62.8446 11.7133 63.685 13.3941C64.5254 15.0533 64.9456 16.9927 64.9456 19.2122C64.9456 21.4318 64.5254 23.3819 63.685 25.0627C62.8446 26.722 61.5948 28.0257 59.9355 28.9739C58.2763 29.9005 56.2184 30.3638 53.7618 30.3638ZM53.7618 24.4486C54.9901 24.4486 55.9382 24.2978 56.6062 23.9961C57.2958 23.6729 57.7699 23.1341 58.0285 22.3799C58.287 21.6042 58.4163 20.5483 58.4163 19.2122C58.4163 17.8762 58.287 16.8311 58.0285 16.0769C57.7699 15.3011 57.2958 14.7624 56.6062 14.4607C55.9382 14.1375 54.9901 13.9759 53.7618 13.9759C52.5335 13.9759 51.5746 14.1375 50.885 14.4607C50.217 14.7624 49.7429 15.3011 49.4628 16.0769C49.2042 16.8311 49.0749 17.8762 49.0749 19.2122C49.0749 20.5483 49.2042 21.6042 49.4628 22.3799C49.7429 23.1341 50.217 23.6729 50.885 23.9961C51.5746 24.2978 52.5335 24.4486 53.7618 24.4486ZM87.2939 26.1294H64.6353V22.0244L77.3383 8.38396H82.607L78.6636 15.3335H77.8878L73.104 20.2466V20.6668H87.2939V26.1294ZM84.3848 30.0405H78.308V8.38396H84.3848V30.0405Z" fill="black"/>
+        <g clip-path="url(#clip0_513_151)">
+        <path d="M113.701 27.4836H110.357V15.5687H114.892L117.08 20.5125L118.253 23.589H118.485L119.605 20.5125L121.686 15.5687H126.22V27.4836H122.877V22.5576L123.002 20.5658H122.77L122.095 22.5576L120.316 26.7723H116.262L114.483 22.5576L113.808 20.5658H113.576L113.701 22.5576V27.4836ZM130.331 27.4836H126.579L131.718 15.5687H136.502L141.659 27.4836H137.818L136.911 25.2785H131.256L130.331 27.4836ZM133.212 20.6014L132.518 22.2731H135.684L134.99 20.6014L134.208 18.5919H133.977L133.212 20.6014ZM145.36 27.4836H142.017V15.5687H148.97C152.118 15.5687 153.772 16.8847 153.772 19.2143C153.772 21.0994 152.829 22.2197 150.553 22.5043V22.6821C151.78 23.0022 152.171 23.589 152.616 24.496L154.092 27.4836H150.233L148.81 24.5671C148.384 23.678 148.028 23.429 146.73 23.429H145.36V27.4836ZM145.36 18.5741V20.9393H148.935C149.913 20.9393 150.269 20.7615 150.269 19.7478C150.269 18.8053 149.913 18.5741 148.935 18.5741H145.36ZM157.969 27.4836H154.625V15.5687H157.969V19.9968H160.369L163.268 15.5687H167.269L163.144 21.4195L167.18 27.4836H163.179L160.405 23.2512H157.969V27.4836ZM178.214 27.4836H167.633V15.5687H178.214V18.5741H170.976V19.9968H177.947V22.9844H170.976V24.4782H178.214V27.4836ZM186.456 27.4836H183.112V18.5741H178.898V15.5687H190.653V18.5741H186.456V27.4836ZM194.803 27.4836H191.46V15.5687H198.058C200.885 15.5687 202.664 17.187 202.664 20.0146C202.664 22.8421 200.885 24.4782 198.058 24.4782H194.803V27.4836ZM197.684 18.5741H194.803V21.4728H197.684C198.858 21.4728 199.338 21.2416 199.338 20.0146C199.338 18.8053 198.858 18.5741 197.684 18.5741ZM213.599 27.4836H203.374V15.5687H206.717V24.4782H213.599V27.4836ZM217.529 27.4836H213.777L218.917 15.5687H223.7L228.858 27.4836H225.016L224.109 25.2785H218.454L217.529 27.4836ZM220.41 20.6014L219.717 22.2731H222.882L222.189 20.6014L221.406 18.5919H221.175L220.41 20.6014ZM235.617 27.6615C231.474 27.6615 229.038 25.2429 229.038 21.5262C229.038 17.8094 231.474 15.3908 235.617 15.3908C239.619 15.3908 242.02 17.2937 242.02 20.4769V20.7793H238.285V20.4769C238.285 19.1254 237.645 18.5919 235.671 18.5919C233.252 18.5919 232.594 19.1609 232.594 21.5262C232.594 23.8914 233.252 24.4604 235.671 24.4604C237.645 24.4604 238.285 23.9269 238.285 22.5754V22.2731H242.02V22.5754C242.02 25.7586 239.619 27.6615 235.617 27.6615ZM253.482 27.4836H242.9V15.5687H253.482V18.5741H246.244V19.9968H253.215V22.9844H246.244V24.4782H253.482V27.4836Z" fill="black"/>
+        </g>
+        <g clip-path="url(#clip1_513_151)">
+        <path d="M114.339 25.8237H110.996V13.9088H115.53L117.718 18.8526L118.892 21.9291H119.123L120.243 18.8526L122.324 13.9088H126.859V25.8237H123.515V20.8977L123.64 18.9059H123.409L122.733 20.8977L120.954 25.1124H116.9L115.121 20.8977L114.446 18.9059H114.214L114.339 20.8977V25.8237ZM130.969 25.8237H127.217L132.356 13.9088H137.14L142.297 25.8237H138.456L135.628 18.9415L134.846 16.932H134.615L133.85 18.9415L130.969 25.8237ZM139.043 23.6186H130.258V20.6132H139.043V23.6186ZM145.999 25.8237H142.655V13.9088H149.609C150.664 13.9088 151.547 14.051 152.258 14.3356C152.97 14.6201 153.503 15.0351 153.859 15.5804C154.226 16.1139 154.41 16.7719 154.41 17.5544C154.41 18.1827 154.297 18.7281 154.072 19.1905C153.859 19.641 153.515 20.0085 153.041 20.2931C152.567 20.5657 151.95 20.7495 151.191 20.8443V21.0222C151.808 21.1763 152.246 21.4075 152.507 21.7157C152.78 22.0121 153.029 22.3856 153.254 22.8361L154.73 25.8237H150.871L149.449 22.9072C149.306 22.6108 149.158 22.3797 149.004 22.2137C148.85 22.0477 148.648 21.9351 148.399 21.8758C148.15 21.8047 147.807 21.7691 147.368 21.7691H145.999V25.8237ZM145.999 16.9142V19.2794H149.573C150.059 19.2794 150.403 19.2083 150.604 19.066C150.806 18.9237 150.907 18.5977 150.907 18.0879C150.907 17.6137 150.806 17.2995 150.604 17.1454C150.403 16.9912 150.059 16.9142 149.573 16.9142H145.999ZM167.819 25.8237H163.817L161.043 21.5912H157.629V18.3369H161.008L163.906 13.9088H167.908L163.782 19.7595L167.819 25.8237ZM158.607 25.8237H155.263V13.9088H158.607V25.8237ZM171.614 25.8237H168.271V13.9088H171.614V25.8237ZM178.852 25.8237H169.178V22.8183H178.852V25.8237ZM178.586 21.3245H169.178V18.3369H178.586V21.3245ZM178.852 16.9142H169.178V13.9088H178.852V16.9142ZM187.094 25.8237H183.751V13.9088H187.094V25.8237ZM191.291 16.9142H179.536V13.9088H191.291V16.9142ZM198.696 22.8183H193.219V19.8129H198.323C198.915 19.8129 199.336 19.724 199.585 19.5461C199.846 19.3683 199.976 18.9711 199.976 18.3546C199.976 17.75 199.846 17.3588 199.585 17.1809C199.336 17.0031 198.915 16.9142 198.323 16.9142H193.219V13.9088H198.696C199.644 13.9088 200.462 14.0866 201.15 14.4423C201.838 14.7861 202.365 15.29 202.733 15.9539C203.112 16.6059 203.302 17.4062 203.302 18.3546C203.302 19.2912 203.112 20.0974 202.733 20.7732C202.365 21.4371 201.838 21.9469 201.15 22.3026C200.462 22.6464 199.644 22.8183 198.696 22.8183ZM195.442 25.8237H192.098V13.9088H195.442V25.8237ZM207.355 25.8237H204.012V13.9088H207.355V25.8237ZM214.237 25.8237H204.937V22.8183H214.237V25.8237ZM218.168 25.8237H214.415L219.555 13.9088H224.338L229.496 25.8237H225.654L222.827 18.9415L222.044 16.932H221.813L221.048 18.9415L218.168 25.8237ZM226.241 23.6186H217.456V20.6132H226.241V23.6186ZM236.256 26.0016C234.88 26.0016 233.701 25.7526 232.717 25.2547C231.733 24.7449 230.98 24.0335 230.458 23.1206C229.937 22.1959 229.676 21.1111 229.676 19.8662C229.676 18.6214 229.937 17.5425 230.458 16.6296C230.98 15.7049 231.733 14.9936 232.717 14.4956C233.701 13.9858 234.88 13.7309 236.256 13.7309C237.595 13.7309 238.739 13.9325 239.688 14.3356C240.648 14.7387 241.383 15.3196 241.893 16.0784C242.403 16.8371 242.658 17.75 242.658 18.817V19.1193H238.923V18.817C238.923 18.1412 238.733 17.6611 238.354 17.3766C237.975 17.0802 237.293 16.932 236.309 16.932C235.503 16.932 234.874 17.015 234.424 17.1809C233.985 17.3351 233.677 17.6255 233.499 18.0523C233.321 18.4673 233.232 19.0719 233.232 19.8662C233.232 20.6487 233.321 21.2534 233.499 21.6802C233.677 22.107 233.985 22.4034 234.424 22.5693C234.874 22.7235 235.503 22.8005 236.309 22.8005C237.293 22.8005 237.975 22.6583 238.354 22.3737C238.733 22.0773 238.923 21.5912 238.923 20.9155V20.6132H242.658V20.9155C242.658 21.9706 242.403 22.8835 241.893 23.6541C241.383 24.4129 240.648 24.9938 239.688 25.3969C238.739 25.8 237.595 26.0016 236.256 26.0016ZM246.882 25.8237H243.539V13.9088H246.882V25.8237ZM254.12 25.8237H244.446V22.8183H254.12V25.8237ZM253.853 21.3245H244.446V18.3369H253.853V21.3245ZM254.12 16.9142H244.446V13.9088H254.12V16.9142Z" fill="black"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_513_151">
+        <rect width="147.447" height="3.82979" fill="white" transform="translate(107.818 21.8662)"/>
+        </clipPath>
+        <clipPath id="clip1_513_151">
+        <rect width="148.085" height="7.65958" fill="white" transform="translate(109.733 12.9302)"/>
+        </clipPath>
+        </defs>
+        </svg>
+        
+        
+
+    </a>
+    <nav class="header__nav">
+      <ul class="header__nav-link">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/explore.html">Marketplace</a></li>
+        <li><a href="/create.html">Create NFT</a></li>
+        <li><a href="/explore-collections.html">Explore Collections</a></li>
+      </ul>
+    </nav>
+    <div class="header__user">
+      <img href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></img>
+      <a href="/connectWallet.html">
+        <button class="filled--button secondary header__nav-btn" id="btn-login">
+          <i class="fas fa-wallet"></i>
+          Connect Wallet
+        </button>
+        <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
           <i class="fas fa-wallet"></i>
           Connect Wallet
         </button> -->
-        </a>
-      </div>
-    </header>
+      </a>
+    </div>
+  </header>
 
-    <!-- ===================================== MAIN ============================================= -->
+  <!-- ===================================== MAIN ============================================= -->
 
-    <main>
-      <!-- Info -->
-      <div class="section-info">
-        <!-- <div class="section-info__bg"></div> -->
-        <div class="container">
-          <div class="grid wide">
-            <div class="row">
-              <div class="col l-6 m-12 c-12">
-                <div class="section-info__intro">
-                  <div class="head-line">
-                    <h1 class="title">Discover digital art & Collect NFTs</h1>
-                    <p class="desc">
-                      NFT marketplace UI created with Anima for Figma. Collect, buy and sell art
-                      from more than 20k NFT artists.
-                    </p>
-                  </div>
-                  <a href="/connectWallet.html">
-                    <button class="filled--button secondary">
-                      <span class="icon--button"><i class="far fa-eye"></i></span>
-                      <span class="text--button">Get Started</span>
-                    </button>
-                  </a>
+  <main>
+    <!-- Info -->
+    <div class="section-info">
+      <!-- <div class="section-info__bg"></div> -->
+      <div class="container">
+        <div class="grid wide">
+          <div class="row">
+            <div class="col l-6 m-12 c-12">
+              <div class="section-info__intro">
+                <div class="head-line">
+                  <h1 class="title">Discover digital art & Collect NFTs</h1>
+                  <p class="desc">
+                    NFT marketplace UI created with Anima for Figma. Collect, buy and sell art
+                    from more than 20k NFT artists.
+                  </p>
                 </div>
+                <a href="/connectWallet.html">
+                  <button class="filled--button secondary">
+                    <span class="icon--button"><i class="far fa-eye"></i></span>
+                    <span class="text--button">Get Started</span>
+                  </button>
+                </a>
               </div>
-              <div class="col l-6 m-12 c-12">
-                <div class="section-info__nft-eg">
-                  <div class="container-card" id="container-card"></div>
-                </div>
+            </div>
+            <div class="col l-6 m-12 c-12">
+              <div class="section-info__nft-eg">
+                <div class="container-card" id="container-card"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="grid wide">
-        <!-- NFTs -->
-        <div class="section-nfts">
-          <div class="container">
-            <div class="section-nfts__header navbar">
-              <div class="head-line">
-                <h3 class="head-line__title">Discover More NFTs</h3>
-                <span class="head-line__desc">Explore new trending NFTs</span>
-              </div>
-              <div class="action">
-                <a href="/explore.html">
-                  <button class="filled--button tertiary">
-                    <span class="icon--button"><i class="far fa-eye"></i></span>
-                    <span class="text--button">See More</span>
-                  </button>
-                  <!-- <button class="home-btn">
+    <div class="grid wide">
+      <!-- NFTs -->
+      <div class="section-nfts">
+        <div class="container">
+          <div class="section-nfts__header navbar">
+            <div class="head-line">
+              <h3 class="head-line__title">Discover More NFTs</h3>
+              <span class="head-line__desc">Explore new trending NFTs</span>
+            </div>
+            <div class="action">
+              <a href="/explore.html">
+                <button class="filled--button tertiary">
+                  <span class="icon--button"><i class="far fa-eye"></i></span>
+                  <span class="text--button">See More</span>
+                </button>
+                <!-- <button class="home-btn">
                   <i class="far fa-eye"></i>
                   See more
                 </button> -->
-                </a>
-              </div>
-            </div>
-
-            <div id="list-nft__container" class="row"></div>
-          </div>
-        </div>
-
-        <!-- How it work -->
-        <div class="guide">
-          <div class="container">
-            <div class="guide__header navbar">
-              <div class="head-line">
-                <h3 class="head-line__title">How it work</h3>
-                <span class="head-line__desc">Find out how to get started</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col l-4 m-6 c-12">
-                <a class="guide-item" href="/connectWallet.html">
-                  <img src="SetupWalletIcon.webp" alt="" />
-                  <div class="guide-item__detail">
-                    <h4 class="guide-item__detail-title">Set Up Your Wallet</h4>
-                    <span class="guide-item__detail-content">
-                      Set up your wallet of choice. Connect it to the Animarket by clicking the
-                      wallet icon in the top right corne.
-                    </span>
-                  </div>
-                </a>
-              </div>
-              <div class="col l-4 m-6 c-12">
-                <a class="guide-item" href="/create.html">
-                  <img src="CreateCollectionIcon.webp" alt="" />
-                  <div class="guide-item__detail">
-                    <h4 class="guide-item__detail-title">Create NFT</h4>
-                    <span class="guide-item__detail-content">
-                      Create your NFT. Add a description, social links and floor price.
-                    </span>
-                  </div>
-                </a>
-              </div>
-              <div class="col l-4 m-6 c-12">
-                <a class="guide-item" href="/explore.html">
-                  <img src="StartEarningIcon.webp" alt="" />
-                  <div class="guide-item__detail">
-                    <h4 class="guide-item__detail-title">Start Earning</h4>
-                    <span class="guide-item__detail-content">
-                      Start earning by selling your NFTs or trading others.
-                    </span>
-                  </div>
-                </a>
-              </div>
+              </a>
             </div>
           </div>
+
+          <div id="list-nft__container" class="row"></div>
         </div>
       </div>
-    </main>
 
-    <!-- Template -->
-    <div id="nft-template" style="display: none">
-      <div
-        data-token-id=""
-        data-clt-address=""
-        data-loading=""
-        class="col l-4 m-6 c-12 nft__container"
-      >
-        <div class="nft-item">
-          <div class="nft-card">
-            <div class="nft__description" style="display: none"></div>
-            <div class="nft__metadataUri" style="display: none"></div>
-            <div class="nft__status" style="display: none"></div>
-            <img class="nft-card__img nft__img" src="AvatarDefault.webp" alt="" />
-            <div class="nft-card__detail">
-              <div class="nft-card__info">
-                <div class="nft-card__address">
-                  <p
-                    class="nft-card__address-value nft__address"
-                    title="0x0000000000000000000000"
-                  ></p>
+      <!-- How it work -->
+      <div class="guide">
+        <div class="container">
+          <div class="guide__header navbar">
+            <div class="head-line">
+              <h3 class="head-line__title">How it work</h3>
+              <span class="head-line__desc">Find out how to get started</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col l-4 m-6 c-12">
+              <a class="guide-item" href="/connectWallet.html">
+                <img src="SetupWalletIcon.webp" alt="" />
+                <div class="guide-item__detail">
+                  <h4 class="guide-item__detail-title">Set Up Your Wallet</h4>
+                  <span class="guide-item__detail-content">
+                    Set up your wallet of choice. Connect it to the Animarket by clicking the
+                    wallet icon in the top right corne.
+                  </span>
                 </div>
-                <div class="nft-card__title">
-                  <p class="nft-card__name nft__title" title="NFT-card Name">NFT Name</p>
-                  <p class="nft-card__order nft__order">#34</p>
+              </a>
+            </div>
+            <div class="col l-4 m-6 c-12">
+              <a class="guide-item" href="/create.html">
+                <img src="CreateCollectionIcon.webp" alt="" />
+                <div class="guide-item__detail">
+                  <h4 class="guide-item__detail-title">Create NFT</h4>
+                  <span class="guide-item__detail-content">
+                    Create your NFT. Add a description, social links and floor price.
+                  </span>
                 </div>
-                <div class="nft-card__user">
-                  <div class="avatar nft-card__user-avatar"></div>
-                  <div
-                    class="nft-card__user-name nft__user-name"
-                    title="User Name 10 1023 02392 10393"
-                  >
-                    User Name 10 1023 02392 10393
-                  </div>
+              </a>
+            </div>
+            <div class="col l-4 m-6 c-12">
+              <a class="guide-item" href="/explore.html">
+                <img src="StartEarningIcon.webp" alt="" />
+                <div class="guide-item__detail">
+                  <h4 class="guide-item__detail-title">Start Earning</h4>
+                  <span class="guide-item__detail-content">
+                    Start earning by selling your NFTs or trading others.
+                  </span>
                 </div>
-              </div>
-              <div class="nft-card__price">
-                <span class="nft-card__price-title">Price</span>
-                <div class="nft-card__price-value">
-                  <span class="nft-card__price-number nft__price" title="1.6363">1.6363</span>
-                  <span class="nft-card__price-unit">WBNB</span>
-                </div>
-              </div>
-              <div class="nft-card__action">
-                <button
-                  class="filled--button tertiary nft-card__btn nft__button-buy"
-                  style="display: none"
-                >
-                  <span class="text--button">Buy NFT</span>
-                </button>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- Hero card  template-->
-    <div id="hero-card-template" style="display: none">
-      <div class="nft-eg__content cards">
-        <div class="nft-eg__info">
-          <p class="nft-eg__name">NFT Name</p>
-          <div class="nft-eg__user">
-            <div class="avatar"></div>
-            <div class="user-name">User Name</div>
+  <!-- Template -->
+  <div id="nft-template" style="display: none">
+    <div data-token-id="" data-clt-address="" data-loading="" class="col l-4 m-6 c-12 nft__container">
+      <div class="nft-item">
+        <div class="nft-card">
+          <div class="nft__description" style="display: none"></div>
+          <div class="nft__metadataUri" style="display: none"></div>
+          <div class="nft__status" style="display: none"></div>
+          <img class="nft-card__img nft__img" src="AvatarDefault.webp" alt="" />
+          <div class="nft-card__detail">
+            <div class="nft-card__info">
+              <div class="nft-card__address">
+                <p class="nft-card__address-value nft__address" title="0x0000000000000000000000"></p>
+              </div>
+              <div class="nft-card__title">
+                <p class="nft-card__name nft__title" title="NFT-card Name">NFT Name</p>
+                <p class="nft-card__order nft__order">#34</p>
+              </div>
+              <div class="nft-card__user">
+                <div class="avatar nft-card__user-avatar"></div>
+                <div class="nft-card__user-name nft__user-name" title="User Name 10 1023 02392 10393">
+                  User Name 10 1023 02392 10393
+                </div>
+              </div>
+            </div>
+            <div class="nft-card__price">
+              <span class="nft-card__price-title">Price</span>
+              <div class="nft-card__price-value">
+                <span class="nft-card__price-number nft__price" title="1.6363">1.6363</span>
+                <span class="nft-card__price-unit">WBNB</span>
+              </div>
+            </div>
+            <div class="nft-card__action">
+              <button class="filled--button tertiary nft-card__btn nft__button-buy" style="display: none">
+                <span class="text--button">Buy NFT</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="nft-eg__content cards" id="container-card-template" style="display: none">
+  </div>
+
+  <!-- Hero card  template-->
+  <div id="hero-card-template" style="display: none">
+    <div class="nft-eg__content cards">
       <div class="nft-eg__info">
         <p class="nft-eg__name">NFT Name</p>
         <div class="nft-eg__user">
@@ -418,5 +441,16 @@
         </div>
       </div>
     </div>
-  </body>
+  </div>
+  <div class="nft-eg__content cards" id="container-card-template" style="display: none">
+    <div class="nft-eg__info">
+      <p class="nft-eg__name">NFT Name</p>
+      <div class="nft-eg__user">
+        <div class="avatar"></div>
+        <div class="user-name">User Name</div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

@@ -32689,7 +32689,6 @@ var WalletManager = /** @class */ (function () {
         if (window && window.ethereum) {
             window.ethereum.on('chainChanged', this.handleChainChanged);
             window.ethereum.on('accountsChanged', this.accountChanged);
-            window.ethereum.on('', this.accountChanged);
         }
     };
     return WalletManager;
@@ -32812,7 +32811,9 @@ var ExplorePageController = /** @class */ (function () {
                     eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.OrderNFT)),
                     eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.UserAvatar)),
                 };
-                eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
+                eData.eImage.src = nftItem.imageGatewayUrl
+                    ? nftItem.imageGatewayUrl
+                    : (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_7__.getAvatarByAddress)(nftItem.collectionAddress);
                 eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.TokenId, nftItem.tokenId.toString());
                 eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, nftItem.collectionAddress);
                 eData.eTitle.innerHTML = nftItem.title;
@@ -32860,7 +32861,9 @@ var ExplorePageController = /** @class */ (function () {
                     eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.OrderNFT)),
                     eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.UserAvatar)),
                 };
-                eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
+                eData.eImage.src = nftItem.imageGatewayUrl
+                    ? nftItem.imageGatewayUrl
+                    : (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_7__.getAvatarByAddress)(nftItem.collectionAddress);
                 eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.TokenId, nftItem.tokenId.toString());
                 eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, nftItem.collectionAddress);
                 eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_8__.LoadingStatus.Pending);
@@ -33306,6 +33309,7 @@ function connectEarly() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log('run');
                     if (!window.ethereum) {
                         throw new Error('No connect detected');
                     }

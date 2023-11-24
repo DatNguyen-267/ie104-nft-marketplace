@@ -32204,7 +32204,6 @@ var WalletManager = /** @class */ (function () {
         if (window && window.ethereum) {
             window.ethereum.on('chainChanged', this.handleChainChanged);
             window.ethereum.on('accountsChanged', this.accountChanged);
-            window.ethereum.on('', this.accountChanged);
         }
     };
     return WalletManager;
@@ -32732,6 +32731,7 @@ function connectEarly() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log('run');
                     if (!window.ethereum) {
                         throw new Error('No connect detected');
                     }

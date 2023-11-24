@@ -14,9 +14,12 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (1) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -84,7 +87,7 @@
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
+  --color-text: #000;
 
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
@@ -100,6 +103,11 @@
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
 
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
 }
 
 * {
@@ -118,6 +126,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -315,9 +324,9 @@ h6 {
 /*!************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css ***!
   \************************************************************************************/
-.filled--button{
+.filled--button {
     background-color: var(--color-btn-primary);
-    border-radius: 20px;
+    border-radius: 16px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -328,40 +337,49 @@ h6 {
     cursor: pointer;
     /* transition: 0.3s; */
 }
-.icon--button{
+
+.icon--button {
     padding-right: 12px;
 }
-.filled--button.primary{
+
+.filled--button.primary {
     width: 206px;
     height: 72px;
     font-size: 22px;
 }
-.filled--button.secondary{
+
+.filled--button.secondary {
     width: 186px;
     height: 60px;
     font-size: 16px;
 }
-.filled--button.tertiary{
+
+.filled--button.tertiary {
     width: 186px;
     height: 46px;
     font-size: 16px;
 }
-.filled--button.outline{
+
+.filled--button.outline {
     background-color: transparent;
     color: var(--color-btn-primary);
     border: 2px solid var(--color-btn-primary);
 }
-.filled--button:hover{
+
+.filled--button:hover {
     background-color: var(--color-btn-secondary);
 }
-.filled--button:active{
+
+.filled--button:active {
     background-color: var(--color-btn-primary);
 }
-.filled--button.outline:hover{
+
+.filled--button.outline:hover {
     background-color: var(--color-btn-primary);
     color: var(--color-white);
 }
-.filled--button.outline:active{
+
+.filled--button.outline:active {
     background-color: transparent;
     color: var(--color-btn-primary);
 }
@@ -369,9 +387,12 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -439,7 +460,7 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
+  --color-text: #000;
 
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
@@ -455,6 +476,11 @@ h6 {
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
 
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
 }
 
 * {
@@ -473,6 +499,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -541,9 +568,12 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (5) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -611,7 +641,7 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
+  --color-text: #000;
 
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
@@ -627,6 +657,11 @@ h6 {
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
 
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
 }
 
 * {
@@ -645,6 +680,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -821,13 +857,74 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/header/styles.css ***!
   \************************************************************************************/
 /* ================ HEADER ============== */
+#header-panel {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #212121;
+    height: 40px;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    gap: 20px;
+}
+
+#header-panel .header-panel-scroll {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    animation: scrollText 40s linear infinite;
+}
+
+#header-panel .header-panel-scroll .header-panel__item {
+    text-wrap: nowrap;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon:nth-child(1) {
+    color: #C7B3ED;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon:nth-child(2) {
+    color: #00DF67;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon:nth-child(3) {
+    color: #FFD2d2;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon:nth-child(4) {
+    color: #FFFCB3;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon:nth-child(5) {
+    color: #ffffff;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon:nth-child(6) {
+    color: #C7B3ED;
+}
+
+@keyframes scrollText {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(calc(-100% - 20px));
+    }
+}
+
 header {
     position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
-    top: 0;
+    top: 40px;
     z-index: 10;
     height: 60px;
     padding: 0px 50px;
@@ -880,17 +977,17 @@ header {
     transition: all 0.3s ease 0;
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--color-sub-text-300);
+    color: var(--color-black);
     position: relative;
 }
 
 .header__nav-link li a:hover {
-    color: var(--color-dark-blue-200);
+    color: var(--color-black);
     font-weight: 700;
 }
 
 .header__nav-link .active {
-    color: var(--color-text);
+    color: var(--color-black);
     font-weight: 700;
 }
 
@@ -905,7 +1002,7 @@ header {
 }
 
 /* user */
-.header__user{
+.header__user {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -921,7 +1018,7 @@ header {
     font-size: 14px !important;
     font-weight: 600 !important;
     border-radius: 15px !important;
-    padding:0 1.3rem;
+    padding: 0 1.3rem;
     width: 100% !important;
     cursor: pointer;
     /* padding: 0px 10px;
@@ -932,6 +1029,7 @@ header {
     cursor: pointer;
     transition: all 0.3s ease 0; */
 }
+
 .header__nav-btn i {
     background-color: transparent;
     font-size: 14px;
@@ -1037,6 +1135,7 @@ header {
 .pop-up--user .pop-up-nav__link li {
     padding: 12px 30px;
 }
+
 .pop-up--user .pop-up-nav__link li a {
     font-size: 14px;
     font-weight: 600;
@@ -1051,6 +1150,7 @@ header {
 .alert-logout-icon-title {
     margin-bottom: 15px;
 }
+
 /*=========== Reposive ============ */
 @media (max-width: 880px) {
     .header__nav-link {
@@ -1093,6 +1193,7 @@ header {
     .header__nav-link {
         padding: 0 20px;
     }
+
     .pop-up--user .pop-up-container {
         right: 20px;
     }
@@ -1115,11 +1216,11 @@ header {
         font-size: 1.6rem;
         padding-right: 20px;
     }
+
     .pop-up--user .pop-up-container {
         right: 10px;
     }
 }
-
 /*!**********************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/loading/loading2/styles.css ***!
   \**********************************************************************************************/

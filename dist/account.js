@@ -32910,7 +32910,6 @@ var WalletManager = /** @class */ (function () {
         if (window && window.ethereum) {
             window.ethereum.on('chainChanged', this.handleChainChanged);
             window.ethereum.on('accountsChanged', this.accountChanged);
-            window.ethereum.on('', this.accountChanged);
         }
     };
     return WalletManager;
@@ -32932,7 +32931,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AccountPageController: () => (/* binding */ AccountPageController),
 /* harmony export */   AccountPageControllerInstance: () => (/* binding */ AccountPageControllerInstance)
 /* harmony export */ });
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/units/lib.esm/index.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/units/lib.esm/index.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ "./src/constants/index.ts");
 /* harmony import */ var _constants_default_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/default-data */ "./src/constants/default-data.ts");
 /* harmony import */ var _constants_token__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/token */ "./src/constants/token.ts");
@@ -32942,6 +32941,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/market */ "./src/services/market.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.ts");
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./types */ "./src/page/account/types.ts");
+/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/avatar */ "./src/utils/avatar.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -32999,6 +32999,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var AccountPageController = /** @class */ (function () {
     function AccountPageController() {
     }
@@ -33032,8 +33033,8 @@ var AccountPageController = /** @class */ (function () {
                         balance = _a.sent();
                         if (labelWalletNativeBalance && balance) {
                             labelWalletNativeBalance.innerHTML =
-                                ethers__WEBPACK_IMPORTED_MODULE_9__.formatEther(balance) + ' ' + _constants__WEBPACK_IMPORTED_MODULE_0__.NATIVE_TOKEN_NAME;
-                            labelWalletNativeBalance.title = ethers__WEBPACK_IMPORTED_MODULE_9__.formatEther(balance) + ' ' + _constants__WEBPACK_IMPORTED_MODULE_0__.NATIVE_TOKEN_NAME;
+                                ethers__WEBPACK_IMPORTED_MODULE_10__.formatEther(balance) + ' ' + _constants__WEBPACK_IMPORTED_MODULE_0__.NATIVE_TOKEN_NAME;
+                            labelWalletNativeBalance.title = ethers__WEBPACK_IMPORTED_MODULE_10__.formatEther(balance) + ' ' + _constants__WEBPACK_IMPORTED_MODULE_0__.NATIVE_TOKEN_NAME;
                         }
                         return [3 /*break*/, 5];
                     case 4:
@@ -33067,7 +33068,7 @@ var AccountPageController = /** @class */ (function () {
                                         case 0: return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_5__.getErc20Balance)(_constants_token__WEBPACK_IMPORTED_MODULE_2__.ERC20_TOKEN_SUPPORTED[key].address, walletAddress)];
                                         case 1:
                                             balance = _a.sent();
-                                            labelWalletToken_1.innerHTML = "".concat(ethers__WEBPACK_IMPORTED_MODULE_9__.formatEther(balance), " ").concat(_constants_token__WEBPACK_IMPORTED_MODULE_2__.ERC20_TOKEN_SUPPORTED[key].symbol);
+                                            labelWalletToken_1.innerHTML = "".concat(ethers__WEBPACK_IMPORTED_MODULE_10__.formatEther(balance), " ").concat(_constants_token__WEBPACK_IMPORTED_MODULE_2__.ERC20_TOKEN_SUPPORTED[key].symbol);
                                             return [2 /*return*/];
                                     }
                                 });
@@ -33119,7 +33120,9 @@ var AccountPageController = /** @class */ (function () {
                             eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.AddressNFT)),
                             eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.OrderNFT)),
                         };
-                        eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
+                        eData.eImage.src = nftItem.imageGatewayUrl
+                            ? nftItem.imageGatewayUrl
+                            : (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_9__.getAvatarByAddress)(nftItem.collectionAddress);
                         eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.TokenId, nftItem.tokenId.toString());
                         eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, nftItem.collectionAddress);
                         eData.eTitle.innerHTML = nftItem.title;
@@ -33169,7 +33172,9 @@ var AccountPageController = /** @class */ (function () {
                             eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.AddressNFT)),
                             eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_8__.NftItemClass.OrderNFT)),
                         };
-                        eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#';
+                        eData.eImage.src = nftItem.imageGatewayUrl
+                            ? nftItem.imageGatewayUrl
+                            : (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_9__.getAvatarByAddress)(nftItem.collectionAddress);
                         eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.TokenId, nftItem.tokenId.toString());
                         eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, nftItem.collectionAddress);
                         eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_8__.LoadingStatus.Pending);
@@ -33673,6 +33678,7 @@ function connectEarly() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log('run');
                     if (!window.ethereum) {
                         throw new Error('No connect detected');
                     }
