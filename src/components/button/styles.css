@@ -1,8 +1,8 @@
 @import url(../../styles/base.css);
 
-.filled--button{
+.filled--button {
     background-color: var(--color-btn-primary);
-    border-radius: 20px;
+    border-radius: 16px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -13,40 +13,49 @@
     cursor: pointer;
     /* transition: 0.3s; */
 }
-.icon--button{
+
+.icon--button {
     padding-right: 12px;
 }
-.filled--button.primary{
+
+.filled--button.primary {
     width: 206px;
     height: 72px;
     font-size: 22px;
 }
-.filled--button.secondary{
+
+.filled--button.secondary {
     width: 186px;
     height: 60px;
     font-size: 16px;
 }
-.filled--button.tertiary{
+
+.filled--button.tertiary {
     width: 186px;
     height: 46px;
     font-size: 16px;
 }
-.filled--button.outline{
+
+.filled--button.outline {
     background-color: transparent;
     color: var(--color-btn-primary);
     border: 2px solid var(--color-btn-primary);
 }
-.filled--button:hover{
+
+.filled--button:hover {
     background-color: var(--color-btn-secondary);
 }
-.filled--button:active{
+
+.filled--button:active {
     background-color: var(--color-btn-primary);
 }
-.filled--button.outline:hover{
+
+.filled--button.outline:hover {
     background-color: var(--color-btn-primary);
     color: var(--color-white);
 }
-.filled--button.outline:active{
+
+.filled--button.outline:active {
     background-color: transparent;
     color: var(--color-btn-primary);
 }

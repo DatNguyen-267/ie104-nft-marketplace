@@ -55,7 +55,9 @@ export class ExplorePageController {
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
       eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eImage.src = nftItem.imageGatewayUrl
+      ? nftItem.imageGatewayUrl
+      : getAvatarByAddress(nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eTitle.innerHTML = nftItem.title
@@ -98,7 +100,9 @@ export class ExplorePageController {
       eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
 
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eImage.src = nftItem.imageGatewayUrl
+      ? nftItem.imageGatewayUrl
+      : getAvatarByAddress(nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)

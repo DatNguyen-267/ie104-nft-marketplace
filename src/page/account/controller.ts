@@ -25,6 +25,7 @@ import {
   NftItemElementObject,
   PageElementId,
 } from './types'
+import { getAvatarByAddress } from '../../utils/avatar'
 
 export class AccountPageController {
   constructor() {}
@@ -106,7 +107,9 @@ export class AccountPageController {
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eImage.src = nftItem.imageGatewayUrl
+      ? nftItem.imageGatewayUrl
+      : getAvatarByAddress(nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eTitle.innerHTML = nftItem.title
@@ -148,7 +151,9 @@ export class AccountPageController {
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
 
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eImage.src = nftItem.imageGatewayUrl
+      ? nftItem.imageGatewayUrl
+      : getAvatarByAddress(nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)

@@ -4,6 +4,7 @@ import { getDefaultProvider, getProvider } from './provider'
 import { convertWalletError } from '../utils/errors'
 
 export async function connectEarly() {
+  console.log('run')
   if (!window.ethereum) {
     throw new Error('No connect detected')
   }

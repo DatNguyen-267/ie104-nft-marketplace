@@ -22,10 +22,14 @@ const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
 
-connectEarly().then(() => {
-  UserPopoverControllerInstance.isConnected.set(true)
-  UserPopoverControllerInstance.isConnected.loadAvatar()
-})
+connectEarly()
+  .then(() => {
+    UserPopoverControllerInstance.isConnected.set(true)
+    UserPopoverControllerInstance.isConnected.loadAvatar()
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {

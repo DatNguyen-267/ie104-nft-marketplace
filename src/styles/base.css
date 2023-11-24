@@ -1,9 +1,12 @@
 @import url('https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet');
 
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -71,7 +74,7 @@
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
+  --color-text: #000;
 
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
@@ -87,6 +90,11 @@
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
 
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
 }
 
 * {
@@ -105,6 +113,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,

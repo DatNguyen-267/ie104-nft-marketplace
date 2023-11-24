@@ -13,6 +13,7 @@
     justify-content: center;
     flex-direction: column;
 }
+
 /* .example {
     margin-top: 30px;
     float: inline-end;
@@ -24,6 +25,7 @@
     font-size: 18px;
     font-weight: bold;
 }
+
 .title_example {
     width: 143px;
     height: 22px;
@@ -31,9 +33,11 @@
     font-size: 18px;
     font-weight: bold;
 }
+
 .nft-card {
     margin-top: 30px;
 }
+
 /* ====header=== */
 .main-header-container {
     position: relative;
@@ -41,6 +45,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .main-header {
     background-color: var(--color-black);
     position: relative;
@@ -119,12 +124,14 @@
     margin: 30px;
     margin-top: 50px;
 }
+
 .upload {
     width: 100%;
     /* width: 806px; */
     height: 300px;
 }
-.upload-file{
+
+.upload-file {
     /* width: 143px; */
     width: 100%;
     height: 22px;
@@ -148,6 +155,7 @@
     align-items: center;
     position: relative;
 }
+
 .img__close {
     top: 5px;
     right: 10px;
@@ -162,16 +170,18 @@
     justify-content: center;
     align-items: center;
 }
-.img__close i{
+
+.img__close i {
     font-size: 16px;
 }
 
-.img-view{
+.img-view {
     max-width: 500px;
     width: 100%;
     object-fit: cover;
     border-radius: 20px;
 }
+
 .content {
     width: 100%;
     height: 100%;
@@ -185,22 +195,26 @@
     background-position: center;
     background-size: cover; */
 }
+
 .content-icon {
     max-width: 80px;
 }
+
 .content-des {
-   color: var(--color-text);
-   font-size: 18px;
-   font-weight: 700;
-   text-align: center;
-   line-height: 2.4rem;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 2.4rem;
 }
+
 .content-note {
-   color: var(--color-sub-text-300);
-   font-size: 16px;
-   font-weight: 500;
-   text-align: center;
+    color: var(--color-sub-text-300);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
 }
+
 .type-file {
     color: var(--color-text);
     font-size: 22px;
@@ -208,6 +222,7 @@
     text-align: center;
     line-height: 3.5rem;
 }
+
 .input {
     /* width: 810px; */
     width: 100%;
@@ -217,12 +232,14 @@
     justify-content: space-between;
     margin-top: 50px;
 }
+
 .title {
     color: black;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
 }
+
 .Input {
     width: 100%;
     /* max-width: 806px; */
@@ -235,17 +252,21 @@
     padding: 20px;
     color: var(--color-text);
 }
-.Input:hover, .Input:focus {
+
+.Input:hover,
+.Input:focus {
     outline: none;
     border: 2px solid var(--color-gray-1500);
 }
+
 .create-item {
     width: 186px !important;
     height: 50px !important;
     font-size: 14px !important;
     margin-top: 50px;
-    float:right;
+    float: right;
 }
+
 .text {
     padding: 10px 0px;
 }

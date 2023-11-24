@@ -5,6 +5,7 @@ import { connectAndSwitch, getMetadata, getTokenUri, getUrlImage } from '../serv
 import { viewAsksByCollection, viewMarketCollections } from '../services/market'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
+import { getAvatarByAddress } from '../utils/avatar'
 import {
   AttributeName,
   CardItemClass,
@@ -60,7 +61,9 @@ export class LandingPageController {
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
     try {
-      eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+      eData.eImage.src = nftItem.imageGatewayUrl
+        ? nftItem.imageGatewayUrl
+        : getAvatarByAddress(nftItem.collectionAddress)
       eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
       eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
       eData.eTitle.innerHTML = nftItem.title
@@ -130,7 +133,10 @@ export class LandingPageController {
       eTitle: tokenItemNode.querySelector(`.${CardItemClass.Title}`) as HTMLDivElement,
       eUserName: tokenItemNode.querySelector(`.${CardItemClass.UserName}`) as HTMLDivElement,
     }
-    eData.eContainer.style.setProperty('background', `url(${nftItem.imageGatewayUrl})`)
+    eData.eContainer.style.setProperty(
+      'background',
+      `url(${nftItem.imageGatewayUrl || getAvatarByAddress(nftItem.collectionAddress)})`,
+    )
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
@@ -166,7 +172,9 @@ export class LandingPageController {
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
     }
 
-    eData.eImage.src = nftItem.imageGatewayUrl ? nftItem.imageGatewayUrl : '#'
+    eData.eImage.src = nftItem.imageGatewayUrl
+      ? nftItem.imageGatewayUrl
+      : getAvatarByAddress(nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
