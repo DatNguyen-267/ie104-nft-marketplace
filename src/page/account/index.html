@@ -9,6 +9,41 @@
   </head>
 
   <body>
+    <!-- MODAL DELIST -->
+
+    <div class="modal-delist" action="#" id="modal-delist" style="display: none">
+      <a href="#" class="modal-delist-overlay-close" id="modal-delist-overlay-close"></a>
+      <div class="modal-delist-container">
+        <div class="modal-delist__header">
+          <h4 class="modal-delist__title">Delist NFT</h4>
+          <div class="modal-delist__close" id="modal-delist-close">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+        <div class="modal-delist__main">
+          <div class="modal-delist__nft">
+            <div class="modal-delist__nft-info">
+              <img
+                src="./../../assets/images/nftDefault.webp"
+                alt=""
+                class="modal-delist__nft-img"
+                id="modal-delist-nft-img"
+              />
+              <p class="modal-delist__nft-name" id="modal-delist-nft-name">
+                NFT Name abc abc abc abc abc
+              </p>
+              <p class="modal-delist__nft-address" id="modal-delist-nft-address">0xadb...000</p>
+            </div>
+          </div>
+          <h5>Are you sure you want to delist this NFT?</h5>
+        </div>
+        <div class="modal-delist__action">
+          <button type="submit" class="filled--button error modal-delist__action-ok" id="modal-delist-ok">OK</button>
+          <button class="modal-delist__action-cancel" id="modal-delist-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
     <!-- ===================================== Loading ============================================= -->
     <div class="loading" id="container-loading" style="display: none">
       <div class="lds-ring">
@@ -46,7 +81,7 @@
             </div>
             <!-- <div class="modal-buy__nft-price modal-buy-value">
               <p class="number" id="modal-buy-nft-price">0.00000029</p>
-              <p class="unit">NFT</p>
+              <p class="unit">WBNB</p>
             </div> -->
           </div>
           <!-- <div class="modal-buy__network modal-buy__frame" style="display: none;">
@@ -66,7 +101,7 @@
             <p class="modal-buy__price-title">Price</p>
             <div class="modal-buy__price-value modal-buy-value">
               <p class="number" id="modal-buy-price">0.000000000000000000000000000000029</p>
-              <p class="unit">NFT</p>
+              <p class="unit">WBNB</p>
             </div>
           </div>
           <div class="modal-buy__rarible modal-buy__frame-2">
@@ -80,7 +115,7 @@
             <p class="modal-buy__total-title">Total</p>
             <div class="modal-buy__total-value modal-buy-value">
               <p class="number" id="modal-buy-total">0.029</p>
-              <p class="unit">NFT</p>
+              <p class="unit">WBNB</p>
             </div>
           </div>
         </div>
@@ -91,6 +126,9 @@
       </div>
     </div>
 
+
+    
+    
     <div class="modal-sell" action="#" id="modal-sell" style="display: none">
       <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
       <div class="modal-sell-container">
@@ -175,12 +213,12 @@
             class="modal-depos__main-icon"
             alt=""
           />
-          <p class="modal-depos__main-title">Desposit</p>
+          <h4 class="modal-depos__main-title">Desposit</h4>
           <div class="modal-depos__main-desc">
-            <span>Enter money you want to desposit</span>
+            <span>Deposit your WBNB (Wrapped Binance Coin) tokens to the AIOZ Network effortlessly.</span>
           </div>
           <div class="modal-depos__price modal-depos__frame">
-            <p class="modal-depos__price-title">Value</p>
+            <p class="modal-depos__price-title">Amount Token (WBNB)</p>
             <input
               type="number"
               class="modal-depos-input"
@@ -188,6 +226,10 @@
               id="modal-depos-price"
               placeholder="0"
             />
+            <p class="modal-depos__price-desc">
+              The conversion is straightforward: 1 AIOZ equals 1 WBNB. Input your desired WBNB amount, confirm, and you're done! Simple, transparent, and hassle-free.
+            </p>
+              
           </div>
         </div>
         <div class="modal-depos__action">
@@ -294,35 +336,37 @@
         <h5 class="header-panel__item">Decentralized marketplace</h5>
         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Announcing Regressive Fees on IE104 Market</h5>
-        <h4 class="header-panel__item-icon">❂</h4>
+        <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">One-stop platform for all things NFTs</h5>
-        <h4 class="header-panel__item-icon">❍</h4>
+         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Trade NFTs securely on IE104 Market</h5>
         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Visionary product for the next generation of NFT use case</h5>
-        <h4 class="header-panel__item-icon">☢</h4>
+        <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Create NFT marketplace for your community</h5>
-        <h4 class="header-panel__item-icon">◍</h4>
+         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Limited Edition NFTs</h5>
-        <h4 class="header-panel__item-icon">◌</h4>
-        <h5 class="header-panel__item">DISCOVER, COLLECT AND SELL EXTRAORDINARY NFTs</h5>
+         <h4 class="header-panel__item-icon">〄</h4>
+            <h5 class="header-panel__item">Discover, collect and sell extraodinary NFTs</h5>
+       <h4 class="header-panel__item-icon">〄</h4>
       </div>
       <div class="header-panel-scroll">
         <h5 class="header-panel__item">Decentralized marketplace</h5>
         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Announcing Regressive Fees on IE104 Market</h5>
-        <h4 class="header-panel__item-icon">❂</h4>
+        <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">One-stop platform for all things NFTs</h5>
-        <h4 class="header-panel__item-icon">❍</h4>
+         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Trade NFTs securely on IE104 Market</h5>
         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Visionary product for the next generation of NFT use case</h5>
-        <h4 class="header-panel__item-icon">☢</h4>
+        <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Create NFT marketplace for your community</h5>
-        <h4 class="header-panel__item-icon">◍</h4>
+         <h4 class="header-panel__item-icon">〄</h4>
         <h5 class="header-panel__item">Limited Edition NFTs</h5>
-        <h4 class="header-panel__item-icon">◌</h4>
-        <h5 class="header-panel__item">DISCOVER, COLLECT AND SELL EXTRAORDINARY NFTs</h5>
+         <h4 class="header-panel__item-icon">〄</h4>
+            <h5 class="header-panel__item">Discover, collect and sell extraodinary NFTs</h5>
+       <h4 class="header-panel__item-icon">〄</h4>
       </div>
     </div>
     <header class="header" id="header-template">
@@ -358,10 +402,9 @@
       </a>
       <nav class="header__nav">
         <ul class="header__nav-link">
-          <li><a href="/">Home</a></li>
-          <li><a href="/explore.html">Marketplace</a></li>
-          <li><a href="/create.html">Create NFT</a></li>
-          <li><a href="/explore-collections.html">Explore Collections</a></li>
+          <li><a href="/explore.html">Explore</a></li>
+          <li><a href="/create.html">Create</a></li>
+          <li><a href="/explore-collections.html">Collections</a></li>
         </ul>
       </nav>
       <div class="header__user">
@@ -520,7 +563,7 @@
                   <p class="nft-card__order nft__order">#34</p>
                 </div>
                 <div class="nft-card__user">
-                  <div class="avatar nft-card__user-avatar"></div>
+                  <img class="avatar nft-card__user-avatar"></img>
                   <div
                     class="nft-card__user-name nft__user-name"
                     title="User Name 10 1023 02392 10393"
@@ -537,6 +580,12 @@
                 </div>
               </div>
               <div class="nft-card__action">
+                <button
+                  class="filled--button error outlined nft-card__btn nft__button-delist"
+                  style="display: none"
+                >
+                  <span class="text--button">Delist NFT</span>
+                </button>
                 <button
                   class="filled--button tertiary nft-card__btn nft__button-sell"
                   style="display: none"

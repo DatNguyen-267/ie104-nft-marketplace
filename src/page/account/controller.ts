@@ -1,5 +1,5 @@
 import { ethers } from 'ethers'
-import { NATIVE_TOKEN_NAME } from '../../constants'
+import { DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 import { ERC20_TOKEN_SUPPORTED } from '../../constants/token'
 import { ModalSellControllerInstance } from '../../controller/modal-sell'
@@ -26,6 +26,7 @@ import {
   PageElementId,
 } from './types'
 import { getAvatarByAddress } from '../../utils/avatar'
+import { ModalDelistControllerInstance } from '../../controller/modal-delist'
 
 export class AccountPageController {
   constructor() {}
@@ -85,7 +86,7 @@ export class AccountPageController {
 
     if (!nftItem) return
     const tokenItemNode = listNftContainer.querySelector(
-      `div[data-token-id="${nftItem.tokenId}"]`,
+      `div[data-token-id="${nftItem.tokenId}"][${AttributeName.CltAddress}="${nftItem.collectionAddress}"]`,
     ) as HTMLDivElement
 
     if (!tokenItemNode) return
@@ -106,7 +107,14 @@ export class AccountPageController {
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
+      eButtonDelist: tokenItemNode.querySelector(
+        `.${NftItemClass.ButtonDelist}`,
+      ) as HTMLButtonElement,
+      eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
+
+    eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)
+
     eData.eImage.src = nftItem.imageGatewayUrl
       ? nftItem.imageGatewayUrl
       : getAvatarByAddress(nftItem.collectionAddress)
@@ -127,6 +135,7 @@ export class AccountPageController {
 
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
+      eData.eButtonDelist.style.display = 'none'
     }
   }
   async CreateNftItemComponent(nftItem: NftItem): Promise<HTMLDivElement> {
@@ -149,6 +158,10 @@ export class AccountPageController {
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
+      eButtonDelist: tokenItemNode.querySelector(
+        `.${NftItemClass.ButtonDelist}`,
+      ) as HTMLButtonElement,
+      eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
 
     eData.eImage.src = nftItem.imageGatewayUrl
@@ -174,6 +187,19 @@ export class AccountPageController {
     if (nftItem.status === 'NotForSale') {
       eData.eButtonSell.style.display = 'block'
       eData.eButtonSell.addEventListener('click', () => {
+        this.handleSellNft(nftItem)
+      })
+      eData.eButtonDelist.style.display = 'none'
+      eData.eButtonDelist.removeEventListener('click', () => {
+        this.handleDelistNft(nftItem)
+      })
+    } else {
+      eData.eButtonDelist.style.display = 'block'
+      eData.eButtonDelist.addEventListener('click', () => {
+        this.handleDelistNft(nftItem)
+      })
+      eData.eButtonSell.style.display = 'none'
+      eData.eButtonSell.removeEventListener('click', () => {
         this.handleSellNft(nftItem)
       })
     }
@@ -205,7 +231,16 @@ export class AccountPageController {
       console.log(error)
     }
   }
-
+  async handleDelistNft(nftItem: NftItem) {
+    try {
+      await connectAndSwitch()
+      await UserPopoverControllerInstance.connect()
+      ModalDelistControllerInstance.set(nftItem)
+      ModalDelistControllerInstance.open()
+    } catch (error) {
+      console.log(error)
+    }
+  }
   async getAllNftOfAddress() {
     let listNfts: NftItem[] = []
     let listNftContainer = document.querySelector(PageElementId.ListNftContainer) as HTMLDivElement

@@ -305,13 +305,13 @@ export async function importCollection(
  */
 export async function cancelAskOrder(collectionAddress: string, tokenId: string) {
   try {
-    const provider = getProvider()
+    const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
     const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
     const response = await marketContract.cancelAskOrder(collectionAddress, tokenId)
-    return true
+    return response
   } catch (error) {
     throw error
   }

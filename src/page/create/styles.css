@@ -112,7 +112,7 @@
 
 .main-header__image img {
     width: 300px;
-    height: 300px;
+    height: 310px;
 }
 
 /* ============================ Form Create ==================================== */
@@ -128,7 +128,7 @@
 .upload {
     width: 100%;
     /* width: 806px; */
-    height: 300px;
+    height: 310px;
 }
 
 .upload-file {
@@ -226,11 +226,10 @@
 .input {
     /* width: 810px; */
     width: 100%;
-    height: 81px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 32px;
 }
 
 .title {
@@ -253,10 +252,17 @@
     color: var(--color-text);
 }
 
+.input-collection-address-description {
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-text-secondary01);
+    padding: 8px 0;
+}
+
 .Input:hover,
 .Input:focus {
     outline: none;
-    border: 2px solid var(--color-gray-1500);
+    border: 1px solid var(--color-primary);
 }
 
 .create-item {
@@ -292,7 +298,6 @@
     .main-header__head-line {
         justify-content: center;
         align-items: center;
-        padding-top: 30px;
     }
 
     .main-header-title,

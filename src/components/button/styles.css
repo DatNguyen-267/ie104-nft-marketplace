@@ -36,6 +36,48 @@
     font-size: 16px;
 }
 
+.filled--button.error {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.error:hover,
+filled--button.error:active {
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+.filled--button.error.outlined {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+
+.filled--button.error.outlined:hover,
+filled--button.error.outlined:active {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
 .filled--button.outline {
     background-color: transparent;
     color: var(--color-btn-primary);

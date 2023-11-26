@@ -1,8 +1,8 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
+import { AppError, BuyNftErrorMessage, DEFAULT_ADDRESS } from '../constants'
 import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB, createAskOrder } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
+import { createAskOrder } from '../services/market'
 import { NftItem } from '../types/nft'
+import { getAvatarByAddress } from '../utils/avatar'
 import { shorterAddress } from '../utils/common'
 
 export enum ModalSellNFTId {
@@ -52,7 +52,9 @@ class ModalSellController {
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
     modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress || '')
-    modalItemImage.src = this.nftItem?.imageGatewayUrl || '#'
+    modalItemImage.src =
+      this.nftItem?.imageGatewayUrl ||
+      getAvatarByAddress(this.nftItem?.collectionAddress || DEFAULT_ADDRESS)
   }
   async sell() {
     if (!this.nftItem) return

@@ -20,6 +20,9 @@ export enum NftItemClass {
   UserName = 'nft__user-name',
   AddressNFT = 'nft__address',
   OrderNFT = 'nft__order',
+
+  ButtonDelist = 'nft__button-delist',
+  UserAvatar = 'nft-card__user-avatar',
 }
 
 export type NftItemElementObject = {
@@ -34,6 +37,8 @@ export type NftItemElementObject = {
   eUserName: HTMLDivElement
   eAddressNFT: HTMLDivElement
   eOrderNFT: HTMLDivElement
+  eButtonDelist: HTMLButtonElement
+  eUserAvatar: HTMLImageElement
 }
 
 export enum PageElementId {

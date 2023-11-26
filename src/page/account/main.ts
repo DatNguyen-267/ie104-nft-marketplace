@@ -10,6 +10,7 @@ import { WalletManagerInstance, hiddenWalletInfo, showWalletInfo } from '../../c
 import { shorterAddress } from '../../utils'
 import { AccountPageControllerInstance } from './controller'
 import { PageElementId } from './types'
+import { ModalDelistControllerInstance, ModalDelistNFTId } from '../../controller/modal-delist'
 
 document.addEventListener('DOMContentLoaded', () => {
   let containerNoConnection = document.querySelector(
@@ -85,6 +86,20 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (error) {
     console.log(error)
   }
+})
+
+const modalButtonAcceptDelist = document.getElementById(
+  ModalDelistNFTId.ButtonAccept,
+) as HTMLButtonElement
+modalButtonAcceptDelist.addEventListener('click', (e) => {
+  LoadingControllerInstance.open()
+  ModalDelistControllerInstance.delist()
+    .then((res) => {
+      AccountPageControllerInstance.getAllNftOfAddress()
+    })
+    .finally(() => {
+      LoadingControllerInstance.close()
+    })
 })
 
 const modalButtonAccept = document.getElementById(ModalSellNFTId.ButtonAccept) as HTMLButtonElement

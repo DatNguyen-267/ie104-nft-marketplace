@@ -1,9 +1,16 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
+import {
+  AppError,
+  BuyNftErrorMessage,
+  DEFAULT_ADDRESS,
+  MARKETPLACE_ADDRESS,
+  WBNB_ADDRESS,
+} from '../constants'
 import { connectAndSwitch, getAccountAddress } from '../services'
 import { buyTokenUsingWBNB } from '../services/market'
 import { approveTokenExchange } from '../services/token-exchange'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
+import { getAvatarByAddress } from '../utils/avatar'
 import { LoadingControllerInstance } from './loading'
 
 export enum ModalBuyNFTId {
@@ -53,7 +60,9 @@ class ModalBuyController {
     modalItemName.innerHTML = this.nftItem?.title || ''
     modalItemPrice.innerHTML = this.nftItem?.price || ''
     modalItemAddress.innerHTML = shorterAddress(this.nftItem?.collectionAddress || '')
-    modalItemImage.src = this.nftItem?.imageGatewayUrl || '#'
+    modalItemImage.src =
+      this.nftItem?.imageGatewayUrl ||
+      getAvatarByAddress(this.nftItem?.collectionAddress || DEFAULT_ADDRESS)
   }
   async buy() {
     try {

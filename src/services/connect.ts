@@ -14,7 +14,7 @@ export async function connectEarly() {
     })
     .then(async (accounts: string[]) => {
       if (accounts.length > 0) {
-        await connectAndSwitch()
+        await connect()
         return accounts[0]
       } else {
         throw new Error('No connect detected')

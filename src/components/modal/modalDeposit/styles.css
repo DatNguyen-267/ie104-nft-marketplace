@@ -10,11 +10,12 @@
     gap: 10px;
 }
 
-.modal-input-error{
+.modal-input-error {
     border: 2px solid var(--color-red-300) !important;
     box-shadow: color-mix(in srgb, var(--color-red-100) 30%, transparent) 0px 0px 0px 1px;
     background-color: var(--color-gray-200) !important;
 }
+
 /* ================ modal-depos ================= */
 .modal-depos {
     display: flex;
@@ -37,7 +38,7 @@
 
 .modal-depos-container {
     position: relative;
-    width: 375px;
+    width: 500px;
     max-height: 800px;
     display: flex;
     padding: 32px 32px 34px 32px;
@@ -77,33 +78,40 @@
 }
 
 .modal-depos__main-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--color-text);
 }
 
 .modal-depos__main-desc {
     flex: 1;
-    font-size: 12px;
+    font-size: 16px;
+    line-height: 24px;
     display: flex;
     justify-content: center;
-   
+
 }
 
 .modal-depos__main-desc span {
     text-align: center;
     color: var(--color-text);
-    
+
 }
 
-.modal-depos__price-title{
+.modal-depos__price-title {
     font-size: 14px;
     font-weight: 600;
     color: var(--color-text);
 }
 
+.modal-depos__price-desc {
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--color-text);
+}
+
 /* input */
-.modal-depos-input{
+.modal-depos-input {
     width: 100%;
     padding: 8px 10px !important;
     border: none;
@@ -119,7 +127,7 @@
     text-align: end;
 }
 
-.modal-depos-input:focus{
+.modal-depos-input:focus {
     outline: none;
     border: 2px solid var(--color-border-100);
 }

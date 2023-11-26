@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./../../../styles/base.css" />
+    <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="./../../../styles/base.css">
-  <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300&display=swap"
-    rel="stylesheet">
-  <title>Document</title>
-</head>
-
-<body>
-  <form class="modal-sell" action="#" id="modal-sell">
-    <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
-    <div class="modal-sell-container">
-      <div class="modal-sell__header">
-        <h4 class="modal-sell__title">Sell NFT</h4>
-        <div class="modal-sell__close" id="modal-sell-close">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>
-      <div class="modal-sell__main">
-
-        <div class="modal-sell__nft">
-          <div class="modal-sell__nft-info">
-            <img src="" alt="" class="modal-sell__nft-img" id="modal-sell-nft-img">
-            <p class="modal-sell__nft-name" id="modal-sell-nft-name">NFT Name abc abc abc abc abc</p>
-            <p class="modal-sell__nft-address" id="modal-sell-nft-address">0xadb...000</p>
+  <body>
+    <form class="modal-sell" action="#" id="modal-sell">
+      <a href="#" class="modal-sell-overlay-close" id="modal-sell-overlay-close"></a>
+      <div class="modal-sell-container">
+        <div class="modal-sell__header">
+          <h4 class="modal-sell__title">Sell NFT</h4>
+          <div class="modal-sell__close" id="modal-sell-close">
+            <i class="fas fa-times"></i>
           </div>
         </div>
-        <!-- <div class="modal-sell__network modal-sell__frame">
+        <div class="modal-sell__main">
+          <div class="modal-sell__nft">
+            <div class="modal-sell__nft-info">
+              <img src="" alt="" class="modal-sell__nft-img" id="modal-sell-nft-img" />
+              <p class="modal-sell__nft-name" id="modal-sell-nft-name">
+                NFT Name abc abc abc abc abc
+              </p>
+              <p class="modal-sell__nft-address" id="modal-sell-nft-address">0xadb...000</p>
+            </div>
+          </div>
+          <!-- <div class="modal-sell__network modal-sell__frame">
           <div class="modal-sell__network-info">
             <img src="./../../../assets/images/EtherIcon.webp" alt="" class="modal-sell__network-img">
             <div class="modal-sell__network-content">
@@ -45,95 +46,95 @@
           </p>
 
         </div> -->
-        <div class="modal-sell__price modal-sell__frame-2">
-          <p class="modal-sell__price-title">Price</p>
-          <div class="modal-sell__price-value modal-sell-value">
-            <input type="number" class="number modal-sell-input" name="modal-sell-price" id="modal-sell-price"
-              placeholder="0">
-            <p class="unit">NFT</p>
+          <div class="modal-sell__price modal-sell__frame-2">
+            <p class="modal-sell__price-title">Price</p>
+            <div class="modal-sell__price-value modal-sell-value">
+              <input
+                type="number"
+                class="number modal-sell-input"
+                name="modal-sell-price"
+                id="modal-sell-price"
+                placeholder="0"
+              />
+              <p class="unit">WBNB</p>
+            </div>
+          </div>
+          <div class="modal-sell__rarible modal-sell__frame-2">
+            <p class="modal-sell__rarible-title">Rarible fee</p>
+            <div class="modal-sell__rarible-value modal-sell-value">
+              <p class="number" id="modal-sell-fee">0</p>
+              <p class="unit">%</p>
+            </div>
+          </div>
+          <div class="modal-sell__total modal-sell__frame-2">
+            <p class="modal-sell__total-title">Total</p>
+            <div class="modal-sell__total-value modal-sell-value">
+              <p id="modal-sell-total" class="number">0</p>
+              <p class="unit">WBNB</p>
+            </div>
           </div>
         </div>
-        <div class="modal-sell__rarible modal-sell__frame-2">
-          <p class="modal-sell__rarible-title">Rarible fee</p>
-          <div class="modal-sell__rarible-value modal-sell-value">
-            <p class="number" id="modal-sell-fee">0</p>
-            <p class="unit">%</p>
-          </div>
-        </div>
-        <div class="modal-sell__total modal-sell__frame-2">
-          <p class="modal-sell__total-title">Total</p>
-          <div class="modal-sell__total-value modal-sell-value">
-            <p id="modal-sell-total" class="number">0</p>
-            <p class="unit">NFT</p>
-          </div>
+        <div class="modal-sell__action">
+          <button type="submit" class="modal-sell__action-ok" id="modal-sell-ok">OK</button>
+          <button class="modal-sell__action-cancel" id="modal-sell-cancel">Cancel</button>
         </div>
       </div>
-      <div class="modal-sell__action">
-        <button type="submit" class="modal-sell__action-ok" id="modal-sell-ok">OK</button>
-        <button class="modal-sell__action-cancel" id="modal-sell-cancel">Cancel</button>
-      </div>
-    </div>
-  </form>
-  <script>
-    // Variables
-    const nftImage = document.getElementById('modal-sell-nft-img');
-    const nftName = document.getElementById('modal-sell-nft-name');
-    const nftAddress = document.getElementById('modal-sell-nft-address');
-    const price = document.getElementById('modal-sell-price');
-    const rarible = document.getElementById('modal-sell-fee');
-    const total = document.getElementById('modal-sell-total');
-    const modalStatus = document.getElementById('modal-sell-status');
+    </form>
+    <script>
+      // Variables
+      const nftImage = document.getElementById('modal-sell-nft-img')
+      const nftName = document.getElementById('modal-sell-nft-name')
+      const nftAddress = document.getElementById('modal-sell-nft-address')
+      const price = document.getElementById('modal-sell-price')
+      const rarible = document.getElementById('modal-sell-fee')
+      const total = document.getElementById('modal-sell-total')
+      const modalStatus = document.getElementById('modal-sell-status')
 
-    // add value for nft
-    nftImage.src = "https://uithcm-my.sharepoint.com/personal/19520171_ms_uit_edu_vn/Documents/IE104/image/NftEg2.png"
+      // add value for nft
+      nftImage.src =
+        'https://uithcm-my.sharepoint.com/personal/19520171_ms_uit_edu_vn/Documents/IE104/image/NftEg2.png'
 
-    nftName.innerHTML = "Name of NFT of user can see to sell"
-    nftName.title = "Name of NFT of user can see to sell"
+      nftName.innerHTML = 'Name of NFT of user can see to sell'
+      nftName.title = 'Name of NFT of user can see to sell'
 
-    // Validate 
-    function validate() {
-      if (!Number(price.value) || price.value == undefined) {
-        price.classList.add("modal-input-error");
-        return false;
-      }
-      else {
-        price.classList.remove("modal-input-error");
-      }
-      return true;
-    }
-
-    // total price
-    function totalPrice() {
-      if (validate()) {
-        var x = Number(price.value);
-        var y = Number(rarible.innerHTML);
-        var r = (x + (x * y / 100)).toFixed(10);
-        total.innerHTML = (x + (x * y / 100)).toFixed(10);
-        total.title = total.innerHTML + ' NFT'
+      // Validate
+      function validate() {
+        if (!Number(price.value) || price.value == undefined) {
+          price.classList.add('modal-input-error')
+          return false
+        } else {
+          price.classList.remove('modal-input-error')
+        }
+        return true
       }
 
-    }
-
-    price.onchange = totalPrice;
-    price.onblur = totalPrice;
-    total.title = total.innerHTML + ' NFT'
-
-    // submit
-    function handleSubmit(){
-      event.preventDefault();
-      if(validate()){
-        console.log("submit")
+      // total price
+      function totalPrice() {
+        if (validate()) {
+          var x = Number(price.value)
+          var y = Number(rarible.innerHTML)
+          var r = (x + (x * y) / 100).toFixed(10)
+          total.innerHTML = (x + (x * y) / 100).toFixed(10)
+          total.title = total.innerHTML + ' NFT'
+        }
       }
-      else{
-        console.log("error")
+
+      price.onchange = totalPrice
+      price.onblur = totalPrice
+      total.title = total.innerHTML + ' NFT'
+
+      // submit
+      function handleSubmit() {
+        event.preventDefault()
+        if (validate()) {
+          console.log('submit')
+        } else {
+          console.log('error')
+        }
       }
-    }
 
-    const modalOk = document.getElementById("modal-sell-ok")
-    modalOk.onclick = handleSubmit
-    
-
-  </script>
-</body>
-
+      const modalOk = document.getElementById('modal-sell-ok')
+      modalOk.onclick = handleSubmit
+    </script>
+  </body>
 </html>

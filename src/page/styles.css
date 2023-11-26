@@ -401,3 +401,69 @@ body {
     align-items: center;
   }
 }
+
+.footer {
+  top: 100px;
+  min-height: 200px;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer__title {
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--color-text);
+}
+
+.footer__description {
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--color-text-secondary01);
+}
+
+.footer .bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-primary);
+}
+
+.footer .bubbles .bubble {
+  position: absolute;
+  left: var(--position, 50%);
+  background-color: var(--color-primary);
+  border-radius: 100%;
+  animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+  transform: translate(-50%, 100%);
+}
+
+@keyframes bubble-size {
+
+  0%,
+  75% {
+    width: var(--size, 7rem);
+    height: var(--size, 7rem);
+  }
+
+  100% {
+    width: 0rem;
+    height: 0rem;
+  }
+}
+
+@keyframes bubble-move {
+  0% {
+    bottom: -1px;
+  }
+
+  100% {
+    bottom: var(--distance, 10rem);
+  }
+}

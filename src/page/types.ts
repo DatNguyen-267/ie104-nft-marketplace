@@ -18,6 +18,7 @@ export type NftItemElementObject = {
   eUserName: HTMLDivElement
   eAddressNFT: HTMLDivElement
   eOrderNFT: HTMLDivElement
+  eUserAvatar: HTMLImageElement
 }
 
 export enum NftItemClass {
@@ -32,6 +33,7 @@ export enum NftItemClass {
   UserName = 'nft__user-name',
   AddressNFT = 'nft__address',
   OrderNFT = 'nft__order',
+  UserAvatar = 'nft-card__user-avatar',
 }
 
 export enum LoadingStatus {

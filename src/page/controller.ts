@@ -1,3 +1,4 @@
+import { DEFAULT_ADDRESS } from '../constants'
 import { DEFAULT_NFT_ITEM } from '../constants/default-data'
 import { ModalBuyControllerInstance } from '../controller/modal-buy'
 import { UserPopoverControllerInstance } from '../controller/user'
@@ -59,6 +60,7 @@ export class LandingPageController {
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
+      eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
     try {
       eData.eImage.src = nftItem.imageGatewayUrl
@@ -77,6 +79,7 @@ export class LandingPageController {
       eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
       eData.eAddressNFT.title = nftItem.collectionAddress
       eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
+      eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)
     } catch (error) {
       console.log(error)
     }
@@ -140,6 +143,7 @@ export class LandingPageController {
     eData.eContainer.setAttribute(AttributeName.TokenId, nftItem.tokenId.toString())
     eData.eContainer.setAttribute(AttributeName.CltAddress, nftItem.collectionAddress)
     eData.eContainer.setAttribute(AttributeName.Loading, LoadingStatus.Pending)
+
     try {
       eData.eTitle.innerHTML = nftItem.title
       eData.eTitle.title = nftItem.title
@@ -170,6 +174,7 @@ export class LandingPageController {
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
       eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
+      eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
 
     eData.eImage.src = nftItem.imageGatewayUrl
@@ -192,6 +197,7 @@ export class LandingPageController {
       eData.eAddressNFT.title = nftItem.collectionAddress
       eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
       eData.eButtonBuy.style.display = 'flex'
+      eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)
     } catch (error) {
       console.log(error)
     }
