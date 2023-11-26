@@ -1,6 +1,6 @@
-import { AppError, WBNB_ADDRESS } from '../constants'
+import { ADDRESS_OF_CHAINS, AppError } from '../constants'
 import { AccountPageControllerInstance } from '../page/account/controller'
-import { connectAndSwitch, getAccountAddress } from '../services'
+import { connectAndSwitch, getChainCurrentChainId } from '../services'
 import { deposit } from '../services/token-exchange'
 
 export enum ModalDepositNFTId {
@@ -87,15 +87,21 @@ class ModalDepositController {
       throw new Error(AppError.CONNECT_WALLET_FAIL)
     }
 
-    const currentAddress = await getAccountAddress()
-
+    const currentChainId = await getChainCurrentChainId()
+    if (!currentChainId) {
+      throw new Error(AppError.CHAIN_ID_INVALID)
+    }
     try {
-      const response = await deposit(WBNB_ADDRESS, priceInput.value.toString())
+      const response = await deposit(
+        ADDRESS_OF_CHAINS[currentChainId].WIE104,
+        priceInput.value.toString(),
+      )
+      console.log(response)
       AccountPageControllerInstance.reloadBalance()
       this.close()
     } catch (error) {
       console.log(error)
-      return
+      throw error
     }
   }
 }

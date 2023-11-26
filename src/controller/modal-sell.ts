@@ -1,9 +1,10 @@
-import { AppError, BuyNftErrorMessage, DEFAULT_ADDRESS } from '../constants'
-import { connectAndSwitch, getAccountAddress } from '../services'
+import { ADDRESS_OF_CHAINS, AppError, BuyNftErrorMessage, DEFAULT_ADDRESS } from '../constants'
+import { connectAndSwitch, getAccountAddress, getChainCurrentChainId } from '../services'
 import { createAskOrder } from '../services/market'
 import { NftItem } from '../types/nft'
 import { getAvatarByAddress } from '../utils/avatar'
 import { shorterAddress } from '../utils/common'
+import { WalletManagerInstance, showWalletInfo } from './wallet'
 
 export enum ModalSellNFTId {
   Container = 'modal-sell',
@@ -57,28 +58,40 @@ class ModalSellController {
       getAvatarByAddress(this.nftItem?.collectionAddress || DEFAULT_ADDRESS)
   }
   async sell() {
-    if (!this.nftItem) return
+    if (!this.nftItem) {
+      throw new Error(AppError.INPUT_INVALID)
+    }
+
     try {
-      connectAndSwitch()
+      await connectAndSwitch()
+      WalletManagerInstance.listener()
+      WalletManagerInstance.updateAccountAddress()
+      showWalletInfo(WalletManagerInstance.currentAddress)
     } catch (error) {
       throw new Error(AppError.CONNECT_WALLET_FAIL)
     }
 
     const currentAddress = await getAccountAddress()
     if (this.nftItem?.seller?.toLowerCase() === currentAddress?.toLowerCase()) {
-      console.log(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
-      return
+      throw new Error(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
     }
 
     const modalItemPrice = document.getElementById(ModalSellNFTId.ItemPrice) as HTMLInputElement
     const price = modalItemPrice.value
     if (!price) {
       console.log(AppError.SOME_ERROR_HAS_OCCUR)
-      return
+      throw new Error(AppError.SOME_ERROR_HAS_OCCUR)
     }
+
+    const currentChainId = await getChainCurrentChainId()
+    if (!currentChainId) {
+      throw new Error(AppError.CHAIN_ID_INVALID)
+    }
+    const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
 
     try {
       const response = await createAskOrder(
+        currentMarketAddress,
         this.nftItem.collectionAddress,
         this.nftItem.tokenId,
         price,
@@ -86,8 +99,7 @@ class ModalSellController {
       console.log(response)
       this.close()
     } catch (error) {
-      console.log(error)
-      return
+      throw error
     }
   }
   updateTotal() {

@@ -1,9 +1,3 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
-import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
-import { shorterAddress } from '../utils'
-
 export enum ToastId {
   Container = 'toast-notifications',
 }
@@ -15,20 +9,20 @@ export enum ToastType {
   info = 'info',
 }
 
-const toastDetails: {[key: string]: any;} = {
-  'success': {
-    icon: "fa-check-circle",
+const toastDetails: { [key: string]: any } = {
+  success: {
+    icon: 'fa-check-circle',
   },
-  'error': {
-    icon: "fa-times-circle",
+  error: {
+    icon: 'fa-times-circle',
   },
-  'warning': {
-    icon: "fa-exclamation-circle",
+  warning: {
+    icon: 'fa-exclamation-circle',
   },
-  'info': {
-    icon: "fa-info-circle",
+  info: {
+    icon: 'fa-info-circle',
   },
-};
+}
 class ToastController {
   message: string | null
   type: string | null
@@ -47,35 +41,32 @@ class ToastController {
     return this.message
   }
 
-  listener() {
-   
-  }
+  listener() {}
 
-  createNewToast(type?: string, icon?: string,  message?: string){
-    const notifications = document.getElementById(ToastId.Container) as HTMLElement;
-    const toast = document.createElement('li') as HTMLElement;
-    
-    toast.className = `toast toast-${type}`;
+  createNewToast(type?: string, icon?: string, message?: string) {
+    const notifications = document.getElementById(ToastId.Container) as HTMLElement
+    const toast = document.createElement('li') as HTMLElement
+
+    toast.className = `toast toast-${type}`
     toast.innerHTML = `
     <div class="toast-column">
             <i class="fa ${icon}"></i>
             <span>${this.message}</span>
           </div>
-    `;
-    notifications.insertBefore(toast, notifications.children[0]);
+    `
+    notifications.insertBefore(toast, notifications.children[0])
     this.close(toast)
   }
 
   close(toast: HTMLElement) {
-    toast.classList.add("remove");
-    setTimeout(() => toast.remove(), 5000);
+    toast.classList.add('remove')
+    setTimeout(() => toast.remove(), 5000)
   }
   open() {
-    let type= this.type? this.type.toString() : ToastType.info;
-    const { icon, title } = toastDetails[type];
+    let type = this.type ? this.type.toString() : ToastType.info
+    const { icon, title } = toastDetails[type]
     this.createNewToast(type, icon, this.message?.toString())
   }
- 
 }
 
 export const ToastControllerInstance = new ToastController()

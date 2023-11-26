@@ -21,7 +21,7 @@
 <!-- market service -->
 
 - createOrder: Allows users to list their NFTs for sale with customizable details
-- buyTokenUsingWBNB: Enables users to buy NFTs using Wrapped Binance Coin (WBNB).
+- buyTokenUsingWIE104: Enables users to buy NFTs using Wrapped IE104 Coin (WIE104).
 - viewAsksByCollection: Displays NFTs for sale within a specific collection.
 - viewAsksByCollectionAndSeller: Shows NFTs for sale by a specific seller within a collection.
 - approveExchangeToken: Allows users to approve a token to be used in an exchange or trading operation.

@@ -1,10 +1,13 @@
-import { DEFAULT_ADDRESS } from '../../constants'
+import { ADDRESS_OF_CHAINS, DEFAULT_ADDRESS } from '../../constants'
+import { CHAINS } from '../../constants/chains'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 import { ModalBuyControllerInstance } from '../../controller/modal-buy'
 import { UserPopoverControllerInstance } from '../../controller/user'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import {
   connectAndSwitch,
   getAccountAddress,
+  getChainCurrentChainId,
   getMetadata,
   getTokenUri,
   getUrlImage,
@@ -145,9 +148,6 @@ export class ExplorePageController {
 
   async handleBuyNft(nftItem: NftItem) {
     try {
-      await connectAndSwitch()
-      await UserPopoverControllerInstance.connect()
-
       try {
         ModalBuyControllerInstance.set(nftItem)
         ModalBuyControllerInstance.open()
@@ -162,13 +162,21 @@ export class ExplorePageController {
       console.log('listNftContainer is not exists')
       return
     }
+    const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
+    const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
 
     try {
-      const collections = await viewMarketCollections()
+      const collections = await viewMarketCollections(currentMarketAddress)
+
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
-            const asksOfCollection = await viewAsksByCollection(collectionAddress, 0, 100)
+            const asksOfCollection = await viewAsksByCollection(
+              currentMarketAddress,
+              collectionAddress,
+              0,
+              100,
+            )
             if (
               asksOfCollection &&
               asksOfCollection.tokenIds &&

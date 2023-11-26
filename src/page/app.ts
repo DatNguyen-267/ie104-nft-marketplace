@@ -88,13 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ModalBuyControllerInstance.buy()
       .then((res) => {
         LandingPageControllerInstance.getAllNftOfMarket()
+        LoadingControllerInstance.close()
       })
       .catch((err) => {
         console.log(err)
       })
-      .finally(() => {
-        LoadingControllerInstance.close()
-      })
+      .finally(() => {})
   })
   function animationText() {
     const sentences = ['SELL NFTs', 'CREATE YOUR NFTs']

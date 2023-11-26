@@ -96,10 +96,10 @@ modalButtonAcceptDelist.addEventListener('click', (e) => {
   ModalDelistControllerInstance.delist()
     .then((res) => {
       AccountPageControllerInstance.getAllNftOfAddress()
-    })
-    .finally(() => {
       LoadingControllerInstance.close()
     })
+    .catch((err) => {})
+    .finally(() => {})
 })
 
 const modalButtonAccept = document.getElementById(ModalSellNFTId.ButtonAccept) as HTMLButtonElement
@@ -108,10 +108,10 @@ modalButtonAccept.addEventListener('click', (e) => {
   ModalSellControllerInstance.sell()
     .then((res) => {
       AccountPageControllerInstance.getAllNftOfAddress()
-    })
-    .finally(() => {
       LoadingControllerInstance.close()
     })
+    .catch((err) => {})
+    .finally(() => {})
 })
 
 // ============================ Header =====================================

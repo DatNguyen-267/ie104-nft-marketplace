@@ -1,16 +1,12 @@
 import { ethers } from 'ethers'
-import { WBNB_ABI } from '../abis'
+import { WIE104_ABI } from '../abis'
 import { ProviderOptions } from '../types'
-import { getDefaultProvider, getProvider } from './provider'
+import { getDefaultProvider } from './provider'
 
-export async function getErc20Balance(
-  cltAddress: string,
-  walletAddress: string,
-  options?: ProviderOptions,
-): Promise<string> {
+export async function getErc20Balance(cltAddress: string, walletAddress: string): Promise<string> {
   try {
-    const provider = options?.provider || getDefaultProvider()
-    const contract = new ethers.Contract(cltAddress, WBNB_ABI, provider)
+    const provider = getDefaultProvider()
+    const contract = new ethers.Contract(cltAddress, WIE104_ABI, provider)
     const balance = await contract.balanceOf(walletAddress)
     return balance.toString()
   } catch (error) {
@@ -18,7 +14,7 @@ export async function getErc20Balance(
   }
 }
 
-export async function getBalanceNativeToken(walletAddress: string, options?: ProviderOptions) {
+export async function getBalanceNativeToken(walletAddress: string) {
   try {
     const provider = getDefaultProvider()
     if (!provider) return

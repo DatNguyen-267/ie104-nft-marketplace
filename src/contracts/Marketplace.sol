@@ -1233,7 +1233,7 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
    * @param _tokenId: tokenId of the NFT purchased
    * @param _price: price (must be equal to the askPrice set by the seller)
    */
-  function buyTokenUsingWBNB(
+  function buyTokenUsingWIE104(
     address _collection,
     uint256 _tokenId,
     uint256 _price

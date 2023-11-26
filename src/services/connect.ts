@@ -1,7 +1,9 @@
 import { ethers } from 'ethers'
 import { AppError } from '../constants'
-import { getDefaultProvider, getProvider } from './provider'
+
+import { CHAINS } from '../constants/chains'
 import { convertWalletError } from '../utils/errors'
+import { getDefaultProvider } from './provider'
 
 export async function connectEarly() {
   console.log('run')
@@ -21,36 +23,34 @@ export async function connectEarly() {
       }
     })
 }
-export async function switchToNetwork(
-  provider: any,
-  chainId: ChainIdSupported,
-): Promise<null | void> {
+export async function switchToNetwork(provider: any, chainId: string): Promise<null | void> {
   const formattedChainId = ethers.BigNumber.from(chainId).toHexString()
+
   if (!provider) {
-    return
+    throw new Error(AppError.PROVIDER_IS_NOT_VALID)
   }
-  if (!Object.keys(CHAIN_INFO).includes(chainId)) {
+
+  const chainTarget = CHAINS.find((chain) => chain.chainId === chainId)
+
+  if (!chainTarget) {
     throw new Error(AppError.NOT_SUPPORTED_CHAIN_ID)
   }
   if (!window.ethereum) return
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: formattedChainId }],
+      params: [{ chainId: chainTarget.chainIdHex }],
     })
   } catch (error) {
-    console.log(error)
-    const info = CHAIN_INFO[chainId]
-
     await window.ethereum.request({
       method: 'wallet_addEthereumChain',
       params: [
         {
-          chainId: info.chainIdHex,
-          chainName: info.chainName,
-          rpcUrls: [info.rpcUrl],
-          nativeCurrency: info.nativeCurrency,
-          blockExplorerUrls: [info.blockExplorerUrl],
+          chainId: chainTarget.chainIdHex,
+          chainName: chainTarget.chainName,
+          rpcUrls: [chainTarget.rpcUrl],
+          nativeCurrency: chainTarget.nativeCurrency,
+          blockExplorerUrls: [chainTarget.blockExplorerUrl],
         },
       ],
     })
@@ -82,19 +82,17 @@ export async function connect() {
 }
 export async function connectAndSwitch() {
   try {
-    await connect()
-      .then((res) => {})
-      .catch((err) => {
-        if (err.message === AppError.NOT_INSTALLED_METAMASK) {
-        }
-        console.log(convertWalletError(err))
-      })
+    await connect().then((res) => {})
     const provider = getDefaultProvider()
     if (!provider) {
-      return
+      throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    await switchToNetwork(provider.provider, '4102')
-  } catch (error) {}
+
+    const currentChainId = CHAINS[0].chainId
+    await switchToNetwork(provider.provider, currentChainId)
+  } catch (error) {
+    throw error
+  }
 }
 export async function getBalance(contractAddress: string) {
   if (typeof window.ethereum !== 'undefined') {
@@ -102,22 +100,6 @@ export async function getBalance(contractAddress: string) {
     const balance = await provider.getBalance(contractAddress)
     console.log(ethers.utils.formatEther(balance))
   }
-}
-
-export type ChainIdSupported = '4102'
-export const CHAIN_INFO = {
-  '4102': {
-    chainId: '4102',
-    chainIdHex: '0x1006',
-    chainName: 'AIOZ Network Testnet',
-    rpcUrl: 'https://eth-ds.testnet.aioz.network',
-    nativeCurrency: {
-      name: 'AIOZ',
-      symbol: 'AIOZ',
-      decimals: 18,
-    },
-    blockExplorerUrl: 'https://testnet.explorer.aioz.network',
-  },
 }
 
 export async function getAccountAddress() {
@@ -129,6 +111,25 @@ export async function getAccountAddress() {
     } catch (error) {
       console.log(error)
       return ''
+    }
+  }
+}
+
+export async function getChainCurrentChainId() {
+  if (typeof window.ethereum !== 'undefined') {
+    const provider = getDefaultProvider()
+    if (!provider) return null
+    try {
+      const chainId = await provider?.send('eth_chainId', [])
+      const isSupport = CHAINS.find((chain) => chain.chainId === chainId)
+      if (!isSupport) {
+        return null
+      } else {
+        return chainId
+      }
+    } catch (error) {
+      console.log(error)
+      return null
     }
   }
 }

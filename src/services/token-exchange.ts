@@ -1,11 +1,11 @@
 import { ethers } from 'ethers'
 import { TOKEN_EXCHANGE_ABI } from '../abis'
-import { AppError, MARKETPLACE_ADDRESS } from '../constants'
+import { AppError } from '../constants'
 import { ProviderOptions } from '../types/provider'
 import { getDefaultProvider, getProvider } from './provider'
 
 export async function approveTokenExchange(
-  nftAddressGuy = MARKETPLACE_ADDRESS,
+  nftAddressGuy: string,
   tokenExchangeAddress: string,
   wad: string,
   providerOptions?: ProviderOptions,
@@ -33,7 +33,7 @@ export async function deposit(
   value: string, // unit Ether
 ) {
   try {
-    let provider = getProvider()
+    let provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }

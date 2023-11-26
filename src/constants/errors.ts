@@ -10,6 +10,8 @@ export enum AppError {
   OWNER_IS_NOT_VALID = 'Owner is not valid',
   CONNECT_WALLET_FAIL = 'Connect wallet fail',
   INPUT_INVALID = 'Input invalid',
+
+  CHAIN_ID_INVALID = 'ChainID invalid',
 }
 
 export enum BuyNftErrorMessage {

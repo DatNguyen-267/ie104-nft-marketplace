@@ -1,9 +1,12 @@
+import { ADDRESS_OF_CHAINS } from '../../constants'
+import { CHAINS } from '../../constants/chains'
 import { ModalBuyControllerInstance } from '../../controller/modal-buy'
 import { UserPopoverControllerInstance } from '../../controller/user'
 import {
   GetAllTokenIdOfCollectionResponse,
   connectAndSwitch,
   getAllTokenIdOfCollection,
+  getChainCurrentChainId,
   getMetadata,
   getOwnerOfCollection,
   getTokenUri,
@@ -187,6 +190,9 @@ export class CollectionPageController {
       PageElementId.ListNftContainer,
     ) as HTMLDivElement
 
+    const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
+    const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
+
     try {
       const ownerAddress = await getOwnerOfCollection(cltAddress)
       labelCollectionOwner.innerHTML = shorterAddress(ownerAddress)
@@ -222,7 +228,12 @@ export class CollectionPageController {
       })
 
       try {
-        const asksOfCollection = await viewAsksByCollection(cltAddress, 0, 100)
+        const asksOfCollection = await viewAsksByCollection(
+          currentMarketAddress,
+          cltAddress,
+          0,
+          100,
+        )
         if (asksOfCollection && asksOfCollection.tokenIds && asksOfCollection.tokenIds.length > 0) {
           asksOfCollection.tokenIds.forEach(async (tokenId, index) => {
             const currentIndex = listItem.findIndex((item) => item.tokenId === tokenId)

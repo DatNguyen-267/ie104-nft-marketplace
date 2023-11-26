@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ModalBuyControllerInstance.buy()
       .then((res) => {
         ExplorePageControllerInstance.getAllNftOfMarket()
-      })
-      .finally(() => {
         LoadingControllerInstance.close()
       })
+      .catch((err) => {})
+      .finally(() => {})
   })
 
   initPage()

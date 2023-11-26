@@ -1,4 +1,7 @@
+import { ADDRESS_OF_CHAINS } from '../../constants'
+import { CHAINS } from '../../constants/chains'
 import {
+  getChainCurrentChainId,
   getNameOfCollection,
   getOwnerOfCollection,
   getTokenUri,
@@ -141,8 +144,9 @@ export class ExploreCollectionPageController {
       PageElementId.ListCollectionContainer,
     ) as HTMLDivElement
 
+    const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
     try {
-      const collections = await viewMarketCollections()
+      const collections = await viewMarketCollections(ADDRESS_OF_CHAINS[currentChainId].MARKET)
       console.log(collections)
       await Promise.all(
         collections.collectionDetails.map(

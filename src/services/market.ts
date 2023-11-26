@@ -1,6 +1,6 @@
 import { BigNumber, ethers } from 'ethers'
 import { MARKETPLACE_ABI } from '../abis'
-import { AppError, DEFAULT_ADDRESS, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
+import { AppError, DEFAULT_ADDRESS } from '../constants'
 import { approveSpenderToAccessNft } from './nft'
 import { getDefaultProvider, getProvider, getRpcProvider } from './provider'
 import { approveTokenExchange } from './token-exchange'
@@ -23,16 +23,17 @@ export type ViewMarketCollectionsResponse = {
  * @param size: size of the response
  */
 export async function viewMarketCollections(
+  marketAddress: string,
   cursor: number = 0,
   size: number = 10,
 ): Promise<ViewMarketCollectionsResponse> {
   try {
-    const provider = getRpcProvider()
+    const provider = await getRpcProvider()
     if (!provider) {
       throw new Error('Provider is not found')
     }
 
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const collectionsResponse = await marketContract.viewCollections(cursor, size)
     const collectionDetails = collectionsResponse['collectionDetails'].map(
       (collectionDeital: any) => {
@@ -76,17 +77,18 @@ export type ViewAsksByCollectionAndSellerResponse = {
  * @param size: size of the response
  */
 export async function viewAsksByCollectionAndSeller(
+  marktAddress: string,
   collectionAddress: string,
   sellerAddress: string,
   cursor: number = 0,
   size: number = 10,
 ) {
   try {
-    const provider = getProvider()
+    const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marktAddress, MARKETPLACE_ABI, provider)
     const asks: ViewAsksByCollectionAndSellerRaw =
       await marketContract.viewAsksByCollectionAndSeller(
         collectionAddress,
@@ -116,13 +118,17 @@ export async function viewAsksByCollectionAndSeller(
  * @param collection: address of the collection
  * @param price: listed price
  */
-export async function calculatePriceAndFeesForCollection(collection: string, price: string) {
+export async function calculatePriceAndFeesForCollection(
+  marketAddress: string,
+  collection: string,
+  price: string,
+) {
   try {
-    const provider = getProvider()
+    const provider = getDefaultProvider()
     if (!provider) {
       throw new Error('Provider is not found')
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const collectionsResponse = await marketContract.calculatePriceAndFeesForCollection(
       collection,
       price,
@@ -144,16 +150,17 @@ export async function calculatePriceAndFeesForCollection(collection: string, pri
  * @param tokenIds: array of tokenId
  */
 export async function viewAsksByCollection(
+  marketAddress: string,
   collectionAddress: string,
   cursor: number = 0,
   size: number = 10,
 ) {
   try {
-    const provider = getRpcProvider()
+    const provider = await getRpcProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const asks: ViewAsksByCollectionAndSellerRaw = await marketContract.viewAsksByCollection(
       collectionAddress,
       cursor,
@@ -177,26 +184,28 @@ export async function viewAsksByCollection(
 }
 
 /**
- * @notice Buy token with WBNB by matching the price of an existing ask order
+ * @notice Buy token with WIE104 by matching the price of an existing ask order
  * @param _collection: contract address of the NFT
  * @param _tokenId: tokenId of the NFT purchased
  * @param _price: price (must be equal to the askPrice set by the seller) unit Ethers
  */
-export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: number, price: string) {
+export async function buyTokenUsingWIE104(
+  collectionAddress: string,
+  tokenId: number,
+  price: string,
+  wrapTokenAddress: string,
+  marketAddress: string,
+) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(
-      MARKETPLACE_ADDRESS,
-      MARKETPLACE_ABI,
-      provider.getSigner(),
-    )
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider.getSigner())
     try {
       const receiptApprove: any = await approveTokenExchange(
-        MARKETPLACE_ADDRESS,
-        WBNB_ADDRESS,
+        marketAddress,
+        wrapTokenAddress,
         ethers.utils.parseEther(price).toString(),
       )
       console.log(receiptApprove)
@@ -204,13 +213,13 @@ export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: numb
       console.log(error)
       throw new Error(AppError.APPROVE_TOKEN_EXCHANGE_FAILED)
     }
-    const transaction = await marketContract.buyTokenUsingWBNB(
+    const transaction = await marketContract.buyTokenUsingWIE104(
       collectionAddress,
       tokenId,
       ethers.utils.parseEther(price),
     )
     const transactionReceipt: any = await transaction.wait()
-    console.log('buyTokenUsingWBNB Receipt:', transactionReceipt)
+    console.log('buyTokenUsingWIE104 Receipt:', transactionReceipt)
     return transactionReceipt
   } catch (error) {
     console.log(error)
@@ -224,21 +233,22 @@ export async function buyTokenUsingWBNB(collectionAddress: string, tokenId: numb
  * @param _tokenId: tokenId of the NFT
  * @param _askPrice: price for listing (in wei)
  */
-export async function createAskOrder(collectionAddress: string, tokenId: number, price: string) {
+export async function createAskOrder(
+  marketAddress: string,
+  collectionAddress: string,
+  tokenId: number,
+  price: string,
+) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(
-      MARKETPLACE_ADDRESS,
-      MARKETPLACE_ABI,
-      provider.getSigner(),
-    )
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider.getSigner())
     try {
       const receiptApprove = await approveSpenderToAccessNft(
         collectionAddress,
-        MARKETPLACE_ADDRESS,
+        marketAddress,
         tokenId,
       )
       console.log(receiptApprove)
@@ -269,6 +279,7 @@ export async function createAskOrder(collectionAddress: string, tokenId: number,
  * @dev Callable by admin
  */
 export async function importCollection(
+  marketAddress: string,
   collectionAddress: string,
   creatorAddress: string,
   tradingFee: number = 100,
@@ -276,15 +287,11 @@ export async function importCollection(
   whiteListChecker = DEFAULT_ADDRESS,
 ) {
   try {
-    const provider = getProvider()
+    const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(
-      MARKETPLACE_ADDRESS,
-      MARKETPLACE_ABI,
-      provider.getSigner(),
-    )
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider.getSigner())
     const addResponse = await marketContract.addCollection(
       collectionAddress,
       creatorAddress,
@@ -292,6 +299,7 @@ export async function importCollection(
       tradingFee,
       creatorFee,
     )
+    console.log(marketContract)
     return {}
   } catch (error) {
     throw error
@@ -303,13 +311,17 @@ export async function importCollection(
  * @param _collection: contract address of the NFT
  * @param _tokenId: tokenId of the NFT
  */
-export async function cancelAskOrder(collectionAddress: string, tokenId: string) {
+export async function cancelAskOrder(
+  marketAddress: string,
+  collectionAddress: string,
+  tokenId: string,
+) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const response = await marketContract.cancelAskOrder(collectionAddress, tokenId)
     return response
   } catch (error) {
@@ -323,13 +335,18 @@ export async function cancelAskOrder(collectionAddress: string, tokenId: string)
  * @param _tokenId: tokenId of the NFT
  * @param _newPrice: new price for listing (in wei)
  */
-export async function modifyAskOrder(collectionAddress: string, tokenId: string, newPrice: string) {
+export async function modifyAskOrder(
+  marketAddress: string,
+  collectionAddress: string,
+  tokenId: string,
+  newPrice: string,
+) {
   try {
-    const provider = getProvider()
+    const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const response = await marketContract.modifyAskOrder(collectionAddress, tokenId, newPrice)
     return {}
   } catch (error) {
@@ -342,13 +359,17 @@ export async function modifyAskOrder(collectionAddress: string, tokenId: string,
  * @param collection: address of the collection
  * @param tokenId: array of tokenId
  */
-export async function viewAskByCollectionAndTokenId(collectionAddress: string, tokenId: string) {
+export async function viewAskByCollectionAndTokenId(
+  marketAddress: string,
+  collectionAddress: string,
+  tokenId: string,
+) {
   try {
-    const provider = getProvider()
+    const provider = await getRpcProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const response = await marketContract.viewAsksByCollectionAndTokenIds(collectionAddress, [
       tokenId,
     ])
@@ -364,15 +385,17 @@ export async function viewAskByCollectionAndTokenId(collectionAddress: string, t
  * @param tokenId: array of tokenId
  */
 export async function viewAsksByCollectionAndTokenIds(
+  marketAddress: string,
+
   collectionAddress: string,
   tokenIds: string[],
 ) {
   try {
-    const provider = getProvider()
+    const provider = await getProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(MARKETPLACE_ADDRESS, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
     const response = await marketContract.viewAsksByCollectionAndTokenIds(
       collectionAddress,
       tokenIds,

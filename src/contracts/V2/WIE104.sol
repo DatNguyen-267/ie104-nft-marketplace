@@ -26,7 +26,7 @@ contract WIE104 {
   }
 
   function deposit() public payable {
-    balanceOf[msg.sender] += msg.value * 1000;
+    balanceOf[msg.sender] += msg.value * 100000;
     Deposit(msg.sender, msg.value);
   }
 

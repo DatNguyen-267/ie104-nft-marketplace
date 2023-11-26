@@ -1,6 +1,7 @@
-import { AppError, NFT_ADDRESS } from '../../constants'
+import { AppError } from '../../constants'
+import { CHAINS } from '../../constants/chains'
 import { showWalletInfo } from '../../controller/wallet'
-import { getDefaultProvider, getProvider } from '../../services'
+import { getDefaultProvider } from '../../services'
 import { connect, switchToNetwork } from '../../services/connect'
 import { convertWalletError } from '../../utils/errors'
 import './styles.css'
@@ -29,7 +30,9 @@ const handleConnectWallet = async () => {
   if (!provider) {
     return
   }
-  await switchToNetwork(provider.provider, '4102')
+  try {
+    await switchToNetwork(provider.provider, CHAINS[0].chainId)
+  } catch (error) {}
 }
 
 const onClickInstallMetaMask = () => {}

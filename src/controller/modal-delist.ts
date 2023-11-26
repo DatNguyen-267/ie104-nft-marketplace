@@ -1,9 +1,10 @@
-import { AppError, DEFAULT_ADDRESS } from '../constants'
-import { connectAndSwitch } from '../services'
+import { ADDRESS_OF_CHAINS, AppError, DEFAULT_ADDRESS } from '../constants'
+import { connectAndSwitch, getChainCurrentChainId } from '../services'
 import { cancelAskOrder } from '../services/market'
 import { NftItem } from '../types/nft'
 import { getAvatarByAddress } from '../utils/avatar'
 import { shorterAddress } from '../utils/common'
+import { WalletManagerInstance, showWalletInfo } from './wallet'
 
 export enum ModalDelistNFTId {
   Container = 'modal-delist',
@@ -49,14 +50,27 @@ class ModalDelistController {
   }
 
   async delist() {
-    if (!this.nftItem) return
+    if (!this.nftItem) {
+      throw new Error(AppError.INPUT_INVALID)
+    }
     try {
-      connectAndSwitch()
+      await connectAndSwitch()
+      WalletManagerInstance.listener()
+      WalletManagerInstance.updateAccountAddress()
+      showWalletInfo(WalletManagerInstance.currentAddress)
     } catch (error) {
       throw new Error(AppError.CONNECT_WALLET_FAIL)
     }
+    const currentChainId = await getChainCurrentChainId()
+    if (!currentChainId) {
+      throw new Error(AppError.CHAIN_ID_INVALID)
+    }
+
+    const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
+
     try {
       const response = await cancelAskOrder(
+        currentMarketAddress,
         this.nftItem.collectionAddress,
         this.nftItem.tokenId.toString(),
       )
@@ -64,7 +78,7 @@ class ModalDelistController {
       this.close()
     } catch (error) {
       console.log(error)
-      return
+      throw error
     }
   }
 

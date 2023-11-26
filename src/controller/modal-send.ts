@@ -1,39 +1,25 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
-import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
-import { NftItem } from '../types/nft'
-import { shorterAddress } from '../utils'
-
 export enum ModalSendNFTId {
   Container = 'modal-send',
   ButtonAccept = 'modal-send-ok',
   ButtonClose = 'modal-send-close',
   ButtonCancel = 'modal-send-cancel',
   OverlayClose = 'modal-send-overlay-close',
-  FromAddress="modal-send-from",
-  ToAddress="modal-send-to",
-  TokenID="modal-send-token"
+  FromAddress = 'modal-send-from',
+  ToAddress = 'modal-send-to',
+  TokenID = 'modal-send-token',
 }
 
 class ModalSendController {
-
   constructor() {
     this.listener()
   }
 
-  set(){
+  set() {}
 
-  }
+  get() {}
 
-  get(){
-    
-  }
+  updateDomContent() {}
 
-  updateDomContent() {
- 
-  }
-  
   listener() {
     const modalButtonAccept = document.getElementById(
       ModalSendNFTId.ButtonAccept,
@@ -48,14 +34,13 @@ class ModalSendController {
       this.close()
     })
     ModalSendCancel.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
     modalOverlayClose.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault()
       this.close()
     })
-
   }
 
   close() {

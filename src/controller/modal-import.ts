@@ -1,9 +1,6 @@
-import { AppError, BuyNftErrorMessage, MARKETPLACE_ADDRESS, WBNB_ADDRESS } from '../constants'
-import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB, importCollection } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
-import { NftItem } from '../types/nft'
-import { shorterAddress } from '../utils'
+import { ADDRESS_OF_CHAINS } from '../constants'
+import { getAccountAddress, getChainCurrentChainId } from '../services'
+import { importCollection } from '../services/market'
 
 export enum ModalImportNFTId {
   Container = 'modal-import',
@@ -84,7 +81,18 @@ class ModalImportController {
         console.log('invalid input')
         return
       }
-      const response = await importCollection(cltAdressInput.value, currentAddress)
+      const currentChainId = await getChainCurrentChainId()
+      if (!currentChainId) {
+        console.log('ChainId is not valid')
+        return
+      }
+      const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
+
+      const response = await importCollection(
+        currentMarketAddress,
+        cltAdressInput.value,
+        currentAddress,
+      )
       console.log(response)
     } catch (error) {
       console.log(error)

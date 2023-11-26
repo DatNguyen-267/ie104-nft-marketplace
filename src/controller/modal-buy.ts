@@ -1,17 +1,10 @@
-import {
-  AppError,
-  BuyNftErrorMessage,
-  DEFAULT_ADDRESS,
-  MARKETPLACE_ADDRESS,
-  WBNB_ADDRESS,
-} from '../constants'
-import { connectAndSwitch, getAccountAddress } from '../services'
-import { buyTokenUsingWBNB } from '../services/market'
-import { approveTokenExchange } from '../services/token-exchange'
+import { ADDRESS_OF_CHAINS, AppError, BuyNftErrorMessage, DEFAULT_ADDRESS } from '../constants'
+import { connectAndSwitch, getAccountAddress, getChainCurrentChainId } from '../services'
+import { buyTokenUsingWIE104 } from '../services/market'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
 import { getAvatarByAddress } from '../utils/avatar'
-import { LoadingControllerInstance } from './loading'
+import { WalletManagerInstance, showWalletInfo } from './wallet'
 
 export enum ModalBuyNFTId {
   Container = 'modal-buy',
@@ -65,8 +58,19 @@ class ModalBuyController {
       getAvatarByAddress(this.nftItem?.collectionAddress || DEFAULT_ADDRESS)
   }
   async buy() {
+    if (!this.nftItem) {
+      throw new Error(AppError.INPUT_INVALID)
+    }
+
+    if (!this.nftItem?.price) {
+      throw new Error(AppError.SOME_ERROR_HAS_OCCUR)
+    }
+
     try {
-      connectAndSwitch()
+      await connectAndSwitch()
+      WalletManagerInstance.listener()
+      WalletManagerInstance.updateAccountAddress()
+      showWalletInfo(WalletManagerInstance.currentAddress)
     } catch (error) {
       throw new Error(AppError.CONNECT_WALLET_FAIL)
     }
@@ -75,21 +79,26 @@ class ModalBuyController {
     if (this.nftItem?.seller?.toLowerCase() === currentAddress?.toLowerCase()) {
       throw new Error(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
     }
-    if (!this.nftItem?.price) {
-      throw new Error(AppError.SOME_ERROR_HAS_OCCUR)
+
+    const currentChainId = await getChainCurrentChainId()
+    if (!currentChainId) {
+      console.log('ChainId is not valid')
+      throw new Error(AppError.CHAIN_ID_INVALID)
     }
-    if (!this.nftItem) return
+
     try {
-      const response = await buyTokenUsingWBNB(
+      const response = await buyTokenUsingWIE104(
         this.nftItem.collectionAddress,
         this.nftItem.tokenId,
         this.nftItem.price,
+        ADDRESS_OF_CHAINS[currentChainId].WIE104,
+        ADDRESS_OF_CHAINS[currentChainId].MARKET,
       )
       console.log(response)
       this.close()
     } catch (error) {
       console.log(error)
-      return
+      throw error
     }
   }
 

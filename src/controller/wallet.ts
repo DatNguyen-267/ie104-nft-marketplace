@@ -79,7 +79,6 @@ class WalletManager {
 
   listener() {
     if (window && window.ethereum) {
-      // window.ethereum.on('chainChanged', this.handleChainChanged)
       window.ethereum.on('accountsChanged', this.accountChanged)
     }
   }

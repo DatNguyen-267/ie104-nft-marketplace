@@ -1,7 +1,8 @@
 import { ethers } from 'ethers'
-import { DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
+import { ADDRESS_OF_CHAINS, DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
+import { CHAINS } from '../../constants/chains'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
-import { ERC20_TOKEN_SUPPORTED } from '../../constants/token'
+import { ModalDelistControllerInstance } from '../../controller/modal-delist'
 import { ModalSellControllerInstance } from '../../controller/modal-sell'
 import { UserPopoverControllerInstance } from '../../controller/user'
 import {
@@ -9,6 +10,7 @@ import {
   getAccountAddress,
   getAllNftOfCollectionAndOwnerAddress,
   getBalanceNativeToken,
+  getChainCurrentChainId,
   getDefaultProvider,
   getErc20Balance,
   getMetadata,
@@ -18,6 +20,7 @@ import {
 import { viewAsksByCollectionAndSeller, viewMarketCollections } from '../../services/market'
 import { NftItem } from '../../types/nft'
 import { shorterAddress } from '../../utils'
+import { getAvatarByAddress } from '../../utils/avatar'
 import {
   AttributeName,
   LoadingStatus,
@@ -25,8 +28,6 @@ import {
   NftItemElementObject,
   PageElementId,
 } from './types'
-import { getAvatarByAddress } from '../../utils/avatar'
-import { ModalDelistControllerInstance } from '../../controller/modal-delist'
 
 export class AccountPageController {
   constructor() {}
@@ -63,14 +64,19 @@ export class AccountPageController {
         PageElementId.LabelWalletToken,
       ) as HTMLDivElement
       if (!labelWalletToken) return
-      Promise.all(
-        Object.keys(ERC20_TOKEN_SUPPORTED).map(async (key: string) => {
-          const balance = await getErc20Balance(ERC20_TOKEN_SUPPORTED[key].address, walletAddress)
-          labelWalletToken.innerHTML = `${ethers.utils.formatEther(balance)} ${
-            ERC20_TOKEN_SUPPORTED[key].symbol
-          }`
-        }),
-      )
+
+      const currentChainId = await getChainCurrentChainId()
+      if (!currentChainId) {
+        return
+      }
+
+      const currentChainIndo = await CHAINS.find((chain) => chain.chainId === currentChainId)
+      if (!currentChainIndo) return
+
+      const balance = await getErc20Balance(ADDRESS_OF_CHAINS[currentChainId].WIE104, walletAddress)
+      labelWalletToken.innerHTML = `${ethers.utils.formatEther(balance)} ${
+        currentChainIndo?.nativeCurrency.symbol
+      }`
     } catch (error) {
       console.log(error)
     }
@@ -223,8 +229,6 @@ export class AccountPageController {
 
   async handleSellNft(nftItem: NftItem) {
     try {
-      await connectAndSwitch()
-      await UserPopoverControllerInstance.connect()
       ModalSellControllerInstance.set(nftItem)
       ModalSellControllerInstance.open()
     } catch (error) {
@@ -233,8 +237,6 @@ export class AccountPageController {
   }
   async handleDelistNft(nftItem: NftItem) {
     try {
-      await connectAndSwitch()
-      await UserPopoverControllerInstance.connect()
       ModalDelistControllerInstance.set(nftItem)
       ModalDelistControllerInstance.open()
     } catch (error) {
@@ -258,12 +260,15 @@ export class AccountPageController {
       console.log('Wallet address is not valid')
       throw new Error('Wallet address is not valid')
     }
+    const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
+    const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
     try {
-      const collections = await viewMarketCollections()
+      const collections = await viewMarketCollections(currentMarketAddress)
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
             const asksOfCollection = await viewAsksByCollectionAndSeller(
+              currentMarketAddress,
               collectionAddress,
               walletAddress,
               0,

@@ -1,8 +1,15 @@
-import { DEFAULT_ADDRESS } from '../constants'
+import { ADDRESS_OF_CHAINS, DEFAULT_ADDRESS } from '../constants'
+import { CHAINS } from '../constants/chains'
 import { DEFAULT_NFT_ITEM } from '../constants/default-data'
 import { ModalBuyControllerInstance } from '../controller/modal-buy'
 import { UserPopoverControllerInstance } from '../controller/user'
-import { connectAndSwitch, getMetadata, getTokenUri, getUrlImage } from '../services'
+import {
+  connectAndSwitch,
+  getChainCurrentChainId,
+  getMetadata,
+  getTokenUri,
+  getUrlImage,
+} from '../services'
 import { viewAsksByCollection, viewMarketCollections } from '../services/market'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
@@ -235,12 +242,19 @@ export class LandingPageController {
       return
     }
 
+    const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
+    const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
     try {
-      const collections = await viewMarketCollections()
+      const collections = await viewMarketCollections(currentMarketAddress)
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
-            const asksOfCollection = await viewAsksByCollection(collectionAddress, 0, 100)
+            const asksOfCollection = await viewAsksByCollection(
+              currentMarketAddress,
+              collectionAddress,
+              0,
+              100,
+            )
             if (
               asksOfCollection &&
               asksOfCollection.tokenIds &&
