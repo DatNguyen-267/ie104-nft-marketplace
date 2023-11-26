@@ -81,9 +81,9 @@
 }
 
 .section-info {
-  background-color: black;
+  /* background-color: black; */
   position: relative;
-  background: url("./../assets/images/NftEg.webp");
+  /* background: url("./../assets/images/NftEg.webp"); */
   background-repeat: no-repeat;
   background-size: cover, contain;
   background-position: center;
@@ -97,7 +97,7 @@
   bottom: 0px;
   left: 0px;
   /* background-color: rgba(var(--color-rgb-black), 0.6); */
-  background-color: color-mix(in srgb, var(--color-black) 60%, transparent);
+  /* background-color: color-mix(in srgb, var(--color-black) 60%, transparent); */
 }
 
 .section-info .container {
@@ -140,8 +140,8 @@
   color: var(--color-sub-text-100);
 }
 
-.section-info__intro .filled--button{
-  width: 210px !important; 
+.section-info__intro .filled--button {
+  width: 210px !important;
   /* height: 50px !important; */
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
@@ -244,7 +244,7 @@
   font-weight: 500;
 }
 
-.section-nfts__header .filled--button{
+.section-nfts__header .filled--button {
   /* height: 40px !important; */
   width: 140px !important;
   font-size: 14px !important;
@@ -267,6 +267,7 @@
 .nft-card__img {
   height: 296px !important;
 }
+
 /* ================================= HOW IT WORK ==================================== */
 .guide__header {
   display: flex;

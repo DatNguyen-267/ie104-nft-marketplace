@@ -1,0 +1,43 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #012030;
+    overflow: hidden;
+}
+
+.sentence {
+    color: #DAFDBA;
+    font-size: 3em;
+    position: relative;
+}
+
+
+.sentence::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: 6px;
+    width: 14px;
+    height: 2px;
+    background-color: #DAFDBA;
+    animation: blink 0.5s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
