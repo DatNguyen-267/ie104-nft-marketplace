@@ -1,4 +1,9 @@
 /* ========================== Base ====================================== */
+body {
+  background-size: 240px 240px;
+  background-color: transparent;
+  background-image: linear-gradient(transparent 239px, #ececec 1px), linear-gradient(to right, transparent 239px, #ececec 1px);
+}
 
 /* sroll card */
 .container-card {
@@ -78,15 +83,14 @@
   padding-top: 80px;
   display: flex;
   flex-direction: column;
+
 }
 
 .section-info {
-  /* background-color: black; */
   position: relative;
-  /* background: url("./../assets/images/NftEg.webp"); */
-  background-repeat: no-repeat;
-  background-size: cover, contain;
-  background-position: center;
+  height: auto;
+  min-height: 60vh;
+
 }
 
 .section-info::before {
@@ -122,22 +126,29 @@
 .section-info__intro .head-line {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 16px;
 }
 
 .section-info__intro .head-line .title {
   font-weight: 700;
-  line-height: 140%;
+  font-size: 60px;
+  line-height: 56px;
   text-transform: capitalize;
-  color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-family-title);
 }
 
+.section-info__intro .head-line .sentence {
+  height: 72px;
+}
+
+
 .section-info__intro .head-line .desc {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 160%;
   text-transform: capitalize;
-  color: var(--color-sub-text-100);
+  color: var(--color-text-secondary01);
 }
 
 .section-info__intro .filled--button {
@@ -362,7 +373,7 @@
 /*======================== Reponsive ===================*/
 
 .wide {
-  max-width: 1024px !important;
+  max-width: 1280px !important;
 }
 
 @media (max-width: 1023px) {

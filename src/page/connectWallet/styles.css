@@ -5,8 +5,10 @@
 @import url(../../components/toast/styles.css);
 
 body {
-  background-color: #141414;
-  color: var(--color-text);
+  min-height: 100vh;
+  background-size: 240px 240px;
+  background-color: transparent;
+  background-image: linear-gradient(transparent 239px, #ececec 1px), linear-gradient(to right, transparent 239px, #ececec 1px);
 }
 
 /* Container */
@@ -14,12 +16,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(../../assets/images/connectBackground.webp);
   position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
+  background-color: transparent;
+  min-height: 80vh;
   width: 100%;
   transform: translateY(-60px);
 }
@@ -32,7 +31,7 @@ body {
   bottom: 0px;
   left: 0px;
   /* background-color: rgba(var(--color-rgb-black), 0.6); */
-  background-color: color-mix(in srgb, var(--color-black) 0%, transparent);
+  /* background-color: color-mix(in srgb, var(--color-black) 0%, transparent); */
 }
 
 /* Form */
@@ -50,6 +49,9 @@ body {
   border-radius: 10px;
   background: var(--color-white);
   box-shadow: 0px 2px 50px 0px var(--color-gray-800);
+  /* border: 1px solid var(--color-primary); */
+  border: 1px solid;
+
 }
 
 .subtitle {
@@ -65,6 +67,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
 }
 
 /* card */
@@ -75,9 +78,11 @@ body {
   border: 2px solid transparent;
   grid-column: 2;
   cursor: pointer;
-  padding: 1.0rem ;
+  padding: 1.0rem;
   display: flex;
   gap: 15px;
+  border: 2px solid;
+  border-color: var(--color-border-100);
 }
 
 .card:hover {
@@ -92,7 +97,7 @@ body {
 .card-content {
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
 }
 
 .card-title {

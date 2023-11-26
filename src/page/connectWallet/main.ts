@@ -1,4 +1,5 @@
 import { AppError, NFT_ADDRESS } from '../../constants'
+import { showWalletInfo } from '../../controller/wallet'
 import { getDefaultProvider, getProvider } from '../../services'
 import { connect, switchToNetwork } from '../../services/connect'
 import { convertWalletError } from '../../utils/errors'
@@ -7,15 +8,16 @@ import './styles.css'
 let showAccount = document.querySelector('.showAccount') as HTMLElement
 
 const btnMetamask = document.querySelector('#btn-metamask') as HTMLButtonElement
+
 const handleConnectWallet = async () => {
   await connect()
     .then((res) => {
       showAccount.innerHTML = shortString(res[0])
       showAccount.title = res[0]
       window.localStorage.setItem('connected', 'injected')
+      showWalletInfo(res[0].currentAddress)
 
       // check login
-      checkLogin(true, res[0])
     })
     .catch((err) => {
       if (err.message === AppError.NOT_INSTALLED_METAMASK) {
