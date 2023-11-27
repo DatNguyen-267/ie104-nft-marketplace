@@ -3,36 +3,67 @@
   \***********************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (2) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (1) ***!
+  \***************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
   \***************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (4) ***!
   \***************************************************************************/
-@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (6) ***!
   \***************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (8) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (7) ***!
+  \***************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (9) ***!
   \***************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (10) ***!
   \****************************************************************************/
-@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (12) ***!
   \****************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (13) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (15) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (16) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (18) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (19) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (1) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (2) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -100,8 +131,8 @@
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -115,6 +146,14 @@
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -134,178 +173,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-}
-
-a,
-li {
-  text-decoration: none;
-  font-size: 16px;
-}
-
-ul {
-  list-style: none;
-}
-
-/* Text size */
-h1 {
-  font-size: 5.1rem;
-  line-height: 6.12rem;
-  /* 1.2 times the font-size */
-}
-
-h2 {
-  font-size: 3.8rem;
-  line-height: 4.56rem;
-  /* 1.2 times the font-size */
-}
-
-h3 {
-  font-size: 2.8rem;
-  line-height: 3.36rem;
-  /* 1.2 times the font-size */
-}
-
-h4 {
-  font-size: 2.2rem;
-  line-height: 2.64rem;
-  /* 1.2 times the font-size */
-}
-
-h5 {
-  font-size: 1.6rem;
-  line-height: 1.92rem;
-  /* 1.2 times the font-size */
-}
-
-h6 {
-  font-size: 1.4rem;
-  line-height: 1.6rem;
-  /* 1.2 times the font-size */
-}
-
-.text-body-1 {
-  font-size: 2.2rem;
-}
-
-.text-body-2 {
-  font-size: 1.6rem;
-}
-
-.text-body-3 {
-  font-size: 1.4rem;
-}
-
-.text-body-tiny {
-  font-size: 1.2rem;
-}
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
-  \***************************************************************************/
-:root {
-  /* ================ HEX ==================== */
-  --color-primary: #A259FF;
-  --color-white: #fff;
-  --color-black: #000;
-  --color-plum: #b80257;
-
-  /* Gray */
-  --color-gray-100: #FCFCFC;
-  --color-gray-200: #FAFAFA;
-  --color-gray-300: #F6F6F6;
-  --color-gray-400: #F2F2F2;
-  --color-gray-500: #F1F1F1;
-  --color-gray-600: #eeeeee;
-  --color-gray-700: #E9ECEF;
-  --color-gray-800: #E5E5E5;
-  --color-gray-900: #C4C4C4;
-  --color-gray-1000: #BBB8B8;
-  --color-gray-1100: #AFAFAF;
-  --color-gray-1200: #929191;
-  --color-gray-1300: #8D8D8D;
-  --color-gray-1400: #86878B;
-  --color-gray-1500: #666;
-  --color-gray-1600: #4C4C4C;
-  --color-gray-1700: #3B3B3B;
-  --color-gray-1800: #333;
-  --color-gray-1900: #2B2B2B;
-  --color-gray-2000: #292929;
-  --color-gray-2100: #242424;
-  --color-gray-2200: #040404;
-
-  /* Green */
-  --color-green-100: #74d8c1;
-  --color-green-200: #18E094;
-  --color-green-300: #00EC98;
-  --color-green-400: #00DF80;
-  --color-green-500: #00CB7E;
-  --color-green-600: #008000;
-
-  /* Red */
-  --color-red-100: #F04349;
-  --color-red-200: #f33a58;
-  --color-red-300: #fe2c55;
-  --color-red-400: #FF014E;
-  --color-red-500: #ff0000;
-
-  /* Yellow */
-  --color-yellow-100: #E9D8BD;
-  --color-yellow-200: #FFD21E;
-  --color-yellow-300: #ffff00;
-
-  /* Purple */
-  --color-purple-100: #A269ff;
-  --color-purple-200: #7C5DFB;
-
-  /* Blue */
-  --color-blue-100: #2cccff;
-  --color-blue-200: #00C5F9;
-  --color-blue-300: #04afdf;
-
-  /* Dark Blue */
-  --color-dark-blue-100: #3f3d56;
-  --color-dark-blue-200: #183153;
-  --color-dark-blue-300: #252337;
-
-  /* action */
-  --color-success: #18e094;
-  --color-warning: #ffd21e;
-  --color-error: #FF014E;
-
-  /* Text */
-  --color-text: #333;
-
-  --color-sub-text-100: #afafaf;
-  --color-sub-text-200: #919191;
-  --color-sub-text-300: #6d6d6d;
-  --color-sub-text-400: #4c4c4c;
-
-  /* general */
-  --color-btn-primary: #A259FF;
-  --color-btn-secondary: #8148cd;
-  --color-background: #fff;
-
-  --color-border-100: #E5E5E5;
-  --color-border-200: #bbb8b8;
-  --color-border-300: #929191;
-
-}
-
-* {
-  box-sizing: inherit;
-  margin: 0;
-  color: inherit;
-}
-
-/* use em vs rem with text */
-/* 0.1rem ~ 1px */
-/* 1.6rem ~ 16px */
-/* 2rem ~ 20px */
-
-html {
-  font-size: 62.5%;
-  line-height: 1.6rem;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -374,9 +242,12 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (5) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -444,8 +315,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -459,6 +330,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -478,6 +357,191 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
+}
+
+a,
+li {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Text size */
+h1 {
+  font-size: 5.1rem;
+  line-height: 6.12rem;
+  /* 1.2 times the font-size */
+}
+
+h2 {
+  font-size: 3.8rem;
+  line-height: 4.56rem;
+  /* 1.2 times the font-size */
+}
+
+h3 {
+  font-size: 2.8rem;
+  line-height: 3.36rem;
+  /* 1.2 times the font-size */
+}
+
+h4 {
+  font-size: 2.2rem;
+  line-height: 2.64rem;
+  /* 1.2 times the font-size */
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+  /* 1.2 times the font-size */
+}
+
+h6 {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  /* 1.2 times the font-size */
+}
+
+.text-body-1 {
+  font-size: 2.2rem;
+}
+
+.text-body-2 {
+  font-size: 1.6rem;
+}
+
+.text-body-3 {
+  font-size: 1.4rem;
+}
+
+.text-body-tiny {
+  font-size: 1.2rem;
+}
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (8) ***!
+  \***************************************************************************/
+:root {
+
+
+  /* light mode */
+  /* ================ HEX ==================== */
+  --color-primary: #A259FF;
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-plum: #b80257;
+
+  /* Gray */
+  --color-gray-100: #FCFCFC;
+  --color-gray-200: #FAFAFA;
+  --color-gray-300: #F6F6F6;
+  --color-gray-400: #F2F2F2;
+  --color-gray-500: #F1F1F1;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #E9ECEF;
+  --color-gray-800: #E5E5E5;
+  --color-gray-900: #C4C4C4;
+  --color-gray-1000: #BBB8B8;
+  --color-gray-1100: #AFAFAF;
+  --color-gray-1200: #929191;
+  --color-gray-1300: #8D8D8D;
+  --color-gray-1400: #86878B;
+  --color-gray-1500: #666;
+  --color-gray-1600: #4C4C4C;
+  --color-gray-1700: #3B3B3B;
+  --color-gray-1800: #333;
+  --color-gray-1900: #2B2B2B;
+  --color-gray-2000: #292929;
+  --color-gray-2100: #242424;
+  --color-gray-2200: #040404;
+
+  /* Green */
+  --color-green-100: #74d8c1;
+  --color-green-200: #18E094;
+  --color-green-300: #00EC98;
+  --color-green-400: #00DF80;
+  --color-green-500: #00CB7E;
+  --color-green-600: #008000;
+
+  /* Red */
+  --color-red-100: #F04349;
+  --color-red-200: #f33a58;
+  --color-red-300: #fe2c55;
+  --color-red-400: #FF014E;
+  --color-red-500: #ff0000;
+
+  /* Yellow */
+  --color-yellow-100: #E9D8BD;
+  --color-yellow-200: #FFD21E;
+  --color-yellow-300: #ffff00;
+
+  /* Purple */
+  --color-purple-100: #A269ff;
+  --color-purple-200: #7C5DFB;
+
+  /* Blue */
+  --color-blue-100: #2cccff;
+  --color-blue-200: #00C5F9;
+  --color-blue-300: #04afdf;
+
+  /* Dark Blue */
+  --color-dark-blue-100: #3f3d56;
+  --color-dark-blue-200: #183153;
+  --color-dark-blue-300: #252337;
+
+  /* action */
+  --color-success: #18e094;
+  --color-warning: #ffd21e;
+  --color-error: #FF014E;
+
+  /* Text */
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
+  --color-sub-text-100: #afafaf;
+  --color-sub-text-200: #919191;
+  --color-sub-text-300: #6d6d6d;
+  --color-sub-text-400: #4c4c4c;
+
+  /* general */
+  --color-btn-primary: #A259FF;
+  --color-btn-secondary: #8148cd;
+  --color-background: #fff;
+
+  --color-border-100: #E5E5E5;
+  --color-border-200: #bbb8b8;
+  --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
+
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  color: inherit;
+}
+
+/* use em vs rem with text */
+/* 0.1rem ~ 1px */
+/* 1.6rem ~ 16px */
+/* 2rem ~ 20px */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -557,13 +621,16 @@ h6 {
     /* background-position: center; */
     border: 2px solid  var(--color-gray-1000);
 }
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (7) ***!
-  \***************************************************************************/
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (11) ***!
+  \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -631,8 +698,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -646,6 +713,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -665,6 +740,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -732,9 +808,9 @@ h6 {
 /*!************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css ***!
   \************************************************************************************/
-.filled--button{
+.filled--button {
     background-color: var(--color-btn-primary);
-    border-radius: 20px;
+    border-radius: 16px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -745,40 +821,91 @@ h6 {
     cursor: pointer;
     /* transition: 0.3s; */
 }
-.icon--button{
+
+.icon--button {
     padding-right: 12px;
 }
-.filled--button.primary{
+
+.filled--button.primary {
     width: 206px;
     height: 72px;
     font-size: 22px;
 }
-.filled--button.secondary{
+
+.filled--button.secondary {
     width: 186px;
     height: 60px;
     font-size: 16px;
 }
-.filled--button.tertiary{
+
+.filled--button.tertiary {
     width: 186px;
     height: 46px;
     font-size: 16px;
 }
-.filled--button.outline{
+
+.filled--button.error {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.error:hover,
+filled--button.error:active {
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+.filled--button.error.outlined {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+
+.filled--button.error.outlined:hover,
+filled--button.error.outlined:active {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.outline {
     background-color: transparent;
     color: var(--color-btn-primary);
     border: 2px solid var(--color-btn-primary);
 }
-.filled--button:hover{
+
+.filled--button:hover {
     background-color: var(--color-btn-secondary);
 }
-.filled--button:active{
+
+.filled--button:active {
     background-color: var(--color-btn-primary);
 }
-.filled--button.outline:hover{
+
+.filled--button.outline:hover {
     background-color: var(--color-btn-primary);
     color: var(--color-white);
 }
-.filled--button.outline:active{
+
+.filled--button.outline:active {
     background-color: transparent;
     color: var(--color-btn-primary);
 }
@@ -786,18 +913,59 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/header/styles.css ***!
   \************************************************************************************/
 /* ================ HEADER ============== */
+#header-panel {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #212121;
+    height: 40px;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    gap: 20px;
+}
+
+#header-panel .header-panel-scroll {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    animation: scrollText 40s linear infinite;
+}
+
+#header-panel .header-panel-scroll .header-panel__item {
+    text-wrap: nowrap;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon {
+    color: #ffffff;
+}
+
+
+@keyframes scrollText {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(calc(-100% - 20px));
+    }
+}
+
 header {
     position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
-    top: 0;
+    top: 40px;
     z-index: 10;
-    height: 60px;
+    height: 80px;
     padding: 0px 50px;
-    background: var(--color-white);
-    box-shadow: 0px 1px 2px 0px var(--color-border-100);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* logo */
@@ -843,19 +1011,20 @@ header {
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease 0;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: var(--color-sub-text-300);
+    color: var(--color-text-secondary01);
+    font-family: var(--font-family-title);
     position: relative;
 }
 
 .header__nav-link li a:hover {
-    color: var(--color-dark-blue-200);
+    color: var(--color-black);
     font-weight: 700;
 }
 
 .header__nav-link .active {
-    color: var(--color-text);
+    color: var(--color-black);
     font-weight: 700;
 }
 
@@ -866,11 +1035,11 @@ header {
     height: 2px;
     width: 80%;
     transform: translateY(-5px);
-    background-color: var(--color-text);
+    /* background-color: var(--color-text); */
 }
 
 /* user */
-.header__user{
+.header__user {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -886,7 +1055,7 @@ header {
     font-size: 14px !important;
     font-weight: 600 !important;
     border-radius: 15px !important;
-    padding:0 1.3rem;
+    padding: 0 1.3rem;
     width: 100% !important;
     cursor: pointer;
     /* padding: 0px 10px;
@@ -897,6 +1066,7 @@ header {
     cursor: pointer;
     transition: all 0.3s ease 0; */
 }
+
 .header__nav-btn i {
     background-color: transparent;
     font-size: 14px;
@@ -1002,6 +1172,7 @@ header {
 .pop-up--user .pop-up-nav__link li {
     padding: 12px 30px;
 }
+
 .pop-up--user .pop-up-nav__link li a {
     font-size: 14px;
     font-weight: 600;
@@ -1016,6 +1187,7 @@ header {
 .alert-logout-icon-title {
     margin-bottom: 15px;
 }
+
 /*=========== Reposive ============ */
 @media (max-width: 880px) {
     .header__nav-link {
@@ -1058,6 +1230,7 @@ header {
     .header__nav-link {
         padding: 0 20px;
     }
+
     .pop-up--user .pop-up-container {
         right: 20px;
     }
@@ -1080,18 +1253,21 @@ header {
         font-size: 1.6rem;
         padding-right: 20px;
     }
+
     .pop-up--user .pop-up-container {
         right: 10px;
     }
 }
-
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (9) ***!
-  \***************************************************************************/
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (14) ***!
+  \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1159,8 +1335,8 @@ header {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1174,6 +1350,14 @@ header {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1193,6 +1377,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1373,12 +1558,15 @@ h6 {
     cursor: pointer;
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (11) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (17) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1446,8 +1634,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1461,6 +1649,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1480,6 +1676,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1618,12 +1815,15 @@ h6 {
     }
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (13) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (20) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1691,8 +1891,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1706,6 +1906,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1725,6 +1933,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1911,8 +2120,10 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/connectWallet/styles.css ***!
   \*************************************************************************************/
 body {
-  background-color: #141414;
-  color: var(--color-text);
+  min-height: 100vh;
+  background-size: 240px 240px;
+  background-color: transparent;
+  background-image: linear-gradient(transparent 239px, #ececec 1px), linear-gradient(to right, transparent 239px, #ececec 1px);
 }
 
 /* Container */
@@ -1920,12 +2131,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(connectBackground.webp);
   position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
+  background-color: transparent;
+  min-height: 80vh;
   width: 100%;
   transform: translateY(-60px);
 }
@@ -1938,7 +2146,7 @@ body {
   bottom: 0px;
   left: 0px;
   /* background-color: rgba(var(--color-rgb-black), 0.6); */
-  background-color: color-mix(in srgb, var(--color-black) 0%, transparent);
+  /* background-color: color-mix(in srgb, var(--color-black) 0%, transparent); */
 }
 
 /* Form */
@@ -1956,6 +2164,9 @@ body {
   border-radius: 10px;
   background: var(--color-white);
   box-shadow: 0px 2px 50px 0px var(--color-gray-800);
+  /* border: 1px solid var(--color-primary); */
+  border: 1px solid;
+
 }
 
 .subtitle {
@@ -1971,6 +2182,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
 }
 
 /* card */
@@ -1981,9 +2193,11 @@ body {
   border: 2px solid transparent;
   grid-column: 2;
   cursor: pointer;
-  padding: 1.0rem ;
+  padding: 1.0rem;
   display: flex;
   gap: 15px;
+  border: 2px solid;
+  border-color: var(--color-border-100);
 }
 
 .card:hover {
@@ -1998,7 +2212,7 @@ body {
 .card-content {
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
 }
 
 .card-title {
@@ -2041,6 +2255,5 @@ body {
   padding: 1rem;
   border-radius: 8px;
 }
-
 
 /*# sourceMappingURL=connectWallet.css.map*/

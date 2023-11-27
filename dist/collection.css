@@ -3,41 +3,81 @@
   \***********************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (2) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (1) ***!
+  \***************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
   \***************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (4) ***!
   \***************************************************************************/
-@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (6) ***!
   \***************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (8) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (7) ***!
+  \***************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (9) ***!
   \***************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (10) ***!
   \****************************************************************************/
-@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (12) ***!
   \****************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (14) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (13) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (15) ***!
   \****************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (16) ***!
   \****************************************************************************/
-@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (18) ***!
   \****************************************************************************/
 @import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (19) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (21) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (22) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (24) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (25) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (27) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=montserrat@500,700,701,200,401,301,400,601,100,101,201,300,600,501&display=swap" rel="stylesheet);
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (28) ***!
+  \****************************************************************************/
+@import url(https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap" rel="stylesheet);
 /*!***********************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/modal/modalBuyNFT/styles.css ***!
   \***********************************************************************************************/
@@ -702,11 +742,12 @@ text-overflow: ellipsis;
     gap: 10px;
 }
 
-.modal-input-error{
+.modal-input-error {
     border: 2px solid var(--color-red-300) !important;
     box-shadow: color-mix(in srgb, var(--color-red-100) 30%, transparent) 0px 0px 0px 1px;
     background-color: var(--color-gray-200) !important;
 }
+
 /* ================ modal-depos ================= */
 .modal-depos {
     display: flex;
@@ -729,7 +770,7 @@ text-overflow: ellipsis;
 
 .modal-depos-container {
     position: relative;
-    width: 375px;
+    width: 500px;
     max-height: 800px;
     display: flex;
     padding: 32px 32px 34px 32px;
@@ -769,33 +810,40 @@ text-overflow: ellipsis;
 }
 
 .modal-depos__main-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--color-text);
 }
 
 .modal-depos__main-desc {
     flex: 1;
-    font-size: 12px;
+    font-size: 16px;
+    line-height: 24px;
     display: flex;
     justify-content: center;
-   
+
 }
 
 .modal-depos__main-desc span {
     text-align: center;
     color: var(--color-text);
-    
+
 }
 
-.modal-depos__price-title{
+.modal-depos__price-title {
     font-size: 14px;
     font-weight: 600;
     color: var(--color-text);
 }
 
+.modal-depos__price-desc {
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--color-text);
+}
+
 /* input */
-.modal-depos-input{
+.modal-depos-input {
     width: 100%;
     padding: 8px 10px !important;
     border: none;
@@ -811,7 +859,7 @@ text-overflow: ellipsis;
     text-align: end;
 }
 
-.modal-depos-input:focus{
+.modal-depos-input:focus {
     outline: none;
     border: 2px solid var(--color-border-100);
 }
@@ -1019,12 +1067,15 @@ text-overflow: ellipsis;
     cursor: pointer;
 }
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (1) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (2) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1092,8 +1143,8 @@ text-overflow: ellipsis;
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1107,6 +1158,14 @@ text-overflow: ellipsis;
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1126,6 +1185,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1191,12 +1251,15 @@ h6 {
   font-size: 1.2rem;
 }
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (3) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (5) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1264,8 +1327,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1279,6 +1342,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1298,6 +1369,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1365,9 +1437,9 @@ h6 {
 /*!************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css ***!
   \************************************************************************************/
-.filled--button{
+.filled--button {
     background-color: var(--color-btn-primary);
-    border-radius: 20px;
+    border-radius: 16px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -1378,50 +1450,104 @@ h6 {
     cursor: pointer;
     /* transition: 0.3s; */
 }
-.icon--button{
+
+.icon--button {
     padding-right: 12px;
 }
-.filled--button.primary{
+
+.filled--button.primary {
     width: 206px;
     height: 72px;
     font-size: 22px;
 }
-.filled--button.secondary{
+
+.filled--button.secondary {
     width: 186px;
     height: 60px;
     font-size: 16px;
 }
-.filled--button.tertiary{
+
+.filled--button.tertiary {
     width: 186px;
     height: 46px;
     font-size: 16px;
 }
-.filled--button.outline{
+
+.filled--button.error {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.error:hover,
+filled--button.error:active {
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+.filled--button.error.outlined {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+
+.filled--button.error.outlined:hover,
+filled--button.error.outlined:active {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.outline {
     background-color: transparent;
     color: var(--color-btn-primary);
     border: 2px solid var(--color-btn-primary);
 }
-.filled--button:hover{
+
+.filled--button:hover {
     background-color: var(--color-btn-secondary);
 }
-.filled--button:active{
+
+.filled--button:active {
     background-color: var(--color-btn-primary);
 }
-.filled--button.outline:hover{
+
+.filled--button.outline:hover {
     background-color: var(--color-btn-primary);
     color: var(--color-white);
 }
-.filled--button.outline:active{
+
+.filled--button.outline:active {
     background-color: transparent;
     color: var(--color-btn-primary);
 }
 /*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (5) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (8) ***!
   \***************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1489,8 +1615,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1504,6 +1630,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1523,6 +1657,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1783,13 +1918,16 @@ h6 {
     font-size: 1.6rem !important;
     border-radius: 10px !important;
 }
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (7) ***!
-  \***************************************************************************/
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (11) ***!
+  \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -1857,8 +1995,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -1872,6 +2010,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -1891,6 +2037,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -1955,13 +2102,16 @@ h6 {
 .text-body-tiny {
   font-size: 1.2rem;
 }
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (9) ***!
-  \***************************************************************************/
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (14) ***!
+  \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -2029,8 +2179,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -2044,6 +2194,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -2063,6 +2221,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -2143,12 +2302,15 @@ h6 {
     border: 2px solid  var(--color-gray-1000);
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (11) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (17) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -2216,8 +2378,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -2231,6 +2393,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -2250,6 +2420,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -2317,9 +2488,9 @@ h6 {
 /*!****************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/button/styles.css (1) ***!
   \****************************************************************************************/
-.filled--button{
+.filled--button {
     background-color: var(--color-btn-primary);
-    border-radius: 20px;
+    border-radius: 16px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -2330,40 +2501,91 @@ h6 {
     cursor: pointer;
     /* transition: 0.3s; */
 }
-.icon--button{
+
+.icon--button {
     padding-right: 12px;
 }
-.filled--button.primary{
+
+.filled--button.primary {
     width: 206px;
     height: 72px;
     font-size: 22px;
 }
-.filled--button.secondary{
+
+.filled--button.secondary {
     width: 186px;
     height: 60px;
     font-size: 16px;
 }
-.filled--button.tertiary{
+
+.filled--button.tertiary {
     width: 186px;
     height: 46px;
     font-size: 16px;
 }
-.filled--button.outline{
+
+.filled--button.error {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.error:hover,
+filled--button.error:active {
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+.filled--button.error.outlined {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+
+
+.filled--button.error.outlined:hover,
+filled--button.error.outlined:active {
+    width: 186px;
+    height: 46px;
+    font-size: 16px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    border: 1px solid;
+    border-color: var(--color-red-500);
+}
+
+.filled--button.outline {
     background-color: transparent;
     color: var(--color-btn-primary);
     border: 2px solid var(--color-btn-primary);
 }
-.filled--button:hover{
+
+.filled--button:hover {
     background-color: var(--color-btn-secondary);
 }
-.filled--button:active{
+
+.filled--button:active {
     background-color: var(--color-btn-primary);
 }
-.filled--button.outline:hover{
+
+.filled--button.outline:hover {
     background-color: var(--color-btn-primary);
     color: var(--color-white);
 }
-.filled--button.outline:active{
+
+.filled--button.outline:active {
     background-color: transparent;
     color: var(--color-btn-primary);
 }
@@ -2371,18 +2593,59 @@ h6 {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/header/styles.css ***!
   \************************************************************************************/
 /* ================ HEADER ============== */
+#header-panel {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #212121;
+    height: 40px;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    gap: 20px;
+}
+
+#header-panel .header-panel-scroll {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    animation: scrollText 40s linear infinite;
+}
+
+#header-panel .header-panel-scroll .header-panel__item {
+    text-wrap: nowrap;
+}
+
+#header-panel .header-panel-scroll .header-panel__item-icon {
+    color: #ffffff;
+}
+
+
+@keyframes scrollText {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(calc(-100% - 20px));
+    }
+}
+
 header {
     position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
-    top: 0;
+    top: 40px;
     z-index: 10;
-    height: 60px;
+    height: 80px;
     padding: 0px 50px;
-    background: var(--color-white);
-    box-shadow: 0px 1px 2px 0px var(--color-border-100);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* logo */
@@ -2428,19 +2691,20 @@ header {
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease 0;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: var(--color-sub-text-300);
+    color: var(--color-text-secondary01);
+    font-family: var(--font-family-title);
     position: relative;
 }
 
 .header__nav-link li a:hover {
-    color: var(--color-dark-blue-200);
+    color: var(--color-black);
     font-weight: 700;
 }
 
 .header__nav-link .active {
-    color: var(--color-text);
+    color: var(--color-black);
     font-weight: 700;
 }
 
@@ -2451,11 +2715,11 @@ header {
     height: 2px;
     width: 80%;
     transform: translateY(-5px);
-    background-color: var(--color-text);
+    /* background-color: var(--color-text); */
 }
 
 /* user */
-.header__user{
+.header__user {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2471,7 +2735,7 @@ header {
     font-size: 14px !important;
     font-weight: 600 !important;
     border-radius: 15px !important;
-    padding:0 1.3rem;
+    padding: 0 1.3rem;
     width: 100% !important;
     cursor: pointer;
     /* padding: 0px 10px;
@@ -2482,6 +2746,7 @@ header {
     cursor: pointer;
     transition: all 0.3s ease 0; */
 }
+
 .header__nav-btn i {
     background-color: transparent;
     font-size: 14px;
@@ -2587,6 +2852,7 @@ header {
 .pop-up--user .pop-up-nav__link li {
     padding: 12px 30px;
 }
+
 .pop-up--user .pop-up-nav__link li a {
     font-size: 14px;
     font-weight: 600;
@@ -2601,6 +2867,7 @@ header {
 .alert-logout-icon-title {
     margin-bottom: 15px;
 }
+
 /*=========== Reposive ============ */
 @media (max-width: 880px) {
     .header__nav-link {
@@ -2643,6 +2910,7 @@ header {
     .header__nav-link {
         padding: 0 20px;
     }
+
     .pop-up--user .pop-up-container {
         right: 20px;
     }
@@ -2665,18 +2933,21 @@ header {
         font-size: 1.6rem;
         padding-right: 20px;
     }
+
     .pop-up--user .pop-up-container {
         right: 10px;
     }
 }
-
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (13) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (20) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -2744,8 +3015,8 @@ header {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -2759,6 +3030,14 @@ header {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -2778,6 +3057,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -2958,12 +3238,15 @@ h6 {
     cursor: pointer;
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (15) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (23) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -3031,8 +3314,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -3046,6 +3329,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -3065,6 +3356,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -3203,12 +3495,15 @@ h6 {
     }
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (17) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (26) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -3276,8 +3571,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -3291,6 +3586,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -3310,6 +3613,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -4091,12 +4395,15 @@ h6 {
   }
 }
 /*!****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (19) ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/base.css (29) ***!
   \****************************************************************************/
 :root {
+
+
+  /* light mode */
   /* ================ HEX ==================== */
   --color-primary: #A259FF;
-  --color-white: #fff;
+  --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
 
@@ -4164,8 +4471,8 @@ h6 {
   --color-error: #FF014E;
 
   /* Text */
-  --color-text: #333;
-
+  --color-text: #000;
+  --color-text-secondary01: #16161a99;
   --color-sub-text-100: #afafaf;
   --color-sub-text-200: #919191;
   --color-sub-text-300: #6d6d6d;
@@ -4179,6 +4486,14 @@ h6 {
   --color-border-100: #E5E5E5;
   --color-border-200: #bbb8b8;
   --color-border-300: #929191;
+
+
+  /* dark mode */
+  /* --color-white: #000;
+  --color-black: #fff;
+  --color-text: #fff; */
+
+  --font-family-title: 'Space Grotesk', sans-serif;
 
 }
 
@@ -4198,6 +4513,7 @@ html {
   line-height: 1.6rem;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-white);
 }
 
 a,
@@ -4275,7 +4591,7 @@ h6 {
   padding: 0;
 }
 
-.btn-back{
+.btn-back {
   position: absolute;
   top: 25px;
   left: 50px;
@@ -4288,18 +4604,21 @@ h6 {
   align-items: center;
   border-bottom: 1px solid var(--color-border-100);
 }
-.btn-back i{
+
+.btn-back i {
   font-size: 14px;
   transform: rotate(-180deg);
   color: var(--color-white);
 }
-.btn-back p{
+
+.btn-back p {
   font-size: 16px;
   color: var(--color-white);
 }
+
 .info__bg {
   width: 100%;
-  height: 300px;
+  height: 310px;
   background-image: url(collectionBg.webp);
   background-repeat: no-repeat;
   background-size: cover;
@@ -4352,6 +4671,7 @@ h6 {
   gap: 20px;
 
 }
+
 .info__collection-name {
   width: 100%;
   overflow: hidden;
@@ -4361,6 +4681,7 @@ h6 {
   font-weight: 700;
 
 }
+
 .info__collection-des {
   font-size: 18px;
   width: 100%;
@@ -4372,6 +4693,7 @@ h6 {
   color: var(--color-sub-text-100);
 
 }
+
 /* 
 .info__collection-action {
   width: 50%;
@@ -4388,7 +4710,8 @@ h6 {
   height: 45px !important;
   border-radius: 10px !important;
 }
-.info__collection-btn i{
+
+.info__collection-btn i {
   font-size: 14px;
 }
 
@@ -4431,7 +4754,7 @@ h6 {
   -webkit-line-clamp: 1;
   text-overflow: ellipsis;
   word-break: break-all;
-  
+
 }
 
 .info__collection-detail .collection__amount-value {
@@ -4625,6 +4948,42 @@ h6 {
     max-width: 100% !important;
   }
 
+}
+/*!******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/page-loading/styles.css ***!
+  \******************************************************************************************/
+.list-loading__container {
+    min-height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-loading__svg-container {
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.list-loading__svg-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: rorate infinite 1s linear;
+}
+
+@keyframes rorate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*# sourceMappingURL=collection.css.map*/

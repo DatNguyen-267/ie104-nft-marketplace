@@ -29893,6 +29893,494 @@ exports["default"] = throttledQueue;
 
 /***/ }),
 
+/***/ "./src/abis/Erc721.ts":
+/*!****************************!*\
+  !*** ./src/abis/Erc721.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ABI_ERC721: () => (/* binding */ ABI_ERC721)
+/* harmony export */ });
+var ABI_ERC721 = [
+    {
+        inputs: [],
+        stateMutability: 'nonpayable',
+        type: 'constructor',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'approved',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Approval',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
+            },
+        ],
+        name: 'ApprovalForAll',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'previousOwner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: 'address',
+                name: 'account',
+                type: 'address',
+            },
+        ],
+        name: 'Paused',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Transfer',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: 'address',
+                name: 'account',
+                type: 'address',
+            },
+        ],
+        name: 'Unpaused',
+        type: 'event',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'approve',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'balanceOf',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'burn',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'getApproved',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+        ],
+        name: 'isApprovedForAll',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'name',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'owner',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'ownerOf',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'pause',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'paused',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'renounceOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'string',
+                name: 'uri',
+                type: 'string',
+            },
+        ],
+        name: 'safeMint',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'bytes',
+                name: 'data',
+                type: 'bytes',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
+            },
+        ],
+        name: 'setApprovalForAll',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'bytes4',
+                name: 'interfaceId',
+                type: 'bytes4',
+            },
+        ],
+        name: 'supportsInterface',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'symbol',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenURI',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'transferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'transferOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'unpause',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+];
+
+
+/***/ }),
+
 /***/ "./src/abis/Marketplace.ts":
 /*!*********************************!*\
   !*** ./src/abis/Marketplace.ts ***!
@@ -29908,1841 +30396,2028 @@ var MARKETPLACE_ABI = [
     {
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                internalType: 'address',
+                name: '_adminAddress',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "_creator",
-                type: "address",
+                internalType: 'address',
+                name: '_treasuryAddress',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "_whitelistChecker",
-                type: "address",
+                internalType: 'address',
+                name: '_wrapTokenAddress',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_tradingFee",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_minimumAskPrice',
+                type: 'uint256',
             },
             {
-                internalType: "uint256",
-                name: "_creatorFee",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_maximumAskPrice',
+                type: 'uint256',
             },
         ],
-        name: "addCollection",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_adminAddress",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_treasuryAddress",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_WBNBAddress",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_minimumAskPrice",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_maximumAskPrice",
-                type: "uint256",
-            },
-        ],
-        stateMutability: "nonpayable",
-        type: "constructor",
+        stateMutability: 'nonpayable',
+        type: 'constructor',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "AskCancel",
-        type: "event",
+        name: 'AskCancel',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
             {
                 indexed: false,
-                internalType: "uint256",
-                name: "askPrice",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'askPrice',
+                type: 'uint256',
             },
         ],
-        name: "AskNew",
-        type: "event",
+        name: 'AskNew',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
             {
                 indexed: false,
-                internalType: "uint256",
-                name: "askPrice",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'askPrice',
+                type: 'uint256',
             },
         ],
-        name: "AskUpdate",
-        type: "event",
+        name: 'AskUpdate',
+        type: 'event',
     },
     {
+        anonymous: false,
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
         ],
-        name: "buyTokenUsingBNB",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
+        name: 'CollectionClose',
+        type: 'event',
     },
     {
+        anonymous: false,
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'creator',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_price",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'whitelistChecker',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'tradingFee',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'creatorFee',
+                type: 'uint256',
             },
         ],
-        name: "buyTokenUsingWBNB",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        name: 'CollectionNew',
+        type: 'event',
     },
     {
+        anonymous: false,
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'creator',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'whitelistChecker',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'tradingFee',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'creatorFee',
+                type: 'uint256',
             },
         ],
-        name: "cancelAskOrder",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        name: 'CollectionUpdate',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'admin',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'treasury',
+                type: 'address',
+            },
+        ],
+        name: 'NewAdminAndTreasuryAddresses',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'minimumAskPrice',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'maximumAskPrice',
+                type: 'uint256',
+            },
+        ],
+        name: 'NewMinimumAndMaximumAskPrices',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'token',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'NonFungibleTokenRecovery',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'previousOwner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'claimer',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'amount',
+                type: 'uint256',
+            },
+        ],
+        name: 'RevenueClaim',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'token',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'amount',
+                type: 'uint256',
+            },
+        ],
+        name: 'TokenRecovery',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'address',
+                name: 'buyer',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'askPrice',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'netPrice',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'bool',
+                name: 'withNativeToken',
+                type: 'bool',
+            },
+        ],
+        name: 'Trade',
+        type: 'event',
     },
     {
         inputs: [],
-        name: "claimPendingRevenue",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-        ],
-        name: "closeCollectionForTradingAndListing",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-        ],
-        name: "CollectionClose",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "creator",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "whitelistChecker",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "tradingFee",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "creatorFee",
-                type: "uint256",
-            },
-        ],
-        name: "CollectionNew",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "creator",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "whitelistChecker",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "tradingFee",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "creatorFee",
-                type: "uint256",
-            },
-        ],
-        name: "CollectionUpdate",
-        type: "event",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_askPrice",
-                type: "uint256",
-            },
-        ],
-        name: "createAskOrder",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_newPrice",
-                type: "uint256",
-            },
-        ],
-        name: "modifyAskOrder",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_creator",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_whitelistChecker",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tradingFee",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_creatorFee",
-                type: "uint256",
-            },
-        ],
-        name: "modifyCollection",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "admin",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "treasury",
-                type: "address",
-            },
-        ],
-        name: "NewAdminAndTreasuryAddresses",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "minimumAskPrice",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "maximumAskPrice",
-                type: "uint256",
-            },
-        ],
-        name: "NewMinimumAndMaximumAskPrices",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "token",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "NonFungibleTokenRecovery",
-        type: "event",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
-            },
-            {
-                internalType: "bytes",
-                name: "",
-                type: "bytes",
-            },
-        ],
-        name: "onERC721Received",
+        name: 'TOTAL_MAX_FEE',
         outputs: [
             {
-                internalType: "bytes4",
-                name: "",
-                type: "bytes4",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "previousOwner",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "OwnershipTransferred",
-        type: "event",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_token",
-                type: "address",
-            },
-        ],
-        name: "recoverFungibleTokens",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_token",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "recoverNonFungibleToken",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "renounceOwnership",
+        name: 'WrapToken',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '_creator',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '_whitelistChecker',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tradingFee',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_creatorFee',
+                type: 'uint256',
+            },
+        ],
+        name: 'addCollection',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
-        anonymous: false,
-        inputs: [
+        inputs: [],
+        name: 'adminAddress',
+        outputs: [
             {
-                indexed: true,
-                internalType: "address",
-                name: "claimer",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        name: "RevenueClaim",
-        type: "event",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "_adminAddress",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "_treasuryAddress",
-                type: "address",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
         ],
-        name: "setAdminAndTreasuryAddresses",
+        name: 'buyTokenUsingNativeToken',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "token",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-            },
-        ],
-        name: "TokenRecovery",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "address",
-                name: "buyer",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "askPrice",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "netPrice",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "bool",
-                name: "withBNB",
-                type: "bool",
-            },
-        ],
-        name: "Trade",
-        type: "event",
+        stateMutability: 'payable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_price',
+                type: 'uint256',
             },
         ],
-        name: "transferOwnership",
+        name: 'buyTokenUsingWrapToken',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "_minimumAskPrice",
-                type: "uint256",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_maximumAskPrice",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'price',
+                type: 'uint256',
             },
         ],
-        name: "updateMinimumAndMaximumPrices",
+        name: 'calculatePriceAndFeesForCollection',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: 'netPrice',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tradingFee',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: 'creatorFee',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256[]',
+                name: '_tokenIds',
+                type: 'uint256[]',
+            },
+        ],
+        name: 'canTokensBeListed',
+        outputs: [
+            {
+                internalType: 'bool[]',
+                name: 'listingStatuses',
+                type: 'bool[]',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'cancelAskOrder',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "adminAddress",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        name: 'claimPendingRevenue',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "price",
-                type: "uint256",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
         ],
-        name: "calculatePriceAndFeesForCollection",
-        outputs: [
-            {
-                internalType: "uint256",
-                name: "netPrice",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "tradingFee",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "creatorFee",
-                type: "uint256",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        name: 'closeCollectionForTradingAndListing',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
             {
-                internalType: "uint256[]",
-                name: "_tokenIds",
-                type: "uint256[]",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
-        ],
-        name: "canTokensBeListed",
-        outputs: [
             {
-                internalType: "bool[]",
-                name: "listingStatuses",
-                type: "bool[]",
+                internalType: 'uint256',
+                name: '_askPrice',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        name: 'createAskOrder',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "maximumAskPrice",
+        name: 'maximumAskPrice',
         outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "minimumAskPrice",
+        name: 'minimumAskPrice',
         outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "owner",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
-        ],
-        name: "pendingRevenue",
-        outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
-        ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "TOTAL_MAX_FEE",
-        outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_newPrice',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "treasuryAddress",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        name: 'modifyAskOrder',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "cursor",
-                type: "uint256",
+                internalType: 'address',
+                name: '_creator',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "size",
-                type: "uint256",
+                internalType: 'address',
+                name: '_whitelistChecker',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tradingFee',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_creatorFee',
+                type: 'uint256',
             },
         ],
-        name: "viewAsksByCollection",
+        name: 'modifyCollection',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+            {
+                internalType: 'bytes',
+                name: '',
+                type: 'bytes',
+            },
+        ],
+        name: 'onERC721Received',
         outputs: [
             {
-                internalType: "uint256[]",
-                name: "tokenIds",
-                type: "uint256[]",
+                internalType: 'bytes4',
+                name: '',
+                type: 'bytes4',
+            },
+        ],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'owner',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        name: 'pendingRevenue',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_token',
+                type: 'address',
+            },
+        ],
+        name: 'recoverFungibleTokens',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_token',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'recoverNonFungibleToken',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'renounceOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_adminAddress',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '_treasuryAddress',
+                type: 'address',
+            },
+        ],
+        name: 'setAdminAndTreasuryAddresses',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'transferOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'treasuryAddress',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: '_minimumAskPrice',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_maximumAskPrice',
+                type: 'uint256',
+            },
+        ],
+        name: 'updateMinimumAndMaximumPrices',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'cursor',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: 'size',
+                type: 'uint256',
+            },
+        ],
+        name: 'viewAsksByCollection',
+        outputs: [
+            {
+                internalType: 'uint256[]',
+                name: 'tokenIds',
+                type: 'uint256[]',
             },
             {
                 components: [
                     {
-                        internalType: "address",
-                        name: "seller",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'seller',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "price",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'price',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Ask[]",
-                name: "askInfo",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Ask[]',
+                name: 'askInfo',
+                type: 'tuple[]',
             },
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "cursor",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'cursor',
+                type: 'uint256',
             },
             {
-                internalType: "uint256",
-                name: "size",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'size',
+                type: 'uint256',
             },
         ],
-        name: "viewAsksByCollectionAndSeller",
+        name: 'viewAsksByCollectionAndSeller',
         outputs: [
             {
-                internalType: "uint256[]",
-                name: "tokenIds",
-                type: "uint256[]",
+                internalType: 'uint256[]',
+                name: 'tokenIds',
+                type: 'uint256[]',
             },
             {
                 components: [
                     {
-                        internalType: "address",
-                        name: "seller",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'seller',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "price",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'price',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Ask[]",
-                name: "askInfo",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Ask[]',
+                name: 'askInfo',
+                type: 'tuple[]',
             },
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256[]",
-                name: "tokenIds",
-                type: "uint256[]",
+                internalType: 'uint256[]',
+                name: 'tokenIds',
+                type: 'uint256[]',
             },
         ],
-        name: "viewAsksByCollectionAndTokenIds",
+        name: 'viewAsksByCollectionAndTokenIds',
         outputs: [
             {
-                internalType: "bool[]",
-                name: "statuses",
-                type: "bool[]",
+                internalType: 'bool[]',
+                name: 'statuses',
+                type: 'bool[]',
             },
             {
                 components: [
                     {
-                        internalType: "address",
-                        name: "seller",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'seller',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "price",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'price',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Ask[]",
-                name: "askInfo",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Ask[]',
+                name: 'askInfo',
+                type: 'tuple[]',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "cursor",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'cursor',
+                type: 'uint256',
             },
             {
-                internalType: "uint256",
-                name: "size",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'size',
+                type: 'uint256',
             },
         ],
-        name: "viewCollections",
+        name: 'viewCollections',
         outputs: [
             {
-                internalType: "address[]",
-                name: "collectionAddresses",
-                type: "address[]",
+                internalType: 'address[]',
+                name: 'collectionAddresses',
+                type: 'address[]',
             },
             {
                 components: [
                     {
-                        internalType: "enum ERC721NFTMarketV1.CollectionStatus",
-                        name: "status",
-                        type: "uint8",
+                        internalType: 'enum ERC721NFTMarketV1.CollectionStatus',
+                        name: 'status',
+                        type: 'uint8',
                     },
                     {
-                        internalType: "address",
-                        name: "creatorAddress",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'creatorAddress',
+                        type: 'address',
                     },
                     {
-                        internalType: "address",
-                        name: "whitelistChecker",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'whitelistChecker',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "tradingFee",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'tradingFee',
+                        type: 'uint256',
                     },
                     {
-                        internalType: "uint256",
-                        name: "creatorFee",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'creatorFee',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Collection[]",
-                name: "collectionDetails",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Collection[]',
+                name: 'collectionDetails',
+                type: 'tuple[]',
             },
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "WBNB",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
 ];
 
 
 /***/ }),
 
-/***/ "./src/abis/NFT.ts":
-/*!*************************!*\
-  !*** ./src/abis/NFT.ts ***!
-  \*************************/
+/***/ "./src/abis/PublicCollection.ts":
+/*!**************************************!*\
+  !*** ./src/abis/PublicCollection.ts ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   NFT_ABI: () => (/* binding */ NFT_ABI)
+/* harmony export */   ABI_PUBLIC_COLLECTION: () => (/* binding */ ABI_PUBLIC_COLLECTION)
 /* harmony export */ });
-var NFT_ABI = [
+var ABI_PUBLIC_COLLECTION = [
     {
-        inputs: [],
-        stateMutability: "nonpayable",
-        type: "constructor",
-    },
-    {
-        anonymous: false,
         inputs: [
             {
-                indexed: true,
-                internalType: "address",
-                name: "owner",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "approved",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'address',
+                name: 'initialOwner',
+                type: 'address',
             },
         ],
-        name: "Approval",
-        type: "event",
+        stateMutability: 'nonpayable',
+        type: 'constructor',
+    },
+    {
+        inputs: [],
+        name: 'ERC721EnumerableForbiddenBatchMint',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'sender',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721IncorrectOwner',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'ERC721InsufficientApproval',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'approver',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidApprover',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidOperator',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidOwner',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'receiver',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidReceiver',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'sender',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidSender',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'ERC721NonexistentToken',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'ERC721OutOfBoundsIndex',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnableInvalidOwner',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'account',
+                type: 'address',
+            },
+        ],
+        name: 'OwnableUnauthorizedAccount',
+        type: 'error',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "owner",
-                type: "address",
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "operator",
-                type: "address",
+                internalType: 'address',
+                name: 'approved',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Approval',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
             },
             {
                 indexed: false,
-                internalType: "bool",
-                name: "approved",
-                type: "bool",
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
             },
         ],
-        name: "ApprovalForAll",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "previousOwner",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "OwnershipTransferred",
-        type: "event",
+        name: 'ApprovalForAll',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: false,
-                internalType: "address",
-                name: "account",
-                type: "address",
+                internalType: 'uint256',
+                name: '_fromTokenId',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: '_toTokenId',
+                type: 'uint256',
             },
         ],
-        name: "Paused",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "Transfer",
-        type: "event",
+        name: 'BatchMetadataUpdate',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: false,
-                internalType: "address",
-                name: "account",
-                type: "address",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
         ],
-        name: "Unpaused",
-        type: "event",
+        name: 'MetadataUpdate',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'previousOwner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Transfer',
+        type: 'event',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "to",
-                type: "address",
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "approve",
+        name: 'approve',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "owner",
-                type: "address",
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
             },
         ],
-        name: "balanceOf",
+        name: 'balanceOf',
         outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "burn",
+        name: 'burn',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "getApproved",
+        name: 'getApproved',
         outputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "owner",
-                type: "address",
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "operator",
-                type: "address",
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
             },
         ],
-        name: "isApprovedForAll",
+        name: 'isApprovedForAll',
         outputs: [
             {
-                internalType: "bool",
-                name: "",
-                type: "bool",
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "name",
+        name: 'name',
         outputs: [
             {
-                internalType: "string",
-                name: "",
-                type: "string",
+                internalType: 'string',
+                name: '',
+                type: 'string',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "owner",
+        name: 'owner',
         outputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "ownerOf",
+        name: 'ownerOf',
         outputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "pause",
+        name: 'renounceOwnership',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'string',
+                name: 'uri',
+                type: 'string',
+            },
+        ],
+        name: 'safeMint',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'bytes',
+                name: 'data',
+                type: 'bytes',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
+            },
+        ],
+        name: 'setApprovalForAll',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'bytes4',
+                name: 'interfaceId',
+                type: 'bytes4',
+            },
+        ],
+        name: 'supportsInterface',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "paused",
+        name: 'symbol',
         outputs: [
             {
-                internalType: "bool",
-                name: "",
-                type: "bool",
+                internalType: 'string',
+                name: '',
+                type: 'string',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenByIndex',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenOfOwnerByIndex',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenURI',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "renounceOwnership",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "string",
-                name: "uri",
-                type: "string",
-            },
-        ],
-        name: "safeMint",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "safeTransferFrom",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "bytes",
-                name: "data",
-                type: "bytes",
-            },
-        ],
-        name: "safeTransferFrom",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "operator",
-                type: "address",
-            },
-            {
-                internalType: "bool",
-                name: "approved",
-                type: "bool",
-            },
-        ],
-        name: "setApprovalForAll",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "bytes4",
-                name: "interfaceId",
-                type: "bytes4",
-            },
-        ],
-        name: "supportsInterface",
+        name: 'totalSupply',
         outputs: [
             {
-                internalType: "bool",
-                name: "",
-                type: "bool",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "symbol",
-        outputs: [
-            {
-                internalType: "string",
-                name: "",
-                type: "string",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
             },
-        ],
-        name: "tokenURI",
-        outputs: [
             {
-                internalType: "string",
-                name: "",
-                type: "string",
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        name: 'transferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
             },
         ],
-        name: "transferFrom",
+        name: 'transferOwnership',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "transferOwnership",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "unpause",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
 ];
 
 
 /***/ }),
 
-/***/ "./src/abis/WBNB.ts":
-/*!**************************!*\
-  !*** ./src/abis/WBNB.ts ***!
-  \**************************/
+/***/ "./src/abis/WrapToken.ts":
+/*!*******************************!*\
+  !*** ./src/abis/WrapToken.ts ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   WBNB_ABI: () => (/* binding */ WBNB_ABI)
+/* harmony export */   ABI_WRAP_TOKEN: () => (/* binding */ ABI_WRAP_TOKEN)
 /* harmony export */ });
-var WBNB_ABI = [
+var ABI_WRAP_TOKEN = [
     {
         constant: true,
         inputs: [],
-        name: "name",
+        name: 'name',
         outputs: [
             {
-                name: "",
-                type: "string",
+                name: '',
+                type: 'string',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "guy",
-                type: "address",
+                name: 'guy',
+                type: 'address',
             },
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "approve",
+        name: 'approve',
         outputs: [
             {
-                name: "",
-                type: "bool",
+                name: '',
+                type: 'bool',
             },
         ],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [],
-        name: "totalSupply",
+        name: 'totalSupply',
         outputs: [
             {
-                name: "",
-                type: "uint256",
+                name: '',
+                type: 'uint256',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "transferFrom",
+        name: 'transferFrom',
         outputs: [
             {
-                name: "",
-                type: "bool",
+                name: '',
+                type: 'bool',
             },
         ],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "withdraw",
+        name: 'withdraw',
         outputs: [],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [],
-        name: "decimals",
+        name: 'decimals',
         outputs: [
             {
-                name: "",
-                type: "uint8",
+                name: '',
+                type: 'uint8',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [
             {
-                name: "",
-                type: "address",
+                name: '',
+                type: 'address',
             },
         ],
-        name: "balanceOf",
+        name: 'balanceOf',
         outputs: [
             {
-                name: "",
-                type: "uint256",
+                name: '',
+                type: 'uint256',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [],
-        name: "symbol",
+        name: 'symbol',
         outputs: [
             {
-                name: "",
-                type: "string",
+                name: '',
+                type: 'string',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "transfer",
+        name: 'transfer',
         outputs: [
             {
-                name: "",
-                type: "bool",
+                name: '',
+                type: 'bool',
             },
         ],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [],
-        name: "deposit",
+        name: 'deposit',
         outputs: [],
         payable: true,
-        stateMutability: "payable",
-        type: "function",
+        stateMutability: 'payable',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [
             {
-                name: "",
-                type: "address",
+                name: '',
+                type: 'address',
             },
             {
-                name: "",
-                type: "address",
+                name: '',
+                type: 'address',
             },
         ],
-        name: "allowance",
+        name: 'allowance',
         outputs: [
             {
-                name: "",
-                type: "uint256",
+                name: '',
+                type: 'uint256',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         payable: true,
-        stateMutability: "payable",
-        type: "fallback",
+        stateMutability: 'payable',
+        type: 'fallback',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
                 indexed: true,
-                name: "guy",
-                type: "address",
+                name: 'guy',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Approval",
-        type: "event",
+        name: 'Approval',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
                 indexed: true,
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Transfer",
-        type: "event",
+        name: 'Transfer',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Deposit",
-        type: "event",
+        name: 'Deposit',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Withdrawal",
-        type: "event",
+        name: 'Withdrawal',
+        type: 'event',
     },
 ];
 
@@ -31758,19 +32433,22 @@ var WBNB_ABI = [
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ABI_ERC721: () => (/* reexport safe */ _Erc721__WEBPACK_IMPORTED_MODULE_2__.ABI_ERC721),
+/* harmony export */   ABI_PUBLIC_COLLECTION: () => (/* reexport safe */ _PublicCollection__WEBPACK_IMPORTED_MODULE_3__.ABI_PUBLIC_COLLECTION),
+/* harmony export */   ABI_WRAP_TOKEN: () => (/* reexport safe */ _WrapToken__WEBPACK_IMPORTED_MODULE_0__.ABI_WRAP_TOKEN),
 /* harmony export */   MARKETPLACE_ABI: () => (/* reexport safe */ _Marketplace__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ABI),
-/* harmony export */   NFT_ABI: () => (/* reexport safe */ _NFT__WEBPACK_IMPORTED_MODULE_2__.NFT_ABI),
-/* harmony export */   TOKEN_EXCHANGE_ABI: () => (/* binding */ TOKEN_EXCHANGE_ABI),
-/* harmony export */   WBNB_ABI: () => (/* reexport safe */ _WBNB__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI)
+/* harmony export */   TOKEN_EXCHANGE_ABI: () => (/* binding */ TOKEN_EXCHANGE_ABI)
 /* harmony export */ });
-/* harmony import */ var _WBNB__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WBNB */ "./src/abis/WBNB.ts");
+/* harmony import */ var _WrapToken__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WrapToken */ "./src/abis/WrapToken.ts");
 /* harmony import */ var _Marketplace__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Marketplace */ "./src/abis/Marketplace.ts");
-/* harmony import */ var _NFT__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NFT */ "./src/abis/NFT.ts");
+/* harmony import */ var _Erc721__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Erc721 */ "./src/abis/Erc721.ts");
+/* harmony import */ var _PublicCollection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PublicCollection */ "./src/abis/PublicCollection.ts");
 
 
 
 
-var TOKEN_EXCHANGE_ABI = _WBNB__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI;
+
+var TOKEN_EXCHANGE_ABI = _WrapToken__WEBPACK_IMPORTED_MODULE_0__.ABI_WRAP_TOKEN;
 
 
 /***/ }),
@@ -31784,22 +32462,82 @@ var TOKEN_EXCHANGE_ABI = _WBNB__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ADDRESS_OF_CHAINS: () => (/* binding */ ADDRESS_OF_CHAINS),
 /* harmony export */   Collections: () => (/* binding */ Collections),
 /* harmony export */   CollectionsOfMarket: () => (/* binding */ CollectionsOfMarket),
-/* harmony export */   DEFAULT_ADDRESS: () => (/* binding */ DEFAULT_ADDRESS),
-/* harmony export */   MARKETPLACE_ADDRESS: () => (/* binding */ MARKETPLACE_ADDRESS),
-/* harmony export */   NFT_ADDRESS: () => (/* binding */ NFT_ADDRESS),
-/* harmony export */   WBNB_ADDRESS: () => (/* binding */ WBNB_ADDRESS)
+/* harmony export */   DEFAULT_ADDRESS: () => (/* binding */ DEFAULT_ADDRESS)
 /* harmony export */ });
-var WBNB_ADDRESS = '0xcB96060104AA0529Be0B8B4c15703a962A20DF60';
-var NFT_ADDRESS = '0x1Def42fc65c3251087Bb61A410003981bE75e1d8';
-var MARKETPLACE_ADDRESS = '0x634345357C9eA4B6e52765804d647048bd15e468';
+/* harmony import */ var _chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chains */ "./src/constants/chains.ts");
+var _a;
+
+var ADDRESS_OF_CHAINS = (_a = {},
+    _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.AIOZ] = {
+        DEPOSIT_RATE: 1,
+        WUIT: '0xcB96060104AA0529Be0B8B4c15703a962A20DF60',
+        MARKET: '0x634345357C9eA4B6e52765804d647048bd15e468',
+        PUBLIC_ERC721_TOKEN: '0x0000000000000000000000000000000000000000',
+        COLLECTIONS: {
+            DyanCat: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
+            },
+        },
+    },
+    _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.GOERLI] = {
+        DEPOSIT_RATE: 100000,
+        WUIT: '0x13724882900FaaC30151419E6D8Cd6a96069Aec4',
+        MARKET: '0x946324A2F239C5ff6393B446EF698e816Aa82898',
+        PUBLIC_ERC721_TOKEN: '0x993Ee67F5262c1B4c775d21EbD5bb85733AB3eFE',
+        COLLECTIONS: {
+            DyanCat: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x5F3F8ef7630a4FC0DAd482D33178BF5A190a925e',
+            },
+            SanFranTokyo: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x947976e72e45d6741933bd28CD80e3D28A71619c',
+            },
+            TheGraps: {
+                onwer: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x55327442555db09955110428F46B66b902Dee1a4',
+            },
+            ElementalBean: {
+                onwer: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
+                address: '0x691a745C68410be4d96A02d96Bdbed68c7941e67',
+            },
+            MVP: {
+                owner: '0xf9f0036e2AFAf6EEEa77E08D1BFA012e1442dA3F',
+                address: '0xd908C6eD97C677d6ee58B30F9c99E3b52c6DE61C',
+            },
+            Maxtr1x2061: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0xfC7F5dbd4FF88212AE1ab254200D04F3c81D9B58',
+            },
+        },
+    },
+    _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.MUMBAI] = {
+        DEPOSIT_RATE: 100000,
+        WUIT: '0x6e339498Dce86c81F175b0bD12c3a6b7216e24cb',
+        MARKET: '0xD39Cf454221404745d7C807f17c8460bE0eC8317',
+        PUBLIC_ERC721_TOKEN: '0xf87d74a1B01ce51446F40A1B18dC49da4a806879',
+        COLLECTIONS: {
+            DyanCat: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x5F3F8ef7630a4FC0DAd482D33178BF5A190a925e',
+            },
+        },
+    },
+    _a);
 var DEFAULT_ADDRESS = '0x0000000000000000000000000000000000000000';
 var Collections = {
     '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8': '0xd1edA759274915Ac515f42d96BBe9F4b02aE1b76',
     '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1': '0x1Def42fc65c3251087Bb61A410003981bE75e1d8',
 };
 var CollectionsOfMarket = {
+    DyanCatV2: {
+        address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
     MVP: {
         address: '0xC85c402Ddc81c390053B2d7eB120E8e97EA41e7B',
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
@@ -31853,6 +32591,72 @@ var CollectionsOfMarket = {
 
 /***/ }),
 
+/***/ "./src/constants/chains.ts":
+/*!*********************************!*\
+  !*** ./src/constants/chains.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CHAINS: () => (/* binding */ CHAINS),
+/* harmony export */   CHAIN_IDS: () => (/* binding */ CHAIN_IDS),
+/* harmony export */   DEFAULT_CHAIN_ID: () => (/* binding */ DEFAULT_CHAIN_ID),
+/* harmony export */   DEFAULT_WRAP_TOKEN_SYMBOL: () => (/* binding */ DEFAULT_WRAP_TOKEN_SYMBOL)
+/* harmony export */ });
+var CHAIN_IDS = {
+    AIOZ: 4102,
+    GOERLI: 5,
+    MUMBAI: 80001,
+};
+var DEFAULT_CHAIN_ID = CHAIN_IDS.GOERLI;
+var DEFAULT_WRAP_TOKEN_SYMBOL = 'WUIT';
+var CHAINS = [
+    {
+        chainId: CHAIN_IDS.AIOZ,
+        chainIdHex: '0x1006',
+        chainName: 'AIOZ Network Testnet',
+        rpcUrl: 'https://eth-ds.testnet.aioz.network',
+        currencySymbol: 'AIOZ',
+        blockExplorerUrl: 'https://testnet.explorer.aioz.network',
+        nativeCurrency: {
+            name: 'AIOZ',
+            symbol: 'AIOZ',
+            decimals: 18,
+        },
+    },
+    {
+        chainId: CHAIN_IDS.GOERLI,
+        chainIdHex: '0x5',
+        chainName: 'Goerli',
+        rpcUrl: 'https://rpc.ankr.com/eth_goerli',
+        currencySymbol: 'Goerli ETH',
+        blockExplorerUrl: 'https://goerli.etherscan.io',
+        nativeCurrency: {
+            name: 'Goerli ETH',
+            symbol: 'Goerli ETH',
+            decimals: 18,
+        },
+    },
+    {
+        chainId: CHAIN_IDS.MUMBAI,
+        chainIdHex: '0x13881',
+        chainName: 'Mumbai',
+        rpcUrl: 'https://rpc-mumbai.maticvigil.com',
+        currencySymbol: 'MATIC',
+        blockExplorerUrl: 'https://mumbai.polygonscan.com',
+        nativeCurrency: {
+            name: 'MATIC',
+            symbol: 'MATIC',
+            decimals: 18,
+        },
+    },
+];
+
+
+/***/ }),
+
 /***/ "./src/constants/errors.ts":
 /*!*********************************!*\
   !*** ./src/constants/errors.ts ***!
@@ -31878,6 +32682,7 @@ var AppError;
     AppError["OWNER_IS_NOT_VALID"] = "Owner is not valid";
     AppError["CONNECT_WALLET_FAIL"] = "Connect wallet fail";
     AppError["INPUT_INVALID"] = "Input invalid";
+    AppError["CHAIN_ID_INVALID"] = "ChainID invalid";
 })(AppError || (AppError = {}));
 var BuyNftErrorMessage;
 (function (BuyNftErrorMessage) {
@@ -31898,45 +32703,237 @@ var BuyNftErrorMessage;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ADDRESS_OF_CHAINS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.ADDRESS_OF_CHAINS),
 /* harmony export */   AppError: () => (/* reexport safe */ _errors__WEBPACK_IMPORTED_MODULE_1__.AppError),
 /* harmony export */   BuyNftErrorMessage: () => (/* reexport safe */ _errors__WEBPACK_IMPORTED_MODULE_1__.BuyNftErrorMessage),
 /* harmony export */   Collections: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.Collections),
 /* harmony export */   CollectionsOfMarket: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.CollectionsOfMarket),
 /* harmony export */   DEFAULT_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS),
-/* harmony export */   MARKETPLACE_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ADDRESS),
-/* harmony export */   NATIVE_TOKEN_NAME: () => (/* binding */ NATIVE_TOKEN_NAME),
-/* harmony export */   NFT_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.NFT_ADDRESS),
-/* harmony export */   STORAGE_API_KEY: () => (/* binding */ STORAGE_API_KEY),
-/* harmony export */   WBNB_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.WBNB_ADDRESS)
+/* harmony export */   STORAGE_API_KEY: () => (/* binding */ STORAGE_API_KEY)
 /* harmony export */ });
 /* harmony import */ var _address__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./address */ "./src/constants/address.ts");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./src/constants/errors.ts");
 
 
 var STORAGE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDdDNDFFMWFDQkNjMTQ1RjlGMERFNDkzOTJEOGRhYzQ1OEE2Q2RlQTgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY5NjYwMDQxNzI2OCwibmFtZSI6ImllMTA0In0.jT8e3Cattm3noiln1Mzo9ODvaW3zwKPi4OkA3qhjREA';
-var NATIVE_TOKEN_NAME = 'AIOZ';
 
 
 /***/ }),
 
-/***/ "./src/constants/network.ts":
+/***/ "./src/controller/loading.ts":
+/*!***********************************!*\
+  !*** ./src/controller/loading.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LoadingControllerInstance: () => (/* binding */ LoadingControllerInstance),
+/* harmony export */   LoadingId: () => (/* binding */ LoadingId)
+/* harmony export */ });
+var LoadingId;
+(function (LoadingId) {
+    LoadingId["Container"] = "container-loading";
+    LoadingId["LoadingText"] = "loading-text";
+})(LoadingId || (LoadingId = {}));
+var LoadingController = /** @class */ (function () {
+    function LoadingController(_loadingText) {
+        this.loadingText = _loadingText || null;
+        this.listener();
+    }
+    LoadingController.prototype.set = function (_loadingText) {
+        this.loadingText = _loadingText;
+        this.updateDomContent();
+    };
+    LoadingController.prototype.get = function () {
+        return this.loadingText;
+    };
+    LoadingController.prototype.updateDomContent = function () {
+        var LoadingText = document.getElementById(LoadingId.LoadingText);
+        LoadingText.innerHTML = this.loadingText ? this.loadingText + '...' : 'LOADING...';
+    };
+    LoadingController.prototype.listener = function () { };
+    LoadingController.prototype.close = function () {
+        var modal = document.getElementById(LoadingId.Container);
+        modal.style.display = 'none';
+    };
+    LoadingController.prototype.toggle = function (event) {
+        event.preventDefault();
+        var modal = document.getElementById(LoadingId.Container);
+        if (modal.style.display === 'none') {
+            modal.style.display = 'flex';
+        }
+        else {
+            modal.style.display = 'none';
+        }
+    };
+    LoadingController.prototype.open = function () {
+        var modal = document.getElementById(LoadingId.Container);
+        modal.style.display = 'flex';
+    };
+    return LoadingController;
+}());
+var LoadingControllerInstance = new LoadingController();
+
+
+/***/ }),
+
+/***/ "./src/controller/wallet.ts":
 /*!**********************************!*\
-  !*** ./src/constants/network.ts ***!
+  !*** ./src/controller/wallet.ts ***!
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AIOZ_TESTNET_NETWORK: () => (/* binding */ AIOZ_TESTNET_NETWORK)
+/* harmony export */   WalletManagerInstance: () => (/* binding */ WalletManagerInstance),
+/* harmony export */   hiddenWalletInfo: () => (/* binding */ hiddenWalletInfo),
+/* harmony export */   showWalletInfo: () => (/* binding */ showWalletInfo)
 /* harmony export */ });
-var AIOZ_TESTNET_NETWORK = {
-    name: "AIOZ Testnet",
-    rpc: "https://eth-ds.testnet.aioz.network",
-    chainId: "4102",
-    CurrencySymbol: "AIOZ",
-    blockExplorer: "https://testnet.explorer.aioz.network",
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services */ "./src/services/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
+/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/avatar */ "./src/utils/avatar.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+var showWalletInfo = function (account) { return __awaiter(void 0, void 0, void 0, function () {
+    var headerAvatar, btnLogin, userName, userImg, address, error_1, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 5, , 6]);
+                headerAvatar = document.getElementById('header-avatar');
+                btnLogin = document.getElementById('btn-login');
+                userName = document.getElementById('pop-up-user-name');
+                userImg = document.getElementById('header-avatar');
+                headerAvatar.style.display = 'flex';
+                btnLogin.style.display = 'none';
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_0__.getAccountAddress)()
+                        .then(function (res) { return res; })
+                        .catch(function (err) {
+                        console.log(err);
+                    })];
+            case 2:
+                address = _a.sent();
+                userName.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.shorterAddress)(account, 10) || '';
+                userName.title = account;
+                console.log(account);
+                userImg.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_2__.getAvatarByAddress)(address);
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _a.sent();
+                headerAvatar.style.display = 'flex';
+                btnLogin.style.display = 'none';
+                return [3 /*break*/, 4];
+            case 4: return [3 /*break*/, 6];
+            case 5:
+                error_2 = _a.sent();
+                console.log(error_2);
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
+        }
+    });
+}); };
+var hiddenWalletInfo = function () {
+    var headerAvatar = document.getElementById('header-avatar');
+    var btnLogin = document.getElementById('btn-login');
+    headerAvatar.style.display = 'none';
+    btnLogin.style.display = 'flex';
+};
+var WalletManager = /** @class */ (function () {
+    function WalletManager() {
+        this.currentAddress = '';
+    }
+    WalletManager.prototype.updateAccountAddress = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var accounts, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, window.ethereum.request({
+                                method: 'eth_accounts',
+                            })];
+                    case 1:
+                        accounts = _a.sent();
+                        this.currentAddress = accounts[0];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_3 = _a.sent();
+                        this.currentAddress = '';
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    WalletManager.prototype.accountChanged = function (accounts) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (accounts.length > 0) {
+                    this.currentAddress = accounts[0];
+                    showWalletInfo(accounts[0]);
+                }
+                else {
+                    this.currentAddress = '';
+                    hiddenWalletInfo();
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    WalletManager.prototype.disconnect = function (e) {
+        hiddenWalletInfo();
+    };
+    WalletManager.prototype.listener = function () {
+        if (window && window.ethereum) {
+            window.ethereum.on('accountsChanged', this.accountChanged);
+        }
+    };
+    return WalletManager;
+}());
+var WalletManagerInstance = new WalletManager();
 
 
 /***/ }),
@@ -31996,15 +32993,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-function getErc20Balance(cltAddress, walletAddress, options) {
+function getErc20Balance(cltAddress, walletAddress) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, contract, balance, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (options === null || options === void 0 ? void 0 : options.provider) || (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_2__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI, provider);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_2__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.ABI_WRAP_TOKEN, provider);
                     return [4 /*yield*/, contract.balanceOf(walletAddress)];
                 case 1:
                     balance = _a.sent();
@@ -32017,7 +33014,7 @@ function getErc20Balance(cltAddress, walletAddress, options) {
         });
     });
 }
-function getBalanceNativeToken(walletAddress, options) {
+function getBalanceNativeToken(walletAddress) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, balance, error_2;
         return __generator(this, function (_a) {
@@ -32078,20 +33075,20 @@ function watchErc20Asset(erc20Address, symbol, decimals) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CHAIN_INFO: () => (/* binding */ CHAIN_INFO),
 /* harmony export */   connect: () => (/* binding */ connect),
 /* harmony export */   connectAndSwitch: () => (/* binding */ connectAndSwitch),
 /* harmony export */   connectEarly: () => (/* binding */ connectEarly),
 /* harmony export */   getAccountAddress: () => (/* binding */ getAccountAddress),
 /* harmony export */   getBalance: () => (/* binding */ getBalance),
+/* harmony export */   getChainCurrentChainId: () => (/* binding */ getChainCurrentChainId),
 /* harmony export */   switchToNetwork: () => (/* binding */ switchToNetwork)
 /* harmony export */ });
 /* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/bignumber/lib.esm/bignumber.js");
 /* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/web3-provider.js");
 /* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/units/lib.esm/index.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
-/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
-/* harmony import */ var _utils_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/errors */ "./src/utils/errors.ts");
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32138,6 +33135,7 @@ function connectEarly() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log('run');
                     if (!window.ethereum) {
                         throw new Error('No connect detected');
                     }
@@ -32150,7 +33148,7 @@ function connectEarly() {
                                 switch (_a.label) {
                                     case 0:
                                         if (!(accounts.length > 0)) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, connectAndSwitch()];
+                                        return [4 /*yield*/, connect()];
                                     case 1:
                                         _a.sent();
                                         return [2 /*return*/, accounts[0]];
@@ -32167,15 +33165,16 @@ function connectEarly() {
 }
 function switchToNetwork(provider, chainId) {
     return __awaiter(this, void 0, void 0, function () {
-        var formattedChainId, error_1, info, error_2;
+        var formattedChainId, chainTarget, error_1, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     formattedChainId = ethers__WEBPACK_IMPORTED_MODULE_3__.BigNumber.from(chainId).toHexString();
                     if (!provider) {
-                        return [2 /*return*/];
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    if (!Object.keys(CHAIN_INFO).includes(chainId)) {
+                    chainTarget = _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS.find(function (chain) { return chain.chainId === chainId; });
+                    if (!chainTarget) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_SUPPORTED_CHAIN_ID);
                     }
                     if (!window.ethereum)
@@ -32185,24 +33184,22 @@ function switchToNetwork(provider, chainId) {
                     _a.trys.push([1, 3, , 9]);
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_switchEthereumChain',
-                            params: [{ chainId: formattedChainId }],
+                            params: [{ chainId: chainTarget.chainIdHex }],
                         })];
                 case 2:
                     _a.sent();
                     return [3 /*break*/, 9];
                 case 3:
                     error_1 = _a.sent();
-                    console.log(error_1);
-                    info = CHAIN_INFO[chainId];
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_addEthereumChain',
                             params: [
                                 {
-                                    chainId: info.chainIdHex,
-                                    chainName: info.chainName,
-                                    rpcUrls: [info.rpcUrl],
-                                    nativeCurrency: info.nativeCurrency,
-                                    blockExplorerUrls: [info.blockExplorerUrl],
+                                    chainId: chainTarget.chainIdHex,
+                                    chainName: chainTarget.chainName,
+                                    rpcUrls: [chainTarget.rpcUrl],
+                                    nativeCurrency: chainTarget.nativeCurrency,
+                                    blockExplorerUrls: [chainTarget.blockExplorerUrl],
                                 },
                             ],
                         })];
@@ -32249,32 +33246,32 @@ function connect() {
 }
 function connectAndSwitch() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, error_3;
+        var provider, currentChainId, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, connect()
-                            .then(function (res) { })
-                            .catch(function (err) {
-                            if (err.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
-                            }
-                            console.log((0,_utils_errors__WEBPACK_IMPORTED_MODULE_2__.convertWalletError)(err));
-                        })];
+                    _a.trys.push([0, 4, , 5]);
+                    return [4 /*yield*/, connect().then(function (res) { })];
                 case 1:
                     _a.sent();
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
                     if (!provider) {
-                        return [2 /*return*/];
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    return [4 /*yield*/, switchToNetwork(provider.provider, '4102')];
+                    return [4 /*yield*/, getChainCurrentChainId()];
                 case 2:
-                    _a.sent();
-                    return [3 /*break*/, 4];
+                    currentChainId = _a.sent();
+                    if (!currentChainId) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CHAIN_ID_INVALID);
+                    }
+                    return [4 /*yield*/, switchToNetwork(provider.provider, currentChainId)];
                 case 3:
+                    _a.sent();
+                    return [3 /*break*/, 5];
+                case 4:
                     error_3 = _a.sent();
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    throw error_3;
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -32297,20 +33294,6 @@ function getBalance(contractAddress) {
         });
     });
 }
-var CHAIN_INFO = {
-    '4102': {
-        chainId: '4102',
-        chainIdHex: '0x1006',
-        chainName: 'AIOZ Network Testnet',
-        rpcUrl: 'https://eth-ds.testnet.aioz.network',
-        nativeCurrency: {
-            name: 'AIOZ',
-            symbol: 'AIOZ',
-            decimals: 18,
-        },
-        blockExplorerUrl: 'https://testnet.explorer.aioz.network',
-    },
-};
 function getAccountAddress() {
     return __awaiter(this, void 0, void 0, function () {
         var provider, address, error_4;
@@ -32318,7 +33301,7 @@ function getAccountAddress() {
             switch (_a.label) {
                 case 0:
                     if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
-                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)()];
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)()];
                 case 1:
                     provider = _a.sent();
                     _a.label = 2;
@@ -32337,6 +33320,45 @@ function getAccountAddress() {
         });
     });
 }
+function getChainCurrentChainId() {
+    return __awaiter(this, void 0, void 0, function () {
+        var localChainId, provider, chainId_1, _a, isSupport, error_5;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    localChainId = localStorage.getItem('chainId');
+                    if (!localChainId) return [3 /*break*/, 1];
+                    return [2 /*return*/, Number(localChainId)];
+                case 1:
+                    console.log('rerroroero');
+                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
+                    if (!provider)
+                        return [2 /*return*/, null];
+                    _b.label = 2;
+                case 2:
+                    _b.trys.push([2, 4, , 5]);
+                    _a = parseInt;
+                    return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.send('eth_chainId', []))];
+                case 3:
+                    chainId_1 = _a.apply(void 0, [_b.sent(), 16]);
+                    isSupport = _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS.find(function (chain) { return chain.chainId === chainId_1; });
+                    if (!isSupport) {
+                        return [2 /*return*/, null];
+                    }
+                    else {
+                        return [2 /*return*/, chainId_1];
+                    }
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_5 = _b.sent();
+                    console.log(error_5);
+                    return [2 /*return*/, null];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+}
 
 
 /***/ }),
@@ -32350,7 +33372,6 @@ function getAccountAddress() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CHAIN_INFO: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.CHAIN_INFO),
 /* harmony export */   ExtensionService: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.ExtensionService),
 /* harmony export */   WalletSupported: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.WalletSupported),
 /* harmony export */   approveSpenderToAccessNft: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.approveSpenderToAccessNft),
@@ -32363,6 +33384,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getAllTokenIdOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllTokenIdOfCollection),
 /* harmony export */   getBalance: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getBalance),
 /* harmony export */   getBalanceNativeToken: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getBalanceNativeToken),
+/* harmony export */   getChainCurrentChainId: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getChainCurrentChainId),
 /* harmony export */   getDefaultProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider),
 /* harmony export */   getErc20Balance: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getErc20Balance),
 /* harmony export */   getMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getMetadata),
@@ -32415,11 +33437,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   mintNFT: () => (/* binding */ mintNFT),
 /* harmony export */   transferFrom: () => (/* binding */ transferFrom)
 /* harmony export */ });
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
 /* harmony import */ var nft_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nft.storage */ "./node_modules/nft.storage/src/lib.js");
 /* harmony import */ var _abis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abis */ "./src/abis/index.ts");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
-/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
+/* harmony import */ var _connect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./connect */ "./src/services/connect.ts");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
+/* harmony import */ var _controller_loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../controller/loading */ "./src/controller/loading.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32461,7 +33485,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-// export const STORAGE_API_KEY = process.env.STORAGE_API_KEY || "";
+
+
 function createMetadata(file, title, description) {
     return __awaiter(this, void 0, void 0, function () {
         var client, img, data, cid, error_1;
@@ -32491,19 +33516,18 @@ function createMetadata(file, title, description) {
         });
     });
 }
-function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId, options) {
-    if (spenderAddress === void 0) { spenderAddress = _constants__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ADDRESS; }
+function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, tokenContract, transaction, transactionReceipt, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider.getSigner());
+                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider.getSigner());
                     return [4 /*yield*/, tokenContract.approve(spenderAddress, tokenId)];
                 case 1:
                     transaction = _a.sent();
@@ -32520,30 +33544,37 @@ function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId, options)
         });
     });
 }
-function mintNFT(cltAddress, addressTo, tokenUri, options) {
+function mintNFT(cltAddress, addressTo, tokenUri) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, transaction, transactionReceipt, error_3;
+        var provider, currentChainId, currentAbi, nftContract, transaction, transactionReceipt, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    provider = options ? options.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    _a.trys.push([0, 4, , 5]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider === null || provider === void 0 ? void 0 : provider.getSigner());
-                    return [4 /*yield*/, nftContract.safeMint(addressTo, tokenUri)];
+                    return [4 /*yield*/, (0,_connect__WEBPACK_IMPORTED_MODULE_3__.getChainCurrentChainId)()];
                 case 1:
-                    transaction = _a.sent();
-                    return [4 /*yield*/, transaction.wait()];
+                    currentChainId = _a.sent();
+                    currentAbi = currentChainId && cltAddress === _constants__WEBPACK_IMPORTED_MODULE_2__.ADDRESS_OF_CHAINS[currentChainId].PUBLIC_ERC721_TOKEN
+                        ? _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_PUBLIC_COLLECTION
+                        : _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721;
+                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, currentAbi, provider === null || provider === void 0 ? void 0 : provider.getSigner());
+                    return [4 /*yield*/, nftContract.safeMint(addressTo, tokenUri)];
                 case 2:
+                    transaction = _a.sent();
+                    _controller_loading__WEBPACK_IMPORTED_MODULE_5__.LoadingControllerInstance.close();
+                    return [4 /*yield*/, transaction.wait()];
+                case 3:
                     transactionReceipt = _a.sent();
                     console.log('Mint receipt:', transactionReceipt);
                     return [2 /*return*/, transactionReceipt];
-                case 3:
+                case 4:
                     error_3 = _a.sent();
                     throw error_3;
-                case 4: return [2 /*return*/];
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -32554,57 +33585,63 @@ function getTokenUri(cltAddress, tokenId, options) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     return [4 /*yield*/, contract.tokenURI(tokenId)];
-                case 1:
+                case 2:
                     tokenUri = _a.sent();
                     return [2 /*return*/, tokenUri];
-                case 2:
+                case 3:
                     error_4 = _a.sent();
                     throw error_4;
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
 }
 function getOwner(cltAddress, tokenId, options) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_5;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.ownerOf(tokenId);
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.ownerOf(tokenId);
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_5 = _a.sent();
+                    throw error_5;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
 function getYourTokens(cltAddress, creatorAddress, options) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, tokenId, token, error_5, error_6;
+        var listTokenId, provider, contract, tokenId, token, error_6, error_7;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 7, , 8]);
                     listTokenId = [];
-                    provider = options ? options.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    provider = options ? options.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     tokenId = 0;
                     _a.label = 1;
                 case 1:
@@ -32620,13 +33657,13 @@ function getYourTokens(cltAddress, creatorAddress, options) {
                     tokenId++;
                     return [3 /*break*/, 5];
                 case 4:
-                    error_5 = _a.sent();
+                    error_6 = _a.sent();
                     return [3 /*break*/, 6];
                 case 5: return [3 /*break*/, 1];
                 case 6: return [2 /*return*/, listTokenId];
                 case 7:
-                    error_6 = _a.sent();
-                    throw error_6;
+                    error_7 = _a.sent();
+                    throw error_7;
                 case 8: return [2 /*return*/];
             }
         });
@@ -32643,58 +33680,19 @@ function listenForTransactionMined(transactionResponse, provider) {
 }
 function getAllTokenIdOfCollection(collectionAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, tokenId, owner, error_7, error_8;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 7, , 8]);
-                    listTokenId = [];
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                    tokenId = 0;
-                    _a.label = 1;
-                case 1:
-                    if (false) {}
-                    _a.label = 2;
-                case 2:
-                    _a.trys.push([2, 4, , 5]);
-                    return [4 /*yield*/, contract.ownerOf(tokenId)];
-                case 3:
-                    owner = _a.sent();
-                    listTokenId.push({
-                        owner: owner,
-                        tokenId: tokenId.toString(),
-                    });
-                    tokenId++;
-                    return [3 /*break*/, 5];
-                case 4:
-                    error_7 = _a.sent();
-                    return [3 /*break*/, 6];
-                case 5: return [3 /*break*/, 1];
-                case 6: return [2 /*return*/, listTokenId];
-                case 7:
-                    error_8 = _a.sent();
-                    throw error_8;
-                case 8: return [2 /*return*/];
-            }
-        });
-    });
-}
-function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
-    return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, balanceOf, tokenId, token, error_9, error_10;
+        var listTokenId, provider, contract, tokenId, owner, error_8, error_9;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 8, , 9]);
                     listTokenId = [];
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                    return [4 /*yield*/, contract.balanceOf(walletAddress)];
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
                 case 1:
-                    balanceOf = _a.sent();
-                    if (balanceOf === 0)
-                        return [2 /*return*/];
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     tokenId = 0;
                     _a.label = 2;
                 case 2:
@@ -32704,20 +33702,78 @@ function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) 
                     _a.trys.push([3, 5, , 6]);
                     return [4 /*yield*/, contract.ownerOf(tokenId)];
                 case 4:
-                    token = _a.sent();
-                    if (token.toLowerCase() === walletAddress.toLowerCase())
-                        listTokenId.push(tokenId);
+                    owner = _a.sent();
+                    listTokenId.push({
+                        owner: owner,
+                        tokenId: tokenId.toString(),
+                    });
                     tokenId++;
                     return [3 /*break*/, 6];
                 case 5:
-                    error_9 = _a.sent();
+                    error_8 = _a.sent();
                     return [3 /*break*/, 7];
                 case 6: return [3 /*break*/, 2];
                 case 7: return [2 /*return*/, listTokenId];
                 case 8:
-                    error_10 = _a.sent();
-                    throw error_10;
+                    error_9 = _a.sent();
+                    throw error_9;
                 case 9: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var listTokenId_1, provider, contract_1, balanceOf, _a, error_10;
+        var _this = this;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 4, , 5]);
+                    listTokenId_1 = [];
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _b.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract_1 = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    _a = parseInt;
+                    return [4 /*yield*/, contract_1.balanceOf(walletAddress)];
+                case 2:
+                    balanceOf = _a.apply(void 0, [(_b.sent())._hex, 16]);
+                    console.log({ balanceOf: balanceOf });
+                    if (balanceOf === 0)
+                        return [2 /*return*/];
+                    return [4 /*yield*/, Promise.all(Array(balanceOf)
+                            .fill(1)
+                            .map(function (item, index) { return __awaiter(_this, void 0, void 0, function () {
+                            var token, error_11;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        _a.trys.push([0, 2, , 3]);
+                                        return [4 /*yield*/, contract_1.ownerOf(index)];
+                                    case 1:
+                                        token = _a.sent();
+                                        if (token.toLowerCase() === walletAddress.toLowerCase())
+                                            listTokenId_1.push(index);
+                                        return [3 /*break*/, 3];
+                                    case 2:
+                                        error_11 = _a.sent();
+                                        console.log(error_11);
+                                        return [3 /*break*/, 3];
+                                    case 3: return [2 /*return*/];
+                                }
+                            });
+                        }); }))];
+                case 3:
+                    _b.sent();
+                    return [2 /*return*/, listTokenId_1];
+                case 4:
+                    error_10 = _b.sent();
+                    throw error_10;
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -32743,25 +33799,25 @@ function getMetadata(tokenUri) {
  * @param to: address of receiver
  * @param tokenId: array of tokenId
  */
-function transferFrom(from, to, tokenId) {
+function transferFrom(collectionAddress, from, to, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, response, error_11;
+        var provider, nftContract, response, error_12;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(_constants__WEBPACK_IMPORTED_MODULE_2__.NFT_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     return [4 /*yield*/, nftContract.transferFrom(from, to, tokenId)];
                 case 1:
                     response = _a.sent();
                     return [2 /*return*/, {}];
                 case 2:
-                    error_11 = _a.sent();
-                    throw error_11;
+                    error_12 = _a.sent();
+                    throw error_12;
                 case 3: return [2 /*return*/];
             }
         });
@@ -32769,61 +33825,73 @@ function transferFrom(from, to, tokenId) {
 }
 function getOwnerOfCollection(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_13;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.owner();
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.owner();
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_13 = _a.sent();
+                    throw error_13;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
 function getNameOfCollection(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_14;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.name();
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.name();
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_14 = _a.sent();
+                    throw error_14;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
 function getTotalSupply(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_15;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.totalSupply();
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.totalSupply();
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_15 = _a.sent();
+                    throw error_15;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
@@ -32847,10 +33915,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getRpcProvider: () => (/* binding */ getRpcProvider),
 /* harmony export */   isConnectedWallet: () => (/* binding */ isConnectedWallet)
 /* harmony export */ });
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/json-rpc-provider.js");
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/web3-provider.js");
-/* harmony import */ var _constants_network__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/network */ "./src/constants/network.ts");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/json-rpc-provider.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/web3-provider.js");
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _connect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./connect */ "./src/services/connect.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var _a;
+
 
 
 var WalletSupported;
@@ -32863,16 +33969,50 @@ var ExtensionService = (_a = {},
     _a[WalletSupported.Metamask] = window.ethereum,
     _a);
 function getRpcProvider() {
-    return new ethers__WEBPACK_IMPORTED_MODULE_1__.JsonRpcProvider(_constants_network__WEBPACK_IMPORTED_MODULE_0__.AIOZ_TESTNET_NETWORK.rpc);
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        var currentChainId, currentRpcUrl;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, (0,_connect__WEBPACK_IMPORTED_MODULE_1__.getChainCurrentChainId)()];
+                case 1:
+                    currentChainId = (_b.sent()) || _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId;
+                    currentRpcUrl = (_a = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainId === currentChainId; })) === null || _a === void 0 ? void 0 : _a.rpcUrl;
+                    return [2 /*return*/, new ethers__WEBPACK_IMPORTED_MODULE_2__.JsonRpcProvider(currentRpcUrl)];
+            }
+        });
+    });
 }
 function getDefaultProvider() {
     if (window.ethereum && typeof window.ethereum !== 'undefined') {
-        return new ethers__WEBPACK_IMPORTED_MODULE_2__.Web3Provider(window.ethereum);
+        return new ethers__WEBPACK_IMPORTED_MODULE_3__.Web3Provider(window.ethereum);
     }
 }
-function getProvider(provider) {
-    var defaultProvider = getDefaultProvider();
-    return provider ? provider : defaultProvider ? defaultProvider : getRpcProvider();
+function getProvider() {
+    return __awaiter(this, void 0, void 0, function () {
+        var defaultProvider, rpcProvider, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    try {
+                        defaultProvider = getDefaultProvider();
+                        return [2 /*return*/, defaultProvider];
+                    }
+                    catch (error) { }
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, getRpcProvider()];
+                case 2:
+                    rpcProvider = _a.sent();
+                    return [2 /*return*/, rpcProvider];
+                case 3:
+                    error_1 = _a.sent();
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/, undefined];
+            }
+        });
+    });
 }
 function isConnectedWallet(wallet) {
     switch (wallet) {
@@ -32880,6 +34020,65 @@ function isConnectedWallet(wallet) {
             return ExtensionService[WalletSupported.Metamask].isConnected();
         }
     }
+}
+
+
+/***/ }),
+
+/***/ "./src/utils/avatar.ts":
+/*!*****************************!*\
+  !*** ./src/utils/avatar.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAvatarByAddress: () => (/* binding */ getAvatarByAddress)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
+/* harmony import */ var _regex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./regex */ "./src/utils/regex.ts");
+
+
+var getAvatarByAddress = function (address) {
+    if (_regex__WEBPACK_IMPORTED_MODULE_1__.ethereumAddressRegex.test(address)) {
+        return "https://effigy.im/a/".concat(address, ".svg");
+    }
+    else {
+        return "https://effigy.im/a/".concat(_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS, ".svg");
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/utils/common.ts":
+/*!*****************************!*\
+  !*** ./src/utils/common.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getDisplayMaxDecimals: () => (/* binding */ getDisplayMaxDecimals),
+/* harmony export */   shorterAddress: () => (/* binding */ shorterAddress)
+/* harmony export */ });
+function getDisplayMaxDecimals(decimals) {
+    var maxDisplayDecimals = 8;
+    if (decimals === undefined)
+        return 0;
+    return decimals < maxDisplayDecimals ? decimals : maxDisplayDecimals;
+}
+function shorterAddress(address, maxLength) {
+    if (maxLength === void 0) { maxLength = 10; }
+    var length = Math.floor(maxLength / 2);
+    if (((address === null || address === void 0 ? void 0 : address.length) || Infinity) <= maxLength) {
+        return address;
+    }
+    return address
+        ? "".concat(address.substring(0, length), "...").concat(address.substring(address.length - length, address.length))
+        : '';
 }
 
 
@@ -32908,6 +34107,45 @@ function convertWalletError(error) {
         }
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/utils/index.ts":
+/*!****************************!*\
+  !*** ./src/utils/index.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   convertWalletError: () => (/* reexport safe */ _errors__WEBPACK_IMPORTED_MODULE_0__.convertWalletError),
+/* harmony export */   getDisplayMaxDecimals: () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_1__.getDisplayMaxDecimals),
+/* harmony export */   shorterAddress: () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_1__.shorterAddress)
+/* harmony export */ });
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./errors */ "./src/utils/errors.ts");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/regex.ts":
+/*!****************************!*\
+  !*** ./src/utils/regex.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ethereumAddressRegex: () => (/* binding */ ethereumAddressRegex),
+/* harmony export */   ethereumTxHashRegex: () => (/* binding */ ethereumTxHashRegex)
+/* harmony export */ });
+var ethereumAddressRegex = /^0x[a-fA-F0-9]{40}$/;
+var ethereumTxHashRegex = /^0x([A-Fa-f0-9]{64})$/;
 
 
 /***/ }),
@@ -43858,10 +45096,12 @@ var __webpack_exports__ = {};
   \****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ "./src/constants/index.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
-/* harmony import */ var _services_connect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/connect */ "./src/services/connect.ts");
-/* harmony import */ var _utils_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/errors */ "./src/utils/errors.ts");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles.css */ "./src/page/connectWallet/styles.css");
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _controller_wallet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../controller/wallet */ "./src/controller/wallet.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _services_connect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/connect */ "./src/services/connect.ts");
+/* harmony import */ var _utils_errors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/errors */ "./src/utils/errors.ts");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles.css */ "./src/page/connectWallet/styles.css");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -43903,36 +45143,45 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var showAccount = document.querySelector('.showAccount');
 var btnMetamask = document.querySelector('#btn-metamask');
 var handleConnectWallet = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var provider;
+    var provider, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_2__.connect)()
+            case 0: return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_4__.connect)()
                     .then(function (res) {
                     showAccount.innerHTML = shortString(res[0]);
                     showAccount.title = res[0];
                     window.localStorage.setItem('connected', 'injected');
+                    (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_2__.showWalletInfo)(res[0].currentAddress);
                     // check login
-                    checkLogin(true, res[0]);
                 })
                     .catch(function (err) {
                     if (err.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
                         onClickInstallMetaMask();
                     }
-                    console.log((0,_utils_errors__WEBPACK_IMPORTED_MODULE_3__.convertWalletError)(err));
+                    console.log((0,_utils_errors__WEBPACK_IMPORTED_MODULE_5__.convertWalletError)(err));
                 })];
             case 1:
                 _a.sent();
-                provider = (0,_services__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
+                provider = (0,_services__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
                 if (!provider) {
                     return [2 /*return*/];
                 }
-                return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_2__.switchToNetwork)(provider.provider, '4102')];
+                _a.label = 2;
             case 2:
+                _a.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_4__.switchToNetwork)(provider.provider, _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS[0].chainId)];
+            case 3:
                 _a.sent();
-                return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };

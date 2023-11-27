@@ -26531,6 +26531,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/page-loading/styles.css":
+/*!************************************************!*\
+  !*** ./src/components/page-loading/styles.css ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/page/explore-collections/styles.css":
 /*!*************************************************!*\
   !*** ./src/page/explore-collections/styles.css ***!
@@ -29997,6 +30010,494 @@ exports["default"] = throttledQueue;
 
 /***/ }),
 
+/***/ "./src/abis/Erc721.ts":
+/*!****************************!*\
+  !*** ./src/abis/Erc721.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ABI_ERC721: () => (/* binding */ ABI_ERC721)
+/* harmony export */ });
+var ABI_ERC721 = [
+    {
+        inputs: [],
+        stateMutability: 'nonpayable',
+        type: 'constructor',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'approved',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Approval',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
+            },
+        ],
+        name: 'ApprovalForAll',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'previousOwner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: 'address',
+                name: 'account',
+                type: 'address',
+            },
+        ],
+        name: 'Paused',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Transfer',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: 'address',
+                name: 'account',
+                type: 'address',
+            },
+        ],
+        name: 'Unpaused',
+        type: 'event',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'approve',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'balanceOf',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'burn',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'getApproved',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+        ],
+        name: 'isApprovedForAll',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'name',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'owner',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'ownerOf',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'pause',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'paused',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'renounceOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'string',
+                name: 'uri',
+                type: 'string',
+            },
+        ],
+        name: 'safeMint',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'bytes',
+                name: 'data',
+                type: 'bytes',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
+            },
+        ],
+        name: 'setApprovalForAll',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'bytes4',
+                name: 'interfaceId',
+                type: 'bytes4',
+            },
+        ],
+        name: 'supportsInterface',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'symbol',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenURI',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'transferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'transferOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'unpause',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+];
+
+
+/***/ }),
+
 /***/ "./src/abis/Marketplace.ts":
 /*!*********************************!*\
   !*** ./src/abis/Marketplace.ts ***!
@@ -30012,1841 +30513,2028 @@ var MARKETPLACE_ABI = [
     {
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                internalType: 'address',
+                name: '_adminAddress',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "_creator",
-                type: "address",
+                internalType: 'address',
+                name: '_treasuryAddress',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "_whitelistChecker",
-                type: "address",
+                internalType: 'address',
+                name: '_wrapTokenAddress',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_tradingFee",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_minimumAskPrice',
+                type: 'uint256',
             },
             {
-                internalType: "uint256",
-                name: "_creatorFee",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_maximumAskPrice',
+                type: 'uint256',
             },
         ],
-        name: "addCollection",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_adminAddress",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_treasuryAddress",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_WBNBAddress",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_minimumAskPrice",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_maximumAskPrice",
-                type: "uint256",
-            },
-        ],
-        stateMutability: "nonpayable",
-        type: "constructor",
+        stateMutability: 'nonpayable',
+        type: 'constructor',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "AskCancel",
-        type: "event",
+        name: 'AskCancel',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
             {
                 indexed: false,
-                internalType: "uint256",
-                name: "askPrice",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'askPrice',
+                type: 'uint256',
             },
         ],
-        name: "AskNew",
-        type: "event",
+        name: 'AskNew',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
             {
                 indexed: false,
-                internalType: "uint256",
-                name: "askPrice",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'askPrice',
+                type: 'uint256',
             },
         ],
-        name: "AskUpdate",
-        type: "event",
+        name: 'AskUpdate',
+        type: 'event',
     },
     {
+        anonymous: false,
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
         ],
-        name: "buyTokenUsingBNB",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
+        name: 'CollectionClose',
+        type: 'event',
     },
     {
+        anonymous: false,
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'creator',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_price",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'whitelistChecker',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'tradingFee',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'creatorFee',
+                type: 'uint256',
             },
         ],
-        name: "buyTokenUsingWBNB",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        name: 'CollectionNew',
+        type: 'event',
     },
     {
+        anonymous: false,
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
+                indexed: true,
+                internalType: 'address',
+                name: 'creator',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'whitelistChecker',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'tradingFee',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'creatorFee',
+                type: 'uint256',
             },
         ],
-        name: "cancelAskOrder",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        name: 'CollectionUpdate',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'admin',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'treasury',
+                type: 'address',
+            },
+        ],
+        name: 'NewAdminAndTreasuryAddresses',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'minimumAskPrice',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'maximumAskPrice',
+                type: 'uint256',
+            },
+        ],
+        name: 'NewMinimumAndMaximumAskPrices',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'token',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'NonFungibleTokenRecovery',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'previousOwner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'claimer',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'amount',
+                type: 'uint256',
+            },
+        ],
+        name: 'RevenueClaim',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'token',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'amount',
+                type: 'uint256',
+            },
+        ],
+        name: 'TokenRecovery',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'address',
+                name: 'buyer',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'askPrice',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: 'netPrice',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'bool',
+                name: 'withNativeToken',
+                type: 'bool',
+            },
+        ],
+        name: 'Trade',
+        type: 'event',
     },
     {
         inputs: [],
-        name: "claimPendingRevenue",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-        ],
-        name: "closeCollectionForTradingAndListing",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-        ],
-        name: "CollectionClose",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "creator",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "whitelistChecker",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "tradingFee",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "creatorFee",
-                type: "uint256",
-            },
-        ],
-        name: "CollectionNew",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "creator",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "whitelistChecker",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "tradingFee",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "creatorFee",
-                type: "uint256",
-            },
-        ],
-        name: "CollectionUpdate",
-        type: "event",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_askPrice",
-                type: "uint256",
-            },
-        ],
-        name: "createAskOrder",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_newPrice",
-                type: "uint256",
-            },
-        ],
-        name: "modifyAskOrder",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_creator",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "_whitelistChecker",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tradingFee",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "_creatorFee",
-                type: "uint256",
-            },
-        ],
-        name: "modifyCollection",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "admin",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "treasury",
-                type: "address",
-            },
-        ],
-        name: "NewAdminAndTreasuryAddresses",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "minimumAskPrice",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "maximumAskPrice",
-                type: "uint256",
-            },
-        ],
-        name: "NewMinimumAndMaximumAskPrices",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "token",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "NonFungibleTokenRecovery",
-        type: "event",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
-            },
-            {
-                internalType: "bytes",
-                name: "",
-                type: "bytes",
-            },
-        ],
-        name: "onERC721Received",
+        name: 'TOTAL_MAX_FEE',
         outputs: [
             {
-                internalType: "bytes4",
-                name: "",
-                type: "bytes4",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "previousOwner",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "OwnershipTransferred",
-        type: "event",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_token",
-                type: "address",
-            },
-        ],
-        name: "recoverFungibleTokens",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_token",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "_tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "recoverNonFungibleToken",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "renounceOwnership",
+        name: 'WrapToken',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '_creator',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '_whitelistChecker',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tradingFee',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_creatorFee',
+                type: 'uint256',
+            },
+        ],
+        name: 'addCollection',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
-        anonymous: false,
-        inputs: [
+        inputs: [],
+        name: 'adminAddress',
+        outputs: [
             {
-                indexed: true,
-                internalType: "address",
-                name: "claimer",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        name: "RevenueClaim",
-        type: "event",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "_adminAddress",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "_treasuryAddress",
-                type: "address",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
         ],
-        name: "setAdminAndTreasuryAddresses",
+        name: 'buyTokenUsingNativeToken',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "token",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-            },
-        ],
-        name: "TokenRecovery",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "seller",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "address",
-                name: "buyer",
-                type: "address",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "askPrice",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "uint256",
-                name: "netPrice",
-                type: "uint256",
-            },
-            {
-                indexed: false,
-                internalType: "bool",
-                name: "withBNB",
-                type: "bool",
-            },
-        ],
-        name: "Trade",
-        type: "event",
+        stateMutability: 'payable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_price',
+                type: 'uint256',
             },
         ],
-        name: "transferOwnership",
+        name: 'buyTokenUsingWrapToken',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "_minimumAskPrice",
-                type: "uint256",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "_maximumAskPrice",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'price',
+                type: 'uint256',
             },
         ],
-        name: "updateMinimumAndMaximumPrices",
+        name: 'calculatePriceAndFeesForCollection',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: 'netPrice',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tradingFee',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: 'creatorFee',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256[]',
+                name: '_tokenIds',
+                type: 'uint256[]',
+            },
+        ],
+        name: 'canTokensBeListed',
+        outputs: [
+            {
+                internalType: 'bool[]',
+                name: 'listingStatuses',
+                type: 'bool[]',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'cancelAskOrder',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "adminAddress",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        name: 'claimPendingRevenue',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "price",
-                type: "uint256",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
         ],
-        name: "calculatePriceAndFeesForCollection",
-        outputs: [
-            {
-                internalType: "uint256",
-                name: "netPrice",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "tradingFee",
-                type: "uint256",
-            },
-            {
-                internalType: "uint256",
-                name: "creatorFee",
-                type: "uint256",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        name: 'closeCollectionForTradingAndListing',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "_collection",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
             {
-                internalType: "uint256[]",
-                name: "_tokenIds",
-                type: "uint256[]",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
-        ],
-        name: "canTokensBeListed",
-        outputs: [
             {
-                internalType: "bool[]",
-                name: "listingStatuses",
-                type: "bool[]",
+                internalType: 'uint256',
+                name: '_askPrice',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        name: 'createAskOrder',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "maximumAskPrice",
+        name: 'maximumAskPrice',
         outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "minimumAskPrice",
+        name: 'minimumAskPrice',
         outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "owner",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
-        ],
-        name: "pendingRevenue",
-        outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
-        ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "TOTAL_MAX_FEE",
-        outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '_newPrice',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "treasuryAddress",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        name: 'modifyAskOrder',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: '_collection',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "cursor",
-                type: "uint256",
+                internalType: 'address',
+                name: '_creator',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "size",
-                type: "uint256",
+                internalType: 'address',
+                name: '_whitelistChecker',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tradingFee',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_creatorFee',
+                type: 'uint256',
             },
         ],
-        name: "viewAsksByCollection",
+        name: 'modifyCollection',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+            {
+                internalType: 'bytes',
+                name: '',
+                type: 'bytes',
+            },
+        ],
+        name: 'onERC721Received',
         outputs: [
             {
-                internalType: "uint256[]",
-                name: "tokenIds",
-                type: "uint256[]",
+                internalType: 'bytes4',
+                name: '',
+                type: 'bytes4',
+            },
+        ],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'owner',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        name: 'pendingRevenue',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_token',
+                type: 'address',
+            },
+        ],
+        name: 'recoverFungibleTokens',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_token',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'recoverNonFungibleToken',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'renounceOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: '_adminAddress',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: '_treasuryAddress',
+                type: 'address',
+            },
+        ],
+        name: 'setAdminAndTreasuryAddresses',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'transferOwnership',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'treasuryAddress',
+        outputs: [
+            {
+                internalType: 'address',
+                name: '',
+                type: 'address',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: '_minimumAskPrice',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: '_maximumAskPrice',
+                type: 'uint256',
+            },
+        ],
+        name: 'updateMinimumAndMaximumPrices',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'cursor',
+                type: 'uint256',
+            },
+            {
+                internalType: 'uint256',
+                name: 'size',
+                type: 'uint256',
+            },
+        ],
+        name: 'viewAsksByCollection',
+        outputs: [
+            {
+                internalType: 'uint256[]',
+                name: 'tokenIds',
+                type: 'uint256[]',
             },
             {
                 components: [
                     {
-                        internalType: "address",
-                        name: "seller",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'seller',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "price",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'price',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Ask[]",
-                name: "askInfo",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Ask[]',
+                name: 'askInfo',
+                type: 'tuple[]',
             },
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "seller",
-                type: "address",
+                internalType: 'address',
+                name: 'seller',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "cursor",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'cursor',
+                type: 'uint256',
             },
             {
-                internalType: "uint256",
-                name: "size",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'size',
+                type: 'uint256',
             },
         ],
-        name: "viewAsksByCollectionAndSeller",
+        name: 'viewAsksByCollectionAndSeller',
         outputs: [
             {
-                internalType: "uint256[]",
-                name: "tokenIds",
-                type: "uint256[]",
+                internalType: 'uint256[]',
+                name: 'tokenIds',
+                type: 'uint256[]',
             },
             {
                 components: [
                     {
-                        internalType: "address",
-                        name: "seller",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'seller',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "price",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'price',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Ask[]",
-                name: "askInfo",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Ask[]',
+                name: 'askInfo',
+                type: 'tuple[]',
             },
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "collection",
-                type: "address",
+                internalType: 'address',
+                name: 'collection',
+                type: 'address',
             },
             {
-                internalType: "uint256[]",
-                name: "tokenIds",
-                type: "uint256[]",
+                internalType: 'uint256[]',
+                name: 'tokenIds',
+                type: 'uint256[]',
             },
         ],
-        name: "viewAsksByCollectionAndTokenIds",
+        name: 'viewAsksByCollectionAndTokenIds',
         outputs: [
             {
-                internalType: "bool[]",
-                name: "statuses",
-                type: "bool[]",
+                internalType: 'bool[]',
+                name: 'statuses',
+                type: 'bool[]',
             },
             {
                 components: [
                     {
-                        internalType: "address",
-                        name: "seller",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'seller',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "price",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'price',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Ask[]",
-                name: "askInfo",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Ask[]',
+                name: 'askInfo',
+                type: 'tuple[]',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "cursor",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'cursor',
+                type: 'uint256',
             },
             {
-                internalType: "uint256",
-                name: "size",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'size',
+                type: 'uint256',
             },
         ],
-        name: "viewCollections",
+        name: 'viewCollections',
         outputs: [
             {
-                internalType: "address[]",
-                name: "collectionAddresses",
-                type: "address[]",
+                internalType: 'address[]',
+                name: 'collectionAddresses',
+                type: 'address[]',
             },
             {
                 components: [
                     {
-                        internalType: "enum ERC721NFTMarketV1.CollectionStatus",
-                        name: "status",
-                        type: "uint8",
+                        internalType: 'enum ERC721NFTMarketV1.CollectionStatus',
+                        name: 'status',
+                        type: 'uint8',
                     },
                     {
-                        internalType: "address",
-                        name: "creatorAddress",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'creatorAddress',
+                        type: 'address',
                     },
                     {
-                        internalType: "address",
-                        name: "whitelistChecker",
-                        type: "address",
+                        internalType: 'address',
+                        name: 'whitelistChecker',
+                        type: 'address',
                     },
                     {
-                        internalType: "uint256",
-                        name: "tradingFee",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'tradingFee',
+                        type: 'uint256',
                     },
                     {
-                        internalType: "uint256",
-                        name: "creatorFee",
-                        type: "uint256",
+                        internalType: 'uint256',
+                        name: 'creatorFee',
+                        type: 'uint256',
                     },
                 ],
-                internalType: "struct ERC721NFTMarketV1.Collection[]",
-                name: "collectionDetails",
-                type: "tuple[]",
+                internalType: 'struct ERC721NFTMarketV1.Collection[]',
+                name: 'collectionDetails',
+                type: 'tuple[]',
             },
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "WBNB",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
 ];
 
 
 /***/ }),
 
-/***/ "./src/abis/NFT.ts":
-/*!*************************!*\
-  !*** ./src/abis/NFT.ts ***!
-  \*************************/
+/***/ "./src/abis/PublicCollection.ts":
+/*!**************************************!*\
+  !*** ./src/abis/PublicCollection.ts ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   NFT_ABI: () => (/* binding */ NFT_ABI)
+/* harmony export */   ABI_PUBLIC_COLLECTION: () => (/* binding */ ABI_PUBLIC_COLLECTION)
 /* harmony export */ });
-var NFT_ABI = [
+var ABI_PUBLIC_COLLECTION = [
     {
-        inputs: [],
-        stateMutability: "nonpayable",
-        type: "constructor",
-    },
-    {
-        anonymous: false,
         inputs: [
             {
-                indexed: true,
-                internalType: "address",
-                name: "owner",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "approved",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'address',
+                name: 'initialOwner',
+                type: 'address',
             },
         ],
-        name: "Approval",
-        type: "event",
+        stateMutability: 'nonpayable',
+        type: 'constructor',
+    },
+    {
+        inputs: [],
+        name: 'ERC721EnumerableForbiddenBatchMint',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'sender',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721IncorrectOwner',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'ERC721InsufficientApproval',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'approver',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidApprover',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidOperator',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidOwner',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'receiver',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidReceiver',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'sender',
+                type: 'address',
+            },
+        ],
+        name: 'ERC721InvalidSender',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'ERC721NonexistentToken',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'ERC721OutOfBoundsIndex',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnableInvalidOwner',
+        type: 'error',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'account',
+                type: 'address',
+            },
+        ],
+        name: 'OwnableUnauthorizedAccount',
+        type: 'error',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                internalType: "address",
-                name: "owner",
-                type: "address",
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
             },
             {
                 indexed: true,
-                internalType: "address",
-                name: "operator",
-                type: "address",
+                internalType: 'address',
+                name: 'approved',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Approval',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
             },
             {
                 indexed: false,
-                internalType: "bool",
-                name: "approved",
-                type: "bool",
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
             },
         ],
-        name: "ApprovalForAll",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "previousOwner",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "OwnershipTransferred",
-        type: "event",
+        name: 'ApprovalForAll',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: false,
-                internalType: "address",
-                name: "account",
-                type: "address",
+                internalType: 'uint256',
+                name: '_fromTokenId',
+                type: 'uint256',
+            },
+            {
+                indexed: false,
+                internalType: 'uint256',
+                name: '_toTokenId',
+                type: 'uint256',
             },
         ],
-        name: "Paused",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            {
-                indexed: true,
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                indexed: true,
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "Transfer",
-        type: "event",
+        name: 'BatchMetadataUpdate',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: false,
-                internalType: "address",
-                name: "account",
-                type: "address",
+                internalType: 'uint256',
+                name: '_tokenId',
+                type: 'uint256',
             },
         ],
-        name: "Unpaused",
-        type: "event",
+        name: 'MetadataUpdate',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'previousOwner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
+            },
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event',
+    },
+    {
+        anonymous: false,
+        inputs: [
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'Transfer',
+        type: 'event',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "to",
-                type: "address",
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
             },
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "approve",
+        name: 'approve',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "owner",
-                type: "address",
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
             },
         ],
-        name: "balanceOf",
+        name: 'balanceOf',
         outputs: [
             {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "burn",
+        name: 'burn',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "getApproved",
+        name: 'getApproved',
         outputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "owner",
-                type: "address",
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
             },
             {
-                internalType: "address",
-                name: "operator",
-                type: "address",
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
             },
         ],
-        name: "isApprovedForAll",
+        name: 'isApprovedForAll',
         outputs: [
             {
-                internalType: "bool",
-                name: "",
-                type: "bool",
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "name",
+        name: 'name',
         outputs: [
             {
-                internalType: "string",
-                name: "",
-                type: "string",
+                internalType: 'string',
+                name: '',
+                type: 'string',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "owner",
+        name: 'owner',
         outputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        name: "ownerOf",
+        name: 'ownerOf',
         outputs: [
             {
-                internalType: "address",
-                name: "",
-                type: "address",
+                internalType: 'address',
+                name: '',
+                type: 'address',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "pause",
+        name: 'renounceOwnership',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'string',
+                name: 'uri',
+                type: 'string',
+            },
+        ],
+        name: 'safeMint',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
+            },
+            {
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+            {
+                internalType: 'bytes',
+                name: 'data',
+                type: 'bytes',
+            },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'operator',
+                type: 'address',
+            },
+            {
+                internalType: 'bool',
+                name: 'approved',
+                type: 'bool',
+            },
+        ],
+        name: 'setApprovalForAll',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'bytes4',
+                name: 'interfaceId',
+                type: 'bytes4',
+            },
+        ],
+        name: 'supportsInterface',
+        outputs: [
+            {
+                internalType: 'bool',
+                name: '',
+                type: 'bool',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "paused",
+        name: 'symbol',
         outputs: [
             {
-                internalType: "bool",
-                name: "",
-                type: "bool",
+                internalType: 'string',
+                name: '',
+                type: 'string',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenByIndex',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenOfOwnerByIndex',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
+            },
+        ],
+        name: 'tokenURI',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [],
-        name: "renounceOwnership",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "string",
-                name: "uri",
-                type: "string",
-            },
-        ],
-        name: "safeMint",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "safeTransferFrom",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "bytes",
-                name: "data",
-                type: "bytes",
-            },
-        ],
-        name: "safeTransferFrom",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "operator",
-                type: "address",
-            },
-            {
-                internalType: "bool",
-                name: "approved",
-                type: "bool",
-            },
-        ],
-        name: "setApprovalForAll",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "bytes4",
-                name: "interfaceId",
-                type: "bytes4",
-            },
-        ],
-        name: "supportsInterface",
+        name: 'totalSupply',
         outputs: [
             {
-                internalType: "bool",
-                name: "",
-                type: "bool",
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "symbol",
-        outputs: [
-            {
-                internalType: "string",
-                name: "",
-                type: "string",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'address',
+                name: 'from',
+                type: 'address',
             },
-        ],
-        name: "tokenURI",
-        outputs: [
             {
-                internalType: "string",
-                name: "",
-                type: "string",
+                internalType: 'address',
+                name: 'to',
+                type: 'address',
+            },
+            {
+                internalType: 'uint256',
+                name: 'tokenId',
+                type: 'uint256',
             },
         ],
-        stateMutability: "view",
-        type: "function",
+        name: 'transferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         inputs: [
             {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
+                internalType: 'address',
+                name: 'newOwner',
+                type: 'address',
             },
         ],
-        name: "transferFrom",
+        name: 'transferOwnership',
         outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "transferOwnership",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [],
-        name: "unpause",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
 ];
 
 
 /***/ }),
 
-/***/ "./src/abis/WBNB.ts":
-/*!**************************!*\
-  !*** ./src/abis/WBNB.ts ***!
-  \**************************/
+/***/ "./src/abis/WrapToken.ts":
+/*!*******************************!*\
+  !*** ./src/abis/WrapToken.ts ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   WBNB_ABI: () => (/* binding */ WBNB_ABI)
+/* harmony export */   ABI_WRAP_TOKEN: () => (/* binding */ ABI_WRAP_TOKEN)
 /* harmony export */ });
-var WBNB_ABI = [
+var ABI_WRAP_TOKEN = [
     {
         constant: true,
         inputs: [],
-        name: "name",
+        name: 'name',
         outputs: [
             {
-                name: "",
-                type: "string",
+                name: '',
+                type: 'string',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "guy",
-                type: "address",
+                name: 'guy',
+                type: 'address',
             },
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "approve",
+        name: 'approve',
         outputs: [
             {
-                name: "",
-                type: "bool",
+                name: '',
+                type: 'bool',
             },
         ],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [],
-        name: "totalSupply",
+        name: 'totalSupply',
         outputs: [
             {
-                name: "",
-                type: "uint256",
+                name: '',
+                type: 'uint256',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "transferFrom",
+        name: 'transferFrom',
         outputs: [
             {
-                name: "",
-                type: "bool",
+                name: '',
+                type: 'bool',
             },
         ],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "withdraw",
+        name: 'withdraw',
         outputs: [],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [],
-        name: "decimals",
+        name: 'decimals',
         outputs: [
             {
-                name: "",
-                type: "uint8",
+                name: '',
+                type: 'uint8',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [
             {
-                name: "",
-                type: "address",
+                name: '',
+                type: 'address',
             },
         ],
-        name: "balanceOf",
+        name: 'balanceOf',
         outputs: [
             {
-                name: "",
-                type: "uint256",
+                name: '',
+                type: 'uint256',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [],
-        name: "symbol",
+        name: 'symbol',
         outputs: [
             {
-                name: "",
-                type: "string",
+                name: '',
+                type: 'string',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [
             {
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "transfer",
+        name: 'transfer',
         outputs: [
             {
-                name: "",
-                type: "bool",
+                name: '',
+                type: 'bool',
             },
         ],
         payable: false,
-        stateMutability: "nonpayable",
-        type: "function",
+        stateMutability: 'nonpayable',
+        type: 'function',
     },
     {
         constant: false,
         inputs: [],
-        name: "deposit",
+        name: 'deposit',
         outputs: [],
         payable: true,
-        stateMutability: "payable",
-        type: "function",
+        stateMutability: 'payable',
+        type: 'function',
     },
     {
         constant: true,
         inputs: [
             {
-                name: "",
-                type: "address",
+                name: '',
+                type: 'address',
             },
             {
-                name: "",
-                type: "address",
+                name: '',
+                type: 'address',
             },
         ],
-        name: "allowance",
+        name: 'allowance',
         outputs: [
             {
-                name: "",
-                type: "uint256",
+                name: '',
+                type: 'uint256',
             },
         ],
         payable: false,
-        stateMutability: "view",
-        type: "function",
+        stateMutability: 'view',
+        type: 'function',
     },
     {
         payable: true,
-        stateMutability: "payable",
-        type: "fallback",
+        stateMutability: 'payable',
+        type: 'fallback',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
                 indexed: true,
-                name: "guy",
-                type: "address",
+                name: 'guy',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Approval",
-        type: "event",
+        name: 'Approval',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
                 indexed: true,
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Transfer",
-        type: "event",
+        name: 'Transfer',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "dst",
-                type: "address",
+                name: 'dst',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Deposit",
-        type: "event",
+        name: 'Deposit',
+        type: 'event',
     },
     {
         anonymous: false,
         inputs: [
             {
                 indexed: true,
-                name: "src",
-                type: "address",
+                name: 'src',
+                type: 'address',
             },
             {
                 indexed: false,
-                name: "wad",
-                type: "uint256",
+                name: 'wad',
+                type: 'uint256',
             },
         ],
-        name: "Withdrawal",
-        type: "event",
+        name: 'Withdrawal',
+        type: 'event',
     },
 ];
 
@@ -31862,19 +32550,22 @@ var WBNB_ABI = [
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ABI_ERC721: () => (/* reexport safe */ _Erc721__WEBPACK_IMPORTED_MODULE_2__.ABI_ERC721),
+/* harmony export */   ABI_PUBLIC_COLLECTION: () => (/* reexport safe */ _PublicCollection__WEBPACK_IMPORTED_MODULE_3__.ABI_PUBLIC_COLLECTION),
+/* harmony export */   ABI_WRAP_TOKEN: () => (/* reexport safe */ _WrapToken__WEBPACK_IMPORTED_MODULE_0__.ABI_WRAP_TOKEN),
 /* harmony export */   MARKETPLACE_ABI: () => (/* reexport safe */ _Marketplace__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ABI),
-/* harmony export */   NFT_ABI: () => (/* reexport safe */ _NFT__WEBPACK_IMPORTED_MODULE_2__.NFT_ABI),
-/* harmony export */   TOKEN_EXCHANGE_ABI: () => (/* binding */ TOKEN_EXCHANGE_ABI),
-/* harmony export */   WBNB_ABI: () => (/* reexport safe */ _WBNB__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI)
+/* harmony export */   TOKEN_EXCHANGE_ABI: () => (/* binding */ TOKEN_EXCHANGE_ABI)
 /* harmony export */ });
-/* harmony import */ var _WBNB__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WBNB */ "./src/abis/WBNB.ts");
+/* harmony import */ var _WrapToken__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WrapToken */ "./src/abis/WrapToken.ts");
 /* harmony import */ var _Marketplace__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Marketplace */ "./src/abis/Marketplace.ts");
-/* harmony import */ var _NFT__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NFT */ "./src/abis/NFT.ts");
+/* harmony import */ var _Erc721__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Erc721 */ "./src/abis/Erc721.ts");
+/* harmony import */ var _PublicCollection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PublicCollection */ "./src/abis/PublicCollection.ts");
 
 
 
 
-var TOKEN_EXCHANGE_ABI = _WBNB__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI;
+
+var TOKEN_EXCHANGE_ABI = _WrapToken__WEBPACK_IMPORTED_MODULE_0__.ABI_WRAP_TOKEN;
 
 
 /***/ }),
@@ -31888,22 +32579,82 @@ var TOKEN_EXCHANGE_ABI = _WBNB__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ADDRESS_OF_CHAINS: () => (/* binding */ ADDRESS_OF_CHAINS),
 /* harmony export */   Collections: () => (/* binding */ Collections),
 /* harmony export */   CollectionsOfMarket: () => (/* binding */ CollectionsOfMarket),
-/* harmony export */   DEFAULT_ADDRESS: () => (/* binding */ DEFAULT_ADDRESS),
-/* harmony export */   MARKETPLACE_ADDRESS: () => (/* binding */ MARKETPLACE_ADDRESS),
-/* harmony export */   NFT_ADDRESS: () => (/* binding */ NFT_ADDRESS),
-/* harmony export */   WBNB_ADDRESS: () => (/* binding */ WBNB_ADDRESS)
+/* harmony export */   DEFAULT_ADDRESS: () => (/* binding */ DEFAULT_ADDRESS)
 /* harmony export */ });
-var WBNB_ADDRESS = '0xcB96060104AA0529Be0B8B4c15703a962A20DF60';
-var NFT_ADDRESS = '0x1Def42fc65c3251087Bb61A410003981bE75e1d8';
-var MARKETPLACE_ADDRESS = '0x634345357C9eA4B6e52765804d647048bd15e468';
+/* harmony import */ var _chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chains */ "./src/constants/chains.ts");
+var _a;
+
+var ADDRESS_OF_CHAINS = (_a = {},
+    _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.AIOZ] = {
+        DEPOSIT_RATE: 1,
+        WUIT: '0xcB96060104AA0529Be0B8B4c15703a962A20DF60',
+        MARKET: '0x634345357C9eA4B6e52765804d647048bd15e468',
+        PUBLIC_ERC721_TOKEN: '0x0000000000000000000000000000000000000000',
+        COLLECTIONS: {
+            DyanCat: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
+            },
+        },
+    },
+    _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.GOERLI] = {
+        DEPOSIT_RATE: 100000,
+        WUIT: '0x13724882900FaaC30151419E6D8Cd6a96069Aec4',
+        MARKET: '0x946324A2F239C5ff6393B446EF698e816Aa82898',
+        PUBLIC_ERC721_TOKEN: '0x993Ee67F5262c1B4c775d21EbD5bb85733AB3eFE',
+        COLLECTIONS: {
+            DyanCat: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x5F3F8ef7630a4FC0DAd482D33178BF5A190a925e',
+            },
+            SanFranTokyo: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x947976e72e45d6741933bd28CD80e3D28A71619c',
+            },
+            TheGraps: {
+                onwer: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x55327442555db09955110428F46B66b902Dee1a4',
+            },
+            ElementalBean: {
+                onwer: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
+                address: '0x691a745C68410be4d96A02d96Bdbed68c7941e67',
+            },
+            MVP: {
+                owner: '0xf9f0036e2AFAf6EEEa77E08D1BFA012e1442dA3F',
+                address: '0xd908C6eD97C677d6ee58B30F9c99E3b52c6DE61C',
+            },
+            Maxtr1x2061: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0xfC7F5dbd4FF88212AE1ab254200D04F3c81D9B58',
+            },
+        },
+    },
+    _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.MUMBAI] = {
+        DEPOSIT_RATE: 100000,
+        WUIT: '0x6e339498Dce86c81F175b0bD12c3a6b7216e24cb',
+        MARKET: '0xD39Cf454221404745d7C807f17c8460bE0eC8317',
+        PUBLIC_ERC721_TOKEN: '0xf87d74a1B01ce51446F40A1B18dC49da4a806879',
+        COLLECTIONS: {
+            DyanCat: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x5F3F8ef7630a4FC0DAd482D33178BF5A190a925e',
+            },
+        },
+    },
+    _a);
 var DEFAULT_ADDRESS = '0x0000000000000000000000000000000000000000';
 var Collections = {
     '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8': '0xd1edA759274915Ac515f42d96BBe9F4b02aE1b76',
     '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1': '0x1Def42fc65c3251087Bb61A410003981bE75e1d8',
 };
 var CollectionsOfMarket = {
+    DyanCatV2: {
+        address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+    },
     MVP: {
         address: '0xC85c402Ddc81c390053B2d7eB120E8e97EA41e7B',
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
@@ -31957,6 +32708,92 @@ var CollectionsOfMarket = {
 
 /***/ }),
 
+/***/ "./src/constants/chains.ts":
+/*!*********************************!*\
+  !*** ./src/constants/chains.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CHAINS: () => (/* binding */ CHAINS),
+/* harmony export */   CHAIN_IDS: () => (/* binding */ CHAIN_IDS),
+/* harmony export */   DEFAULT_CHAIN_ID: () => (/* binding */ DEFAULT_CHAIN_ID),
+/* harmony export */   DEFAULT_WRAP_TOKEN_SYMBOL: () => (/* binding */ DEFAULT_WRAP_TOKEN_SYMBOL)
+/* harmony export */ });
+var CHAIN_IDS = {
+    AIOZ: 4102,
+    GOERLI: 5,
+    MUMBAI: 80001,
+};
+var DEFAULT_CHAIN_ID = CHAIN_IDS.GOERLI;
+var DEFAULT_WRAP_TOKEN_SYMBOL = 'WUIT';
+var CHAINS = [
+    {
+        chainId: CHAIN_IDS.AIOZ,
+        chainIdHex: '0x1006',
+        chainName: 'AIOZ Network Testnet',
+        rpcUrl: 'https://eth-ds.testnet.aioz.network',
+        currencySymbol: 'AIOZ',
+        blockExplorerUrl: 'https://testnet.explorer.aioz.network',
+        nativeCurrency: {
+            name: 'AIOZ',
+            symbol: 'AIOZ',
+            decimals: 18,
+        },
+    },
+    {
+        chainId: CHAIN_IDS.GOERLI,
+        chainIdHex: '0x5',
+        chainName: 'Goerli',
+        rpcUrl: 'https://rpc.ankr.com/eth_goerli',
+        currencySymbol: 'Goerli ETH',
+        blockExplorerUrl: 'https://goerli.etherscan.io',
+        nativeCurrency: {
+            name: 'Goerli ETH',
+            symbol: 'Goerli ETH',
+            decimals: 18,
+        },
+    },
+    {
+        chainId: CHAIN_IDS.MUMBAI,
+        chainIdHex: '0x13881',
+        chainName: 'Mumbai',
+        rpcUrl: 'https://rpc-mumbai.maticvigil.com',
+        currencySymbol: 'MATIC',
+        blockExplorerUrl: 'https://mumbai.polygonscan.com',
+        nativeCurrency: {
+            name: 'MATIC',
+            symbol: 'MATIC',
+            decimals: 18,
+        },
+    },
+];
+
+
+/***/ }),
+
+/***/ "./src/constants/elements.ts":
+/*!***********************************!*\
+  !*** ./src/constants/elements.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   HTMLElementActionPeding: () => (/* binding */ HTMLElementActionPeding),
+/* harmony export */   HTMLElementLoadingList: () => (/* binding */ HTMLElementLoadingList),
+/* harmony export */   HTMLElementNoItem: () => (/* binding */ HTMLElementNoItem)
+/* harmony export */ });
+var HTMLElementLoadingList = "<div class=\"list-loading__container\">\n<div class=\"list-loading__svg-container\">\n  <svg\n    class=\"list-loading__svg-loading\"\n    width=\"24\"\n    height=\"24\"\n    viewBox=\"0 0 24 24\"\n    fill=\"none\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <g clip-path=\"url(#clip0_502_294)\">\n      <path\n        fill-rule=\"evenodd\"\n        clip-rule=\"evenodd\"\n        d=\"M13.2 19.2C13.8365 19.2 14.447 19.4529 14.8971 19.9029C15.3471 20.353 15.6 20.9635 15.6 21.6C15.6 22.2365 15.3471 22.847 14.8971 23.2971C14.447 23.7471 13.8365 24 13.2 24C12.5635 24 11.953 23.7471 11.5029 23.2971C11.0529 22.847 10.8 22.2365 10.8 21.6C10.8 20.9635 11.0529 20.353 11.5029 19.9029C11.953 19.4529 12.5635 19.2 13.2 19.2ZM5.6892 15.6C6.48485 15.6 7.24791 15.9161 7.81052 16.4787C8.37313 17.0413 8.6892 17.8044 8.6892 18.6C8.6892 19.3957 8.37313 20.1587 7.81052 20.7213C7.24791 21.2839 6.48485 21.6 5.6892 21.6C4.89355 21.6 4.13049 21.2839 3.56788 20.7213C3.00527 20.1587 2.6892 19.3957 2.6892 18.6C2.6892 17.8044 3.00527 17.0413 3.56788 16.4787C4.13049 15.9161 4.89355 15.6 5.6892 15.6ZM19.5828 16.2C20.2193 16.2 20.8298 16.4529 21.2799 16.9029C21.7299 17.353 21.9828 17.9635 21.9828 18.6C21.9828 19.2365 21.7299 19.847 21.2799 20.2971C20.8298 20.7471 20.2193 21 19.5828 21C18.9463 21 18.3358 20.7471 17.8857 20.2971C17.4357 19.847 17.1828 19.2365 17.1828 18.6C17.1828 17.9635 17.4357 17.353 17.8857 16.9029C18.3358 16.4529 18.9463 16.2 19.5828 16.2ZM22.2 11.1828C22.6774 11.1828 23.1352 11.3724 23.4728 11.71C23.8104 12.0476 24 12.5054 24 12.9828C24 13.4602 23.8104 13.918 23.4728 14.2556C23.1352 14.5932 22.6774 14.7828 22.2 14.7828C21.7226 14.7828 21.2648 14.5932 20.9272 14.2556C20.5896 13.918 20.4 13.4602 20.4 12.9828C20.4 12.5054 20.5896 12.0476 20.9272 11.71C21.2648 11.3724 21.7226 11.1828 22.2 11.1828ZM3 7.2C3.79565 7.2 4.55871 7.51607 5.12132 8.07868C5.68393 8.64129 6 9.40435 6 10.2C6 10.9956 5.68393 11.7587 5.12132 12.3213C4.55871 12.8839 3.79565 13.2 3 13.2C2.20435 13.2 1.44129 12.8839 0.87868 12.3213C0.316071 11.7587 0 10.9956 0 10.2C0 9.40435 0.316071 8.64129 0.87868 8.07868C1.44129 7.51607 2.20435 7.2 3 7.2ZM21.3432 6.2484C21.6615 6.2484 21.9667 6.37483 22.1917 6.59987C22.4168 6.82492 22.5432 7.13014 22.5432 7.4484C22.5432 7.76666 22.4168 8.07188 22.1917 8.29693C21.9667 8.52197 21.6615 8.6484 21.3432 8.6484C21.0249 8.6484 20.7197 8.52197 20.4947 8.29693C20.2696 8.07188 20.1432 7.76666 20.1432 7.4484C20.1432 7.13014 20.2696 6.82492 20.4947 6.59987C20.7197 6.37483 21.0249 6.2484 21.3432 6.2484ZM9.6 0C10.5548 0 11.4705 0.379285 12.1456 1.05442C12.8207 1.72955 13.2 2.64522 13.2 3.6C13.2 4.55478 12.8207 5.47045 12.1456 6.14558C11.4705 6.82072 10.5548 7.2 9.6 7.2C8.64522 7.2 7.72955 6.82072 7.05442 6.14558C6.37928 5.47045 6 4.55478 6 3.6C6 2.64522 6.37928 1.72955 7.05442 1.05442C7.72955 0.379285 8.64522 0 9.6 0ZM18.6 3.6C18.7591 3.6 18.9117 3.66321 19.0243 3.77574C19.1368 3.88826 19.2 4.04087 19.2 4.2C19.2 4.35913 19.1368 4.51174 19.0243 4.62426C18.9117 4.73679 18.7591 4.8 18.6 4.8C18.4409 4.8 18.2883 4.73679 18.1757 4.62426C18.0632 4.51174 18 4.35913 18 4.2C18 4.04087 18.0632 3.88826 18.1757 3.77574C18.2883 3.66321 18.4409 3.6 18.6 3.6Z\"\n        fill=\"currentColor\"\n      />\n    </g>\n    <defs>\n      <clipPath id=\"clip0_502_294\">\n        <rect width=\"24\" height=\"24\" fill=\"white\" />\n      </clipPath>\n    </defs>\n  </svg>\n</div>\n</div>";
+var HTMLElementNoItem = " <div class=\"no-item__container\">\n<p class=\"no-item-description\">No item availible</p>\n</div>";
+var HTMLElementActionPeding = "<div class=\"list-loading__svg-container\">\n<svg\n  class=\"list-loading__svg-loading\"\n  width=\"24\"\n  height=\"24\"\n  viewBox=\"0 0 24 24\"\n  fill=\"none\"\n  xmlns=\"http://www.w3.org/2000/svg\"\n>\n  <g clip-path=\"url(#clip0_502_294)\">\n    <path\n      fill-rule=\"evenodd\"\n      clip-rule=\"evenodd\"\n      d=\"M13.2 19.2C13.8365 19.2 14.447 19.4529 14.8971 19.9029C15.3471 20.353 15.6 20.9635 15.6 21.6C15.6 22.2365 15.3471 22.847 14.8971 23.2971C14.447 23.7471 13.8365 24 13.2 24C12.5635 24 11.953 23.7471 11.5029 23.2971C11.0529 22.847 10.8 22.2365 10.8 21.6C10.8 20.9635 11.0529 20.353 11.5029 19.9029C11.953 19.4529 12.5635 19.2 13.2 19.2ZM5.6892 15.6C6.48485 15.6 7.24791 15.9161 7.81052 16.4787C8.37313 17.0413 8.6892 17.8044 8.6892 18.6C8.6892 19.3957 8.37313 20.1587 7.81052 20.7213C7.24791 21.2839 6.48485 21.6 5.6892 21.6C4.89355 21.6 4.13049 21.2839 3.56788 20.7213C3.00527 20.1587 2.6892 19.3957 2.6892 18.6C2.6892 17.8044 3.00527 17.0413 3.56788 16.4787C4.13049 15.9161 4.89355 15.6 5.6892 15.6ZM19.5828 16.2C20.2193 16.2 20.8298 16.4529 21.2799 16.9029C21.7299 17.353 21.9828 17.9635 21.9828 18.6C21.9828 19.2365 21.7299 19.847 21.2799 20.2971C20.8298 20.7471 20.2193 21 19.5828 21C18.9463 21 18.3358 20.7471 17.8857 20.2971C17.4357 19.847 17.1828 19.2365 17.1828 18.6C17.1828 17.9635 17.4357 17.353 17.8857 16.9029C18.3358 16.4529 18.9463 16.2 19.5828 16.2ZM22.2 11.1828C22.6774 11.1828 23.1352 11.3724 23.4728 11.71C23.8104 12.0476 24 12.5054 24 12.9828C24 13.4602 23.8104 13.918 23.4728 14.2556C23.1352 14.5932 22.6774 14.7828 22.2 14.7828C21.7226 14.7828 21.2648 14.5932 20.9272 14.2556C20.5896 13.918 20.4 13.4602 20.4 12.9828C20.4 12.5054 20.5896 12.0476 20.9272 11.71C21.2648 11.3724 21.7226 11.1828 22.2 11.1828ZM3 7.2C3.79565 7.2 4.55871 7.51607 5.12132 8.07868C5.68393 8.64129 6 9.40435 6 10.2C6 10.9956 5.68393 11.7587 5.12132 12.3213C4.55871 12.8839 3.79565 13.2 3 13.2C2.20435 13.2 1.44129 12.8839 0.87868 12.3213C0.316071 11.7587 0 10.9956 0 10.2C0 9.40435 0.316071 8.64129 0.87868 8.07868C1.44129 7.51607 2.20435 7.2 3 7.2ZM21.3432 6.2484C21.6615 6.2484 21.9667 6.37483 22.1917 6.59987C22.4168 6.82492 22.5432 7.13014 22.5432 7.4484C22.5432 7.76666 22.4168 8.07188 22.1917 8.29693C21.9667 8.52197 21.6615 8.6484 21.3432 8.6484C21.0249 8.6484 20.7197 8.52197 20.4947 8.29693C20.2696 8.07188 20.1432 7.76666 20.1432 7.4484C20.1432 7.13014 20.2696 6.82492 20.4947 6.59987C20.7197 6.37483 21.0249 6.2484 21.3432 6.2484ZM9.6 0C10.5548 0 11.4705 0.379285 12.1456 1.05442C12.8207 1.72955 13.2 2.64522 13.2 3.6C13.2 4.55478 12.8207 5.47045 12.1456 6.14558C11.4705 6.82072 10.5548 7.2 9.6 7.2C8.64522 7.2 7.72955 6.82072 7.05442 6.14558C6.37928 5.47045 6 4.55478 6 3.6C6 2.64522 6.37928 1.72955 7.05442 1.05442C7.72955 0.379285 8.64522 0 9.6 0ZM18.6 3.6C18.7591 3.6 18.9117 3.66321 19.0243 3.77574C19.1368 3.88826 19.2 4.04087 19.2 4.2C19.2 4.35913 19.1368 4.51174 19.0243 4.62426C18.9117 4.73679 18.7591 4.8 18.6 4.8C18.4409 4.8 18.2883 4.73679 18.1757 4.62426C18.0632 4.51174 18 4.35913 18 4.2C18 4.04087 18.0632 3.88826 18.1757 3.77574C18.2883 3.66321 18.4409 3.6 18.6 3.6Z\"\n      fill=\"#fff\"\n    />\n  </g>\n  <defs>\n    <clipPath id=\"clip0_502_294\">\n      <rect width=\"24\" height=\"24\" fill=\"white\" />\n    </clipPath>\n  </defs>\n</svg>\n</div>\n";
+
+
+/***/ }),
+
 /***/ "./src/constants/errors.ts":
 /*!*********************************!*\
   !*** ./src/constants/errors.ts ***!
@@ -31982,6 +32819,7 @@ var AppError;
     AppError["OWNER_IS_NOT_VALID"] = "Owner is not valid";
     AppError["CONNECT_WALLET_FAIL"] = "Connect wallet fail";
     AppError["INPUT_INVALID"] = "Input invalid";
+    AppError["CHAIN_ID_INVALID"] = "ChainID invalid";
 })(AppError || (AppError = {}));
 var BuyNftErrorMessage;
 (function (BuyNftErrorMessage) {
@@ -32002,45 +32840,183 @@ var BuyNftErrorMessage;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ADDRESS_OF_CHAINS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.ADDRESS_OF_CHAINS),
 /* harmony export */   AppError: () => (/* reexport safe */ _errors__WEBPACK_IMPORTED_MODULE_1__.AppError),
 /* harmony export */   BuyNftErrorMessage: () => (/* reexport safe */ _errors__WEBPACK_IMPORTED_MODULE_1__.BuyNftErrorMessage),
 /* harmony export */   Collections: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.Collections),
 /* harmony export */   CollectionsOfMarket: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.CollectionsOfMarket),
 /* harmony export */   DEFAULT_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS),
-/* harmony export */   MARKETPLACE_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ADDRESS),
-/* harmony export */   NATIVE_TOKEN_NAME: () => (/* binding */ NATIVE_TOKEN_NAME),
-/* harmony export */   NFT_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.NFT_ADDRESS),
-/* harmony export */   STORAGE_API_KEY: () => (/* binding */ STORAGE_API_KEY),
-/* harmony export */   WBNB_ADDRESS: () => (/* reexport safe */ _address__WEBPACK_IMPORTED_MODULE_0__.WBNB_ADDRESS)
+/* harmony export */   STORAGE_API_KEY: () => (/* binding */ STORAGE_API_KEY)
 /* harmony export */ });
 /* harmony import */ var _address__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./address */ "./src/constants/address.ts");
 /* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./src/constants/errors.ts");
 
 
 var STORAGE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDdDNDFFMWFDQkNjMTQ1RjlGMERFNDkzOTJEOGRhYzQ1OEE2Q2RlQTgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY5NjYwMDQxNzI2OCwibmFtZSI6ImllMTA0In0.jT8e3Cattm3noiln1Mzo9ODvaW3zwKPi4OkA3qhjREA';
-var NATIVE_TOKEN_NAME = 'AIOZ';
 
 
 /***/ }),
 
-/***/ "./src/constants/network.ts":
-/*!**********************************!*\
-  !*** ./src/constants/network.ts ***!
-  \**********************************/
+/***/ "./src/controller/chain.ts":
+/*!*********************************!*\
+  !*** ./src/controller/chain.ts ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AIOZ_TESTNET_NETWORK: () => (/* binding */ AIOZ_TESTNET_NETWORK)
+/* harmony export */   ChainManagerInstance: () => (/* binding */ ChainManagerInstance)
 /* harmony export */ });
-var AIOZ_TESTNET_NETWORK = {
-    name: "AIOZ Testnet",
-    rpc: "https://eth-ds.testnet.aioz.network",
-    chainId: "4102",
-    CurrencySymbol: "AIOZ",
-    blockExplorer: "https://testnet.explorer.aioz.network",
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services */ "./src/services/index.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var ChainManager = /** @class */ (function () {
+    function ChainManager() {
+    }
+    ChainManager.prototype.initChainId = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var provider, chainId_1, _a, isSupport, error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 4];
+                        provider = (0,_services__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
+                        if (!provider)
+                            return [2 /*return*/, null];
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 3, , 4]);
+                        _a = parseInt;
+                        return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.send('eth_chainId', []))];
+                    case 2:
+                        chainId_1 = _a.apply(void 0, [_b.sent(), 16]);
+                        isSupport = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainId === chainId_1; });
+                        console.log(chainId_1);
+                        if (isSupport) {
+                            localStorage.setItem('chainId', chainId_1.toString());
+                        }
+                        else {
+                            localStorage.setItem('chainId', _constants_chains__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_CHAIN_ID.toString());
+                        }
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _b.sent();
+                        console.log(error_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ChainManager.prototype.updateChainId = function (chainId) {
+        var isSuported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
+        if (isSuported) {
+            localStorage.setItem('chainId', parseInt(chainId, 16).toString());
+        }
+        else {
+            localStorage.setItem('chainId', _constants_chains__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_CHAIN_ID.toString());
+        }
+    };
+    return ChainManager;
+}());
+var ChainManagerInstance = new ChainManager();
+
+
+/***/ }),
+
+/***/ "./src/controller/loading.ts":
+/*!***********************************!*\
+  !*** ./src/controller/loading.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LoadingControllerInstance: () => (/* binding */ LoadingControllerInstance),
+/* harmony export */   LoadingId: () => (/* binding */ LoadingId)
+/* harmony export */ });
+var LoadingId;
+(function (LoadingId) {
+    LoadingId["Container"] = "container-loading";
+    LoadingId["LoadingText"] = "loading-text";
+})(LoadingId || (LoadingId = {}));
+var LoadingController = /** @class */ (function () {
+    function LoadingController(_loadingText) {
+        this.loadingText = _loadingText || null;
+        this.listener();
+    }
+    LoadingController.prototype.set = function (_loadingText) {
+        this.loadingText = _loadingText;
+        this.updateDomContent();
+    };
+    LoadingController.prototype.get = function () {
+        return this.loadingText;
+    };
+    LoadingController.prototype.updateDomContent = function () {
+        var LoadingText = document.getElementById(LoadingId.LoadingText);
+        LoadingText.innerHTML = this.loadingText ? this.loadingText + '...' : 'LOADING...';
+    };
+    LoadingController.prototype.listener = function () { };
+    LoadingController.prototype.close = function () {
+        var modal = document.getElementById(LoadingId.Container);
+        modal.style.display = 'none';
+    };
+    LoadingController.prototype.toggle = function (event) {
+        event.preventDefault();
+        var modal = document.getElementById(LoadingId.Container);
+        if (modal.style.display === 'none') {
+            modal.style.display = 'flex';
+        }
+        else {
+            modal.style.display = 'none';
+        }
+    };
+    LoadingController.prototype.open = function () {
+        var modal = document.getElementById(LoadingId.Container);
+        modal.style.display = 'flex';
+    };
+    return LoadingController;
+}());
+var LoadingControllerInstance = new LoadingController();
 
 
 /***/ }),
@@ -32174,14 +33150,6 @@ var WalletManager = /** @class */ (function () {
             });
         });
     };
-    WalletManager.prototype.handleChainChanged = function (chainId) {
-        if (chainId !== '4102') {
-            try {
-                (0,_services__WEBPACK_IMPORTED_MODULE_0__.switchToNetwork)((0,_services__WEBPACK_IMPORTED_MODULE_0__.getDefaultProvider)(), '4102');
-            }
-            catch (error) { }
-        }
-    };
     WalletManager.prototype.accountChanged = function (accounts) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -32202,9 +33170,7 @@ var WalletManager = /** @class */ (function () {
     };
     WalletManager.prototype.listener = function () {
         if (window && window.ethereum) {
-            window.ethereum.on('chainChanged', this.handleChainChanged);
             window.ethereum.on('accountsChanged', this.accountChanged);
-            window.ethereum.on('', this.accountChanged);
         }
     };
     return WalletManager;
@@ -32226,12 +33192,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ExploreCollectionPageController: () => (/* binding */ ExploreCollectionPageController),
 /* harmony export */   ExploreCollectionPageControllerInstance: () => (/* binding */ ExploreCollectionPageControllerInstance)
 /* harmony export */ });
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
-/* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/market */ "./src/services/market.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.ts");
-/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/avatar */ "./src/utils/avatar.ts");
-/* harmony import */ var _utils_router_direct__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/router-direct */ "./src/utils/router-direct.ts");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./types */ "./src/page/explore-collections/types.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ "./src/constants/index.ts");
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/market */ "./src/services/market.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.ts");
+/* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/avatar */ "./src/utils/avatar.ts");
+/* harmony import */ var _utils_router_direct__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/router-direct */ "./src/utils/router-direct.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./types */ "./src/page/explore-collections/types.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32274,6 +33242,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var ExploreCollectionPageController = /** @class */ (function () {
     function ExploreCollectionPageController() {
     }
@@ -32281,7 +33251,7 @@ var ExploreCollectionPageController = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var listCollectionContainer, tokenItemNode, eData;
             return __generator(this, function (_a) {
-                listCollectionContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_5__.PageElementId.ListCollectionContainer);
+                listCollectionContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_7__.PageElementId.ListCollectionContainer);
                 if (!listCollectionContainer) {
                     console.log('listCollectionContainer is not exists');
                     return [2 /*return*/];
@@ -32291,25 +33261,25 @@ var ExploreCollectionPageController = /** @class */ (function () {
                     return [2 /*return*/];
                 eData = {
                     eContainer: tokenItemNode,
-                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.Description)),
-                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.Image)),
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.Title)),
-                    eCollectionAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.CollectionAddress)),
-                    eOwnerAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.OwnerAddress)),
-                    eOwnerAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.OwnerAvatar)),
-                    eTotalSupply: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.TotalSupply)),
+                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.Image)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.Title)),
+                    eCollectionAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.CollectionAddress)),
+                    eOwnerAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.OwnerAddress)),
+                    eOwnerAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.OwnerAvatar)),
+                    eTotalSupply: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.TotalSupply)),
                 };
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_5__.AttributeName.CltAddress, collectionItem.collectionAddress);
-                eData.eContainer.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_4__.getCollectionDetailHref)(collectionItem.collectionAddress));
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_7__.AttributeName.CltAddress, collectionItem.collectionAddress);
+                eData.eContainer.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_6__.getCollectionDetailHref)(collectionItem.collectionAddress));
                 eData.eTitle.innerHTML = collectionItem.name;
                 eData.eTitle.title = collectionItem.name;
                 eData.eDescription.innerHTML = collectionItem.description;
-                eData.eCollectionAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.shorterAddress)(collectionItem.collectionAddress) || '';
+                eData.eCollectionAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.shorterAddress)(collectionItem.collectionAddress) || '';
                 eData.eCollectionAddress.title = collectionItem.collectionAddress;
-                eData.eCollectionAddress.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_4__.getAddressExplorerHref)(collectionItem.collectionAddress));
-                eData.eOwnerAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.shorterAddress)(collectionItem.owner);
+                eData.eCollectionAddress.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_6__.getAddressExplorerHref)(collectionItem.collectionAddress));
+                eData.eOwnerAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.shorterAddress)(collectionItem.owner);
                 eData.eOwnerAddress.title = collectionItem.owner;
-                eData.eOwnerAvatar.setAttribute('src', (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_3__.getAvatarByAddress)(collectionItem.owner));
+                eData.eOwnerAvatar.setAttribute('src', (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_5__.getAvatarByAddress)(collectionItem.owner));
                 eData.eTotalSupply.innerHTML = collectionItem.totalSupply;
                 return [2 /*return*/];
             });
@@ -32320,32 +33290,32 @@ var ExploreCollectionPageController = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var template, tokenItemNode, eData;
             return __generator(this, function (_b) {
-                template = (_a = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_5__.PageElementId.CollectionItemTemplate)) === null || _a === void 0 ? void 0 : _a.firstElementChild;
+                template = (_a = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_7__.PageElementId.CollectionItemTemplate)) === null || _a === void 0 ? void 0 : _a.firstElementChild;
                 if (!template)
                     return [2 /*return*/, document.createElement('div')];
                 tokenItemNode = template.cloneNode(true);
                 eData = {
                     eContainer: tokenItemNode,
-                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.Description)),
-                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.Image)),
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.Title)),
-                    eCollectionAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.CollectionAddress)),
-                    eOwnerAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.OwnerAddress)),
-                    eOwnerAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.OwnerAvatar)),
-                    eTotalSupply: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_5__.CollectionItemClass.TotalSupply)),
+                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.Image)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.Title)),
+                    eCollectionAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.CollectionAddress)),
+                    eOwnerAddress: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.OwnerAddress)),
+                    eOwnerAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.OwnerAvatar)),
+                    eTotalSupply: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_7__.CollectionItemClass.TotalSupply)),
                 };
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_5__.AttributeName.CltAddress, collectionItem.collectionAddress);
-                eData.eContainer.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_4__.getCollectionDetailHref)(collectionItem.collectionAddress));
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_7__.AttributeName.CltAddress, collectionItem.collectionAddress);
+                eData.eContainer.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_6__.getCollectionDetailHref)(collectionItem.collectionAddress));
                 eData.eTitle.innerHTML = collectionItem.name;
                 eData.eTitle.title = collectionItem.name;
-                eData.eImage.setAttribute('src', (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_3__.getAvatarByAddress)(collectionItem.collectionAddress));
+                eData.eImage.setAttribute('src', (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_5__.getAvatarByAddress)(collectionItem.collectionAddress));
                 eData.eDescription.innerHTML = collectionItem.description;
-                eData.eCollectionAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.shorterAddress)(collectionItem.collectionAddress) || '';
+                eData.eCollectionAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.shorterAddress)(collectionItem.collectionAddress) || '';
                 eData.eCollectionAddress.title = collectionItem.collectionAddress;
-                eData.eCollectionAddress.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_4__.getAddressExplorerHref)(collectionItem.collectionAddress));
-                eData.eOwnerAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.shorterAddress)(collectionItem.owner);
+                eData.eCollectionAddress.setAttribute('href', (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_6__.getAddressExplorerHref)(collectionItem.collectionAddress));
+                eData.eOwnerAddress.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.shorterAddress)(collectionItem.owner);
                 eData.eOwnerAddress.title = collectionItem.owner;
-                eData.eOwnerAvatar.setAttribute('src', (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_3__.getAvatarByAddress)(collectionItem.owner));
+                eData.eOwnerAvatar.setAttribute('src', (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_5__.getAvatarByAddress)(collectionItem.owner));
                 eData.eTotalSupply.innerHTML = collectionItem.totalSupply;
                 return [2 /*return*/, tokenItemNode];
             });
@@ -32356,7 +33326,7 @@ var ExploreCollectionPageController = /** @class */ (function () {
             var listCollectionContainer;
             return __generator(this, function (_a) {
                 try {
-                    listCollectionContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_5__.PageElementId.ListCollectionContainer);
+                    listCollectionContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_7__.PageElementId.ListCollectionContainer);
                     if (!listCollectionContainer) {
                         console.log('listCollectionContainer is not exists');
                         return [2 /*return*/];
@@ -32372,18 +33342,21 @@ var ExploreCollectionPageController = /** @class */ (function () {
     };
     ExploreCollectionPageController.prototype.getAllCollectionOfMarket = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var listCollections, listCollectionContainer, collections_1, error_1;
+            var listCollections, listCollectionContainer, currentChainId, collections_1, error_1;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         listCollections = [];
-                        listCollectionContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_5__.PageElementId.ListCollectionContainer);
-                        _a.label = 1;
+                        listCollectionContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_7__.PageElementId.ListCollectionContainer);
+                        return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_2__.getChainCurrentChainId)()];
                     case 1:
-                        _a.trys.push([1, 6, , 7]);
-                        return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_1__.viewMarketCollections)()];
+                        currentChainId = (_a.sent()) || _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS[0].chainId;
+                        _a.label = 2;
                     case 2:
+                        _a.trys.push([2, 7, , 8]);
+                        return [4 /*yield*/, (0,_services_market__WEBPACK_IMPORTED_MODULE_3__.viewMarketCollections)(_constants__WEBPACK_IMPORTED_MODULE_0__.ADDRESS_OF_CHAINS[currentChainId].MARKET)];
+                    case 3:
                         collections_1 = _a.sent();
                         console.log(collections_1);
                         return [4 /*yield*/, Promise.all(collections_1.collectionDetails.map(function (collectionDetail, index) { return __awaiter(_this, void 0, void 0, function () {
@@ -32401,14 +33374,14 @@ var ExploreCollectionPageController = /** @class */ (function () {
                                     return [2 /*return*/];
                                 });
                             }); }))];
-                    case 3:
+                    case 4:
                         _a.sent();
                         if (!listCollectionContainer) {
                             console.log('listCollectionContainer is not exists');
                             return [2 /*return*/];
                         }
                         return [4 /*yield*/, this.clearCollectionContainer()];
-                    case 4:
+                    case 5:
                         _a.sent();
                         listCollections.forEach(function (CollectionItem, index) { return __awaiter(_this, void 0, void 0, function () {
                             var _a, _b;
@@ -32430,7 +33403,7 @@ var ExploreCollectionPageController = /** @class */ (function () {
                                     switch (_a.label) {
                                         case 0:
                                             _a.trys.push([0, 2, , 3]);
-                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_0__.getOwnerOfCollection)(cltAddress)];
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_2__.getOwnerOfCollection)(cltAddress)];
                                         case 1:
                                             ownerAddress = _a.sent();
                                             listCollections[index].owner = ownerAddress;
@@ -32440,7 +33413,7 @@ var ExploreCollectionPageController = /** @class */ (function () {
                                             return [3 /*break*/, 3];
                                         case 3:
                                             _a.trys.push([3, 5, , 6]);
-                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_0__.getNameOfCollection)(cltAddress)];
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_2__.getNameOfCollection)(cltAddress)];
                                         case 4:
                                             cltName = _a.sent();
                                             console.log({ cltName: cltName });
@@ -32451,7 +33424,7 @@ var ExploreCollectionPageController = /** @class */ (function () {
                                             return [3 /*break*/, 6];
                                         case 6:
                                             _a.trys.push([6, 8, , 9]);
-                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_0__.getTotalSupply)(cltAddress)];
+                                            return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_2__.getTotalSupply)(cltAddress)];
                                         case 7:
                                             totalSupply = _a.sent();
                                             listCollections[index].totalSupply = totalSupply;
@@ -32475,16 +33448,16 @@ var ExploreCollectionPageController = /** @class */ (function () {
                                     }
                                 });
                             }); }))];
-                    case 5:
+                    case 6:
                         // Update
                         _a.sent();
                         console.log({ listCollections: listCollections });
-                        return [3 /*break*/, 7];
-                    case 6:
+                        return [3 /*break*/, 8];
+                    case 7:
                         error_1 = _a.sent();
                         console.log(error_1);
-                        return [3 /*break*/, 7];
-                    case 7: return [2 /*return*/];
+                        return [3 /*break*/, 8];
+                    case 8: return [2 /*return*/];
                 }
             });
         });
@@ -32590,15 +33563,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-function getErc20Balance(cltAddress, walletAddress, options) {
+function getErc20Balance(cltAddress, walletAddress) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, contract, balance, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (options === null || options === void 0 ? void 0 : options.provider) || (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_2__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.WBNB_ABI, provider);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_2__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.ABI_WRAP_TOKEN, provider);
                     return [4 /*yield*/, contract.balanceOf(walletAddress)];
                 case 1:
                     balance = _a.sent();
@@ -32611,7 +33584,7 @@ function getErc20Balance(cltAddress, walletAddress, options) {
         });
     });
 }
-function getBalanceNativeToken(walletAddress, options) {
+function getBalanceNativeToken(walletAddress) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, balance, error_2;
         return __generator(this, function (_a) {
@@ -32672,20 +33645,20 @@ function watchErc20Asset(erc20Address, symbol, decimals) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CHAIN_INFO: () => (/* binding */ CHAIN_INFO),
 /* harmony export */   connect: () => (/* binding */ connect),
 /* harmony export */   connectAndSwitch: () => (/* binding */ connectAndSwitch),
 /* harmony export */   connectEarly: () => (/* binding */ connectEarly),
 /* harmony export */   getAccountAddress: () => (/* binding */ getAccountAddress),
 /* harmony export */   getBalance: () => (/* binding */ getBalance),
+/* harmony export */   getChainCurrentChainId: () => (/* binding */ getChainCurrentChainId),
 /* harmony export */   switchToNetwork: () => (/* binding */ switchToNetwork)
 /* harmony export */ });
 /* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/bignumber/lib.esm/bignumber.js");
 /* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/web3-provider.js");
 /* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/units/lib.esm/index.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
-/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
-/* harmony import */ var _utils_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/errors */ "./src/utils/errors.ts");
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32732,6 +33705,7 @@ function connectEarly() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log('run');
                     if (!window.ethereum) {
                         throw new Error('No connect detected');
                     }
@@ -32744,7 +33718,7 @@ function connectEarly() {
                                 switch (_a.label) {
                                     case 0:
                                         if (!(accounts.length > 0)) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, connectAndSwitch()];
+                                        return [4 /*yield*/, connect()];
                                     case 1:
                                         _a.sent();
                                         return [2 /*return*/, accounts[0]];
@@ -32761,15 +33735,16 @@ function connectEarly() {
 }
 function switchToNetwork(provider, chainId) {
     return __awaiter(this, void 0, void 0, function () {
-        var formattedChainId, error_1, info, error_2;
+        var formattedChainId, chainTarget, error_1, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     formattedChainId = ethers__WEBPACK_IMPORTED_MODULE_3__.BigNumber.from(chainId).toHexString();
                     if (!provider) {
-                        return [2 /*return*/];
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    if (!Object.keys(CHAIN_INFO).includes(chainId)) {
+                    chainTarget = _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS.find(function (chain) { return chain.chainId === chainId; });
+                    if (!chainTarget) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_SUPPORTED_CHAIN_ID);
                     }
                     if (!window.ethereum)
@@ -32779,24 +33754,22 @@ function switchToNetwork(provider, chainId) {
                     _a.trys.push([1, 3, , 9]);
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_switchEthereumChain',
-                            params: [{ chainId: formattedChainId }],
+                            params: [{ chainId: chainTarget.chainIdHex }],
                         })];
                 case 2:
                     _a.sent();
                     return [3 /*break*/, 9];
                 case 3:
                     error_1 = _a.sent();
-                    console.log(error_1);
-                    info = CHAIN_INFO[chainId];
                     return [4 /*yield*/, window.ethereum.request({
                             method: 'wallet_addEthereumChain',
                             params: [
                                 {
-                                    chainId: info.chainIdHex,
-                                    chainName: info.chainName,
-                                    rpcUrls: [info.rpcUrl],
-                                    nativeCurrency: info.nativeCurrency,
-                                    blockExplorerUrls: [info.blockExplorerUrl],
+                                    chainId: chainTarget.chainIdHex,
+                                    chainName: chainTarget.chainName,
+                                    rpcUrls: [chainTarget.rpcUrl],
+                                    nativeCurrency: chainTarget.nativeCurrency,
+                                    blockExplorerUrls: [chainTarget.blockExplorerUrl],
                                 },
                             ],
                         })];
@@ -32843,32 +33816,32 @@ function connect() {
 }
 function connectAndSwitch() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, error_3;
+        var provider, currentChainId, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, connect()
-                            .then(function (res) { })
-                            .catch(function (err) {
-                            if (err.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
-                            }
-                            console.log((0,_utils_errors__WEBPACK_IMPORTED_MODULE_2__.convertWalletError)(err));
-                        })];
+                    _a.trys.push([0, 4, , 5]);
+                    return [4 /*yield*/, connect().then(function (res) { })];
                 case 1:
                     _a.sent();
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
                     if (!provider) {
-                        return [2 /*return*/];
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    return [4 /*yield*/, switchToNetwork(provider.provider, '4102')];
+                    return [4 /*yield*/, getChainCurrentChainId()];
                 case 2:
-                    _a.sent();
-                    return [3 /*break*/, 4];
+                    currentChainId = _a.sent();
+                    if (!currentChainId) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CHAIN_ID_INVALID);
+                    }
+                    return [4 /*yield*/, switchToNetwork(provider.provider, currentChainId)];
                 case 3:
+                    _a.sent();
+                    return [3 /*break*/, 5];
+                case 4:
                     error_3 = _a.sent();
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    throw error_3;
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -32891,20 +33864,6 @@ function getBalance(contractAddress) {
         });
     });
 }
-var CHAIN_INFO = {
-    '4102': {
-        chainId: '4102',
-        chainIdHex: '0x1006',
-        chainName: 'AIOZ Network Testnet',
-        rpcUrl: 'https://eth-ds.testnet.aioz.network',
-        nativeCurrency: {
-            name: 'AIOZ',
-            symbol: 'AIOZ',
-            decimals: 18,
-        },
-        blockExplorerUrl: 'https://testnet.explorer.aioz.network',
-    },
-};
 function getAccountAddress() {
     return __awaiter(this, void 0, void 0, function () {
         var provider, address, error_4;
@@ -32912,7 +33871,7 @@ function getAccountAddress() {
             switch (_a.label) {
                 case 0:
                     if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
-                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_1__.getDefaultProvider)()];
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)()];
                 case 1:
                     provider = _a.sent();
                     _a.label = 2;
@@ -32931,6 +33890,45 @@ function getAccountAddress() {
         });
     });
 }
+function getChainCurrentChainId() {
+    return __awaiter(this, void 0, void 0, function () {
+        var localChainId, provider, chainId_1, _a, isSupport, error_5;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    localChainId = localStorage.getItem('chainId');
+                    if (!localChainId) return [3 /*break*/, 1];
+                    return [2 /*return*/, Number(localChainId)];
+                case 1:
+                    console.log('rerroroero');
+                    if (!(typeof window.ethereum !== 'undefined')) return [3 /*break*/, 5];
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
+                    if (!provider)
+                        return [2 /*return*/, null];
+                    _b.label = 2;
+                case 2:
+                    _b.trys.push([2, 4, , 5]);
+                    _a = parseInt;
+                    return [4 /*yield*/, (provider === null || provider === void 0 ? void 0 : provider.send('eth_chainId', []))];
+                case 3:
+                    chainId_1 = _a.apply(void 0, [_b.sent(), 16]);
+                    isSupport = _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS.find(function (chain) { return chain.chainId === chainId_1; });
+                    if (!isSupport) {
+                        return [2 /*return*/, null];
+                    }
+                    else {
+                        return [2 /*return*/, chainId_1];
+                    }
+                    return [3 /*break*/, 5];
+                case 4:
+                    error_5 = _b.sent();
+                    console.log(error_5);
+                    return [2 /*return*/, null];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+}
 
 
 /***/ }),
@@ -32944,7 +33942,6 @@ function getAccountAddress() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CHAIN_INFO: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.CHAIN_INFO),
 /* harmony export */   ExtensionService: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.ExtensionService),
 /* harmony export */   WalletSupported: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.WalletSupported),
 /* harmony export */   approveSpenderToAccessNft: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.approveSpenderToAccessNft),
@@ -32957,6 +33954,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getAllTokenIdOfCollection: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getAllTokenIdOfCollection),
 /* harmony export */   getBalance: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getBalance),
 /* harmony export */   getBalanceNativeToken: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getBalanceNativeToken),
+/* harmony export */   getChainCurrentChainId: () => (/* reexport safe */ _connect__WEBPACK_IMPORTED_MODULE_1__.getChainCurrentChainId),
 /* harmony export */   getDefaultProvider: () => (/* reexport safe */ _provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider),
 /* harmony export */   getErc20Balance: () => (/* reexport safe */ _balance__WEBPACK_IMPORTED_MODULE_0__.getErc20Balance),
 /* harmony export */   getMetadata: () => (/* reexport safe */ _nft__WEBPACK_IMPORTED_MODULE_2__.getMetadata),
@@ -32995,7 +33993,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   buyTokenUsingWBNB: () => (/* binding */ buyTokenUsingWBNB),
+/* harmony export */   buyTokenUsingWrapToken: () => (/* binding */ buyTokenUsingWrapToken),
 /* harmony export */   calculatePriceAndFeesForCollection: () => (/* binding */ calculatePriceAndFeesForCollection),
 /* harmony export */   cancelAskOrder: () => (/* binding */ cancelAskOrder),
 /* harmony export */   createAskOrder: () => (/* binding */ createAskOrder),
@@ -33061,7 +34059,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
  * @param cursor: cursor
  * @param size: size of the response
  */
-function viewMarketCollections(cursor, size) {
+function viewMarketCollections(marketAddress, cursor, size) {
     if (cursor === void 0) { cursor = 0; }
     if (size === void 0) { size = 10; }
     return __awaiter(this, void 0, void 0, function () {
@@ -33069,14 +34067,16 @@ function viewMarketCollections(cursor, size) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
                     if (!provider) {
                         throw new Error('Provider is not found');
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.viewCollections(cursor, size)];
-                case 1:
+                case 2:
                     collectionsResponse = _a.sent();
                     collectionDetails = collectionsResponse['collectionDetails'].map(function (collectionDeital) {
                         return {
@@ -33092,10 +34092,10 @@ function viewMarketCollections(cursor, size) {
                             collectionDetails: collectionDetails,
                             collectionAddresses: collectionAddresses,
                         }];
-                case 2:
+                case 3:
                     error_1 = _a.sent();
                     throw error_1;
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
@@ -33107,7 +34107,7 @@ function viewMarketCollections(cursor, size) {
  * @param cursor: cursor
  * @param size: size of the response
  */
-function viewAsksByCollectionAndSeller(collectionAddress, sellerAddress, cursor, size) {
+function viewAsksByCollectionAndSeller(marktAddress, collectionAddress, sellerAddress, cursor, size) {
     if (cursor === void 0) { cursor = 0; }
     if (size === void 0) { size = 10; }
     return __awaiter(this, void 0, void 0, function () {
@@ -33116,11 +34116,11 @@ function viewAsksByCollectionAndSeller(collectionAddress, sellerAddress, cursor,
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marktAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.viewAsksByCollectionAndSeller(collectionAddress, sellerAddress, cursor, size)];
                 case 1:
                     asks = _a.sent();
@@ -33149,18 +34149,18 @@ function viewAsksByCollectionAndSeller(collectionAddress, sellerAddress, cursor,
  * @param collection: address of the collection
  * @param price: listed price
  */
-function calculatePriceAndFeesForCollection(collection, price) {
+function calculatePriceAndFeesForCollection(marketAddress, collection, price) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, collectionsResponse, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error('Provider is not found');
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.calculatePriceAndFeesForCollection(collection, price)];
                 case 1:
                     collectionsResponse = _a.sent();
@@ -33182,7 +34182,7 @@ function calculatePriceAndFeesForCollection(collection, price) {
  * @param collection: address of the collection
  * @param tokenIds: array of tokenId
  */
-function viewAsksByCollection(collectionAddress, cursor, size) {
+function viewAsksByCollection(marketAddress, collectionAddress, cursor, size) {
     if (cursor === void 0) { cursor = 0; }
     if (size === void 0) { size = 10; }
     return __awaiter(this, void 0, void 0, function () {
@@ -33190,14 +34190,16 @@ function viewAsksByCollection(collectionAddress, cursor, size) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.viewAsksByCollection(collectionAddress, cursor, size)];
-                case 1:
+                case 2:
                     asks = _a.sent();
                     return [2 /*return*/, {
                             askInfo: asks[1].map(function (ask) {
@@ -33211,21 +34213,21 @@ function viewAsksByCollection(collectionAddress, cursor, size) {
                             }),
                             size: asks[2].toNumber(),
                         }];
-                case 2:
+                case 3:
                     error_4 = _a.sent();
                     throw error_4;
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
 }
 /**
- * @notice Buy token with WBNB by matching the price of an existing ask order
+ * @notice Buy token with WUIT by matching the price of an existing ask order
  * @param _collection: contract address of the NFT
  * @param _tokenId: tokenId of the NFT purchased
  * @param _price: price (must be equal to the askPrice set by the seller) unit Ethers
  */
-function buyTokenUsingWBNB(collectionAddress, tokenId, price) {
+function buyTokenUsingWrapToken(collectionAddress, tokenId, price, wrapTokenAddress, marketAddress) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, receiptApprove, error_5, transaction, transactionReceipt, error_6;
         return __generator(this, function (_a) {
@@ -33236,11 +34238,11 @@ function buyTokenUsingWBNB(collectionAddress, tokenId, price) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, (0,_token_exchange__WEBPACK_IMPORTED_MODULE_4__.approveTokenExchange)(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _constants__WEBPACK_IMPORTED_MODULE_1__.WBNB_ADDRESS, ethers__WEBPACK_IMPORTED_MODULE_6__.parseEther(price).toString())];
+                    return [4 /*yield*/, (0,_token_exchange__WEBPACK_IMPORTED_MODULE_4__.approveTokenExchange)(marketAddress, wrapTokenAddress, ethers__WEBPACK_IMPORTED_MODULE_6__.parseEther(price).toString())];
                 case 2:
                     receiptApprove = _a.sent();
                     console.log(receiptApprove);
@@ -33249,13 +34251,13 @@ function buyTokenUsingWBNB(collectionAddress, tokenId, price) {
                     error_5 = _a.sent();
                     console.log(error_5);
                     throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.APPROVE_TOKEN_EXCHANGE_FAILED);
-                case 4: return [4 /*yield*/, marketContract.buyTokenUsingWBNB(collectionAddress, tokenId, ethers__WEBPACK_IMPORTED_MODULE_6__.parseEther(price))];
+                case 4: return [4 /*yield*/, marketContract.buyTokenUsingWrapToken(collectionAddress, tokenId, ethers__WEBPACK_IMPORTED_MODULE_6__.parseEther(price))];
                 case 5:
                     transaction = _a.sent();
                     return [4 /*yield*/, transaction.wait()];
                 case 6:
                     transactionReceipt = _a.sent();
-                    console.log('buyTokenUsingWBNB Receipt:', transactionReceipt);
+                    console.log('buyTokenUsingWrapToken Receipt:', transactionReceipt);
                     return [2 /*return*/, transactionReceipt];
                 case 7:
                     error_6 = _a.sent();
@@ -33272,7 +34274,7 @@ function buyTokenUsingWBNB(collectionAddress, tokenId, price) {
  * @param _tokenId: tokenId of the NFT
  * @param _askPrice: price for listing (in wei)
  */
-function createAskOrder(collectionAddress, tokenId, price) {
+function createAskOrder(marketAddress, collectionAddress, tokenId, price) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, receiptApprove, error_7, transaction, transactionReceipt, error_8;
         return __generator(this, function (_a) {
@@ -33283,11 +34285,11 @@ function createAskOrder(collectionAddress, tokenId, price) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, (0,_nft__WEBPACK_IMPORTED_MODULE_2__.approveSpenderToAccessNft)(collectionAddress, _constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, tokenId)];
+                    return [4 /*yield*/, (0,_nft__WEBPACK_IMPORTED_MODULE_2__.approveSpenderToAccessNft)(collectionAddress, marketAddress, tokenId)];
                 case 2:
                     receiptApprove = _a.sent();
                     console.log(receiptApprove);
@@ -33320,7 +34322,7 @@ function createAskOrder(collectionAddress, tokenId, price) {
  * @param _creatorFee: creator fee (100 = 1%, 500 = 5%, 5 = 0.05%, 0 if creator is 0x00)
  * @dev Callable by admin
  */
-function importCollection(collectionAddress, creatorAddress, tradingFee, creatorFee, whiteListChecker) {
+function importCollection(marketAddress, collectionAddress, creatorAddress, tradingFee, creatorFee, whiteListChecker) {
     if (tradingFee === void 0) { tradingFee = 100; }
     if (creatorFee === void 0) { creatorFee = 100; }
     if (whiteListChecker === void 0) { whiteListChecker = _constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_ADDRESS; }
@@ -33330,14 +34332,15 @@ function importCollection(collectionAddress, creatorAddress, tradingFee, creator
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
                     return [4 /*yield*/, marketContract.addCollection(collectionAddress, creatorAddress, whiteListChecker, tradingFee, creatorFee)];
                 case 1:
                     addResponse = _a.sent();
+                    console.log(marketContract);
                     return [2 /*return*/, {}];
                 case 2:
                     error_9 = _a.sent();
@@ -33352,22 +34355,22 @@ function importCollection(collectionAddress, creatorAddress, tradingFee, creator
  * @param _collection: contract address of the NFT
  * @param _tokenId: tokenId of the NFT
  */
-function cancelAskOrder(collectionAddress, tokenId) {
+function cancelAskOrder(marketAddress, collectionAddress, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, response, error_10;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.cancelAskOrder(collectionAddress, tokenId)];
                 case 1:
                     response = _a.sent();
-                    return [2 /*return*/, true];
+                    return [2 /*return*/, response];
                 case 2:
                     error_10 = _a.sent();
                     throw error_10;
@@ -33382,18 +34385,18 @@ function cancelAskOrder(collectionAddress, tokenId) {
  * @param _tokenId: tokenId of the NFT
  * @param _newPrice: new price for listing (in wei)
  */
-function modifyAskOrder(collectionAddress, tokenId, newPrice) {
+function modifyAskOrder(marketAddress, collectionAddress, tokenId, newPrice) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, response, error_11;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.modifyAskOrder(collectionAddress, tokenId, newPrice)];
                 case 1:
                     response = _a.sent();
@@ -33411,28 +34414,30 @@ function modifyAskOrder(collectionAddress, tokenId, newPrice) {
  * @param collection: address of the collection
  * @param tokenId: array of tokenId
  */
-function viewAskByCollectionAndTokenId(collectionAddress, tokenId) {
+function viewAskByCollectionAndTokenId(marketAddress, collectionAddress, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, response, error_12;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.viewAsksByCollectionAndTokenIds(collectionAddress, [
                             tokenId,
                         ])];
-                case 1:
+                case 2:
                     response = _a.sent();
                     return [2 /*return*/, {}];
-                case 2:
+                case 3:
                     error_12 = _a.sent();
                     throw error_12;
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
@@ -33442,26 +34447,28 @@ function viewAskByCollectionAndTokenId(collectionAddress, tokenId) {
  * @param collection: address of the collection
  * @param tokenId: array of tokenId
  */
-function viewAsksByCollectionAndTokenIds(collectionAddress, tokenIds) {
+function viewAsksByCollectionAndTokenIds(marketAddress, collectionAddress, tokenIds) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, marketContract, response, error_13;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)()];
+                case 1:
+                    provider = _a.sent();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(_constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
                     return [4 /*yield*/, marketContract.viewAsksByCollectionAndTokenIds(collectionAddress, tokenIds)];
-                case 1:
+                case 2:
                     response = _a.sent();
                     return [2 /*return*/, {}];
-                case 2:
+                case 3:
                     error_13 = _a.sent();
                     throw error_13;
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
@@ -33493,11 +34500,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   mintNFT: () => (/* binding */ mintNFT),
 /* harmony export */   transferFrom: () => (/* binding */ transferFrom)
 /* harmony export */ });
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
 /* harmony import */ var nft_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nft.storage */ "./node_modules/nft.storage/src/lib.js");
 /* harmony import */ var _abis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abis */ "./src/abis/index.ts");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
-/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
+/* harmony import */ var _connect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./connect */ "./src/services/connect.ts");
+/* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
+/* harmony import */ var _controller_loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../controller/loading */ "./src/controller/loading.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -33539,7 +34548,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-// export const STORAGE_API_KEY = process.env.STORAGE_API_KEY || "";
+
+
 function createMetadata(file, title, description) {
     return __awaiter(this, void 0, void 0, function () {
         var client, img, data, cid, error_1;
@@ -33569,19 +34579,18 @@ function createMetadata(file, title, description) {
         });
     });
 }
-function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId, options) {
-    if (spenderAddress === void 0) { spenderAddress = _constants__WEBPACK_IMPORTED_MODULE_2__.MARKETPLACE_ADDRESS; }
+function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
         var provider, tokenContract, transaction, transactionReceipt, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider.getSigner());
+                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider.getSigner());
                     return [4 /*yield*/, tokenContract.approve(spenderAddress, tokenId)];
                 case 1:
                     transaction = _a.sent();
@@ -33598,30 +34607,37 @@ function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId, options)
         });
     });
 }
-function mintNFT(cltAddress, addressTo, tokenUri, options) {
+function mintNFT(cltAddress, addressTo, tokenUri) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, transaction, transactionReceipt, error_3;
+        var provider, currentChainId, currentAbi, nftContract, transaction, transactionReceipt, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    provider = options ? options.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    _a.trys.push([0, 4, , 5]);
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider === null || provider === void 0 ? void 0 : provider.getSigner());
-                    return [4 /*yield*/, nftContract.safeMint(addressTo, tokenUri)];
+                    return [4 /*yield*/, (0,_connect__WEBPACK_IMPORTED_MODULE_3__.getChainCurrentChainId)()];
                 case 1:
-                    transaction = _a.sent();
-                    return [4 /*yield*/, transaction.wait()];
+                    currentChainId = _a.sent();
+                    currentAbi = currentChainId && cltAddress === _constants__WEBPACK_IMPORTED_MODULE_2__.ADDRESS_OF_CHAINS[currentChainId].PUBLIC_ERC721_TOKEN
+                        ? _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_PUBLIC_COLLECTION
+                        : _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721;
+                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, currentAbi, provider === null || provider === void 0 ? void 0 : provider.getSigner());
+                    return [4 /*yield*/, nftContract.safeMint(addressTo, tokenUri)];
                 case 2:
+                    transaction = _a.sent();
+                    _controller_loading__WEBPACK_IMPORTED_MODULE_5__.LoadingControllerInstance.close();
+                    return [4 /*yield*/, transaction.wait()];
+                case 3:
                     transactionReceipt = _a.sent();
                     console.log('Mint receipt:', transactionReceipt);
                     return [2 /*return*/, transactionReceipt];
-                case 3:
+                case 4:
                     error_3 = _a.sent();
                     throw error_3;
-                case 4: return [2 /*return*/];
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -33632,57 +34648,63 @@ function getTokenUri(cltAddress, tokenId, options) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     return [4 /*yield*/, contract.tokenURI(tokenId)];
-                case 1:
+                case 2:
                     tokenUri = _a.sent();
                     return [2 /*return*/, tokenUri];
-                case 2:
+                case 3:
                     error_4 = _a.sent();
                     throw error_4;
-                case 3: return [2 /*return*/];
+                case 4: return [2 /*return*/];
             }
         });
     });
 }
 function getOwner(cltAddress, tokenId, options) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_5;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.ownerOf(tokenId);
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.ownerOf(tokenId);
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_5 = _a.sent();
+                    throw error_5;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
 function getYourTokens(cltAddress, creatorAddress, options) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, tokenId, token, error_5, error_6;
+        var listTokenId, provider, contract, tokenId, token, error_6, error_7;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 7, , 8]);
                     listTokenId = [];
-                    provider = options ? options.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    provider = options ? options.provider : (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     tokenId = 0;
                     _a.label = 1;
                 case 1:
@@ -33698,13 +34720,13 @@ function getYourTokens(cltAddress, creatorAddress, options) {
                     tokenId++;
                     return [3 /*break*/, 5];
                 case 4:
-                    error_5 = _a.sent();
+                    error_6 = _a.sent();
                     return [3 /*break*/, 6];
                 case 5: return [3 /*break*/, 1];
                 case 6: return [2 /*return*/, listTokenId];
                 case 7:
-                    error_6 = _a.sent();
-                    throw error_6;
+                    error_7 = _a.sent();
+                    throw error_7;
                 case 8: return [2 /*return*/];
             }
         });
@@ -33721,58 +34743,19 @@ function listenForTransactionMined(transactionResponse, provider) {
 }
 function getAllTokenIdOfCollection(collectionAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, tokenId, owner, error_7, error_8;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 7, , 8]);
-                    listTokenId = [];
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                    tokenId = 0;
-                    _a.label = 1;
-                case 1:
-                    if (false) {}
-                    _a.label = 2;
-                case 2:
-                    _a.trys.push([2, 4, , 5]);
-                    return [4 /*yield*/, contract.ownerOf(tokenId)];
-                case 3:
-                    owner = _a.sent();
-                    listTokenId.push({
-                        owner: owner,
-                        tokenId: tokenId.toString(),
-                    });
-                    tokenId++;
-                    return [3 /*break*/, 5];
-                case 4:
-                    error_7 = _a.sent();
-                    return [3 /*break*/, 6];
-                case 5: return [3 /*break*/, 1];
-                case 6: return [2 /*return*/, listTokenId];
-                case 7:
-                    error_8 = _a.sent();
-                    throw error_8;
-                case 8: return [2 /*return*/];
-            }
-        });
-    });
-}
-function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
-    return __awaiter(this, void 0, void 0, function () {
-        var listTokenId, provider, contract, balanceOf, tokenId, token, error_9, error_10;
+        var listTokenId, provider, contract, tokenId, owner, error_8, error_9;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 8, , 9]);
                     listTokenId = [];
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getProvider)();
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                    return [4 /*yield*/, contract.balanceOf(walletAddress)];
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
                 case 1:
-                    balanceOf = _a.sent();
-                    if (balanceOf === 0)
-                        return [2 /*return*/];
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     tokenId = 0;
                     _a.label = 2;
                 case 2:
@@ -33782,20 +34765,78 @@ function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) 
                     _a.trys.push([3, 5, , 6]);
                     return [4 /*yield*/, contract.ownerOf(tokenId)];
                 case 4:
-                    token = _a.sent();
-                    if (token.toLowerCase() === walletAddress.toLowerCase())
-                        listTokenId.push(tokenId);
+                    owner = _a.sent();
+                    listTokenId.push({
+                        owner: owner,
+                        tokenId: tokenId.toString(),
+                    });
                     tokenId++;
                     return [3 /*break*/, 6];
                 case 5:
-                    error_9 = _a.sent();
+                    error_8 = _a.sent();
                     return [3 /*break*/, 7];
                 case 6: return [3 /*break*/, 2];
                 case 7: return [2 /*return*/, listTokenId];
                 case 8:
-                    error_10 = _a.sent();
-                    throw error_10;
+                    error_9 = _a.sent();
+                    throw error_9;
                 case 9: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
+    return __awaiter(this, void 0, void 0, function () {
+        var listTokenId_1, provider, contract_1, balanceOf, _a, error_10;
+        var _this = this;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 4, , 5]);
+                    listTokenId_1 = [];
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _b.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract_1 = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    _a = parseInt;
+                    return [4 /*yield*/, contract_1.balanceOf(walletAddress)];
+                case 2:
+                    balanceOf = _a.apply(void 0, [(_b.sent())._hex, 16]);
+                    console.log({ balanceOf: balanceOf });
+                    if (balanceOf === 0)
+                        return [2 /*return*/];
+                    return [4 /*yield*/, Promise.all(Array(balanceOf)
+                            .fill(1)
+                            .map(function (item, index) { return __awaiter(_this, void 0, void 0, function () {
+                            var token, error_11;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        _a.trys.push([0, 2, , 3]);
+                                        return [4 /*yield*/, contract_1.ownerOf(index)];
+                                    case 1:
+                                        token = _a.sent();
+                                        if (token.toLowerCase() === walletAddress.toLowerCase())
+                                            listTokenId_1.push(index);
+                                        return [3 /*break*/, 3];
+                                    case 2:
+                                        error_11 = _a.sent();
+                                        console.log(error_11);
+                                        return [3 /*break*/, 3];
+                                    case 3: return [2 /*return*/];
+                                }
+                            });
+                        }); }))];
+                case 3:
+                    _b.sent();
+                    return [2 /*return*/, listTokenId_1];
+                case 4:
+                    error_10 = _b.sent();
+                    throw error_10;
+                case 5: return [2 /*return*/];
             }
         });
     });
@@ -33821,25 +34862,25 @@ function getMetadata(tokenUri) {
  * @param to: address of receiver
  * @param tokenId: array of tokenId
  */
-function transferFrom(from, to, tokenId) {
+function transferFrom(collectionAddress, from, to, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, response, error_11;
+        var provider, nftContract, response, error_12;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(_constants__WEBPACK_IMPORTED_MODULE_2__.NFT_ADDRESS, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
+                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     return [4 /*yield*/, nftContract.transferFrom(from, to, tokenId)];
                 case 1:
                     response = _a.sent();
                     return [2 /*return*/, {}];
                 case 2:
-                    error_11 = _a.sent();
-                    throw error_11;
+                    error_12 = _a.sent();
+                    throw error_12;
                 case 3: return [2 /*return*/];
             }
         });
@@ -33847,61 +34888,73 @@ function transferFrom(from, to, tokenId) {
 }
 function getOwnerOfCollection(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_13;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.owner();
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.owner();
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_13 = _a.sent();
+                    throw error_13;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
 function getNameOfCollection(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_14;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.name();
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.name();
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_14 = _a.sent();
+                    throw error_14;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
 function getTotalSupply(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner;
+        var provider, contract, addressOwner, error_15;
         return __generator(this, function (_a) {
-            try {
-                provider = (0,_provider__WEBPACK_IMPORTED_MODULE_3__.getRpcProvider)();
-                if (!provider) {
-                    throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
-                }
-                contract = new ethers__WEBPACK_IMPORTED_MODULE_4__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.NFT_ABI, provider);
-                addressOwner = contract.totalSupply();
-                return [2 /*return*/, addressOwner];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
+                case 1:
+                    provider = _a.sent();
+                    if (!provider) {
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
+                    }
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    addressOwner = contract.totalSupply();
+                    return [2 /*return*/, addressOwner];
+                case 2:
+                    error_15 = _a.sent();
+                    throw error_15;
+                case 3: return [2 /*return*/];
             }
-            catch (error) {
-                throw error;
-            }
-            return [2 /*return*/];
         });
     });
 }
@@ -33925,10 +34978,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getRpcProvider: () => (/* binding */ getRpcProvider),
 /* harmony export */   isConnectedWallet: () => (/* binding */ isConnectedWallet)
 /* harmony export */ });
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/json-rpc-provider.js");
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/web3-provider.js");
-/* harmony import */ var _constants_network__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/network */ "./src/constants/network.ts");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/json-rpc-provider.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/providers/lib.esm/web3-provider.js");
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+/* harmony import */ var _connect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./connect */ "./src/services/connect.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var _a;
+
 
 
 var WalletSupported;
@@ -33941,16 +35032,50 @@ var ExtensionService = (_a = {},
     _a[WalletSupported.Metamask] = window.ethereum,
     _a);
 function getRpcProvider() {
-    return new ethers__WEBPACK_IMPORTED_MODULE_1__.JsonRpcProvider(_constants_network__WEBPACK_IMPORTED_MODULE_0__.AIOZ_TESTNET_NETWORK.rpc);
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        var currentChainId, currentRpcUrl;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, (0,_connect__WEBPACK_IMPORTED_MODULE_1__.getChainCurrentChainId)()];
+                case 1:
+                    currentChainId = (_b.sent()) || _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId;
+                    currentRpcUrl = (_a = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainId === currentChainId; })) === null || _a === void 0 ? void 0 : _a.rpcUrl;
+                    return [2 /*return*/, new ethers__WEBPACK_IMPORTED_MODULE_2__.JsonRpcProvider(currentRpcUrl)];
+            }
+        });
+    });
 }
 function getDefaultProvider() {
     if (window.ethereum && typeof window.ethereum !== 'undefined') {
-        return new ethers__WEBPACK_IMPORTED_MODULE_2__.Web3Provider(window.ethereum);
+        return new ethers__WEBPACK_IMPORTED_MODULE_3__.Web3Provider(window.ethereum);
     }
 }
-function getProvider(provider) {
-    var defaultProvider = getDefaultProvider();
-    return provider ? provider : defaultProvider ? defaultProvider : getRpcProvider();
+function getProvider() {
+    return __awaiter(this, void 0, void 0, function () {
+        var defaultProvider, rpcProvider, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    try {
+                        defaultProvider = getDefaultProvider();
+                        return [2 /*return*/, defaultProvider];
+                    }
+                    catch (error) { }
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, getRpcProvider()];
+                case 2:
+                    rpcProvider = _a.sent();
+                    return [2 /*return*/, rpcProvider];
+                case 3:
+                    error_1 = _a.sent();
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/, undefined];
+            }
+        });
+    });
 }
 function isConnectedWallet(wallet) {
     switch (wallet) {
@@ -34021,7 +35146,6 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 function approveTokenExchange(nftAddressGuy, tokenExchangeAddress, wad, providerOptions) {
-    if (nftAddressGuy === void 0) { nftAddressGuy = _constants__WEBPACK_IMPORTED_MODULE_1__.MARKETPLACE_ADDRESS; }
     return __awaiter(this, void 0, void 0, function () {
         var provider, tokenContract, transaction, transactionReceipt, error_1;
         return __generator(this, function (_a) {
@@ -34056,7 +35180,7 @@ function deposit(tokenAddress, value) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getProvider)();
+                    provider = (0,_provider__WEBPACK_IMPORTED_MODULE_2__.getDefaultProvider)();
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
@@ -45187,8 +46311,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_loading_loading2_styles_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../components/loading/loading2/styles.css */ "./src/components/loading/loading2/styles.css");
 /* harmony import */ var _styles_base_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../styles/base.css */ "./src/styles/base.css");
 /* harmony import */ var _styles_grid_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../styles/grid.css */ "./src/styles/grid.css");
-/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./controller */ "./src/page/explore-collections/controller.ts");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./styles.css */ "./src/page/explore-collections/styles.css");
+/* harmony import */ var _components_page_loading_styles_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../../components/page-loading/styles.css */ "./src/components/page-loading/styles.css");
+/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./controller */ "./src/page/explore-collections/controller.ts");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./styles.css */ "./src/page/explore-collections/styles.css");
+/* harmony import */ var _controller_chain__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../controller/chain */ "./src/controller/chain.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./types */ "./src/page/explore-collections/types.ts");
+/* harmony import */ var _constants_elements__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../constants/elements */ "./src/constants/elements.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -45225,6 +46353,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
+
+
+
 
 
 
@@ -45291,10 +46423,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        try {
-                        }
-                        catch (error) { }
-                        return [4 /*yield*/, _controller__WEBPACK_IMPORTED_MODULE_10__.ExploreCollectionPageControllerInstance.getAllCollectionOfMarket()];
+                        _controller_chain__WEBPACK_IMPORTED_MODULE_13__.ChainManagerInstance.initChainId();
+                        return [4 /*yield*/, _controller__WEBPACK_IMPORTED_MODULE_11__.ExploreCollectionPageControllerInstance.getAllCollectionOfMarket()];
                     case 1:
                         _a.sent();
                         return [3 /*break*/, 3];
@@ -45306,7 +46436,20 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-    initPage();
+    try {
+        initPage();
+        window.ethereum.on('chainChanged', function (chainId) {
+            _controller_chain__WEBPACK_IMPORTED_MODULE_13__.ChainManagerInstance.updateChainId(chainId);
+            initPage();
+            var listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_14__.PageElementId.ListCollectionContainer);
+            if (listNftContainer) {
+                listNftContainer.innerHTML = _constants_elements__WEBPACK_IMPORTED_MODULE_15__.HTMLElementLoadingList;
+            }
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
 });
 
 })();
