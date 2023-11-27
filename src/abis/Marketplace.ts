@@ -13,7 +13,7 @@ export const MARKETPLACE_ABI = [
       },
       {
         internalType: 'address',
-        name: '_WIE104Address',
+        name: '_wrapTokenAddress',
         type: 'address',
       },
       {
@@ -382,7 +382,7 @@ export const MARKETPLACE_ABI = [
   },
   {
     inputs: [],
-    name: 'WIE104',
+    name: 'WrapToken',
     outputs: [
       {
         internalType: 'address',
@@ -475,7 +475,7 @@ export const MARKETPLACE_ABI = [
         type: 'uint256',
       },
     ],
-    name: 'buyTokenUsingWIE104',
+    name: 'buyTokenUsingWrapToken',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',

@@ -184,12 +184,12 @@ export async function viewAsksByCollection(
 }
 
 /**
- * @notice Buy token with WIE104 by matching the price of an existing ask order
+ * @notice Buy token with WUIT by matching the price of an existing ask order
  * @param _collection: contract address of the NFT
  * @param _tokenId: tokenId of the NFT purchased
  * @param _price: price (must be equal to the askPrice set by the seller) unit Ethers
  */
-export async function buyTokenUsingWIE104(
+export async function buyTokenUsingWrapToken(
   collectionAddress: string,
   tokenId: number,
   price: string,
@@ -213,13 +213,13 @@ export async function buyTokenUsingWIE104(
       console.log(error)
       throw new Error(AppError.APPROVE_TOKEN_EXCHANGE_FAILED)
     }
-    const transaction = await marketContract.buyTokenUsingWIE104(
+    const transaction = await marketContract.buyTokenUsingWrapToken(
       collectionAddress,
       tokenId,
       ethers.utils.parseEther(price),
     )
     const transactionReceipt: any = await transaction.wait()
-    console.log('buyTokenUsingWIE104 Receipt:', transactionReceipt)
+    console.log('buyTokenUsingWrapToken Receipt:', transactionReceipt)
     return transactionReceipt
   } catch (error) {
     console.log(error)

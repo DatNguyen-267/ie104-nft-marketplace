@@ -1,6 +1,6 @@
 import { ADDRESS_OF_CHAINS, AppError, BuyNftErrorMessage, DEFAULT_ADDRESS } from '../constants'
 import { connectAndSwitch, getAccountAddress, getChainCurrentChainId } from '../services'
-import { buyTokenUsingWIE104 } from '../services/market'
+import { buyTokenUsingWrapToken } from '../services/market'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
 import { getAvatarByAddress } from '../utils/avatar'
@@ -87,11 +87,11 @@ class ModalBuyController {
     }
 
     try {
-      const response = await buyTokenUsingWIE104(
+      const response = await buyTokenUsingWrapToken(
         this.nftItem.collectionAddress,
         this.nftItem.tokenId,
         this.nftItem.price,
-        ADDRESS_OF_CHAINS[currentChainId].WIE104,
+        ADDRESS_OF_CHAINS[currentChainId].WUIT,
         ADDRESS_OF_CHAINS[currentChainId].MARKET,
       )
       console.log(response)

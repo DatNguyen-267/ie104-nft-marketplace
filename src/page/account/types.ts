@@ -51,4 +51,7 @@ export enum PageElementId {
   ListTokenContainer = '#list-token__container',
   ListNftContainer = '#list-nft__container',
   LabelWalletToken = '#wallet__token-value',
+
+  AddressExploreLink = '#label-wallet-address-link',
+  UserAvatar = '#user-avatar',
 }

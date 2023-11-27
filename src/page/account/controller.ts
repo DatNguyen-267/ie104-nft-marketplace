@@ -1,12 +1,10 @@
 import { ethers } from 'ethers'
-import { ADDRESS_OF_CHAINS, DEFAULT_ADDRESS, NATIVE_TOKEN_NAME } from '../../constants'
-import { CHAINS } from '../../constants/chains'
+import { ADDRESS_OF_CHAINS, DEFAULT_ADDRESS } from '../../constants'
+import { CHAINS, DEFAULT_WRAP_TOKEN_SYMBOL } from '../../constants/chains'
 import { DEFAULT_NFT_ITEM } from '../../constants/default-data'
 import { ModalDelistControllerInstance } from '../../controller/modal-delist'
 import { ModalSellControllerInstance } from '../../controller/modal-sell'
-import { UserPopoverControllerInstance } from '../../controller/user'
 import {
-  connectAndSwitch,
   getAccountAddress,
   getAllNftOfCollectionAndOwnerAddress,
   getBalanceNativeToken,
@@ -28,6 +26,8 @@ import {
   NftItemElementObject,
   PageElementId,
 } from './types'
+import { getAddressExplorerHref } from '../../utils/router-direct'
+import { HTMLElementNoItem } from '../../constants/elements'
 
 export class AccountPageController {
   constructor() {}
@@ -46,10 +46,14 @@ export class AccountPageController {
         return
       }
       const balance = await getBalanceNativeToken(walletAddress)
+      const currentChainId = await getChainCurrentChainId()
+      const currentChain = CHAINS.find((chain) => chain.chainId === currentChainId)
+      const curretnNativeCurr = currentChain?.nativeCurrency || '-'
       if (labelWalletNativeBalance && balance) {
         labelWalletNativeBalance.innerHTML =
-          ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
-        labelWalletNativeBalance.title = ethers.utils.formatEther(balance) + ' ' + NATIVE_TOKEN_NAME
+          ethers.utils.formatEther(balance) + ' ' + currentChain?.nativeCurrency.symbol
+        labelWalletNativeBalance.title =
+          ethers.utils.formatEther(balance) + ' ' + currentChain?.nativeCurrency.symbol
       }
     } catch (error) {}
   }
@@ -70,13 +74,13 @@ export class AccountPageController {
         return
       }
 
-      const currentChainIndo = await CHAINS.find((chain) => chain.chainId === currentChainId)
-      if (!currentChainIndo) return
+      const currentChain = await CHAINS.find((chain) => chain.chainId === currentChainId)
+      if (!currentChain) return
 
-      const balance = await getErc20Balance(ADDRESS_OF_CHAINS[currentChainId].WIE104, walletAddress)
-      labelWalletToken.innerHTML = `${ethers.utils.formatEther(balance)} ${
-        currentChainIndo?.nativeCurrency.symbol
-      }`
+      const balance = await getErc20Balance(ADDRESS_OF_CHAINS[currentChainId].WUIT, walletAddress)
+      labelWalletToken.innerHTML = `${ethers.utils.formatEther(
+        balance,
+      )} ${DEFAULT_WRAP_TOKEN_SYMBOL}`
     } catch (error) {
       console.log(error)
     }
@@ -233,6 +237,7 @@ export class AccountPageController {
       ModalSellControllerInstance.open()
     } catch (error) {
       console.log(error)
+      ModalSellControllerInstance.close()
     }
   }
   async handleDelistNft(nftItem: NftItem) {
@@ -241,6 +246,7 @@ export class AccountPageController {
       ModalDelistControllerInstance.open()
     } catch (error) {
       console.log(error)
+      ModalSellControllerInstance.close()
     }
   }
   async getAllNftOfAddress() {
@@ -260,10 +266,20 @@ export class AccountPageController {
       console.log('Wallet address is not valid')
       throw new Error('Wallet address is not valid')
     }
+    let addressExploreLink = document.querySelector(
+      PageElementId.AddressExploreLink,
+    ) as HTMLAnchorElement
+    addressExploreLink.href = `${getAddressExplorerHref(walletAddress)}`
+
+    let userAvatar = document.querySelector(PageElementId.UserAvatar) as HTMLImageElement
+    userAvatar.src = `${getAvatarByAddress(walletAddress)}`
+
     const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
     const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
     try {
       const collections = await viewMarketCollections(currentMarketAddress)
+      console.log({ collections })
+
       await Promise.all(
         collections.collectionAddresses.map(async (collectionAddress: string) => {
           try {
@@ -328,35 +344,43 @@ export class AccountPageController {
       console.log({ listNfts })
       // Convert the Set back to an array
       await AccountPageControllerInstance.clearNftContainer()
+      if (listNfts.length === 0) {
+        let listNftContainer = document.querySelector(
+          PageElementId.ListNftContainer,
+        ) as HTMLDivElement
+        if (listNftContainer) {
+          listNftContainer.innerHTML = HTMLElementNoItem
+        }
+      } else {
+        listNfts.forEach(async (nftItem: NftItem, index) => {
+          listNftContainer.appendChild(
+            await AccountPageControllerInstance.CreateNftItemComponent(nftItem),
+          )
+        })
 
-      listNfts.forEach(async (nftItem: NftItem, index) => {
-        listNftContainer.appendChild(
-          await AccountPageControllerInstance.CreateNftItemComponent(nftItem),
+        await Promise.all(
+          listNfts.map(async (nftItem: NftItem, index: number) => {
+            try {
+              const tokenUri = await getTokenUri(nftItem.collectionAddress, nftItem.tokenId)
+              listNfts[index].tokenUri = tokenUri || ''
+            } catch (error) {}
+          }),
         )
-      })
 
-      await Promise.all(
-        listNfts.map(async (nftItem: NftItem, index: number) => {
-          try {
-            const tokenUri = await getTokenUri(nftItem.collectionAddress, nftItem.tokenId)
-            listNfts[index].tokenUri = tokenUri || ''
-          } catch (error) {}
-        }),
-      )
-
-      // Get metadata of tokenId
-      await Promise.all(
-        listNfts.map(async (nftItem: NftItem, index: number) => {
-          try {
-            const metadata = await getMetadata(nftItem.tokenUri)
-            listNfts[index].title = metadata.name || ''
-            listNfts[index].description = metadata.description || ''
-            listNfts[index].imageUri = metadata.image || ''
-            listNfts[index].imageGatewayUrl = getUrlImage(metadata.image) || ''
-            await AccountPageControllerInstance.UpdateNftItemComponent(listNfts[index])
-          } catch (error) {}
-        }),
-      )
+        // Get metadata of tokenId
+        await Promise.all(
+          listNfts.map(async (nftItem: NftItem, index: number) => {
+            try {
+              const metadata = await getMetadata(nftItem.tokenUri)
+              listNfts[index].title = metadata.name || ''
+              listNfts[index].description = metadata.description || ''
+              listNfts[index].imageUri = metadata.image || ''
+              listNfts[index].imageGatewayUrl = getUrlImage(metadata.image) || ''
+              await AccountPageControllerInstance.UpdateNftItemComponent(listNfts[index])
+            } catch (error) {}
+          }),
+        )
+      }
     } catch (error) {
       console.log(error)
     }

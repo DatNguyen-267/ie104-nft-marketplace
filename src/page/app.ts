@@ -1,6 +1,8 @@
+import { HTMLElementLoadingList } from '../constants/elements'
+import { ChainManagerInstance } from '../controller/chain'
 import { LoadingControllerInstance } from '../controller/loading'
 import { ModalBuyControllerInstance, ModalBuyNFTId } from '../controller/modal-buy'
-import { UserPopoverControllerInstance } from '../controller/user'
+import { WalletManagerInstance, showWalletInfo } from '../controller/wallet'
 import { connectEarly } from '../services'
 import './../components/NFTcard/styles.css'
 import './../components/alert/styles.css'
@@ -10,18 +12,20 @@ import './../components/header/styles.css'
 import './../components/loading/loading2/styles.css'
 import './../components/modal/modalBuyNFT/styles.css'
 import './../components/modal/modalSellNFT/styles.css'
-import './../components/loading/loading2/styles.css'
 import './../components/toast/styles.css'
 import './../styles/base.css'
 import './../styles/grid.css'
+import './../components/page-loading/styles.css'
+
 import { LandingPageControllerInstance } from './controller'
 import './styles.css'
-import { WalletManagerInstance, showWalletInfo } from '../controller/wallet'
+import { PageElementId } from './types'
 
 connectEarly()
   .then(() => {
     WalletManagerInstance.listener()
     WalletManagerInstance.updateAccountAddress()
+    ChainManagerInstance.initChainId()
     showWalletInfo(WalletManagerInstance.currentAddress)
   })
   .catch((err) => {
@@ -132,23 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setInterval(handleAnimation, speed)
-    // // Get the bubbles container
-    // const bubblesContainer = document.querySelector('.bubbles')
-
-    // // Create bubbles
-    // for (let i = 0; i < 10; i++) {
-    //   const bubble = document.createElement('div')
-    //   bubble.classList.add('bubble')
-    //   bubble.style.setProperty('--size', `${2 + Math.random() * 4}rem`)
-    //   bubble.style.setProperty('--distance', `${6 + Math.random() * 4}rem`)
-    //   bubble.style.setProperty('--position', `${-5 + Math.random() * 110}%`)
-    //   bubble.style.setProperty('--time', `${2 + Math.random() * 2}s`)
-    //   bubble.style.setProperty('--delay', `${-1 * (2 + Math.random() * 2)}s`)
-    //   if (bubblesContainer) {
-    //     bubblesContainer.appendChild(bubble)
-    //   }
-    // }
   }
-  initPage()
   animationText()
+  try {
+    initPage()
+    window.ethereum.on('chainChanged', (chainId: string) => {
+      ChainManagerInstance.updateChainId(chainId)
+      initPage()
+      let listNftContainer = document.querySelector(
+        PageElementId.ListNftContainer,
+      ) as HTMLDivElement
+      if (listNftContainer) {
+        listNftContainer.innerHTML = HTMLElementLoadingList
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
 })

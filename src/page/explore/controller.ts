@@ -164,7 +164,7 @@ export class ExplorePageController {
     }
     const currentChainId = (await getChainCurrentChainId()) || CHAINS[0].chainId
     const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
-
+    console.log({ currentChainId })
     try {
       const collections = await viewMarketCollections(currentMarketAddress)
 

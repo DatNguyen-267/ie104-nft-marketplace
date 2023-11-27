@@ -23,7 +23,7 @@ export async function connectEarly() {
       }
     })
 }
-export async function switchToNetwork(provider: any, chainId: string): Promise<null | void> {
+export async function switchToNetwork(provider: any, chainId: number): Promise<null | void> {
   const formattedChainId = ethers.BigNumber.from(chainId).toHexString()
 
   if (!provider) {
@@ -88,7 +88,10 @@ export async function connectAndSwitch() {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
 
-    const currentChainId = CHAINS[0].chainId
+    const currentChainId = await getChainCurrentChainId()
+    if (!currentChainId) {
+      throw new Error(AppError.CHAIN_ID_INVALID)
+    }
     await switchToNetwork(provider.provider, currentChainId)
   } catch (error) {
     throw error
@@ -116,20 +119,27 @@ export async function getAccountAddress() {
 }
 
 export async function getChainCurrentChainId() {
-  if (typeof window.ethereum !== 'undefined') {
-    const provider = getDefaultProvider()
-    if (!provider) return null
-    try {
-      const chainId = await provider?.send('eth_chainId', [])
-      const isSupport = CHAINS.find((chain) => chain.chainId === chainId)
-      if (!isSupport) {
+  const localChainId = localStorage.getItem('chainId')
+  if (localChainId) {
+    return Number(localChainId)
+  } else {
+    console.log('rerroroero')
+    if (typeof window.ethereum !== 'undefined') {
+      const provider = getDefaultProvider()
+      if (!provider) return null
+      try {
+        const chainId = parseInt(await provider?.send('eth_chainId', []), 16)
+        const isSupport = CHAINS.find((chain) => chain.chainId === chainId)
+
+        if (!isSupport) {
+          return null
+        } else {
+          return chainId
+        }
+      } catch (error) {
+        console.log(error)
         return null
-      } else {
-        return chainId
       }
-    } catch (error) {
-      console.log(error)
-      return null
     }
   }
 }

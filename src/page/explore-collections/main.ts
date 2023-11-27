@@ -8,8 +8,13 @@ import './../../components/header/styles.css'
 import './../../components/loading/loading2/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
+import './../../components/page-loading/styles.css'
+
 import { ExploreCollectionPageControllerInstance } from './controller'
 import './styles.css'
+import { ChainManagerInstance } from '../../controller/chain'
+import { PageElementId } from './types'
+import { HTMLElementLoadingList } from '../../constants/elements'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -62,11 +67,24 @@ signOut.onclick = toggleAlertSigout
 document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
-      try {
-      } catch (error) {}
+      ChainManagerInstance.initChainId()
       await ExploreCollectionPageControllerInstance.getAllCollectionOfMarket()
     } catch (error) {}
   }
 
-  initPage()
+  try {
+    initPage()
+    window.ethereum.on('chainChanged', (chainId: string) => {
+      ChainManagerInstance.updateChainId(chainId)
+      initPage()
+      let listNftContainer = document.querySelector(
+        PageElementId.ListCollectionContainer,
+      ) as HTMLDivElement
+      if (listNftContainer) {
+        listNftContainer.innerHTML = HTMLElementLoadingList
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
 })

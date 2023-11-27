@@ -1,0 +1,28 @@
+.no-item__container {
+    min-height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-item__svg-container {
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.no-item__svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.no-item-description {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--color-text);
+}

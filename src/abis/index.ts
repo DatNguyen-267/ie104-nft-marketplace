@@ -1,7 +1,8 @@
-import { WIE104_ABI } from './WIE104'
+import { ABI_WRAP_TOKEN } from './WrapToken'
 
 export * from './Marketplace'
 export * from './Erc721'
-export * from './WIE104'
+export * from './WrapToken'
+export * from './PublicCollection'
 
-export const TOKEN_EXCHANGE_ABI = WIE104_ABI
+export const TOKEN_EXCHANGE_ABI = ABI_WRAP_TOKEN

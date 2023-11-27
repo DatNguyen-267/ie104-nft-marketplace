@@ -1,6 +1,9 @@
 import { DEFAULT_ADDRESS } from '../../constants'
 import { connectEarly } from '../../services'
 import './styles.css'
+import './../../components/page-loading/styles.css'
+import './../../components/no-item/styles.css'
+
 // Class name compatible with the template
 import { LoadingControllerInstance } from '../../controller/loading'
 import { ModalDepositControllerInstance } from '../../controller/modal-deposit'
@@ -11,8 +14,14 @@ import { shorterAddress } from '../../utils'
 import { AccountPageControllerInstance } from './controller'
 import { PageElementId } from './types'
 import { ModalDelistControllerInstance, ModalDelistNFTId } from '../../controller/modal-delist'
+import { ChainManagerInstance } from '../../controller/chain'
+import { HTMLElementLoadingList } from '../../constants/elements'
 
 document.addEventListener('DOMContentLoaded', () => {
+  //
+
+  //
+
   let containerNoConnection = document.querySelector(
     PageElementId.ContainerNoConnection,
   ) as HTMLDivElement
@@ -29,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       WalletManagerInstance.listener()
       await connectEarly()
         .then(async () => {
+          ChainManagerInstance.initChainId()
           showWalletInfo(WalletManagerInstance.currentAddress)
 
           await WalletManagerInstance.updateAccountAddress()
@@ -50,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
           await AccountPageControllerInstance.getAllNftOfAddress()
         })
         .catch((err) => {
+          ChainManagerInstance.initChainId()
           containerConnected.style.display = 'none'
           containerNoConnection.style.display = 'flex'
         })
@@ -83,6 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   try {
     initPage()
+    window.ethereum.on('chainChanged', (chainId: string) => {
+      ChainManagerInstance.updateChainId(chainId)
+
+      initPage()
+      let listNftContainer = document.querySelector(
+        PageElementId.ListNftContainer,
+      ) as HTMLDivElement
+      if (listNftContainer) {
+        listNftContainer.innerHTML = HTMLElementLoadingList
+      }
+    })
+    window.ethereum.on('accountChanged', (accounts: string[]) => {
+      if (accounts.length > 0) {
+        initPage()
+        let listNftContainer = document.querySelector(
+          PageElementId.ListNftContainer,
+        ) as HTMLDivElement
+        if (listNftContainer) {
+          listNftContainer.innerHTML = HTMLElementLoadingList
+        }
+      }
+    })
   } catch (error) {
     console.log(error)
   }
@@ -95,6 +128,12 @@ modalButtonAcceptDelist.addEventListener('click', (e) => {
   LoadingControllerInstance.open()
   ModalDelistControllerInstance.delist()
     .then((res) => {
+      let listNftContainer = document.querySelector(
+        PageElementId.ListNftContainer,
+      ) as HTMLDivElement
+      if (listNftContainer) {
+        listNftContainer.innerHTML = HTMLElementLoadingList
+      }
       AccountPageControllerInstance.getAllNftOfAddress()
       LoadingControllerInstance.close()
     })
@@ -107,6 +146,12 @@ modalButtonAccept.addEventListener('click', (e) => {
   LoadingControllerInstance.open()
   ModalSellControllerInstance.sell()
     .then((res) => {
+      let listNftContainer = document.querySelector(
+        PageElementId.ListNftContainer,
+      ) as HTMLDivElement
+      if (listNftContainer) {
+        listNftContainer.innerHTML = HTMLElementLoadingList
+      }
       AccountPageControllerInstance.getAllNftOfAddress()
       LoadingControllerInstance.close()
     })

@@ -1,12 +1,11 @@
 import { ethers } from 'ethers'
-import { WIE104_ABI } from '../abis'
-import { ProviderOptions } from '../types'
+import { ABI_WRAP_TOKEN } from '../abis'
 import { getDefaultProvider } from './provider'
 
 export async function getErc20Balance(cltAddress: string, walletAddress: string): Promise<string> {
   try {
     const provider = getDefaultProvider()
-    const contract = new ethers.Contract(cltAddress, WIE104_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_WRAP_TOKEN, provider)
     const balance = await contract.balanceOf(walletAddress)
     return balance.toString()
   } catch (error) {

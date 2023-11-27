@@ -1,4 +1,4 @@
-export const WIE104_ABI = [
+export const ABI_WRAP_TOKEN = [
   {
     constant: true,
     inputs: [],

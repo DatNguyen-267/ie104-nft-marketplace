@@ -93,7 +93,7 @@ class ModalDepositController {
     }
     try {
       const response = await deposit(
-        ADDRESS_OF_CHAINS[currentChainId].WIE104,
+        ADDRESS_OF_CHAINS[currentChainId].WUIT,
         priceInput.value.toString(),
       )
       console.log(response)

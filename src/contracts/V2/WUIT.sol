@@ -1,16 +1,8 @@
-/**
- *Submitted for verification at Etherscan.io on 2020-09-03
- */
-
-/**
- *Submitted for verification at Bscscan.com on 2020-09-03
- */
-
 pragma solidity ^0.4.18;
 
-contract WIE104 {
-  string public name = 'Wrapped IE104';
-  string public symbol = 'WIE104';
+contract WUIT {
+  string public name = 'Wrapped UIT Token';
+  string public symbol = 'WUIT';
   uint8 public decimals = 18;
 
   event Approval(address indexed src, address indexed guy, uint256 wad);

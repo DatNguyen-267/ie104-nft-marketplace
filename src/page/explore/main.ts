@@ -12,8 +12,13 @@ import './../../components/modal/modalBuyNFT/styles.css'
 import './../../components/modal/modalSellNFT/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
+import './../../components/page-loading/styles.css'
+
 import { ExplorePageControllerInstance } from './controller'
 import './styles.css'
+import { PageElementId } from './types'
+import { HTMLElementLoadingList } from '../../constants/elements'
+import { ChainManagerInstance } from '../../controller/chain'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -28,9 +33,11 @@ connectEarly()
     WalletManagerInstance.listener()
     WalletManagerInstance.updateAccountAddress()
     showWalletInfo(WalletManagerInstance.currentAddress)
+    ChainManagerInstance.initChainId()
   })
   .catch((err) => {
     console.log(err)
+    ChainManagerInstance.initChainId()
   })
 
 // Toggle PopUP
@@ -66,8 +73,6 @@ signOut.onclick = toggleAlertSigout
 document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {
-      try {
-      } catch (error) {}
       await ExplorePageControllerInstance.getAllNftOfMarket()
     } catch (error) {}
   }
@@ -83,8 +88,21 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch((err) => {})
       .finally(() => {})
   })
-
-  initPage()
+  try {
+    initPage()
+    window.ethereum.on('chainChanged', (chainId: string) => {
+      ChainManagerInstance.updateChainId(chainId)
+      initPage()
+      let listNftContainer = document.querySelector(
+        PageElementId.ListNftContainer,
+      ) as HTMLDivElement
+      if (listNftContainer) {
+        listNftContainer.innerHTML = HTMLElementLoadingList
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 // ============================= Test Toast ====================================

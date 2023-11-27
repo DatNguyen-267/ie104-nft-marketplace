@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at BscScan.com on 2021-09-30
- */
-
 // File: @openzeppelin/contracts/utils/Context.sol
 
 // SPDX-License-Identifier: MIT
@@ -1080,7 +1076,7 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
     Close
   }
 
-  address public immutable WIE104;
+  address public immutable WrapToken;
 
   uint256 public constant TOTAL_MAX_FEE = 1000; // 10% of a sale
 
@@ -1189,27 +1185,27 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
    * @notice Constructor
    * @param _adminAddress: address of the admin
    * @param _treasuryAddress: address of the treasury
-   * @param _WIE104Address: WIE104 address
+   * @param _wrapTokenAddress: WrapToken address
    * @param _minimumAskPrice: minimum ask price
    * @param _maximumAskPrice: maximum ask price
    */
   constructor(
     address _adminAddress,
     address _treasuryAddress,
-    address _WIE104Address,
+    address _wrapTokenAddress,
     uint256 _minimumAskPrice,
     uint256 _maximumAskPrice
   ) {
     require(_adminAddress != address(0), 'Operations: Admin address cannot be zero');
     require(_treasuryAddress != address(0), 'Operations: Treasury address cannot be zero');
-    require(_WIE104Address != address(0), 'Operations: WIE104 address cannot be zero');
+    require(_wrapTokenAddress != address(0), 'Operations: WrapToken address cannot be zero');
     require(_minimumAskPrice > 0, 'Operations: _minimumAskPrice must be > 0');
     require(_minimumAskPrice < _maximumAskPrice, 'Operations: _minimumAskPrice < _maximumAskPrice');
 
     adminAddress = _adminAddress;
     treasuryAddress = _treasuryAddress;
 
-    WIE104 = _WIE104Address;
+    WrapToken = _wrapTokenAddress;
 
     minimumAskPrice = _minimumAskPrice;
     maximumAskPrice = _maximumAskPrice;
@@ -1225,23 +1221,23 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
     uint256 _tokenId
   ) external payable nonReentrant {
     // Wrap NativeToken
-    IWETH(WIE104).deposit{ value: msg.value }();
+    IWETH(WrapToken).deposit{ value: msg.value }();
 
     _buyToken(_collection, _tokenId, msg.value, true);
   }
 
   /**
-   * @notice Buy token with WIE104 by matching the price of an existing ask order
+   * @notice Buy token with WrapToken by matching the price of an existing ask order
    * @param _collection: contract address of the NFT
    * @param _tokenId: tokenId of the NFT purchased
    * @param _price: price (must be equal to the askPrice set by the seller)
    */
-  function buyTokenUsingWIE104(
+  function buyTokenUsingWrapToken(
     address _collection,
     uint256 _tokenId,
     uint256 _price
   ) external nonReentrant {
-    IERC20(WIE104).safeTransferFrom(address(msg.sender), address(this), _price);
+    IERC20(WrapToken).safeTransferFrom(address(msg.sender), address(this), _price);
 
     _buyToken(_collection, _tokenId, _price, false);
   }
@@ -1278,7 +1274,7 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
     require(revenueToClaim != 0, 'Claim: Nothing to claim');
     pendingRevenue[msg.sender] = 0;
 
-    IERC20(WIE104).safeTransfer(address(msg.sender), revenueToClaim);
+    IERC20(WrapToken).safeTransfer(address(msg.sender), revenueToClaim);
 
     emit RevenueClaim(msg.sender, revenueToClaim);
   }
@@ -1478,7 +1474,7 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
    * @dev Callable by owner
    */
   function recoverFungibleTokens(address _token) external onlyOwner {
-    require(_token != WIE104, 'Operations: Cannot recover WIE104');
+    require(_token != WrapToken, 'Operations: Cannot recover WrapToken');
     uint256 amountToRecover = IERC20(_token).balanceOf(address(this));
     require(amountToRecover != 0, 'Operations: No token to recover');
 
@@ -1681,7 +1677,7 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
    * @param _collection: contract address of the NFT
    * @param _tokenId: tokenId of the NFT purchased
    * @param _price: price (must match the askPrice from the seller)
-   * @param _withNativeToken: whether the token is bought with NativeToken (true) or WIE104 (false)
+   * @param _withNativeToken: whether the token is bought with NativeToken (true) or WrapToken (false)
    */
   function _buyToken(
     address _collection,
@@ -1713,8 +1709,8 @@ contract ERC721NFTMarketV1 is ERC721Holder, Ownable, ReentrancyGuard {
     delete _askDetails[_collection][_tokenId];
     _askTokenIds[_collection].remove(_tokenId);
 
-    // Transfer WIE104
-    IERC20(WIE104).safeTransfer(askOrder.seller, netPrice);
+    // Transfer WrapToken
+    IERC20(WrapToken).safeTransfer(askOrder.seller, netPrice);
 
     // Update pending revenues for treasury/creator (if any!)
     if (creatorFee != 0) {

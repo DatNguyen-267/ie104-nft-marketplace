@@ -4,6 +4,7 @@ import { connectEarly } from '../../services'
 import { ethereumAddressRegex } from '../../utils/regex'
 import { CollectionPageControllerInstance } from './controller'
 import './styles.css'
+import './../../components/page-loading/styles.css'
 
 const search = window.location.search
 const collectionAddress = search.replace('?cltAddress=', '')

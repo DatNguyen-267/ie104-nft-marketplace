@@ -1,3 +1,6 @@
+import { ADDRESS_OF_CHAINS } from '../../constants'
+import { DEFAULT_CHAIN_ID } from '../../constants/chains'
+import { LoadingControllerInstance } from '../../controller/loading'
 import { UserPopoverControllerInstance } from '../../controller/user'
 import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import {
@@ -5,6 +8,7 @@ import {
   connectEarly,
   createMetadata,
   getAccountAddress,
+  getChainCurrentChainId,
   mintNFT,
 } from '../../services'
 import './styles.css'
@@ -62,17 +66,22 @@ const handleValidateForm = () => {
     btnCreate.disabled = true
   }
 }
+
 btnCreate.addEventListener('click', async () => {
   try {
+    LoadingControllerInstance.open()
     await connectAndSwitch()
     const address = await getAccountAddress()
+
     const { imageValue, nameValue, descriptionValue } = getFormValue()
     if (!imageValue) return
+
     const tokenUri = await createMetadata(imageValue, nameValue, descriptionValue)
       .then((res) => res)
       .catch((err) => {
         console.log(err)
       })
+
     if (!address || !tokenUri || !inputCollectionAddress.value) {
       console.log('Invalid input')
       return
@@ -81,6 +90,7 @@ btnCreate.addEventListener('click', async () => {
     console.log(mintNftTx)
   } catch (error) {
     console.log(error)
+    LoadingControllerInstance.close()
   }
 })
 
@@ -174,4 +184,19 @@ imgClose.addEventListener('click', () => {
   imgView.style.display = 'none'
   imgContent.style.display = 'flex'
   imgClose.style.display = 'none'
+})
+
+const updateDefaultCollectionAddress = async () => {
+  const currentChainId = await getChainCurrentChainId()
+  const publicAddress = currentChainId
+    ? ADDRESS_OF_CHAINS[currentChainId].PUBLIC_ERC721_TOKEN
+    : ADDRESS_OF_CHAINS[DEFAULT_CHAIN_ID].PUBLIC_ERC721_TOKEN
+
+  const publicAddressLabel = document.querySelector('#default-collection-address') as HTMLElement
+  publicAddressLabel.innerHTML = publicAddress
+}
+
+updateDefaultCollectionAddress()
+window.ethereum.on('chainChanged', (chainId: string) => {
+  updateDefaultCollectionAddress()
 })

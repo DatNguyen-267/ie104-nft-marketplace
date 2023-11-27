@@ -55,9 +55,7 @@ header {
     z-index: 10;
     height: 80px;
     padding: 0px 50px;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: 8px;
-    box-shadow: 0px 1px 2px 0px var(--color-border-100);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* logo */
@@ -127,7 +125,7 @@ header {
     height: 2px;
     width: 80%;
     transform: translateY(-5px);
-    background-color: var(--color-text);
+    /* background-color: var(--color-text); */
 }
 
 /* user */

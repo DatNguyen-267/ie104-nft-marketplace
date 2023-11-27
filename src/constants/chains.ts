@@ -1,15 +1,17 @@
-export const CHAINIDS = {
-  AIOZ: '4102',
-  GOERLI: '5',
-  MUMBAI: '80001',
+export const CHAIN_IDS = {
+  AIOZ: 4102,
+  GOERLI: 5,
+  MUMBAI: 80001,
 }
+export const DEFAULT_CHAIN_ID = CHAIN_IDS.GOERLI
+export const DEFAULT_WRAP_TOKEN_SYMBOL = 'WUIT'
 export const CHAINS = [
   {
-    chainId: CHAINIDS.AIOZ,
+    chainId: CHAIN_IDS.AIOZ,
     chainIdHex: '0x1006',
     chainName: 'AIOZ Network Testnet',
     rpcUrl: 'https://eth-ds.testnet.aioz.network',
-    CurrencySymbol: 'AIOZ',
+    currencySymbol: 'AIOZ',
     blockExplorerUrl: 'https://testnet.explorer.aioz.network',
     nativeCurrency: {
       name: 'AIOZ',
@@ -18,11 +20,11 @@ export const CHAINS = [
     },
   },
   {
-    chainId: CHAINIDS.GOERLI,
+    chainId: CHAIN_IDS.GOERLI,
     chainIdHex: '0x5',
     chainName: 'Goerli',
     rpcUrl: 'https://rpc.ankr.com/eth_goerli',
-    CurrencySymbol: 'Goerli ETH',
+    currencySymbol: 'Goerli ETH',
     blockExplorerUrl: 'https://goerli.etherscan.io',
     nativeCurrency: {
       name: 'Goerli ETH',
@@ -31,11 +33,11 @@ export const CHAINS = [
     },
   },
   {
-    chainId: CHAINIDS.MUMBAI,
+    chainId: CHAIN_IDS.MUMBAI,
     chainIdHex: '0x13881',
     chainName: 'Mumbai',
     rpcUrl: 'https://rpc-mumbai.maticvigil.com',
-    CurrencySymbol: 'MATIC',
+    currencySymbol: 'MATIC',
     blockExplorerUrl: 'https://mumbai.polygonscan.com',
     nativeCurrency: {
       name: 'MATIC',

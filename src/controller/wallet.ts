@@ -55,14 +55,6 @@ class WalletManager {
     }
   }
 
-  handleChainChanged(chainId: string) {
-    if (chainId !== '4102') {
-      try {
-        switchToNetwork(getDefaultProvider(), '4102')
-      } catch (error) {}
-    }
-  }
-
   async accountChanged(accounts: any) {
     if (accounts.length > 0) {
       this.currentAddress = accounts[0]

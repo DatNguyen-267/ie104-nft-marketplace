@@ -1,12 +1,13 @@
 import { ethers } from 'ethers'
 import { NFTStorage } from 'nft.storage'
-import { ERC721_ABI } from '../abis'
-import { AppError, STORAGE_API_KEY } from '../constants'
+import { ABI_ERC721, ABI_PUBLIC_COLLECTION } from '../abis'
+import { ADDRESS_OF_CHAINS, AppError, STORAGE_API_KEY } from '../constants'
 import { ProviderOptions } from '../types'
 import { MetadataInput } from '../types/metadata'
+import { getChainCurrentChainId } from './connect'
 import { getDefaultProvider, getRpcProvider } from './provider'
+import { LoadingControllerInstance } from '../controller/loading'
 
-// export const STORAGE_API_KEY = process.env.STORAGE_API_KEY || "";
 export async function createMetadata(file: File, title: string, description: string) {
   try {
     if (!STORAGE_API_KEY) {
@@ -30,14 +31,13 @@ export async function approveSpenderToAccessNft(
   cltAddress: string,
   spenderAddress: string,
   tokenId: number,
-  options?: ProviderOptions,
 ) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const tokenContract = new ethers.Contract(cltAddress, ERC721_ABI, provider.getSigner())
+    const tokenContract = new ethers.Contract(cltAddress, ABI_ERC721, provider.getSigner())
     const transaction: any = await tokenContract.approve(spenderAddress, tokenId)
     const transactionReceipt: any = await transaction.wait()
     console.log('approve receipt:', transactionReceipt)
@@ -46,20 +46,22 @@ export async function approveSpenderToAccessNft(
   }
 }
 
-export async function mintNFT(
-  cltAddress: string,
-  addressTo: string,
-  tokenUri: string,
-  options?: ProviderOptions,
-) {
+export async function mintNFT(cltAddress: string, addressTo: string, tokenUri: string) {
   try {
     const provider = getDefaultProvider()
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const nftContract = new ethers.Contract(cltAddress, ERC721_ABI, provider?.getSigner())
+    const currentChainId = await getChainCurrentChainId()
 
+    const currentAbi =
+      currentChainId && cltAddress === ADDRESS_OF_CHAINS[currentChainId].PUBLIC_ERC721_TOKEN
+        ? ABI_PUBLIC_COLLECTION
+        : ABI_ERC721
+
+    const nftContract = new ethers.Contract(cltAddress, currentAbi, provider?.getSigner())
     const transaction = await nftContract.safeMint(addressTo, tokenUri)
+    LoadingControllerInstance.close()
     const transactionReceipt: any = await transaction.wait()
     console.log('Mint receipt:', transactionReceipt)
     return transactionReceipt
@@ -74,7 +76,7 @@ export async function getTokenUri(cltAddress: string, tokenId: number, options?:
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const contract = new ethers.Contract(cltAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_ERC721, provider)
     const tokenUri: string = await contract.tokenURI(tokenId)
     return tokenUri
   } catch (error) {
@@ -89,7 +91,7 @@ async function getOwner(cltAddress: string, tokenId: number, options?: ProviderO
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
 
-    const contract = new ethers.Contract(cltAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_ERC721, provider)
     const addressOwner = contract.ownerOf(tokenId)
     return addressOwner
   } catch (error) {
@@ -108,7 +110,7 @@ async function getYourTokens(
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const contract = new ethers.Contract(cltAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_ERC721, provider)
     let tokenId = 0
     while (true) {
       try {
@@ -149,7 +151,7 @@ export async function getAllTokenIdOfCollection(
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const contract = new ethers.Contract(collectionAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(collectionAddress, ABI_ERC721, provider)
 
     let tokenId = 0
     while (true) {
@@ -180,19 +182,23 @@ export async function getAllNftOfCollectionAndOwnerAddress(
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const contract = new ethers.Contract(collectionAddress, ERC721_ABI, provider)
-    const balanceOf = await contract.balanceOf(walletAddress)
+    const contract = new ethers.Contract(collectionAddress, ABI_ERC721, provider)
+    const balanceOf = parseInt((await contract.balanceOf(walletAddress))._hex, 16)
+    console.log({ balanceOf })
     if (balanceOf === 0) return
-    let tokenId = 0
-    while (true) {
-      try {
-        const token = await contract.ownerOf(tokenId)
-        if (token.toLowerCase() === walletAddress.toLowerCase()) listTokenId.push(tokenId)
-        tokenId++
-      } catch (error) {
-        break
-      }
-    }
+    await Promise.all(
+      Array(balanceOf)
+        .fill(1)
+        .map(async (item, index) => {
+          try {
+            const token = await contract.ownerOf(index)
+            if (token.toLowerCase() === walletAddress.toLowerCase()) listTokenId.push(index)
+          } catch (error) {
+            console.log(error)
+          }
+        }),
+    )
+
     return listTokenId
   } catch (error) {
     throw error
@@ -228,7 +234,7 @@ export async function transferFrom(
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const nftContract = new ethers.Contract(collectionAddress, ERC721_ABI, provider)
+    const nftContract = new ethers.Contract(collectionAddress, ABI_ERC721, provider)
     const response = await nftContract.transferFrom(from, to, tokenId)
     return {}
   } catch (error) {
@@ -243,7 +249,7 @@ export async function getOwnerOfCollection(cltAddress: string) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
 
-    const contract = new ethers.Contract(cltAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_ERC721, provider)
     const addressOwner = contract.owner()
     return addressOwner
   } catch (error) {
@@ -258,7 +264,7 @@ export async function getNameOfCollection(cltAddress: string) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
 
-    const contract = new ethers.Contract(cltAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_ERC721, provider)
     const addressOwner = contract.name()
     return addressOwner
   } catch (error) {
@@ -273,7 +279,7 @@ export async function getTotalSupply(cltAddress: string) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
 
-    const contract = new ethers.Contract(cltAddress, ERC721_ABI, provider)
+    const contract = new ethers.Contract(cltAddress, ABI_ERC721, provider)
     const addressOwner = contract.totalSupply()
     return addressOwner
   } catch (error) {
