@@ -1,103 +1,33 @@
-@import url(../../styles/base.css);
-
-.filled--button {
-    background-color: var(--color-btn-primary);
-    border-radius: 16px;
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    /* transition: 0.3s; */
+.list-loading__container {
+  min-height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.icon--button {
-    padding-right: 12px;
+.list-loading__svg-container {
+  width: 32px;
+  height: 32px;
+  position: relative;
 }
 
-.filled--button.primary {
-    width: 206px;
-    height: 72px;
-    font-size: 22px;
+.list-loading__svg-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: rorate infinite 1s linear;
 }
 
-.filled--button.secondary {
-    width: 186px;
-    height: 60px;
-    font-size: 16px;
-}
+@keyframes rorate {
+  0% {
+      transform: rotate(0deg);
+  }
 
-.filled--button.tertiary {
-    width: 186px;
-    height: 46px;
-    font-size: 16px;
-}
-
-.filled--button.error {
-    width: 186px;
-    height: 46px;
-    font-size: 16px;
-    background-color: var(--color-red-500);
-    color: var(--color-white);
-    border: 1px solid;
-    border-color: var(--color-red-500);
-}
-
-.filled--button.error:hover,
-filled--button.error:active {
-    background-color: var(--color-red-500);
-    color: var(--color-white);
-    border: 1px solid;
-    border-color: var(--color-red-500);
-}
-
-
-.filled--button.error.outlined {
-    width: 186px;
-    height: 46px;
-    font-size: 16px;
-    background-color: transparent;
-    color: var(--color-text);
-    border: 1px solid;
-    border-color: var(--color-red-500);
-}
-
-
-
-.filled--button.error.outlined:hover,
-filled--button.error.outlined:active {
-    width: 186px;
-    height: 46px;
-    font-size: 16px;
-    background-color: var(--color-red-500);
-    color: var(--color-white);
-    border: 1px solid;
-    border-color: var(--color-red-500);
-}
-
-.filled--button.outline {
-    background-color: transparent;
-    color: var(--color-btn-primary);
-    border: 2px solid var(--color-btn-primary);
-}
-
-.filled--button:hover {
-    background-color: var(--color-btn-secondary);
-}
-
-.filled--button:active {
-    background-color: var(--color-btn-primary);
-}
-
-.filled--button.outline:hover {
-    background-color: var(--color-btn-primary);
-    color: var(--color-white);
-}
-
-.filled--button.outline:active {
-    background-color: transparent;
-    color: var(--color-btn-primary);
+  100% {
+      transform: rotate(360deg);
+  }
 }
