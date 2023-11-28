@@ -376,6 +376,12 @@ body {
   max-width: 1280px !important;
 }
 
+@media (max-width: 1240px) {
+  .section-info__intro .head-line .sentence {
+    height: 140px;
+    line-height: 6.8rem !important;
+  }
+}
 @media (max-width: 1023px) {
   .section-info .section-info__intro {
     display: flex;
@@ -383,7 +389,7 @@ body {
     gap: 30px;
     padding: 50px;
   }
-
+  
 }
 
 @media (max-width: 740px) {
@@ -399,6 +405,15 @@ body {
   .container {
     justify-content: center;
     align-items: center;
+  }
+}
+@media (max-width: 740px) {
+  h1{
+    line-height: 6.8rem !important;
+  }
+  .section-info__intro .head-line .sentence {
+    height: 200px;
+    line-height: 6.8rem !important;
   }
 }
 
