@@ -1,33 +1,166 @@
-.list-loading__container {
-  min-height: 500px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+@import url(../../components/button/styles.css);
+
+/* ================ MAIN ============== */
+body {
+    background-size: 240px 240px;
+    background-color: transparent;
+    background-image: linear-gradient(transparent 239px, #ececec 1px), linear-gradient(to right, transparent 239px, #ececec 1px);
+    display: flex;
+    flex-direction: column;
 }
 
-.list-loading__svg-container {
-  width: 32px;
-  height: 32px;
-  position: relative;
+.container {
+    position: relative;
+    padding: 32px 0px;
+    display: flex;
+    flex-direction: column;
 }
 
-.list-loading__svg-loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  animation: rorate infinite 1s linear;
+/* ================================= INFORMATION ==================================== */
+.main-header {
+    position: relative;
+    /* background: url(../../assets/images/exploreBackground.webp); */
+    background-repeat: no-repeat;
+    background-size: cover, contain;
+    background-position: center;
+
 }
 
-@keyframes rorate {
-  0% {
-      transform: rotate(0deg);
-  }
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    /* background-color: color-mix(in srgb, var(--color-black) 50%, transparent); */
+}
 
-  100% {
-      transform: rotate(360deg);
-  }
+.main-header .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ITEM LEFT */
+.main-header__head-line {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+
+.main-header__head-line .title {
+    font-weight: 700;
+    line-height: 140%;
+    text-transform: capitalize;
+    color: var(--color-text);
+}
+
+.main-header__head-line .desc {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 160%;
+    text-transform: capitalize;
+    color: var(--color-sub-text-100);
+}
+
+/* ITEM RIGHT */
+.main-header__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.main-header__image img {
+    width: 300px;
+    height: 310px;
+}
+
+
+/* ================================= NFTs ==================================== */
+
+/* Head line */
+.main-nfts__headline {
+    width: 100%;
+}
+
+.main-nfts__title {
+    color: var(--color-text);
+    font-weight: 700;
+    padding-bottom: 30px;
+    max-width: 330px;
+    width: 100%;
+
+}
+
+/* ITEM NFT */
+.nft-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2px;
+    cursor: pointer;
+    max-width: 330px;
+    width: 100%;
+    height: 100%;
+}
+
+.nft-card__img {
+    height: 204px !important;
+}
+
+/*======================== Reponsive ===================*/
+.col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wide {
+    max-width: 1280px !important;
+}
+
+@media (max-width: 1023px) {
+
+    .nft-card__img {
+        height: 296px !important;
+    }
+}
+
+@media (max-width: 740px) {
+
+    .container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-header__head-line {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-header__head-line .title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .main-header__head-line .desc {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .main-header__head-line .title,
+
+    .main-header__head-line .desc {
+        text-align: center;
+    }
+
 }
