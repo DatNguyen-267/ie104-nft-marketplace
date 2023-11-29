@@ -137,7 +137,9 @@ modalButtonAcceptDelist.addEventListener('click', (e) => {
       AccountPageControllerInstance.getAllNftOfAddress()
       LoadingControllerInstance.close()
     })
-    .catch((err) => {})
+    .catch((err) => {
+      LoadingControllerInstance.close()
+    })
     .finally(() => {})
 })
 

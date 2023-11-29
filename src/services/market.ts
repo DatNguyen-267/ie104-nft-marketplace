@@ -321,7 +321,7 @@ export async function cancelAskOrder(
     if (!provider) {
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
-    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider)
+    const marketContract = new ethers.Contract(marketAddress, MARKETPLACE_ABI, provider.getSigner())
     const response = await marketContract.cancelAskOrder(collectionAddress, tokenId)
     return response
   } catch (error) {

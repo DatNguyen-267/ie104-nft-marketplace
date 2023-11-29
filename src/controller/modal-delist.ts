@@ -65,9 +65,7 @@ class ModalDelistController {
     if (!currentChainId) {
       throw new Error(AppError.CHAIN_ID_INVALID)
     }
-
     const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
-
     try {
       const response = await cancelAskOrder(
         currentMarketAddress,
