@@ -305,3 +305,13 @@ if (btnImport) {
     ModalImportControllerInstance.open()
   })
 }
+
+// hide pop up when resize
+window.addEventListener('resize', () =>{
+  var w = window.innerWidth;
+  if(w <= 880){
+    var x = document.getElementById('pop-up-user') as HTMLElement
+    x.style.visibility = 'hidden'
+    x.style.opacity = '0'
+  }
+})

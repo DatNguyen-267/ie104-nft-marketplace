@@ -77,6 +77,16 @@ alertCancel.onclick = toggleAlertSigout
 alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
 
+// hide pop up when resize
+window.addEventListener('resize', () =>{
+  var w = window.innerWidth;
+  if(w <= 880){
+    var x = document.getElementById('pop-up-user') as HTMLElement
+    x.style.visibility = 'hidden'
+    x.style.opacity = '0'
+  }
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   async function initPage() {
     try {

@@ -219,7 +219,8 @@ header {
     color: var(--color-text);
     background-color: var(--color-white);
     box-shadow: 0px 1px 2px 2px var(--color-border-100);
-    width: 210px;
+    /* width: 210px; */
+    width: 180px;
 
 }
 
@@ -230,6 +231,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 15px 0px;
+    display: none;
 }
 
 .pop-up--user .avatar {
@@ -254,10 +256,12 @@ header {
 .pop-up--user .pop-up-nav {
     flex: 1;
     display: flex;
-    padding-bottom: 30px;
+    margin-top: 10px;
+    padding-bottom: 10px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
+    width: 100%;
 }
 
 .pop-up--user .pop-up-nav__link {
@@ -341,7 +345,7 @@ header {
         padding: 0 1rem;
     } */
     .pop-up--user .pop-up-container {
-        left: 15px;
+        left: 60px;
         top: 450px;
     }
 }
