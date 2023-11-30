@@ -46,7 +46,7 @@ export class LandingPageController {
       return
     }
     const tokenItemNode = listNftContainer.querySelector(
-      `div[data-token-id="${nftItem.tokenId}"]`,
+      `div[data-token-id="${nftItem.tokenId}"][${AttributeName.CltAddress}="${nftItem.collectionAddress}"]`,
     ) as HTMLDivElement
 
     if (!tokenItemNode) return
@@ -313,6 +313,7 @@ export class LandingPageController {
       )
 
       // Get metadata of tokenId
+      console.log({ listNfts })
       await Promise.all(
         listNfts.map(async (nftItem: NftItem, index: number) => {
           try {
