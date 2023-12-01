@@ -4,6 +4,7 @@ import { createAskOrder } from '../services/market'
 import { NftItem } from '../types/nft'
 import { getAvatarByAddress } from '../utils/avatar'
 import { shorterAddress } from '../utils/common'
+import { LoadingControllerInstance } from './loading'
 import { WalletManagerInstance, showWalletInfo } from './wallet'
 
 export enum ModalSellNFTId {
@@ -88,6 +89,7 @@ class ModalSellController {
       throw new Error(AppError.CHAIN_ID_INVALID)
     }
     const currentMarketAddress = ADDRESS_OF_CHAINS[currentChainId].MARKET
+    LoadingControllerInstance.open()
 
     try {
       const response = await createAskOrder(

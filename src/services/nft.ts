@@ -183,23 +183,35 @@ export async function getAllNftOfCollectionAndOwnerAddress(
       throw new Error(AppError.PROVIDER_IS_NOT_VALID)
     }
     const contract = new ethers.Contract(collectionAddress, ABI_ERC721, provider)
-    const balanceOf = parseInt((await contract.balanceOf(walletAddress))._hex, 16)
-    console.log({ balanceOf })
-    if (balanceOf === 0) return
-    await Promise.all(
-      Array(balanceOf)
-        .fill(1)
-        .map(async (item, index) => {
-          try {
-            const token = await contract.ownerOf(index)
-            if (token.toLowerCase() === walletAddress.toLowerCase()) listTokenId.push(index)
-          } catch (error) {
-            console.log(error)
-          }
-        }),
-    )
-
-    return listTokenId
+    try {
+      const totalSupply = parseInt((await contract.totalSupply(walletAddress))._hex, 16)
+      if (totalSupply === 0) return
+      await Promise.all(
+        Array(totalSupply)
+          .fill(1)
+          .map(async (item, index) => {
+            try {
+              const token = await contract.ownerOf(index)
+              if (token.toLowerCase() === walletAddress.toLowerCase()) listTokenId.push(index)
+            } catch (error) {
+              console.log(error)
+            }
+          }),
+      )
+      return listTokenId
+    } catch (error) {
+      let index = 0
+      while (true) {
+        try {
+          const token = await contract.ownerOf(index)
+          if (token.toLowerCase() === walletAddress.toLowerCase()) listTokenId.push(index)
+          index++
+        } catch (error) {
+          break
+        }
+      }
+      return listTokenId
+    }
   } catch (error) {
     throw error
   }

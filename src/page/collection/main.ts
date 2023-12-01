@@ -5,6 +5,11 @@ import { ethereumAddressRegex } from '../../utils/regex'
 import { CollectionPageControllerInstance } from './controller'
 import './styles.css'
 import './../../components/page-loading/styles.css'
+import './../../components/toast/styles.css'
+import { LoadingControllerInstance } from '../../controller/loading'
+import { ModalBuyNFTId, ModalBuyControllerInstance } from '../../controller/modal-buy'
+import { ToastControllerInstance, ToastType } from '../../controller/toast'
+import { LandingPageControllerInstance } from '../controller'
 
 const search = window.location.search
 const collectionAddress = search.replace('?cltAddress=', '')
@@ -80,16 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
       await CollectionPageControllerInstance.getAllNftOfCollection()
     } catch (error) {}
   }
-
+  const modalButtonAccept = document.getElementById(ModalBuyNFTId.ButtonAccept) as HTMLButtonElement
+  modalButtonAccept.addEventListener('click', (e) => {
+    ModalBuyControllerInstance.buy()
+      .then((res) => {
+        LandingPageControllerInstance.getAllNftOfMarket()
+        ModalBuyControllerInstance.close()
+        ToastControllerInstance.set('Buy successfully', ToastType.success)
+        ToastControllerInstance.open()
+      })
+      .catch((err) => {
+        console.log(err)
+        ToastControllerInstance.set(err.message, ToastType.error)
+        ToastControllerInstance.open()
+      })
+      .finally(() => {
+        LoadingControllerInstance.close()
+      })
+  })
   initPage()
 })
 
 // hide pop up when resize
-window.addEventListener('resize', () =>{
-  var w = window.innerWidth;
-  if(w <= 880){
+window.addEventListener('resize', () => {
+  var w = window.innerWidth
+  if (w <= 880) {
     var x = document.getElementById('pop-up-user') as HTMLElement
-    if(x){
+    if (x) {
       x.style.visibility = 'hidden'
       x.style.opacity = '0'
     }

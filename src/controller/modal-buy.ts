@@ -4,6 +4,7 @@ import { buyTokenUsingWrapToken } from '../services/market'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
 import { getAvatarByAddress } from '../utils/avatar'
+import { LoadingControllerInstance } from './loading'
 import { WalletManagerInstance, showWalletInfo } from './wallet'
 
 export enum ModalBuyNFTId {
@@ -77,14 +78,14 @@ class ModalBuyController {
 
     const currentAddress = await getAccountAddress()
     if (this.nftItem?.seller?.toLowerCase() === currentAddress?.toLowerCase()) {
-      throw new Error(BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER)
+      throw new Error(AppError.OWNER_IS_NOT_VALID)
     }
 
     const currentChainId = await getChainCurrentChainId()
     if (!currentChainId) {
-      console.log('ChainId is not valid')
       throw new Error(AppError.CHAIN_ID_INVALID)
     }
+    LoadingControllerInstance.open()
 
     try {
       const response = await buyTokenUsingWrapToken(

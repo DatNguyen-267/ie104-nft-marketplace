@@ -1,7 +1,7 @@
 import { ADDRESS_OF_CHAINS } from '../../constants'
 import { DEFAULT_CHAIN_ID } from '../../constants/chains'
 import { LoadingControllerInstance } from '../../controller/loading'
-import { UserPopoverControllerInstance } from '../../controller/user'
+import { ToastControllerInstance, ToastType } from '../../controller/toast'
 import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import {
   connectAndSwitch,
@@ -11,6 +11,7 @@ import {
   getChainCurrentChainId,
   mintNFT,
 } from '../../services'
+import './../../components/page-loading/styles.css'
 import './styles.css'
 
 WalletManagerInstance.listener()
@@ -87,9 +88,13 @@ btnCreate.addEventListener('click', async () => {
       return
     }
     const mintNftTx = await mintNFT(inputCollectionAddress.value, address, tokenUri.url)
+    ToastControllerInstance.set('Create NFT successfully', ToastType.success)
+    ToastControllerInstance.open()
     console.log(mintNftTx)
   } catch (error) {
     console.log(error)
+    ToastControllerInstance.set('Create NFT Error', ToastType.error)
+    ToastControllerInstance.open()
     LoadingControllerInstance.close()
   }
 })
@@ -202,11 +207,11 @@ window.ethereum.on('chainChanged', (chainId: string) => {
 })
 
 // hide pop up when resize
-window.addEventListener('resize', () =>{
-  var w = window.innerWidth;
-  if(w <= 880){
+window.addEventListener('resize', () => {
+  var w = window.innerWidth
+  if (w <= 880) {
     var x = document.getElementById('pop-up-user') as HTMLElement
-    if(x){
+    if (x) {
       x.style.visibility = 'hidden'
       x.style.opacity = '0'
     }

@@ -13,12 +13,14 @@ import './../../components/modal/modalSellNFT/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
 import './../../components/page-loading/styles.css'
+import './../../components/toast/styles.css'
 
 import { ExplorePageControllerInstance } from './controller'
 import './styles.css'
 import { PageElementId } from './types'
 import { HTMLElementLoadingList } from '../../constants/elements'
 import { ChainManagerInstance } from '../../controller/chain'
+import { ToastControllerInstance, ToastType } from '../../controller/toast'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -79,14 +81,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const modalButtonAccept = document.getElementById(ModalBuyNFTId.ButtonAccept) as HTMLButtonElement
   modalButtonAccept.addEventListener('click', (e) => {
-    LoadingControllerInstance.open()
     ModalBuyControllerInstance.buy()
       .then((res) => {
         ExplorePageControllerInstance.getAllNftOfMarket()
+        ModalBuyControllerInstance.close()
+        ToastControllerInstance.set('Buy successfully', ToastType.success)
+        ToastControllerInstance.open()
+      })
+      .catch((err) => {
+        console.log(err)
+        ToastControllerInstance.set(err.message, ToastType.error)
+        ToastControllerInstance.open()
+      })
+      .finally(() => {
         LoadingControllerInstance.close()
       })
-      .catch((err) => {})
-      .finally(() => {})
   })
   try {
     initPage()
@@ -123,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 // hide pop up when resize
-window.addEventListener('resize', () =>{
-  var w = window.innerWidth;
-  if(w <= 880){
+window.addEventListener('resize', () => {
+  var w = window.innerWidth
+  if (w <= 880) {
     var x = document.getElementById('pop-up-user') as HTMLElement
-    if(x){
+    if (x) {
       x.style.visibility = 'hidden'
       x.style.opacity = '0'
     }

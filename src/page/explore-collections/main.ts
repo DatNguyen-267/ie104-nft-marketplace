@@ -9,12 +9,17 @@ import './../../components/loading/loading2/styles.css'
 import './../../styles/base.css'
 import './../../styles/grid.css'
 import './../../components/page-loading/styles.css'
+import './../../components/toast/styles.css'
 
 import { ExploreCollectionPageControllerInstance } from './controller'
 import './styles.css'
 import { ChainManagerInstance } from '../../controller/chain'
 import { PageElementId } from './types'
 import { HTMLElementLoadingList } from '../../constants/elements'
+import { ModalBuyControllerInstance, ModalBuyNFTId } from '../../controller/modal-buy'
+import { ToastControllerInstance, ToastType } from '../../controller/toast'
+import { LandingPageControllerInstance } from '../controller'
+import { LoadingControllerInstance } from '../../controller/loading'
 
 // ========================== Header =======================================
 const popUpUserClose = document.getElementById('close-pop-up-user') as HTMLElement
@@ -90,11 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // hide pop up when resize
-window.addEventListener('resize', () =>{
-  var w = window.innerWidth;
-  if(w <= 880){
+window.addEventListener('resize', () => {
+  var w = window.innerWidth
+  if (w <= 880) {
     var x = document.getElementById('pop-up-user') as HTMLElement
-    if(x){
+    if (x) {
       x.style.visibility = 'hidden'
       x.style.opacity = '0'
     }

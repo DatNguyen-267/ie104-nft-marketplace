@@ -23,7 +23,7 @@ export const CHAINS = [
     chainId: CHAIN_IDS.GOERLI,
     chainIdHex: '0x5',
     chainName: 'Goerli',
-    rpcUrl: 'https://rpc.ankr.com/eth_goerli',
+    rpcUrl: 'https://goerli.blockpi.network/v1/rpc/public',
     currencySymbol: 'Goerli ETH',
     blockExplorerUrl: 'https://goerli.etherscan.io',
     nativeCurrency: {

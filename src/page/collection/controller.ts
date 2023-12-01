@@ -37,7 +37,7 @@ export class CollectionPageController {
     }
 
     const tokenItemNode = listNftContainer.querySelector(
-      `div[data-token-id="${nftItem.tokenId}"]`,
+      `div[data-token-id="${nftItem.tokenId}"][${AttributeName.CltAddress}="${nftItem.collectionAddress}"]`,
     ) as HTMLDivElement
     console.log({ tokenItemNode })
     if (!tokenItemNode) return
@@ -83,10 +83,14 @@ export class CollectionPageController {
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
     eData.eUserAvatar?.setAttribute('href', getAvatarByAddress(nftItem.owner))
 
-    eData.eButtonBuy.style.display = 'block'
-    eData.eButtonBuy.addEventListener('click', () => {
-      this.handleBuyNft(nftItem)
-    })
+    if (nftItem.status === 'NotForSale') {
+      eData.eButtonBuy.style.display = 'none'
+    } else {
+      eData.eButtonBuy.style.display = 'block'
+      eData.eButtonBuy.addEventListener('click', () => {
+        this.handleBuyNft(nftItem)
+      })
+    }
   }
   async CreateNftItemComponent(nftItem: NftItem): Promise<HTMLDivElement> {
     const template = document.querySelector('#nft-template')
@@ -132,11 +136,14 @@ export class CollectionPageController {
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
     eData.eUserAvatar?.setAttribute('src', getAvatarByAddress(nftItem.owner))
 
-    eData.eButtonBuy.style.display = 'block'
-    eData.eButtonBuy.addEventListener('click', () => {
-      this.handleBuyNft(nftItem)
-    })
-
+    if (nftItem.status === 'NotForSale') {
+      eData.eButtonBuy.style.display = 'none'
+    } else {
+      eData.eButtonBuy.style.display = 'block'
+      eData.eButtonBuy.addEventListener('click', () => {
+        this.handleBuyNft(nftItem)
+      })
+    }
     return tokenItemNode
   }
   async clearNftContainer() {

@@ -322,7 +322,8 @@ export class AccountPageController {
               nftsOfCollection.forEach((tokenId) => {
                 const isExist = listNfts.find(
                   (item) =>
-                    item.tokenId === tokenId && item.collectionAddress === collectionAddress,
+                    item.tokenId === tokenId &&
+                    item.collectionAddress.toLowerCase() === collectionAddress.toLowerCase(),
                 )
                 if (!isExist) {
                   listNfts.push({

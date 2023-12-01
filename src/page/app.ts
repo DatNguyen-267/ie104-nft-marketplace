@@ -16,10 +16,12 @@ import './../components/toast/styles.css'
 import './../styles/base.css'
 import './../styles/grid.css'
 import './../components/page-loading/styles.css'
+import './../components/toast/styles.css'
 
 import { LandingPageControllerInstance } from './controller'
 import './styles.css'
 import { PageElementId } from './types'
+import { ToastControllerInstance, ToastType } from '../controller/toast'
 
 connectEarly()
   .then(() => {
@@ -78,11 +80,11 @@ alertClose.onclick = toggleAlertSigout
 signOut.onclick = toggleAlertSigout
 
 // hide pop up when resize
-window.addEventListener('resize', () =>{
-  var w = window.innerWidth;
-  if(w <= 880){
+window.addEventListener('resize', () => {
+  var w = window.innerWidth
+  if (w <= 880) {
     var x = document.getElementById('pop-up-user') as HTMLElement
-    if(x){
+    if (x) {
       x.style.visibility = 'hidden'
       x.style.opacity = '0'
     }
@@ -100,16 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalButtonAccept = document.getElementById(ModalBuyNFTId.ButtonAccept) as HTMLButtonElement
 
   modalButtonAccept.addEventListener('click', (e) => {
-    LoadingControllerInstance.open()
     ModalBuyControllerInstance.buy()
       .then((res) => {
         LandingPageControllerInstance.getAllNftOfMarket()
-        LoadingControllerInstance.close()
+        ModalBuyControllerInstance.close()
+        ToastControllerInstance.set('Buy successfully', ToastType.success)
+        ToastControllerInstance.open()
       })
       .catch((err) => {
         console.log(err)
+        ToastControllerInstance.set(err.message, ToastType.error)
+        ToastControllerInstance.open()
       })
-      .finally(() => {})
+      .finally(() => {
+        LoadingControllerInstance.close()
+      })
   })
   function animationText() {
     const sentences = ['SELL NFTs', 'CREATE YOUR NFTs']

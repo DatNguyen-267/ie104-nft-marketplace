@@ -35,7 +35,7 @@ export class ExplorePageController {
     }
 
     const tokenItemNode = listNftContainer.querySelector(
-      `div[data-token-id="${nftItem.tokenId}"]`,
+      `div[data-token-id="${nftItem.tokenId}"][${AttributeName.CltAddress}="${nftItem.collectionAddress}"]`,
     ) as HTMLDivElement
 
     if (!tokenItemNode) return

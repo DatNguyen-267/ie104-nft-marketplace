@@ -16,6 +16,8 @@ import { PageElementId } from './types'
 import { ModalDelistControllerInstance, ModalDelistNFTId } from '../../controller/modal-delist'
 import { ChainManagerInstance } from '../../controller/chain'
 import { HTMLElementLoadingList } from '../../constants/elements'
+import './../../components/toast/styles.css'
+import { ToastControllerInstance, ToastType } from '../../controller/toast'
 
 document.addEventListener('DOMContentLoaded', () => {
   //
@@ -134,18 +136,21 @@ modalButtonAcceptDelist.addEventListener('click', (e) => {
       if (listNftContainer) {
         listNftContainer.innerHTML = HTMLElementLoadingList
       }
+      ToastControllerInstance.set('Delist successfully', ToastType.success)
+      ToastControllerInstance.open()
       AccountPageControllerInstance.getAllNftOfAddress()
-      LoadingControllerInstance.close()
     })
     .catch((err) => {
+      ToastControllerInstance.set(err.message, ToastType.error)
+      ToastControllerInstance.open()
+    })
+    .finally(() => {
       LoadingControllerInstance.close()
     })
-    .finally(() => {})
 })
 
 const modalButtonAccept = document.getElementById(ModalSellNFTId.ButtonAccept) as HTMLButtonElement
 modalButtonAccept.addEventListener('click', (e) => {
-  LoadingControllerInstance.open()
   ModalSellControllerInstance.sell()
     .then((res) => {
       let listNftContainer = document.querySelector(
@@ -155,10 +160,17 @@ modalButtonAccept.addEventListener('click', (e) => {
         listNftContainer.innerHTML = HTMLElementLoadingList
       }
       AccountPageControllerInstance.getAllNftOfAddress()
+      ToastControllerInstance.set('List successfully', ToastType.success)
+      ToastControllerInstance.open()
+    })
+    .catch((err) => {
+      console.log(err)
+      ToastControllerInstance.set(err.message, ToastType.error)
+      ToastControllerInstance.open()
+    })
+    .finally(() => {
       LoadingControllerInstance.close()
     })
-    .catch((err) => {})
-    .finally(() => {})
 })
 
 // ============================ Header =====================================
@@ -307,11 +319,11 @@ if (btnImport) {
 }
 
 // hide pop up when resize
-window.addEventListener('resize', () =>{
-  var w = window.innerWidth;
-  if(w <= 880){
+window.addEventListener('resize', () => {
+  var w = window.innerWidth
+  if (w <= 880) {
     var x = document.getElementById('pop-up-user') as HTMLElement
-    if(x){
+    if (x) {
       x.style.visibility = 'hidden'
       x.style.opacity = '0'
     }

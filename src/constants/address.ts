@@ -18,6 +18,7 @@ export const ADDRESS_OF_CHAINS = {
     WUIT: '0x13724882900FaaC30151419E6D8Cd6a96069Aec4',
     MARKET: '0x946324A2F239C5ff6393B446EF698e816Aa82898',
     PUBLIC_ERC721_TOKEN: '0x993Ee67F5262c1B4c775d21EbD5bb85733AB3eFE',
+    // PUBLIC_ERC721_TOKEN: '0xE51c681779EB648FB939331DCb6115E49f27A6Fb',
     COLLECTIONS: {
       DyanCat: {
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
@@ -28,11 +29,11 @@ export const ADDRESS_OF_CHAINS = {
         address: '0x947976e72e45d6741933bd28CD80e3D28A71619c',
       },
       TheGraps: {
-        onwer: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
         address: '0x55327442555db09955110428F46B66b902Dee1a4',
       },
       ElementalBean: {
-        onwer: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
+        owner: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
         address: '0x691a745C68410be4d96A02d96Bdbed68c7941e67',
       },
       MVP: {
@@ -42,6 +43,10 @@ export const ADDRESS_OF_CHAINS = {
       Maxtr1x2061: {
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
         address: '0xfC7F5dbd4FF88212AE1ab254200D04F3c81D9B58',
+      },
+      BikesOfBurden: {
+        owner: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
+        address: '0xeDE95AdBAB17d5dd121A9Ce6A9764a5F7a397AE0',
       },
     },
   },
