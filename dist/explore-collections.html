@@ -4,7 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Collection</title>
+  <title>IE104 NFTs Marketplace | Explore Collections, the largest NFT marketplace</title>
+
+
+  <meta name="description" content="IE104 NFT Marketplace provides real-time NFT market cap, trading volumes, and top popular NFT collections all over the world.">
+  <meta property="og:title" content="IE104 NFTs Marketplace">
+  <meta property="og:description"
+    content="IE104 NFT Marketplace provides real-time NFT market cap, trading volumes, and top popular NFT collections all over the world.">
+    <meta property="og:url" content="https://ie104-nft-marketplace.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="IE104">
+
+
+    <meta property="twitter:description"
+    content="IE104 NFT Marketplace provides real-time NFT market cap, trading volumes, and top popular NFT collections all over the world.">
+  <meta property="twitter:title" content="IE104 NFTs Marketplace">
+  <meta property="twitter:image" content="https://www.okx.com/cdn/nft/files/share/overview.png?t=1701412779930">
+  
+  <link rel="shortcut icon" href="https://www.okx.com/cdn/assets/imgs/226/EB771F0EE8994DD5.png" type="image/png">
   <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500&display=swap"
@@ -181,24 +198,26 @@
     </a>
     <nav class="header__nav">
       <ul class="header__nav-link">
+        <li class="header__nav-link-title"><p>Menu</p></li>
         <li><a href="/explore.html">Explore</a></li>
         <li><a href="/create.html">Create</a></li>
         <li><a href="/explore-collections.html" class="active">Collections</a></li>
-      </ul>
-    </nav>
-    <div class="header__user">
-      <img href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></img>
-      <a href="/connectWallet.html">
-        <button class="filled--button secondary header__nav-btn" id="btn-login">
+        <div class="header__user">
+          <img href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></img>
+          <a href="/connectWallet.html">
+            <button class="filled--button secondary header__nav-btn" id="btn-login">
+              <i class="fas fa-wallet"></i>
+              Connect Wallet
+            </button>
+            <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
           <i class="fas fa-wallet"></i>
           Connect Wallet
-        </button>
-        <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
-      <i class="fas fa-wallet"></i>
-      Connect Wallet
-    </button> -->
-      </a>
-    </div>
+        </button> -->
+          </a>
+        </div>
+      </ul>
+    </nav>
+    
   </header>
 
   <!-- ===================================== MAIN ============================================= -->
@@ -289,6 +308,10 @@
         </div>
       </div>
   </div>
+   <!-- TOAST CONTAINER -->
+   <ul class="notifications" id="toast-notifications">
+     
+   </ul>
 </body>
 
 </html>

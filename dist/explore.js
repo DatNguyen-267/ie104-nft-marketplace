@@ -26570,6 +26570,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/toast/styles.css":
+/*!*****************************************!*\
+  !*** ./src/components/toast/styles.css ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/page/explore/styles.css":
 /*!*************************************!*\
   !*** ./src/page/explore/styles.css ***!
@@ -32631,6 +32644,7 @@ var ADDRESS_OF_CHAINS = (_a = {},
         WUIT: '0x13724882900FaaC30151419E6D8Cd6a96069Aec4',
         MARKET: '0x946324A2F239C5ff6393B446EF698e816Aa82898',
         PUBLIC_ERC721_TOKEN: '0x993Ee67F5262c1B4c775d21EbD5bb85733AB3eFE',
+        // PUBLIC_ERC721_TOKEN: '0xE51c681779EB648FB939331DCb6115E49f27A6Fb',
         COLLECTIONS: {
             DyanCat: {
                 owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
@@ -32641,11 +32655,11 @@ var ADDRESS_OF_CHAINS = (_a = {},
                 address: '0x947976e72e45d6741933bd28CD80e3D28A71619c',
             },
             TheGraps: {
-                onwer: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
                 address: '0x55327442555db09955110428F46B66b902Dee1a4',
             },
             ElementalBean: {
-                onwer: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
+                owner: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
                 address: '0x691a745C68410be4d96A02d96Bdbed68c7941e67',
             },
             MVP: {
@@ -32655,6 +32669,10 @@ var ADDRESS_OF_CHAINS = (_a = {},
             Maxtr1x2061: {
                 owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
                 address: '0xfC7F5dbd4FF88212AE1ab254200D04F3c81D9B58',
+            },
+            BikesOfBurden: {
+                owner: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
+                address: '0xeDE95AdBAB17d5dd121A9Ce6A9764a5F7a397AE0',
             },
         },
     },
@@ -32773,7 +32791,7 @@ var CHAINS = [
         chainId: CHAIN_IDS.GOERLI,
         chainIdHex: '0x5',
         chainName: 'Goerli',
-        rpcUrl: 'https://rpc.ankr.com/eth_goerli',
+        rpcUrl: 'https://goerli.blockpi.network/v1/rpc/public',
         currencySymbol: 'Goerli ETH',
         blockExplorerUrl: 'https://goerli.etherscan.io',
         nativeCurrency: {
@@ -33092,7 +33110,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/market */ "./src/services/market.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
 /* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/avatar */ "./src/utils/avatar.ts");
-/* harmony import */ var _wallet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./wallet */ "./src/controller/wallet.ts");
+/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./loading */ "./src/controller/loading.ts");
+/* harmony import */ var _wallet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./wallet */ "./src/controller/wallet.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -33129,6 +33148,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
 
 
 
@@ -33198,9 +33218,9 @@ var ModalBuyController = /** @class */ (function () {
                         return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_1__.connectAndSwitch)()];
                     case 2:
                         _d.sent();
-                        _wallet__WEBPACK_IMPORTED_MODULE_5__.WalletManagerInstance.listener();
-                        _wallet__WEBPACK_IMPORTED_MODULE_5__.WalletManagerInstance.updateAccountAddress();
-                        (0,_wallet__WEBPACK_IMPORTED_MODULE_5__.showWalletInfo)(_wallet__WEBPACK_IMPORTED_MODULE_5__.WalletManagerInstance.currentAddress);
+                        _wallet__WEBPACK_IMPORTED_MODULE_6__.WalletManagerInstance.listener();
+                        _wallet__WEBPACK_IMPORTED_MODULE_6__.WalletManagerInstance.updateAccountAddress();
+                        (0,_wallet__WEBPACK_IMPORTED_MODULE_6__.showWalletInfo)(_wallet__WEBPACK_IMPORTED_MODULE_6__.WalletManagerInstance.currentAddress);
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _d.sent();
@@ -33209,15 +33229,15 @@ var ModalBuyController = /** @class */ (function () {
                     case 5:
                         currentAddress = _d.sent();
                         if (((_c = (_b = this.nftItem) === null || _b === void 0 ? void 0 : _b.seller) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === (currentAddress === null || currentAddress === void 0 ? void 0 : currentAddress.toLowerCase())) {
-                            throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.BuyNftErrorMessage.SELLER_MUST_BE_NOT_OWNER);
+                            throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.OWNER_IS_NOT_VALID);
                         }
                         return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_1__.getChainCurrentChainId)()];
                     case 6:
                         currentChainId = _d.sent();
                         if (!currentChainId) {
-                            console.log('ChainId is not valid');
                             throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CHAIN_ID_INVALID);
                         }
+                        _loading__WEBPACK_IMPORTED_MODULE_5__.LoadingControllerInstance.open();
                         _d.label = 7;
                     case 7:
                         _d.trys.push([7, 9, , 10]);
@@ -33277,6 +33297,83 @@ var ModalBuyController = /** @class */ (function () {
     return ModalBuyController;
 }());
 var ModalBuyControllerInstance = new ModalBuyController();
+
+
+/***/ }),
+
+/***/ "./src/controller/toast.ts":
+/*!*********************************!*\
+  !*** ./src/controller/toast.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ToastControllerInstance: () => (/* binding */ ToastControllerInstance),
+/* harmony export */   ToastId: () => (/* binding */ ToastId),
+/* harmony export */   ToastType: () => (/* binding */ ToastType)
+/* harmony export */ });
+var ToastId;
+(function (ToastId) {
+    ToastId["Container"] = "toast-notifications";
+})(ToastId || (ToastId = {}));
+var ToastType;
+(function (ToastType) {
+    ToastType["success"] = "success";
+    ToastType["error"] = "error";
+    ToastType["warning"] = "warning";
+    ToastType["info"] = "info";
+})(ToastType || (ToastType = {}));
+var toastDetails = {
+    success: {
+        icon: 'fa-check-circle',
+    },
+    error: {
+        icon: 'fa-times-circle',
+    },
+    warning: {
+        icon: 'fa-exclamation-circle',
+    },
+    info: {
+        icon: 'fa-info-circle',
+    },
+};
+var ToastController = /** @class */ (function () {
+    function ToastController(_message, _type) {
+        this.message = _message || null;
+        this.type = _type || ToastType.info;
+        this.listener();
+    }
+    ToastController.prototype.set = function (_message, _type) {
+        this.message = _message;
+        this.type = _type;
+    };
+    ToastController.prototype.get = function () {
+        return this.message;
+    };
+    ToastController.prototype.listener = function () { };
+    ToastController.prototype.createNewToast = function (type, icon, message) {
+        var notifications = document.getElementById(ToastId.Container);
+        var toast = document.createElement('li');
+        toast.className = "toast toast-".concat(type);
+        toast.innerHTML = "\n    <div class=\"toast-column\">\n            <i class=\"fa ".concat(icon, "\"></i>\n            <span>").concat(this.message, "</span>\n          </div>\n    ");
+        notifications.insertBefore(toast, notifications.children[0]);
+        this.close(toast);
+    };
+    ToastController.prototype.close = function (toast) {
+        toast.classList.add('remove');
+        setTimeout(function () { return toast.remove(); }, 5000);
+    };
+    ToastController.prototype.open = function () {
+        var _a;
+        var type = this.type ? this.type.toString() : ToastType.info;
+        var _b = toastDetails[type], icon = _b.icon, title = _b.title;
+        this.createNewToast(type, icon, (_a = this.message) === null || _a === void 0 ? void 0 : _a.toString());
+    };
+    return ToastController;
+}());
+var ToastControllerInstance = new ToastController();
 
 
 /***/ }),
@@ -33530,7 +33627,7 @@ var ExplorePageController = /** @class */ (function () {
                     console.log('listNftContainer is not exists');
                     return [2 /*return*/];
                 }
-                tokenItemNode = listNftContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"]"));
+                tokenItemNode = listNftContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"][").concat(_types__WEBPACK_IMPORTED_MODULE_8__.AttributeName.CltAddress, "=\"").concat(nftItem.collectionAddress, "\"]"));
                 if (!tokenItemNode)
                     return [2 /*return*/];
                 if (nftItem.title && nftItem.imageUri) {
@@ -34705,7 +34802,7 @@ function cancelAskOrder(marketAddress, collectionAddress, tokenId) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_1__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider);
+                    marketContract = new ethers__WEBPACK_IMPORTED_MODULE_5__.Contract(marketAddress, _abis__WEBPACK_IMPORTED_MODULE_0__.MARKETPLACE_ABI, provider.getSigner());
                     return [4 /*yield*/, marketContract.cancelAskOrder(collectionAddress, tokenId)];
                 case 1:
                     response = _a.sent();
@@ -35126,12 +35223,12 @@ function getAllTokenIdOfCollection(collectionAddress) {
 }
 function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var listTokenId_1, provider, contract_1, balanceOf, _a, error_10;
+        var listTokenId_1, provider, contract_1, totalSupply, _a, error_10, index, token, error_11, error_12;
         var _this = this;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    _b.trys.push([0, 4, , 5]);
+                    _b.trys.push([0, 13, , 14]);
                     listTokenId_1 = [];
                     return [4 /*yield*/, (0,_provider__WEBPACK_IMPORTED_MODULE_4__.getRpcProvider)()];
                 case 1:
@@ -35140,17 +35237,19 @@ function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) 
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
                     contract_1 = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
-                    _a = parseInt;
-                    return [4 /*yield*/, contract_1.balanceOf(walletAddress)];
+                    _b.label = 2;
                 case 2:
-                    balanceOf = _a.apply(void 0, [(_b.sent())._hex, 16]);
-                    console.log({ balanceOf: balanceOf });
-                    if (balanceOf === 0)
+                    _b.trys.push([2, 5, , 12]);
+                    _a = parseInt;
+                    return [4 /*yield*/, contract_1.totalSupply(walletAddress)];
+                case 3:
+                    totalSupply = _a.apply(void 0, [(_b.sent())._hex, 16]);
+                    if (totalSupply === 0)
                         return [2 /*return*/];
-                    return [4 /*yield*/, Promise.all(Array(balanceOf)
+                    return [4 /*yield*/, Promise.all(Array(totalSupply)
                             .fill(1)
                             .map(function (item, index) { return __awaiter(_this, void 0, void 0, function () {
-                            var token, error_11;
+                            var token, error_13;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
@@ -35162,20 +35261,42 @@ function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) 
                                             listTokenId_1.push(index);
                                         return [3 /*break*/, 3];
                                     case 2:
-                                        error_11 = _a.sent();
-                                        console.log(error_11);
+                                        error_13 = _a.sent();
+                                        console.log(error_13);
                                         return [3 /*break*/, 3];
                                     case 3: return [2 /*return*/];
                                 }
                             });
                         }); }))];
-                case 3:
+                case 4:
                     _b.sent();
                     return [2 /*return*/, listTokenId_1];
-                case 4:
+                case 5:
                     error_10 = _b.sent();
-                    throw error_10;
-                case 5: return [2 /*return*/];
+                    index = 0;
+                    _b.label = 6;
+                case 6:
+                    if (false) {}
+                    _b.label = 7;
+                case 7:
+                    _b.trys.push([7, 9, , 10]);
+                    return [4 /*yield*/, contract_1.ownerOf(index)];
+                case 8:
+                    token = _b.sent();
+                    if (token.toLowerCase() === walletAddress.toLowerCase())
+                        listTokenId_1.push(index);
+                    index++;
+                    return [3 /*break*/, 10];
+                case 9:
+                    error_11 = _b.sent();
+                    return [3 /*break*/, 11];
+                case 10: return [3 /*break*/, 6];
+                case 11: return [2 /*return*/, listTokenId_1];
+                case 12: return [3 /*break*/, 14];
+                case 13:
+                    error_12 = _b.sent();
+                    throw error_12;
+                case 14: return [2 /*return*/];
             }
         });
     });
@@ -35203,7 +35324,7 @@ function getMetadata(tokenUri) {
  */
 function transferFrom(collectionAddress, from, to, tokenId) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, nftContract, response, error_12;
+        var provider, nftContract, response, error_14;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -35218,8 +35339,8 @@ function transferFrom(collectionAddress, from, to, tokenId) {
                     response = _a.sent();
                     return [2 /*return*/, {}];
                 case 2:
-                    error_12 = _a.sent();
-                    throw error_12;
+                    error_14 = _a.sent();
+                    throw error_14;
                 case 3: return [2 /*return*/];
             }
         });
@@ -35227,7 +35348,7 @@ function transferFrom(collectionAddress, from, to, tokenId) {
 }
 function getOwnerOfCollection(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner, error_13;
+        var provider, contract, addressOwner, error_15;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -35242,8 +35363,8 @@ function getOwnerOfCollection(cltAddress) {
                     addressOwner = contract.owner();
                     return [2 /*return*/, addressOwner];
                 case 2:
-                    error_13 = _a.sent();
-                    throw error_13;
+                    error_15 = _a.sent();
+                    throw error_15;
                 case 3: return [2 /*return*/];
             }
         });
@@ -35251,7 +35372,7 @@ function getOwnerOfCollection(cltAddress) {
 }
 function getNameOfCollection(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner, error_14;
+        var provider, contract, addressOwner, error_16;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -35266,8 +35387,8 @@ function getNameOfCollection(cltAddress) {
                     addressOwner = contract.name();
                     return [2 /*return*/, addressOwner];
                 case 2:
-                    error_14 = _a.sent();
-                    throw error_14;
+                    error_16 = _a.sent();
+                    throw error_16;
                 case 3: return [2 /*return*/];
             }
         });
@@ -35275,7 +35396,7 @@ function getNameOfCollection(cltAddress) {
 }
 function getTotalSupply(cltAddress) {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, contract, addressOwner, error_15;
+        var provider, contract, addressOwner, error_17;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -35290,8 +35411,8 @@ function getTotalSupply(cltAddress) {
                     addressOwner = contract.totalSupply();
                     return [2 /*return*/, addressOwner];
                 case 2:
-                    error_15 = _a.sent();
-                    throw error_15;
+                    error_17 = _a.sent();
+                    throw error_17;
                 case 3: return [2 /*return*/];
             }
         });
@@ -46631,11 +46752,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_base_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./../../styles/base.css */ "./src/styles/base.css");
 /* harmony import */ var _styles_grid_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./../../styles/grid.css */ "./src/styles/grid.css");
 /* harmony import */ var _components_page_loading_styles_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./../../components/page-loading/styles.css */ "./src/components/page-loading/styles.css");
-/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./controller */ "./src/page/explore/controller.ts");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./styles.css */ "./src/page/explore/styles.css");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./types */ "./src/page/explore/types.ts");
-/* harmony import */ var _constants_elements__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../constants/elements */ "./src/constants/elements.ts");
-/* harmony import */ var _controller_chain__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../controller/chain */ "./src/controller/chain.ts");
+/* harmony import */ var _components_toast_styles_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./../../components/toast/styles.css */ "./src/components/toast/styles.css");
+/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./controller */ "./src/page/explore/controller.ts");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./styles.css */ "./src/page/explore/styles.css");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./types */ "./src/page/explore/types.ts");
+/* harmony import */ var _constants_elements__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../constants/elements */ "./src/constants/elements.ts");
+/* harmony import */ var _controller_chain__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../controller/chain */ "./src/controller/chain.ts");
+/* harmony import */ var _controller_toast__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../controller/toast */ "./src/controller/toast.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -46692,6 +46815,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 // ========================== Header =======================================
 var popUpUserClose = document.getElementById('close-pop-up-user');
 var headerAvatar = document.getElementById('header-avatar');
@@ -46704,11 +46829,11 @@ var signOut = document.getElementById('header-sign-out');
     _controller_wallet__WEBPACK_IMPORTED_MODULE_2__.WalletManagerInstance.listener();
     _controller_wallet__WEBPACK_IMPORTED_MODULE_2__.WalletManagerInstance.updateAccountAddress();
     (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_2__.showWalletInfo)(_controller_wallet__WEBPACK_IMPORTED_MODULE_2__.WalletManagerInstance.currentAddress);
-    _controller_chain__WEBPACK_IMPORTED_MODULE_19__.ChainManagerInstance.initChainId();
+    _controller_chain__WEBPACK_IMPORTED_MODULE_20__.ChainManagerInstance.initChainId();
 })
     .catch(function (err) {
     console.log(err);
-    _controller_chain__WEBPACK_IMPORTED_MODULE_19__.ChainManagerInstance.initChainId();
+    _controller_chain__WEBPACK_IMPORTED_MODULE_20__.ChainManagerInstance.initChainId();
 });
 // Toggle PopUP
 function togglePopUpUser(event) {
@@ -46748,7 +46873,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, _controller__WEBPACK_IMPORTED_MODULE_15__.ExplorePageControllerInstance.getAllNftOfMarket()];
+                        return [4 /*yield*/, _controller__WEBPACK_IMPORTED_MODULE_16__.ExplorePageControllerInstance.getAllNftOfMarket()];
                     case 1:
                         _a.sent();
                         return [3 /*break*/, 3];
@@ -46762,23 +46887,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var modalButtonAccept = document.getElementById(_controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__.ModalBuyNFTId.ButtonAccept);
     modalButtonAccept.addEventListener('click', function (e) {
-        _controller_loading__WEBPACK_IMPORTED_MODULE_0__.LoadingControllerInstance.open();
         _controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__.ModalBuyControllerInstance.buy()
             .then(function (res) {
-            _controller__WEBPACK_IMPORTED_MODULE_15__.ExplorePageControllerInstance.getAllNftOfMarket();
-            _controller_loading__WEBPACK_IMPORTED_MODULE_0__.LoadingControllerInstance.close();
+            _controller__WEBPACK_IMPORTED_MODULE_16__.ExplorePageControllerInstance.getAllNftOfMarket();
+            _controller_modal_buy__WEBPACK_IMPORTED_MODULE_1__.ModalBuyControllerInstance.close();
+            _controller_toast__WEBPACK_IMPORTED_MODULE_21__.ToastControllerInstance.set('Buy successfully', _controller_toast__WEBPACK_IMPORTED_MODULE_21__.ToastType.success);
+            _controller_toast__WEBPACK_IMPORTED_MODULE_21__.ToastControllerInstance.open();
         })
-            .catch(function (err) { })
-            .finally(function () { });
+            .catch(function (err) {
+            console.log(err);
+            _controller_toast__WEBPACK_IMPORTED_MODULE_21__.ToastControllerInstance.set(err.message, _controller_toast__WEBPACK_IMPORTED_MODULE_21__.ToastType.error);
+            _controller_toast__WEBPACK_IMPORTED_MODULE_21__.ToastControllerInstance.open();
+        })
+            .finally(function () {
+            _controller_loading__WEBPACK_IMPORTED_MODULE_0__.LoadingControllerInstance.close();
+        });
     });
     try {
         initPage();
         window.ethereum.on('chainChanged', function (chainId) {
-            _controller_chain__WEBPACK_IMPORTED_MODULE_19__.ChainManagerInstance.updateChainId(chainId);
+            _controller_chain__WEBPACK_IMPORTED_MODULE_20__.ChainManagerInstance.updateChainId(chainId);
             initPage();
-            var listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_17__.PageElementId.ListNftContainer);
+            var listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_18__.PageElementId.ListNftContainer);
             if (listNftContainer) {
-                listNftContainer.innerHTML = _constants_elements__WEBPACK_IMPORTED_MODULE_18__.HTMLElementLoadingList;
+                listNftContainer.innerHTML = _constants_elements__WEBPACK_IMPORTED_MODULE_19__.HTMLElementLoadingList;
             }
         });
     }
@@ -46801,6 +46933,17 @@ document.addEventListener('DOMContentLoaded', function () {
 //     test = true;
 //   }
 // }
+// hide pop up when resize
+window.addEventListener('resize', function () {
+    var w = window.innerWidth;
+    if (w <= 880) {
+        var x = document.getElementById('pop-up-user');
+        if (x) {
+            x.style.visibility = 'hidden';
+            x.style.opacity = '0';
+        }
+    }
+});
 
 })();
 
