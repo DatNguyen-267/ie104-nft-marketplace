@@ -32862,7 +32862,7 @@ var ToastController = /** @class */ (function () {
     };
     ToastController.prototype.close = function (toast) {
         toast.classList.add('remove');
-        setTimeout(function () { return toast.remove(); }, 5000);
+        setTimeout(function () { return toast.remove(); }, 3000);
     };
     ToastController.prototype.open = function () {
         var _a;
@@ -45324,17 +45324,30 @@ var handleValidateForm = function () {
     }
 };
 btnCreate.addEventListener('click', function () { return __awaiter(void 0, void 0, void 0, function () {
-    var address, _a, imageValue, nameValue, descriptionValue, tokenUri, mintNftTx, error_1;
+    var error_1, address, _a, imageValue, nameValue, descriptionValue, tokenUri, mintNftTx, error_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _b.trys.push([0, 5, , 6]);
+                _b.trys.push([0, 8, , 9]);
                 _controller_loading__WEBPACK_IMPORTED_MODULE_2__.LoadingControllerInstance.open();
-                return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_5__.connectAndSwitch)()];
+                _b.label = 1;
             case 1:
-                _b.sent();
-                return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_5__.getAccountAddress)()];
+                _b.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_5__.connectAndSwitch)()];
             case 2:
+                _b.sent();
+                _controller_wallet__WEBPACK_IMPORTED_MODULE_4__.WalletManagerInstance.listener();
+                _controller_wallet__WEBPACK_IMPORTED_MODULE_4__.WalletManagerInstance.updateAccountAddress();
+                (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_4__.showWalletInfo)(_controller_wallet__WEBPACK_IMPORTED_MODULE_4__.WalletManagerInstance.currentAddress);
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _b.sent();
+                if (error_1.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
+                    window.open('https://metamask.io/download.html', '_blank');
+                }
+                throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK);
+            case 4: return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_5__.getAccountAddress)()];
+            case 5:
                 address = _b.sent();
                 _a = getFormValue(), imageValue = _a.imageValue, nameValue = _a.nameValue, descriptionValue = _a.descriptionValue;
                 if (!imageValue)
@@ -45344,25 +45357,25 @@ btnCreate.addEventListener('click', function () { return __awaiter(void 0, void 
                         .catch(function (err) {
                         console.log(err);
                     })];
-            case 3:
+            case 6:
                 tokenUri = _b.sent();
                 if (!address || !tokenUri || !inputCollectionAddress.value) {
                     console.log('Invalid input');
                     return [2 /*return*/];
                 }
                 return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_5__.mintNFT)(inputCollectionAddress.value, address, tokenUri.url)];
-            case 4:
+            case 7:
                 mintNftTx = _b.sent();
                 console.log(mintNftTx);
-                return [3 /*break*/, 6];
-            case 5:
-                error_1 = _b.sent();
-                console.log(error_1);
-                _controller_toast__WEBPACK_IMPORTED_MODULE_3__.ToastControllerInstance.set('Create NFT Error', _controller_toast__WEBPACK_IMPORTED_MODULE_3__.ToastType.error);
+                return [3 /*break*/, 9];
+            case 8:
+                error_2 = _b.sent();
+                console.log(error_2);
+                _controller_toast__WEBPACK_IMPORTED_MODULE_3__.ToastControllerInstance.set(error_2.message, _controller_toast__WEBPACK_IMPORTED_MODULE_3__.ToastType.error);
                 _controller_toast__WEBPACK_IMPORTED_MODULE_3__.ToastControllerInstance.open();
                 _controller_loading__WEBPACK_IMPORTED_MODULE_2__.LoadingControllerInstance.close();
-                return [3 /*break*/, 6];
-            case 6: return [2 /*return*/];
+                return [3 /*break*/, 9];
+            case 9: return [2 /*return*/];
         }
     });
 }); });

@@ -2026,8 +2026,9 @@ header {
   justify-content: center;
   min-height: 100vh;
   font-family: "Roboto", sans-serif;
-  
+
 }
+
 .notifications {
   z-index: 1000;
   position: fixed;
@@ -2035,16 +2036,18 @@ header {
   left: 0;
   right: 0;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 !important;
 }
+
 .toast-column,
 .toast {
   display: flex;
   align-items: center;
 }
+
 .toast {
   width: 400px;
   position: relative;
@@ -2055,23 +2058,29 @@ header {
   padding: 20px;
   justify-content: space-between;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  ;
   animation: show_toast 0.5s ease forwards;
 }
+
 @keyframes show_toast {
   0% {
     transform: translateY(-100%);
   }
+
   40% {
     transform: translateY(0%);
   }
+
   80% {
     transform: translateY(-8%);
   }
+
   100% {
     transform: translateY(0%);
   }
 }
+
 .toast::before {
   content: "";
   position: absolute;
@@ -2079,41 +2088,52 @@ header {
   width: 100%;
   bottom: 0;
   left: 0;
-  animation: progress 5s linear forwards;
+  animation: progress 3s linear forwards;
 }
+
 @keyframes progress {
   100% {
     width: 0%;
   }
 }
-.toast-success::before{
+
+.toast-success::before {
   background-color: var(--color-success);
 }
-.toast-error::before{
+
+.toast-error::before {
   background-color: var(--color-error);
 }
-.toast-warning::before{
+
+.toast-warning::before {
   background-color: var(--color-warning);
 }
-.toast-info::before{
+
+.toast-info::before {
   background-color: var(--color-blue-300);
 }
+
 .toast-column i {
   font-size: 2rem;
   margin-right: 10px;
 }
+
 .toast-success i {
   color: var(--color-success);
 }
+
 .toast-error i {
   color: var(--color-error);
 }
+
 .toast-warning i {
   color: var(--color-warning);
 }
+
 .toast-info i {
-  color:  var(--color-blue-300);
+  color: var(--color-blue-300);
 }
+
 .toast-column span {
   font-size: 1.4rem;
   font-weight: 500;
@@ -2130,6 +2150,7 @@ header {
   margin-right: 10px;
   transition: all 0.2s ease-in-out;
 }
+
 .buttons .btn:hover {
   transform: scale(1.05);
 }

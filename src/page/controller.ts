@@ -14,6 +14,7 @@ import { viewAsksByCollection, viewMarketCollections } from '../services/market'
 import { NftItem } from '../types/nft'
 import { shorterAddress } from '../utils'
 import { getAvatarByAddress } from '../utils/avatar'
+import { getAddressExplorerHref, getCollectionDetailHref } from '../utils/router-direct'
 import {
   AttributeName,
   CardItemClass,
@@ -65,7 +66,7 @@ export class LandingPageController {
       eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
       eButtonBuy: tokenItemNode.querySelector(`.${NftItemClass.ButtonBuy}`) as HTMLButtonElement,
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
-      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
+      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLAnchorElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
       eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
@@ -85,6 +86,8 @@ export class LandingPageController {
       eData.eUserName.title = nftItem.seller || ''
       eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
       eData.eAddressNFT.title = nftItem.collectionAddress
+      eData.eAddressNFT.href = getCollectionDetailHref(nftItem.collectionAddress)
+
       eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
       eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)
     } catch (error) {
@@ -179,7 +182,7 @@ export class LandingPageController {
       eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
       eButtonBuy: tokenItemNode.querySelector(`.${NftItemClass.ButtonBuy}`) as HTMLButtonElement,
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
-      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
+      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLAnchorElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
       eUserAvatar: tokenItemNode.querySelector(`.${NftItemClass.UserAvatar}`) as HTMLImageElement,
     }
@@ -202,6 +205,8 @@ export class LandingPageController {
       eData.eUserName.title = nftItem.seller || ''
       eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress) || ''
       eData.eAddressNFT.title = nftItem.collectionAddress
+      eData.eAddressNFT.href = getCollectionDetailHref(nftItem.collectionAddress)
+
       eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
       eData.eButtonBuy.style.display = 'flex'
       eData.eUserAvatar.src = getAvatarByAddress(nftItem.seller || DEFAULT_ADDRESS)

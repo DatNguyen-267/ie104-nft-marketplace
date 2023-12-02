@@ -32905,8 +32905,8 @@ var ChainManager = /** @class */ (function () {
         });
     };
     ChainManager.prototype.updateChainId = function (chainId) {
-        var isSuported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
-        if (isSuported) {
+        var isSupported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
+        if (isSupported) {
             localStorage.setItem('chainId', parseInt(chainId, 16).toString());
         }
         else {
@@ -33097,7 +33097,10 @@ var ModalDelistController = /** @class */ (function () {
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _a.sent();
-                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CONNECT_WALLET_FAIL);
+                        if (error_1.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
+                            window.open('https://metamask.io/download.html', '_blank');
+                        }
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK);
                     case 4: return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_1__.getChainCurrentChainId)()];
                     case 5:
                         currentChainId = _a.sent();
@@ -33293,7 +33296,10 @@ var ModalDepositController = /** @class */ (function () {
                             (0,_services__WEBPACK_IMPORTED_MODULE_2__.connectAndSwitch)();
                         }
                         catch (error) {
-                            throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CONNECT_WALLET_FAIL);
+                            if (error.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
+                                window.open('https://metamask.io/download.html', '_blank');
+                            }
+                            throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK);
                         }
                         return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_2__.getChainCurrentChainId)()];
                     case 1:
@@ -33614,7 +33620,10 @@ var ModalSellController = /** @class */ (function () {
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _c.sent();
-                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CONNECT_WALLET_FAIL);
+                        if (error_1.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
+                            window.open('https://metamask.io/download.html', '_blank');
+                        }
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK);
                     case 4: return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_1__.getAccountAddress)()];
                     case 5:
                         currentAddress = _c.sent();
@@ -33776,7 +33785,7 @@ var ToastController = /** @class */ (function () {
     };
     ToastController.prototype.close = function (toast) {
         toast.classList.add('remove');
-        setTimeout(function () { return toast.remove(); }, 5000);
+        setTimeout(function () { return toast.remove(); }, 3000);
     };
     ToastController.prototype.open = function () {
         var _a;
@@ -34185,6 +34194,7 @@ var AccountPageController = /** @class */ (function () {
                         eData.eUserName.title = walletAddress;
                         eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_7__.shorterAddress)(nftItem.collectionAddress);
                         eData.eAddressNFT.title = nftItem.collectionAddress;
+                        eData.eAddressNFT.href = (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_10__.getCollectionDetailHref)(nftItem.collectionAddress);
                         eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
                         if (nftItem.status === 'NotForSale') {
                             eData.eButtonSell.style.display = 'block';
@@ -34241,6 +34251,7 @@ var AccountPageController = /** @class */ (function () {
                         eData.eUserName.title = walletAddress;
                         eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_7__.shorterAddress)(nftItem.collectionAddress);
                         eData.eAddressNFT.title = nftItem.collectionAddress;
+                        eData.eAddressNFT.href = (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_10__.getCollectionDetailHref)(nftItem.collectionAddress);
                         eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
                         if (nftItem.status === 'NotForSale') {
                             eData.eButtonSell.style.display = 'block';
@@ -36439,11 +36450,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getCollectionDetailHref: () => (/* binding */ getCollectionDetailHref),
 /* harmony export */   getTransactionExplorerHref: () => (/* binding */ getTransactionExplorerHref)
 /* harmony export */ });
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+
 var getAddressExplorerHref = function (address) {
-    return "https://testnet.explorer.aioz.network/address/".concat(address);
+    var chain = localStorage.getItem('chainId');
+    if (!chain) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/address/").concat(address);
+    }
+    if (chain === _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId.toString()) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].blockExplorerUrl, "/address/").concat(address);
+    }
+    else {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/address/").concat(address);
+    }
 };
 var getTransactionExplorerHref = function (address) {
-    return "https://testnet.explorer.aioz.network/txs/".concat(address);
+    var chain = localStorage.getItem('chainId');
+    if (!chain) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/txs/").concat(address);
+    }
+    if (chain === _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId.toString()) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].blockExplorerUrl, "/txs/").concat(address);
+    }
+    else {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/txs/").concat(address);
+    }
 };
 var getCollectionDetailHref = function (address) { return "/collection.html?cltAddress=".concat(address); };
 

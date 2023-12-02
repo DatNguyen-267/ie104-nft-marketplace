@@ -2180,9 +2180,9 @@ h6 {
 .buttons .btn:hover {
   transform: scale(1.05);
 }
-/*!*************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/connectWallet/styles.css ***!
-  \*************************************************************************************/
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/page/chainList/styles.css ***!
+  \*********************************************************************************/
 body {
   min-height: 100vh;
   background-size: 240px 240px;
@@ -2216,9 +2216,9 @@ body {
 /* Form */
 .connect-form {
   position: relative;
-  width: 400px;
+  width: 500px;
   gap: 10px;
-  padding: 32px 50px 34px 50px;
+  padding: 32px;
   margin: 10px;
   margin-top: 6rem;
   display: flex;
@@ -2230,6 +2230,7 @@ body {
   box-shadow: 0px 2px 50px 0px var(--color-gray-800);
   /* border: 1px solid var(--color-primary); */
   border: 1px solid;
+  border-color: var(--color-border-100);
 
 }
 
@@ -2264,6 +2265,15 @@ body {
   border-color: var(--color-border-100);
 }
 
+.card.active {
+  border-color: var(--color-primary);
+
+}
+
+.card.active .card-title {}
+
+.card.active .card-content .card-description {}
+
 .card:hover {
   border: 2px solid #3396ff;
 }
@@ -2290,7 +2300,7 @@ body {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
 }
 
 /* Wallet Address */
@@ -2320,4 +2330,4 @@ body {
   border-radius: 8px;
 }
 
-/*# sourceMappingURL=connectWallet.css.map*/
+/*# sourceMappingURL=chainList.css.map*/

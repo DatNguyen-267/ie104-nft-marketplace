@@ -32849,7 +32849,7 @@ var ToastController = /** @class */ (function () {
     };
     ToastController.prototype.close = function (toast) {
         toast.classList.add('remove');
-        setTimeout(function () { return toast.remove(); }, 5000);
+        setTimeout(function () { return toast.remove(); }, 3000);
     };
     ToastController.prototype.open = function () {
         var _a;
@@ -45210,10 +45210,10 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants */ "./src/constants/index.ts");
 /* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/chains */ "./src/constants/chains.ts");
-/* harmony import */ var _controller_wallet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../controller/wallet */ "./src/controller/wallet.ts");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
-/* harmony import */ var _services_connect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/connect */ "./src/services/connect.ts");
-/* harmony import */ var _utils_errors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/errors */ "./src/utils/errors.ts");
+/* harmony import */ var _controller_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../controller/toast */ "./src/controller/toast.ts");
+/* harmony import */ var _controller_wallet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../controller/wallet */ "./src/controller/wallet.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services */ "./src/services/index.ts");
+/* harmony import */ var _services_connect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/connect */ "./src/services/connect.ts");
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles.css */ "./src/page/connectWallet/styles.css");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45261,40 +45261,53 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var showAccount = document.querySelector('.showAccount');
 var btnMetamask = document.querySelector('#btn-metamask');
 var handleConnectWallet = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var provider, error_1;
+    var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_4__.connect)()
-                    .then(function (res) {
-                    showAccount.innerHTML = shortString(res[0]);
-                    showAccount.title = res[0];
-                    window.localStorage.setItem('connected', 'injected');
-                    (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_2__.showWalletInfo)(res[0].currentAddress);
-                    // check login
-                })
-                    .catch(function (err) {
-                    if (err.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
-                        onClickInstallMetaMask();
-                    }
-                    console.log((0,_utils_errors__WEBPACK_IMPORTED_MODULE_5__.convertWalletError)(err));
-                })];
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_5__.connect)()
+                        .then(function (res) { return __awaiter(void 0, void 0, void 0, function () {
+                        var provider, error_2;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    showAccount.innerHTML = shortString(res[0]);
+                                    showAccount.title = res[0];
+                                    window.localStorage.setItem('connected', 'injected');
+                                    (0,_controller_wallet__WEBPACK_IMPORTED_MODULE_3__.showWalletInfo)(res[0].currentAddress);
+                                    provider = (0,_services__WEBPACK_IMPORTED_MODULE_4__.getDefaultProvider)();
+                                    if (!provider) {
+                                        return [2 /*return*/];
+                                    }
+                                    _a.label = 1;
+                                case 1:
+                                    _a.trys.push([1, 3, , 4]);
+                                    return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_5__.switchToNetwork)(provider.provider, _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS[0].chainId)];
+                                case 2:
+                                    _a.sent();
+                                    return [3 /*break*/, 4];
+                                case 3:
+                                    error_2 = _a.sent();
+                                    return [3 /*break*/, 4];
+                                case 4: return [2 /*return*/];
+                            }
+                        });
+                    }); })
+                        .catch(function (err) {
+                        if (err.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
+                            window.open('https://metamask.io/download.html', '_blank');
+                        }
+                        _controller_toast__WEBPACK_IMPORTED_MODULE_2__.ToastControllerInstance.set(err.message, _controller_toast__WEBPACK_IMPORTED_MODULE_2__.ToastType.error);
+                        _controller_toast__WEBPACK_IMPORTED_MODULE_2__.ToastControllerInstance.open();
+                    })];
             case 1:
                 _a.sent();
-                provider = (0,_services__WEBPACK_IMPORTED_MODULE_3__.getDefaultProvider)();
-                if (!provider) {
-                    return [2 /*return*/];
-                }
-                _a.label = 2;
+                return [3 /*break*/, 3];
             case 2:
-                _a.trys.push([2, 4, , 5]);
-                return [4 /*yield*/, (0,_services_connect__WEBPACK_IMPORTED_MODULE_4__.switchToNetwork)(provider.provider, _constants_chains__WEBPACK_IMPORTED_MODULE_1__.CHAINS[0].chainId)];
-            case 3:
-                _a.sent();
-                return [3 /*break*/, 5];
-            case 4:
                 error_1 = _a.sent();
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };

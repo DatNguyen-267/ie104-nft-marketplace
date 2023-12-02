@@ -34,7 +34,7 @@ export type NftItemElementObject = {
   eMetadataUri: HTMLDivElement
   eButtonBuy: HTMLButtonElement
   eUserName: HTMLDivElement
-  eAddressNFT: HTMLDivElement
+  eAddressNFT: HTMLAnchorElement
   eOrderNFT: HTMLDivElement
   eUserAvatar: HTMLImageElement
 }

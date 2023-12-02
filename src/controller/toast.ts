@@ -60,7 +60,7 @@ class ToastController {
 
   close(toast: HTMLElement) {
     toast.classList.add('remove')
-    setTimeout(() => toast.remove(), 5000)
+    setTimeout(() => toast.remove(), 3000)
   }
   open() {
     let type = this.type ? this.type.toString() : ToastType.info

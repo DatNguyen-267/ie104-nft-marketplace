@@ -83,8 +83,11 @@ class ModalDepositController {
 
     try {
       connectAndSwitch()
-    } catch (error) {
-      throw new Error(AppError.CONNECT_WALLET_FAIL)
+    } catch (error: any) {
+      if (error.message === AppError.NOT_INSTALLED_METAMASK) {
+        window.open('https://metamask.io/download.html', '_blank')
+      }
+      throw new Error(AppError.NOT_INSTALLED_METAMASK)
     }
 
     const currentChainId = await getChainCurrentChainId()

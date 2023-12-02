@@ -26,7 +26,7 @@ import {
   NftItemElementObject,
   PageElementId,
 } from './types'
-import { getAddressExplorerHref } from '../../utils/router-direct'
+import { getAddressExplorerHref, getCollectionDetailHref } from '../../utils/router-direct'
 import { HTMLElementNoItem } from '../../constants/elements'
 
 export class AccountPageController {
@@ -115,7 +115,7 @@ export class AccountPageController {
       eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
       eButtonSell: tokenItemNode.querySelector(`.${NftItemClass.ButtonSell}`) as HTMLButtonElement,
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
-      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
+      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLAnchorElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
       eButtonDelist: tokenItemNode.querySelector(
         `.${NftItemClass.ButtonDelist}`,
@@ -141,6 +141,7 @@ export class AccountPageController {
     eData.eUserName.title = walletAddress
     eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress)
     eData.eAddressNFT.title = nftItem.collectionAddress
+    eData.eAddressNFT.href = getCollectionDetailHref(nftItem.collectionAddress)
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
 
     if (nftItem.status === 'NotForSale') {
@@ -166,7 +167,7 @@ export class AccountPageController {
       eTitle: tokenItemNode.querySelector(`.${NftItemClass.Title}`) as HTMLDivElement,
       eButtonSell: tokenItemNode.querySelector(`.${NftItemClass.ButtonSell}`) as HTMLButtonElement,
       eUserName: tokenItemNode.querySelector(`.${NftItemClass.UserName}`) as HTMLDivElement,
-      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLDivElement,
+      eAddressNFT: tokenItemNode.querySelector(`.${NftItemClass.AddressNFT}`) as HTMLAnchorElement,
       eOrderNFT: tokenItemNode.querySelector(`.${NftItemClass.OrderNFT}`) as HTMLDivElement,
       eButtonDelist: tokenItemNode.querySelector(
         `.${NftItemClass.ButtonDelist}`,
@@ -192,6 +193,8 @@ export class AccountPageController {
     eData.eUserName.title = walletAddress
     eData.eAddressNFT.innerHTML = shorterAddress(nftItem.collectionAddress)
     eData.eAddressNFT.title = nftItem.collectionAddress
+    eData.eAddressNFT.href = getCollectionDetailHref(nftItem.collectionAddress)
+
     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString()
 
     if (nftItem.status === 'NotForSale') {

@@ -1,44 +1,84 @@
 import { AppError } from '../../constants'
 import { CHAINS } from '../../constants/chains'
-import { ToastControllerInstance, ToastType } from '../../controller/toast'
-import { showWalletInfo } from '../../controller/wallet'
+import { ChainManagerInstance } from '../../controller/chain'
+import { UserPopoverControllerInstance } from '../../controller/user'
+import { WalletManagerInstance, showWalletInfo } from '../../controller/wallet'
 import { getDefaultProvider } from '../../services'
-import { connect, switchToNetwork } from '../../services/connect'
+import { connect, connectEarly, switchToNetwork } from '../../services/connect'
 import { convertWalletError } from '../../utils/errors'
 import './styles.css'
 
 let showAccount = document.querySelector('.showAccount') as HTMLElement
 
-const btnMetamask = document.querySelector('#btn-metamask') as HTMLButtonElement
+const btnGoerli = document.querySelector('#btn-goerli') as HTMLButtonElement
+const btnAioz = document.querySelector('#btn-aioz') as HTMLButtonElement
 
-const handleConnectWallet = async () => {
+const currentChainId = localStorage.getItem('chainId')
+if (currentChainId) {
+  if (currentChainId === CHAINS[0].chainId.toString()) {
+    btnAioz.classList.add('active')
+    btnGoerli.classList.remove('active')
+  } else {
+    btnGoerli.classList.add('active')
+    btnAioz.classList.remove('active')
+  }
+}
+
+window.ethereum?.on('chainChanged', (chainId: string) => {
+  ChainManagerInstance.updateChainId(chainId)
+  if (chainId) {
+    if (chainId === CHAINS[0].chainIdHex.toString()) {
+      btnAioz.classList.add('active')
+      btnGoerli.classList.remove('active')
+    } else {
+      btnGoerli.classList.add('active')
+      btnAioz.classList.remove('active')
+    }
+  }
+})
+const onSwitchChain = async (chainId: number) => {
   try {
     await connect()
-      .then(async (res) => {
+      .then((res) => {
         showAccount.innerHTML = shortString(res[0])
         showAccount.title = res[0]
         window.localStorage.setItem('connected', 'injected')
         showWalletInfo(res[0].currentAddress)
-        const provider = getDefaultProvider()
-        if (!provider) {
-          return
-        }
-        try {
-          await switchToNetwork(provider.provider, CHAINS[0].chainId)
-        } catch (error: any) {}
+
+        // check login
       })
-      .catch((err: any) => {
+      .catch((err) => {
         if (err.message === AppError.NOT_INSTALLED_METAMASK) {
           window.open('https://metamask.io/download.html', '_blank')
         }
-        ToastControllerInstance.set(err.message, ToastType.error)
-        ToastControllerInstance.open()
+        console.log(convertWalletError(err))
       })
-  } catch (error: any) {}
+    const provider = getDefaultProvider()
+    if (!provider) {
+      return
+    }
+    try {
+      await switchToNetwork(provider.provider, chainId)
+    } catch (error) {}
+  } catch (error) {}
 }
 
-const onClickInstallMetaMask = () => {}
-btnMetamask.onclick = handleConnectWallet
+btnAioz.onclick = () => {
+  onSwitchChain(CHAINS[0].chainId)
+}
+btnGoerli.onclick = () => {
+  onSwitchChain(CHAINS[1].chainId)
+}
+
+connectEarly()
+  .then(() => {
+    UserPopoverControllerInstance.isConnected.set(true)
+    UserPopoverControllerInstance.isConnected.loadAvatar()
+    showWalletInfo(WalletManagerInstance.currentAddress)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // ============================ Short String =====================================
 const shortString = (string: string): string => {
@@ -57,22 +97,6 @@ const alertOverlay = document.getElementById('alert-overlay-close') as HTMLEleme
 const alertCancel = document.getElementById('alert-cancel') as HTMLElement
 const alertClose = document.getElementById('alert-close') as HTMLElement
 const signOut = document.getElementById('header-sign-out') as HTMLElement
-
-// Check login
-
-function checkLogin(login: boolean, walletAddress: any) {
-  if (login === (true as boolean)) {
-    headerAvatar.style.display = 'flex'
-    btnLogin.style.display = 'none'
-  } else {
-    headerAvatar.style.display = 'none'
-    btnLogin.style.display = 'flex'
-  }
-  if (walletAddress !== undefined) {
-    const userName = document.getElementById('pop-up-user-name') as HTMLElement
-    userName.innerHTML = shortString(walletAddress)
-  }
-}
 
 // Toggle PopUP
 function togglePopUpUser(event: Event): void {

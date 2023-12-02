@@ -1,4 +1,4 @@
-import { ADDRESS_OF_CHAINS } from '../../constants'
+import { ADDRESS_OF_CHAINS, AppError } from '../../constants'
 import { DEFAULT_CHAIN_ID } from '../../constants/chains'
 import { LoadingControllerInstance } from '../../controller/loading'
 import { ToastControllerInstance, ToastType } from '../../controller/toast'
@@ -71,10 +71,21 @@ const handleValidateForm = () => {
 btnCreate.addEventListener('click', async () => {
   try {
     LoadingControllerInstance.open()
-    await connectAndSwitch()
-    const address = await getAccountAddress()
+    try {
+      await connectAndSwitch()
+      WalletManagerInstance.listener()
+      WalletManagerInstance.updateAccountAddress()
+      showWalletInfo(WalletManagerInstance.currentAddress)
+    } catch (error: any) {
+      if (error.message === AppError.NOT_INSTALLED_METAMASK) {
+        window.open('https://metamask.io/download.html', '_blank')
+      }
+      throw new Error(AppError.NOT_INSTALLED_METAMASK)
+    }
 
+    const address = await getAccountAddress()
     const { imageValue, nameValue, descriptionValue } = getFormValue()
+
     if (!imageValue) return
 
     const tokenUri = await createMetadata(imageValue, nameValue, descriptionValue)
@@ -88,11 +99,10 @@ btnCreate.addEventListener('click', async () => {
       return
     }
     const mintNftTx = await mintNFT(inputCollectionAddress.value, address, tokenUri.url)
-
     console.log(mintNftTx)
-  } catch (error) {
+  } catch (error: any) {
     console.log(error)
-    ToastControllerInstance.set('Create NFT Error', ToastType.error)
+    ToastControllerInstance.set(error.message, ToastType.error)
     ToastControllerInstance.open()
     LoadingControllerInstance.close()
   }

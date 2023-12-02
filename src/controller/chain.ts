@@ -22,8 +22,8 @@ class ChainManager {
     }
   }
   updateChainId(chainId: string) {
-    const isSuported = CHAINS.find((chain) => chain.chainIdHex === chainId)
-    if (isSuported) {
+    const isSupported = CHAINS.find((chain) => chain.chainIdHex === chainId)
+    if (isSupported) {
       localStorage.setItem('chainId', parseInt(chainId, 16).toString())
     } else {
       localStorage.setItem('chainId', DEFAULT_CHAIN_ID.toString())

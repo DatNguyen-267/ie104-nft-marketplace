@@ -32968,8 +32968,8 @@ var ChainManager = /** @class */ (function () {
         });
     };
     ChainManager.prototype.updateChainId = function (chainId) {
-        var isSuported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
-        if (isSuported) {
+        var isSupported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
+        if (isSupported) {
             localStorage.setItem('chainId', parseInt(chainId, 16).toString());
         }
         else {
@@ -33104,7 +33104,7 @@ var ToastController = /** @class */ (function () {
     };
     ToastController.prototype.close = function (toast) {
         toast.classList.add('remove');
-        setTimeout(function () { return toast.remove(); }, 5000);
+        setTimeout(function () { return toast.remove(); }, 3000);
     };
     ToastController.prototype.open = function () {
         var _a;
@@ -35471,11 +35471,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getCollectionDetailHref: () => (/* binding */ getCollectionDetailHref),
 /* harmony export */   getTransactionExplorerHref: () => (/* binding */ getTransactionExplorerHref)
 /* harmony export */ });
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+
 var getAddressExplorerHref = function (address) {
-    return "https://testnet.explorer.aioz.network/address/".concat(address);
+    var chain = localStorage.getItem('chainId');
+    if (!chain) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/address/").concat(address);
+    }
+    if (chain === _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId.toString()) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].blockExplorerUrl, "/address/").concat(address);
+    }
+    else {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/address/").concat(address);
+    }
 };
 var getTransactionExplorerHref = function (address) {
-    return "https://testnet.explorer.aioz.network/txs/".concat(address);
+    var chain = localStorage.getItem('chainId');
+    if (!chain) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/txs/").concat(address);
+    }
+    if (chain === _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId.toString()) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].blockExplorerUrl, "/txs/").concat(address);
+    }
+    else {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/txs/").concat(address);
+    }
 };
 var getCollectionDetailHref = function (address) { return "/collection.html?cltAddress=".concat(address); };
 

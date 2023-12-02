@@ -33022,8 +33022,8 @@ var ChainManager = /** @class */ (function () {
         });
     };
     ChainManager.prototype.updateChainId = function (chainId) {
-        var isSuported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
-        if (isSuported) {
+        var isSupported = _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS.find(function (chain) { return chain.chainIdHex === chainId; });
+        if (isSupported) {
             localStorage.setItem('chainId', parseInt(chainId, 16).toString());
         }
         else {
@@ -33227,7 +33227,10 @@ var ModalBuyController = /** @class */ (function () {
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _d.sent();
-                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.CONNECT_WALLET_FAIL);
+                        if (error_1.message === _constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK) {
+                            window.open('https://metamask.io/download.html', '_blank');
+                        }
+                        throw new Error(_constants__WEBPACK_IMPORTED_MODULE_0__.AppError.NOT_INSTALLED_METAMASK);
                     case 4: return [4 /*yield*/, (0,_services__WEBPACK_IMPORTED_MODULE_1__.getAccountAddress)()];
                     case 5:
                         currentAddress = _d.sent();
@@ -33366,7 +33369,7 @@ var ToastController = /** @class */ (function () {
     };
     ToastController.prototype.close = function (toast) {
         toast.classList.add('remove');
-        setTimeout(function () { return toast.remove(); }, 5000);
+        setTimeout(function () { return toast.remove(); }, 3000);
     };
     ToastController.prototype.open = function () {
         var _a;
@@ -33748,7 +33751,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_market__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/market */ "./src/services/market.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
 /* harmony import */ var _utils_avatar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/avatar */ "./src/utils/avatar.ts");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./types */ "./src/page/types.ts");
+/* harmony import */ var _utils_router_direct__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/router-direct */ "./src/utils/router-direct.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./types */ "./src/page/types.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -33806,6 +33810,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var LandingPageController = /** @class */ (function () {
     function LandingPageController() {
     }
@@ -33843,40 +33848,40 @@ var LandingPageController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 if (!nftItem)
                     return [2 /*return*/];
-                listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_9__.PageElementId.ListNftContainer);
+                listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_10__.PageElementId.ListNftContainer);
                 if (!listNftContainer) {
                     console.log('listNftContainer is not exists');
                     return [2 /*return*/];
                 }
-                tokenItemNode = listNftContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"][").concat(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.CltAddress, "=\"").concat(nftItem.collectionAddress, "\"]"));
+                tokenItemNode = listNftContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"][").concat(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.CltAddress, "=\"").concat(nftItem.collectionAddress, "\"]"));
                 if (!tokenItemNode)
                     return [2 /*return*/];
                 if (nftItem.title && nftItem.imageUri) {
-                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_9__.LoadingStatus.Success);
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_10__.LoadingStatus.Success);
                 }
                 else {
-                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_9__.LoadingStatus.Pending);
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_10__.LoadingStatus.Pending);
                 }
                 eData = {
                     eContainer: tokenItemNode,
-                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Description)),
-                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Image)),
-                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.MetadataUri)),
-                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Price)),
-                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Status)),
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Title)),
-                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.ButtonBuy)),
-                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.UserName)),
-                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.AddressNFT)),
-                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.OrderNFT)),
-                    eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.UserAvatar)),
+                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Image)),
+                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.MetadataUri)),
+                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Price)),
+                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Status)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Title)),
+                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.ButtonBuy)),
+                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.UserName)),
+                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.AddressNFT)),
+                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.OrderNFT)),
+                    eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.UserAvatar)),
                 };
                 try {
                     eData.eImage.src = nftItem.imageGatewayUrl
                         ? nftItem.imageGatewayUrl
                         : (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_8__.getAvatarByAddress)(nftItem.collectionAddress);
-                    eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.TokenId, nftItem.tokenId.toString());
-                    eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.CltAddress, nftItem.collectionAddress);
+                    eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.TokenId, nftItem.tokenId.toString());
+                    eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.CltAddress, nftItem.collectionAddress);
                     eData.eTitle.innerHTML = nftItem.title;
                     eData.eTitle.title = nftItem.title;
                     eData.ePrice.innerHTML = nftItem.price;
@@ -33887,6 +33892,7 @@ var LandingPageController = /** @class */ (function () {
                     eData.eUserName.title = nftItem.seller || '';
                     eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_7__.shorterAddress)(nftItem.collectionAddress) || '';
                     eData.eAddressNFT.title = nftItem.collectionAddress;
+                    eData.eAddressNFT.href = (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_9__.getCollectionDetailHref)(nftItem.collectionAddress);
                     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
                     eData.eUserAvatar.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_8__.getAvatarByAddress)(nftItem.seller || _constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS);
                 }
@@ -33907,25 +33913,25 @@ var LandingPageController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 if (!nftItem)
                     return [2 /*return*/];
-                listCardContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_9__.PageElementId.ContainerHeroCard);
+                listCardContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_10__.PageElementId.ContainerHeroCard);
                 if (!listCardContainer) {
                     console.log('listCardContainer is not exists');
                     return [2 /*return*/];
                 }
-                tokenItemNode = listCardContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"][").concat(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.CltAddress, "=\"").concat(nftItem.collectionAddress, "\"]"));
+                tokenItemNode = listCardContainer.querySelector("div[data-token-id=\"".concat(nftItem.tokenId, "\"][").concat(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.CltAddress, "=\"").concat(nftItem.collectionAddress, "\"]"));
                 if (!tokenItemNode)
                     return [2 /*return*/];
                 tokenItemNode.style.display = 'flex';
                 if (nftItem.title && nftItem.imageUri) {
-                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_9__.LoadingStatus.Success);
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_10__.LoadingStatus.Success);
                 }
                 else {
-                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_9__.LoadingStatus.Pending);
+                    tokenItemNode === null || tokenItemNode === void 0 ? void 0 : tokenItemNode.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_10__.LoadingStatus.Pending);
                 }
                 eData = {
                     eContainer: tokenItemNode,
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.CardItemClass.Title)),
-                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.CardItemClass.UserName)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.CardItemClass.Title)),
+                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.CardItemClass.UserName)),
                 };
                 eData.eContainer.style.setProperty('background', "url(".concat(nftItem.imageGatewayUrl, ")"));
                 try {
@@ -33950,13 +33956,13 @@ var LandingPageController = /** @class */ (function () {
                 tokenItemNode.style.display = 'flex';
                 eData = {
                     eContainer: tokenItemNode,
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.CardItemClass.Title)),
-                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.CardItemClass.UserName)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.CardItemClass.Title)),
+                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.CardItemClass.UserName)),
                 };
                 eData.eContainer.style.setProperty('background', "url(".concat(nftItem.imageGatewayUrl || (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_8__.getAvatarByAddress)(nftItem.collectionAddress), ")"));
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.TokenId, nftItem.tokenId.toString());
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.CltAddress, nftItem.collectionAddress);
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_9__.LoadingStatus.Pending);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.TokenId, nftItem.tokenId.toString());
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.CltAddress, nftItem.collectionAddress);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_10__.LoadingStatus.Pending);
                 try {
                     eData.eTitle.innerHTML = nftItem.title;
                     eData.eTitle.title = nftItem.title;
@@ -33982,24 +33988,24 @@ var LandingPageController = /** @class */ (function () {
                 tokenItemNode = template.cloneNode(true);
                 eData = {
                     eContainer: tokenItemNode,
-                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Description)),
-                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Image)),
-                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.MetadataUri)),
-                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Price)),
-                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Status)),
-                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.Title)),
-                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.ButtonBuy)),
-                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.UserName)),
-                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.AddressNFT)),
-                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.OrderNFT)),
-                    eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_9__.NftItemClass.UserAvatar)),
+                    eDescription: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Description)),
+                    eImage: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Image)),
+                    eMetadataUri: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.MetadataUri)),
+                    ePrice: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Price)),
+                    eStatus: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Status)),
+                    eTitle: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.Title)),
+                    eButtonBuy: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.ButtonBuy)),
+                    eUserName: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.UserName)),
+                    eAddressNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.AddressNFT)),
+                    eOrderNFT: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.OrderNFT)),
+                    eUserAvatar: tokenItemNode.querySelector(".".concat(_types__WEBPACK_IMPORTED_MODULE_10__.NftItemClass.UserAvatar)),
                 };
                 eData.eImage.src = nftItem.imageGatewayUrl
                     ? nftItem.imageGatewayUrl
                     : (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_8__.getAvatarByAddress)(nftItem.collectionAddress);
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.TokenId, nftItem.tokenId.toString());
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.CltAddress, nftItem.collectionAddress);
-                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_9__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_9__.LoadingStatus.Pending);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.TokenId, nftItem.tokenId.toString());
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.CltAddress, nftItem.collectionAddress);
+                eData.eContainer.setAttribute(_types__WEBPACK_IMPORTED_MODULE_10__.AttributeName.Loading, _types__WEBPACK_IMPORTED_MODULE_10__.LoadingStatus.Pending);
                 console.log(nftItem);
                 try {
                     eData.eTitle.innerHTML = nftItem.title;
@@ -34012,6 +34018,7 @@ var LandingPageController = /** @class */ (function () {
                     eData.eUserName.title = nftItem.seller || '';
                     eData.eAddressNFT.innerHTML = (0,_utils__WEBPACK_IMPORTED_MODULE_7__.shorterAddress)(nftItem.collectionAddress) || '';
                     eData.eAddressNFT.title = nftItem.collectionAddress;
+                    eData.eAddressNFT.href = (0,_utils_router_direct__WEBPACK_IMPORTED_MODULE_9__.getCollectionDetailHref)(nftItem.collectionAddress);
                     eData.eOrderNFT.innerHTML = '#' + nftItem.tokenId.toString();
                     eData.eButtonBuy.style.display = 'flex';
                     eData.eUserAvatar.src = (0,_utils_avatar__WEBPACK_IMPORTED_MODULE_8__.getAvatarByAddress)(nftItem.seller || _constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_ADDRESS);
@@ -34031,7 +34038,7 @@ var LandingPageController = /** @class */ (function () {
             var listNftContainer;
             return __generator(this, function (_a) {
                 try {
-                    listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_9__.PageElementId.ListNftContainer);
+                    listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_10__.PageElementId.ListNftContainer);
                     if (!listNftContainer) {
                         console.log('listNftContainer is not exists');
                         return [2 /*return*/];
@@ -34055,8 +34062,8 @@ var LandingPageController = /** @class */ (function () {
                         listNfts = [];
                         listNftReview = [];
                         listCard = [];
-                        listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_9__.PageElementId.ListNftContainer);
-                        listCardHeroContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_9__.PageElementId.ContainerHeroCard);
+                        listNftContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_10__.PageElementId.ListNftContainer);
+                        listCardHeroContainer = document.querySelector(_types__WEBPACK_IMPORTED_MODULE_10__.PageElementId.ContainerHeroCard);
                         if (!listNftContainer) {
                             console.log('listNftContainer is not exists');
                             return [2 /*return*/];
@@ -36120,6 +36127,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var ethereumAddressRegex = /^0x[a-fA-F0-9]{40}$/;
 var ethereumTxHashRegex = /^0x([A-Fa-f0-9]{64})$/;
+
+
+/***/ }),
+
+/***/ "./src/utils/router-direct.ts":
+/*!************************************!*\
+  !*** ./src/utils/router-direct.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAddressExplorerHref: () => (/* binding */ getAddressExplorerHref),
+/* harmony export */   getCollectionDetailHref: () => (/* binding */ getCollectionDetailHref),
+/* harmony export */   getTransactionExplorerHref: () => (/* binding */ getTransactionExplorerHref)
+/* harmony export */ });
+/* harmony import */ var _constants_chains__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/chains */ "./src/constants/chains.ts");
+
+var getAddressExplorerHref = function (address) {
+    var chain = localStorage.getItem('chainId');
+    if (!chain) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/address/").concat(address);
+    }
+    if (chain === _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId.toString()) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].blockExplorerUrl, "/address/").concat(address);
+    }
+    else {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/address/").concat(address);
+    }
+};
+var getTransactionExplorerHref = function (address) {
+    var chain = localStorage.getItem('chainId');
+    if (!chain) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/txs/").concat(address);
+    }
+    if (chain === _constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].chainId.toString()) {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[0].blockExplorerUrl, "/txs/").concat(address);
+    }
+    else {
+        return "".concat(_constants_chains__WEBPACK_IMPORTED_MODULE_0__.CHAINS[1].blockExplorerUrl, "/txs/").concat(address);
+    }
+};
+var getCollectionDetailHref = function (address) { return "/collection.html?cltAddress=".concat(address); };
 
 
 /***/ }),
