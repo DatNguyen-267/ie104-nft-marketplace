@@ -32628,14 +32628,36 @@ var _a;
 
 var ADDRESS_OF_CHAINS = (_a = {},
     _a[_chains__WEBPACK_IMPORTED_MODULE_0__.CHAIN_IDS.AIOZ] = {
-        DEPOSIT_RATE: 1,
-        WUIT: '0xcB96060104AA0529Be0B8B4c15703a962A20DF60',
-        MARKET: '0x634345357C9eA4B6e52765804d647048bd15e468',
-        PUBLIC_ERC721_TOKEN: '0x0000000000000000000000000000000000000000',
+        DEPOSIT_RATE: 100000,
+        // WUIT: '0xcB96060104AA0529Be0B8B4c15703a962A20DF60',
+        WUIT: '0x21BBB423E8B386A3Ed9Ed253296ef79898Cbbd13',
+        // MARKET: '0x634345357C9eA4B6e52765804d647048bd15e468',
+        MARKET: '0x3bEd7F27D15b08C469485eE7f9A2BE69b06072b0',
+        PUBLIC_ERC721_TOKEN: '0x7c81D92A6958670569A1586D471757bcD12b689c',
         COLLECTIONS: {
             DyanCat: {
                 owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
                 address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
+            },
+            OutOfMyStory: {
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+                address: '0x57B815813d053f276A45A5eddFB08D980F79e447',
+            },
+            AXO: {
+                owner: '0xf9f0036e2AFAf6EEEa77E08D1BFA012e1442dA3F',
+                address: '0xb4395776B71ad557C0E92ad3157B206271eB3f04',
+            },
+            OpepenEdition: {
+                address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+            },
+            NeoTokyoOuterCitizenV2: {
+                address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+            },
+            BlockGame: {
+                address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
+                owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
             },
         },
     },
@@ -32695,14 +32717,6 @@ var Collections = {
     '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1': '0x1Def42fc65c3251087Bb61A410003981bE75e1d8',
 };
 var CollectionsOfMarket = {
-    DyanCatV2: {
-        address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
-        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-    },
-    MVP: {
-        address: '0xC85c402Ddc81c390053B2d7eB120E8e97EA41e7B',
-        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-    },
     CES: {
         address: '0xd1edA759274915Ac515f42d96BBe9F4b02aE1b76',
         owner: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
@@ -32718,18 +32732,6 @@ var CollectionsOfMarket = {
     Wilzard: {
         address: '0x4Fd34fc9eFa5f64cD0aF30bdDf8c42008CeffeFb',
         owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
-    },
-    OpepenEdition: {
-        address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
-        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-    },
-    NeoTokyoOuterCitizenV2: {
-        address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
-        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-    },
-    BlockGame: {
-        address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
-        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
     },
     LongLiveNft: {
         address: '0x542F920fCf0CBD1c02Cdff3d630A321Ac704eDa4',
@@ -32892,6 +32894,7 @@ var AppError;
     AppError["CONNECT_WALLET_FAIL"] = "Connect wallet fail";
     AppError["INPUT_INVALID"] = "Input invalid";
     AppError["CHAIN_ID_INVALID"] = "ChainID invalid";
+    AppError["PRICE_INVALID"] = "Price invalid";
 })(AppError || (AppError = {}));
 var BuyNftErrorMessage;
 (function (BuyNftErrorMessage) {
@@ -34936,13 +34939,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   mintNFT: () => (/* binding */ mintNFT),
 /* harmony export */   transferFrom: () => (/* binding */ transferFrom)
 /* harmony export */ });
-/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
+/* harmony import */ var ethers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ethers */ "./node_modules/@ethersproject/contracts/lib.esm/index.js");
 /* harmony import */ var nft_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nft.storage */ "./node_modules/nft.storage/src/lib.js");
 /* harmony import */ var _abis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abis */ "./src/abis/index.ts");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./src/constants/index.ts");
 /* harmony import */ var _connect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./connect */ "./src/services/connect.ts");
 /* harmony import */ var _provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./provider */ "./src/services/provider.ts");
 /* harmony import */ var _controller_loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../controller/loading */ "./src/controller/loading.ts");
+/* harmony import */ var _controller_toast__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../controller/toast */ "./src/controller/toast.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34979,6 +34983,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
 
 
 
@@ -35026,7 +35031,7 @@ function approveSpenderToAccessNft(cltAddress, spenderAddress, tokenId) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider.getSigner());
+                    tokenContract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider.getSigner());
                     return [4 /*yield*/, tokenContract.approve(spenderAddress, tokenId)];
                 case 1:
                     transaction = _a.sent();
@@ -35060,11 +35065,13 @@ function mintNFT(cltAddress, addressTo, tokenUri) {
                     currentAbi = currentChainId && cltAddress === _constants__WEBPACK_IMPORTED_MODULE_2__.ADDRESS_OF_CHAINS[currentChainId].PUBLIC_ERC721_TOKEN
                         ? _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_PUBLIC_COLLECTION
                         : _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721;
-                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, currentAbi, provider === null || provider === void 0 ? void 0 : provider.getSigner());
+                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, currentAbi, provider === null || provider === void 0 ? void 0 : provider.getSigner());
                     return [4 /*yield*/, nftContract.safeMint(addressTo, tokenUri)];
                 case 2:
                     transaction = _a.sent();
                     _controller_loading__WEBPACK_IMPORTED_MODULE_5__.LoadingControllerInstance.close();
+                    _controller_toast__WEBPACK_IMPORTED_MODULE_6__.ToastControllerInstance.set('Create NFT successfully', _controller_toast__WEBPACK_IMPORTED_MODULE_6__.ToastType.success);
+                    _controller_toast__WEBPACK_IMPORTED_MODULE_6__.ToastControllerInstance.open();
                     return [4 /*yield*/, transaction.wait()];
                 case 3:
                     transactionReceipt = _a.sent();
@@ -35091,7 +35098,7 @@ function getTokenUri(cltAddress, tokenId, options) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     return [4 /*yield*/, contract.tokenURI(tokenId)];
                 case 2:
                     tokenUri = _a.sent();
@@ -35117,7 +35124,7 @@ function getOwner(cltAddress, tokenId, options) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     addressOwner = contract.ownerOf(tokenId);
                     return [2 /*return*/, addressOwner];
                 case 2:
@@ -35140,7 +35147,7 @@ function getYourTokens(cltAddress, creatorAddress, options) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     tokenId = 0;
                     _a.label = 1;
                 case 1:
@@ -35191,7 +35198,7 @@ function getAllTokenIdOfCollection(collectionAddress) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     tokenId = 0;
                     _a.label = 2;
                 case 2:
@@ -35236,7 +35243,7 @@ function getAllNftOfCollectionAndOwnerAddress(collectionAddress, walletAddress) 
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract_1 = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract_1 = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     _b.label = 2;
                 case 2:
                     _b.trys.push([2, 5, , 12]);
@@ -35333,7 +35340,7 @@ function transferFrom(collectionAddress, from, to, tokenId) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    nftContract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(collectionAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     return [4 /*yield*/, nftContract.transferFrom(from, to, tokenId)];
                 case 1:
                     response = _a.sent();
@@ -35359,7 +35366,7 @@ function getOwnerOfCollection(cltAddress) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     addressOwner = contract.owner();
                     return [2 /*return*/, addressOwner];
                 case 2:
@@ -35383,7 +35390,7 @@ function getNameOfCollection(cltAddress) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     addressOwner = contract.name();
                     return [2 /*return*/, addressOwner];
                 case 2:
@@ -35407,7 +35414,7 @@ function getTotalSupply(cltAddress) {
                     if (!provider) {
                         throw new Error(_constants__WEBPACK_IMPORTED_MODULE_2__.AppError.PROVIDER_IS_NOT_VALID);
                     }
-                    contract = new ethers__WEBPACK_IMPORTED_MODULE_6__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
+                    contract = new ethers__WEBPACK_IMPORTED_MODULE_7__.Contract(cltAddress, _abis__WEBPACK_IMPORTED_MODULE_1__.ABI_ERC721, provider);
                     addressOwner = contract.totalSupply();
                     return [2 /*return*/, addressOwner];
                 case 2:
