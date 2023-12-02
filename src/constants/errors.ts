@@ -12,6 +12,7 @@ export enum AppError {
   INPUT_INVALID = 'Input invalid',
 
   CHAIN_ID_INVALID = 'ChainID invalid',
+  PRICE_INVALID = 'Price invalid',
 }
 
 export enum BuyNftErrorMessage {

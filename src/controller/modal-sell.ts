@@ -83,6 +83,10 @@ class ModalSellController {
       console.log(AppError.SOME_ERROR_HAS_OCCUR)
       throw new Error(AppError.SOME_ERROR_HAS_OCCUR)
     }
+    if (Number(price) <= 0) {
+      console.log(AppError.PRICE_INVALID)
+      throw new Error(AppError.PRICE_INVALID)
+    }
 
     const currentChainId = await getChainCurrentChainId()
     if (!currentChainId) {

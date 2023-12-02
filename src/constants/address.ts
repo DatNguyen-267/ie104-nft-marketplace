@@ -1,14 +1,36 @@
 import { CHAIN_IDS } from './chains'
 export const ADDRESS_OF_CHAINS = {
   [CHAIN_IDS.AIOZ]: {
-    DEPOSIT_RATE: 1,
-    WUIT: '0xcB96060104AA0529Be0B8B4c15703a962A20DF60',
-    MARKET: '0x634345357C9eA4B6e52765804d647048bd15e468',
-    PUBLIC_ERC721_TOKEN: '0x0000000000000000000000000000000000000000',
+    DEPOSIT_RATE: 100000,
+    // WUIT: '0xcB96060104AA0529Be0B8B4c15703a962A20DF60',
+    WUIT: '0x21BBB423E8B386A3Ed9Ed253296ef79898Cbbd13',
+    // MARKET: '0x634345357C9eA4B6e52765804d647048bd15e468',
+    MARKET: '0x3bEd7F27D15b08C469485eE7f9A2BE69b06072b0',
+    PUBLIC_ERC721_TOKEN: '0x7c81D92A6958670569A1586D471757bcD12b689c',
     COLLECTIONS: {
       DyanCat: {
         owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
         address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
+      },
+      OutOfMyStory: {
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+        address: '0x57B815813d053f276A45A5eddFB08D980F79e447',
+      },
+      AXO: {
+        owner: '0xf9f0036e2AFAf6EEEa77E08D1BFA012e1442dA3F',
+        address: '0xb4395776B71ad557C0E92ad3157B206271eB3f04',
+      },
+      OpepenEdition: {
+        address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+      },
+      NeoTokyoOuterCitizenV2: {
+        address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
+      },
+      BlockGame: {
+        address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
+        owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
       },
     },
   },
@@ -73,14 +95,6 @@ export const Collections = {
 
 type CollectionsOfMarket = { address: string; owner: string }[]
 export const CollectionsOfMarket = {
-  DyanCatV2: {
-    address: '0x772b21c128f759F75A352568B1F7b4fF331d1162',
-    owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-  },
-  MVP: {
-    address: '0xC85c402Ddc81c390053B2d7eB120E8e97EA41e7B',
-    owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-  },
   CES: {
     address: '0xd1edA759274915Ac515f42d96BBe9F4b02aE1b76',
     owner: '0xCd49a6c167016fEf9E9d68b8dBC2F4425E9AA7b8',
@@ -97,18 +111,7 @@ export const CollectionsOfMarket = {
     address: '0x4Fd34fc9eFa5f64cD0aF30bdDf8c42008CeffeFb',
     owner: '0xf9f0036e2afaf6eeea77e08d1bfa012e1442da3f',
   },
-  OpepenEdition: {
-    address: '0x9B5C1a360F8Be26bcaF90057943e74F33188dE8a',
-    owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-  },
-  NeoTokyoOuterCitizenV2: {
-    address: '0x7dEAe85e7C0576cE58AEE1454DdDff635019abF2',
-    owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-  },
-  BlockGame: {
-    address: '0x5aF1e8478eE83Ea428e41BE206bACf03c775523c',
-    owner: '0x454574C8AD9706a8fC22dDA71Ce77Cb1CDd5fEB1',
-  },
+
   LongLiveNft: {
     address: '0x542F920fCf0CBD1c02Cdff3d630A321Ac704eDa4',
     owner: '0xa61E47Cd253Af02334DA3FDc03d548FF74F86395', //account 5

@@ -88,8 +88,7 @@ btnCreate.addEventListener('click', async () => {
       return
     }
     const mintNftTx = await mintNFT(inputCollectionAddress.value, address, tokenUri.url)
-    ToastControllerInstance.set('Create NFT successfully', ToastType.success)
-    ToastControllerInstance.open()
+
     console.log(mintNftTx)
   } catch (error) {
     console.log(error)

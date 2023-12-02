@@ -7,6 +7,7 @@ import { MetadataInput } from '../types/metadata'
 import { getChainCurrentChainId } from './connect'
 import { getDefaultProvider, getRpcProvider } from './provider'
 import { LoadingControllerInstance } from '../controller/loading'
+import { ToastControllerInstance, ToastType } from '../controller/toast'
 
 export async function createMetadata(file: File, title: string, description: string) {
   try {
@@ -62,6 +63,8 @@ export async function mintNFT(cltAddress: string, addressTo: string, tokenUri: s
     const nftContract = new ethers.Contract(cltAddress, currentAbi, provider?.getSigner())
     const transaction = await nftContract.safeMint(addressTo, tokenUri)
     LoadingControllerInstance.close()
+    ToastControllerInstance.set('Create NFT successfully', ToastType.success)
+    ToastControllerInstance.open()
     const transactionReceipt: any = await transaction.wait()
     console.log('Mint receipt:', transactionReceipt)
     return transactionReceipt
