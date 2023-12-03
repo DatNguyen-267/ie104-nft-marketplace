@@ -249,7 +249,7 @@ body {
   display: flex;
   gap: 10%;
   justify-content: flex-start;
-  align-items: space-between;
+  /* align-items: space-between; */
 }
 
 .info__user-detail .wallet__status,
