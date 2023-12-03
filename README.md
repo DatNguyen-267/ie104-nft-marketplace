@@ -3,7 +3,7 @@
 Clone the repo and install dependencies:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/DatNguyen-267/ie104-nft-marketplace.git your-project-name
+git clone --branch main https://github.com/DatNguyen-267/ie104-nft-marketplace.git your-project-name
 cd your-project-name
 yarn
 ```
