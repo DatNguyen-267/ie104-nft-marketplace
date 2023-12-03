@@ -64,7 +64,7 @@
     margin-top: 3px;
     margin-bottom: 8px;
     font-size: 16px;
-    font-weight:600;
+    font-weight: 600;
     /* background-color: var(--color-gray-500);
     padding: 10px;
     border-radius: 5px; */
@@ -81,7 +81,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    
+
 }
 
 .nft-card__title {
@@ -142,7 +142,7 @@
 }
 
 .nft-card__price-title {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--color-sub-text-200);
 }
@@ -172,6 +172,7 @@
     justify-content: flex-end;
     width: 100%;
 }
+
 .nft-card__btn {
     width: 14rem !important;
     width: 100% !important;
