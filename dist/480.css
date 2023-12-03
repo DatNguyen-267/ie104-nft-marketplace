@@ -1,0 +1,260 @@
+/* ====================== collection-item ============================== */
+.collection-item__container {
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+    border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    gap: 15px;
+    background: #FFF;
+    box-shadow: 0px 1px 4px  rgba(0, 0, 0, 0.16);
+    margin-bottom: 36px;
+    transition: transform ease-in 0.2s;
+}
+
+.collection-item__container:hover {
+    transform: translateY(-5px) translateX(5px);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.collection-item__image {
+    /* flex: 1; */
+    width: 100px;
+    height: 100px;
+    /* border-radius: 50%; */
+    object-fit: cover;
+}
+
+/* ======================= Info =========================== */
+.collection-item__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+/* Name */
+.collection-item__name {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+}
+
+
+/* address */
+.collection-item__address {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    font-size: 12px;
+    font-weight:500;
+    color: var(--color-sub-text-200);
+}
+
+/* So luong */
+.collection-item__amount {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    color: var(--color-text);
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.collection-item__amount-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-sub-text-200);
+    text-align: flex-start;
+}
+
+.collection-item__amount-number {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-text);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.collection-item__owner-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.collection-item__owner-avatar  {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+.collection-item__owner-address {
+    font-size: 12px;
+}
+/* ================ MAIN ============== */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    position: relative;
+    padding: 50px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================= INFORMATION ==================================== */
+.main-header {
+    background-color: black;
+    position: relative;
+    background: url(astronaut-digital-art-wallpaper.webp);
+    background-repeat: no-repeat;
+    background-size: cover, contain;
+    background-position: center;
+    height: 310px;
+
+}
+
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background-color: color-mix(in srgb, var(--color-black) 50%, transparent);
+}
+
+.main-header .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+
+/* ITEM LEFT */
+.main-header__head-line {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+
+.main-header__head-line .title {
+    font-weight: 700;
+    line-height: 140%;
+    text-transform: capitalize;
+    color: var(--color-white);
+}
+
+.main-header__head-line .desc {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--color-sub-text-100);
+}
+
+/* ITEM RIGHT */
+.main-header__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.main-header__image img {
+    width: 300px;
+    height: 310px;
+    object-fit: cover;
+}
+
+
+/* ================================= NFTs ==================================== */
+
+/* Head line */
+.main-collections__headline {
+    width: 100%;
+}
+
+.main-collections__title {
+    color: var(--color-text);
+    font-weight: 700;
+    padding-bottom: 30px;
+    max-width: 330px;
+    width: 100%;
+}
+
+/* ITEM NFT */
+.collection-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2px;
+    cursor: pointer;
+    max-width: 330px;
+    width: 100%;
+    height: 100%;
+}
+
+/*======================== Reponsive ===================*/
+.col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wide {
+    max-width: 1200px !important;
+}
+
+@media (max-width: 1023px) {}
+
+@media (max-width: 740px) {
+
+    .container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-header__head-line {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-header__head-line .title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .main-header__head-line .desc {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .main-header__head-line .title,
+
+    .main-header__head-line .desc {
+        text-align: center;
+    }
+
+}

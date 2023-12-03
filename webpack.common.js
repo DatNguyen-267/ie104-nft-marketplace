@@ -69,9 +69,10 @@ module.exports = {
       filename: 'index.html',
       chunks: ['app'],
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
   ].concat(multipleHtmlPlugins),
-  // .concat(multipleHtmlLayoutPlugins),
   module: {
     rules: [
       {
