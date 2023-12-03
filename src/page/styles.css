@@ -210,7 +210,6 @@ body {
 .section-info__nft-eg .nft-eg__user .avatar {
   width: 35px;
   height: 35px;
-  background: url("./../assets/images/AvatarDefault.webp"), lightgray 50% / cover no-repeat;
   border: 1px solid var(--color-gray-1000);
 }
 
@@ -336,7 +335,7 @@ body {
 
 .guide-item img {
   position: relative;
-  width: 100%;
+  width: 250px;
   max-width: 250px;
 }
 
@@ -382,6 +381,7 @@ body {
     line-height: 6.8rem !important;
   }
 }
+
 @media (max-width: 1023px) {
   .section-info .section-info__intro {
     display: flex;
@@ -389,7 +389,7 @@ body {
     gap: 30px;
     padding: 50px;
   }
-  
+
 }
 
 @media (max-width: 740px) {
@@ -407,10 +407,12 @@ body {
     align-items: center;
   }
 }
+
 @media (max-width: 740px) {
-  h1{
+  h1 {
     line-height: 6.8rem !important;
   }
+
   .section-info__intro .head-line .sentence {
     height: 200px;
     line-height: 6.8rem !important;

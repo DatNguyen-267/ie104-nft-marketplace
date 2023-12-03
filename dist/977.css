@@ -9,7 +9,7 @@
 
   /* light mode */
   /* ================ HEX ==================== */
-  --color-primary: #A259FF;
+  --color-primary: #7b39cf;
   --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
@@ -86,7 +86,7 @@
   --color-sub-text-400: #4c4c4c;
 
   /* general */
-  --color-btn-primary: #A259FF;
+  --color-btn-primary: #7b39cf;
   --color-btn-secondary: #8148cd;
   --color-background: #fff;
 
@@ -190,7 +190,7 @@ h6 {
 
   /* light mode */
   /* ================ HEX ==================== */
-  --color-primary: #A259FF;
+  --color-primary: #7b39cf;
   --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
@@ -267,7 +267,7 @@ h6 {
   --color-sub-text-400: #4c4c4c;
 
   /* general */
-  --color-btn-primary: #A259FF;
+  --color-btn-primary: #7b39cf;
   --color-btn-secondary: #8148cd;
   --color-background: #fff;
 
@@ -472,7 +472,7 @@ filled--button.error.outlined:active {
 
   /* light mode */
   /* ================ HEX ==================== */
-  --color-primary: #A259FF;
+  --color-primary: #7b39cf;
   --color-white: #FFF;
   --color-black: #000;
   --color-plum: #b80257;
@@ -549,7 +549,7 @@ filled--button.error.outlined:active {
   --color-sub-text-400: #4c4c4c;
 
   /* general */
-  --color-btn-primary: #A259FF;
+  --color-btn-primary: #7b39cf;
   --color-btn-secondary: #8148cd;
   --color-background: #fff;
 
