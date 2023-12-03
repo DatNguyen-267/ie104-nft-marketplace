@@ -141,7 +141,6 @@
   display: flex;
   gap: 10%;
   justify-content: flex-start;
-  align-items: space-between;
 }
 
 .info__collection-detail .collection__address,
