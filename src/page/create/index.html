@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>IE104 NFTs Marketplace | Explore Collection, the largest NFT marketplace</title>
 
@@ -26,7 +26,7 @@
   <script src="https://kit.fontawesome.com/673614690a.js" crossorigin="anonymous"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet">
 </head>
 
 <body>
@@ -161,7 +161,7 @@
     </div>
   </div>
   <header class="header" id="header-template">
-    <input type="checkbox" id="nav-toggle" />
+    <input type="checkbox" id="nav-toggle">
     <label for="nav-toggle" class="header__nav-toggle-icon">&#9776;</label>
     <a class="header__logo" href="/">
       <svg width="300" height="39" viewBox="0 0 300 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -199,20 +199,15 @@
         <li><a href="/create.html" class="active">Create</a></li>
         <li><a href="/explore-collections.html">Collections</a></li>
         <li><a href="/chainList.html">Chains</a></li>
-
-        <div class="header__user">
-          <img href="#pop-up-user" class="avatar" id="header-avatar" style="display: none"></img>
-          <a href="/connectWallet.html">
-            <button class="filled--button secondary header__nav-btn" id="btn-login">
+        <li>
+          <div class="header__user">
+            <img class="avatar" id="header-avatar" style="display: none" alt="IE104-Marketplace" src="#">
+            <a href="/connectWallet.html" class="filled--button secondary header__nav-btn" id="btn-login">
               <i class="fas fa-wallet"></i>
               Connect Wallet
-            </button>
-            <!-- <button class="btn btn--primary header__nav-btn" id="btn-login" style="display: none;">
-              <i class="fas fa-wallet"></i>
-              Connect Wallet
-            </button> -->
-          </a>
-        </div>
+            </a>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -231,7 +226,7 @@
           </div>
           <div class="col l-3 m-6 c-12">
             <div class="main-header__image">
-              <img src="../../assets/images/createPageIcon.webp" alt="" />
+              <img src="../../assets/images/createPageIcon.webp" alt="IE104-Marketplace">
             </div>
           </div>
         </div>
@@ -243,22 +238,18 @@
     <div class="form">
       <span class="upload-file">Upload file</span>
       <div class="File-upload">
+        <label for="input-file" id="drop-area"></label>
         <div class="img__close" id="img-close" style="display: none;">
           <i class="fas fa-times"></i>
         </div>
-        <label for="input-file" id="drop-area">
-          
-          <input type="file" accept="image/*" id="input-file" hidden>
-          <img src="#" alt="" style="display: none;" id="img-view" class="img-view">
-          <div id="img-content" class="content">
-            <img class="content-icon" src="./../../assets/images/uploadImg.webp" alt="img-content">
-            <p class="content-des">Drog and drag or click here<br> to upload image </p>
-            <span class="content-note">Upload any image from desktop </span>
-            <!-- <span class="type-file"> Drog and drag or click here<br> to upload image </span>
-            <span class="filled--button secondary">Browse</span> -->
-          </div>
+        <input type="file" accept="image/*" id="input-file" hidden>
+        <img src="#" alt="IE104-Marketplace" style="display: none;" id="img-view" class="img-view">
+        <div id="img-content" class="content">
+          <img class="content-icon" src="./../../assets/images/uploadImg.webp" alt="img-content">
+          <p class="content-des">Drog and drag or click here<br> to upload image </p>
+          <span class="content-note">Upload any image from desktop </span>
+        </div>
       </div>
-      </label>
       <!-- <div class="input">
           <label for="Price" class="title">Price</label>
           <input type="text" id="Price" placeholder="Enter price for one item ( ETH )" class="Input">
@@ -284,7 +275,6 @@
         <span class=" text--button">Create item</span>
       </button>
     </div>
-  </div>
   </div>
 
   <!-- <h1>
