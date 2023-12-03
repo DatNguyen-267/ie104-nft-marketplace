@@ -170,7 +170,7 @@ body {
 .section-info__nft-eg .nft-eg__content {
   height: 370px;
   border-radius: 20px;
-  background: url('./../assets/images/NftEg.webp');
+  background: url(NftEg.webp);
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
