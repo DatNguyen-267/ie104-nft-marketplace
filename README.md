@@ -1,5 +1,5 @@
 ## Link deploy
-[- [IE104 Marketplace](ie104-nft-marketplace.vercel.app)](https://ie104-nft-marketplace.vercel.app/)
+[- [IE104 Marketplace](ie104-nft-marketplace.vercel.app)]
 ()
 ## Install
 
