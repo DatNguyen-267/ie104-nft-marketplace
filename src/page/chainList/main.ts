@@ -12,15 +12,27 @@ let showAccount = document.querySelector('.showAccount') as HTMLElement
 
 const btnGoerli = document.querySelector('#btn-goerli') as HTMLButtonElement
 const btnAioz = document.querySelector('#btn-aioz') as HTMLButtonElement
+const btnSepolia = document.querySelector('#btn-sepolia') as HTMLButtonElement
 
 const currentChainId = localStorage.getItem('chainId')
 if (currentChainId) {
   if (currentChainId === CHAINS[0].chainId.toString()) {
     btnAioz.classList.add('active')
     btnGoerli.classList.remove('active')
-  } else {
+    btnSepolia.classList.remove('active')
+  }
+
+  if (currentChainId === CHAINS[1].chainId.toString()) {
     btnGoerli.classList.add('active')
+
+    btnSepolia.classList.remove('active')
     btnAioz.classList.remove('active')
+  }
+
+  if (currentChainId === CHAINS[2].chainId.toString()) {
+    btnSepolia.classList.add('active')
+    btnAioz.classList.remove('active')
+    btnGoerli.classList.remove('active')
   }
 }
 
@@ -30,9 +42,19 @@ window.ethereum?.on('chainChanged', (chainId: string) => {
     if (chainId === CHAINS[0].chainIdHex.toString()) {
       btnAioz.classList.add('active')
       btnGoerli.classList.remove('active')
-    } else {
+      btnSepolia.classList.remove('active')
+    }
+
+    if (chainId === CHAINS[1].chainIdHex.toString()) {
       btnGoerli.classList.add('active')
       btnAioz.classList.remove('active')
+      btnSepolia.classList.remove('active')
+    }
+
+    if (chainId === CHAINS[2].chainIdHex.toString()) {
+      btnSepolia.classList.add('active')
+      btnAioz.classList.remove('active')
+      btnGoerli.classList.remove('active')
     }
   }
 })
@@ -69,7 +91,9 @@ btnAioz.onclick = () => {
 btnGoerli.onclick = () => {
   onSwitchChain(CHAINS[1].chainId)
 }
-
+btnSepolia.onclick = () => {
+  onSwitchChain(CHAINS[2].chainId)
+}
 connectEarly()
   .then(() => {
     UserPopoverControllerInstance.isConnected.set(true)

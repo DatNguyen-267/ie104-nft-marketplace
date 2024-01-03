@@ -1,7 +1,7 @@
 export const CHAIN_IDS = {
   AIOZ: 4102,
   GOERLI: 5,
-  MUMBAI: 80001,
+  SEPOLIA: 11155111,
 }
 export const DEFAULT_CHAIN_ID = CHAIN_IDS.GOERLI
 export const DEFAULT_WRAP_TOKEN_SYMBOL = 'WUIT'
@@ -33,15 +33,15 @@ export const CHAINS = [
     },
   },
   {
-    chainId: CHAIN_IDS.MUMBAI,
-    chainIdHex: '0x13881',
-    chainName: 'Mumbai',
-    rpcUrl: 'https://rpc-mumbai.maticvigil.com',
-    currencySymbol: 'MATIC',
-    blockExplorerUrl: 'https://mumbai.polygonscan.com',
+    chainId: CHAIN_IDS.SEPOLIA,
+    chainIdHex: '0xaa36a7',
+    chainName: 'SEPOLIA',
+    rpcUrl: 'https://endpoints.omniatech.io/v1/eth/sepolia/public',
+    currencySymbol: 'SEPOLIA',
+    blockExplorerUrl: 'https://sepolia.etherscan.io/',
     nativeCurrency: {
-      name: 'MATIC',
-      symbol: 'MATIC',
+      name: 'SEPOLIA',
+      symbol: 'SEPOLIA',
       decimals: 18,
     },
   },
